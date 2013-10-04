@@ -36,6 +36,7 @@
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage[pdftex]{graphicx}	
 \usepackage{url}
+\usepackage{enumerate}
 
 
 %%% Custom sectioning
@@ -51,7 +52,7 @@
 \fancyhead[R]{\today}											
 \fancyfoot[L]{}											 
 \fancyfoot[C]{}											
-\fancyfoot[R]{\thepage\ of \pageref{LastPage}}		% Pagenumbering
+\fancyfoot[R]{\thepage\ of \pageref{}}		% Pagenumbering
 \renewcommand{\headrulewidth}{0.4pt}				% Remove header underlines
 \renewcommand{\footrulewidth}{0.4pt}				% Remove footer underlines
 \setlength{\headheight}{13.6pt}
@@ -80,7 +81,7 @@
 %----------------------------------------------------------------------------------------
 
 \textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
-\textsc{\Large CAS Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
+\textsc{\Large CAS 4ZP6 Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
 \textsc{\large Porter Simulation}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
@@ -141,41 +142,153 @@ Dr. Douglas Down % Supervisor's Name
 \newpage
 
 \section{Purpose of the Project}
+
 \subsection{Background}
+
 \subsection{Goals}
 
 \section{The Stakeholders}
+Hamilton Health Sciences (HHS) operational management team is the main stakeholder for this project. Names and position are:
+Patients and Hospital Staff are the secondary stakeholders for this project. Any benefits that arise from the successful completion of this project will affect these stakeholders. 
 \subsection{The Client}
+Hamilton Health Sciences (HHS) operational management team is the client for this project. Names and positions are:
 \subsection{The Customer}
+Hamilton Health Sciences (HHS) operational management team is also the customer for this project. Names and positions are:
 \subsection{Other Stakeholders}
+Not Applicable
 \subsection{Hands on Users}
+Operational Management Staff will be the primary hands on users of the finished product. Names and positions are:
 
 \section{Mandated Constraints}
+
 \subsection{Solution Constraints}
+\begin{enumerate}[(a)]
+	\item 
+\end{enumerate}
 \subsection{Schedule Constraints}
+\begin{enumerate}[(a)]
+	\item Simulation Software must be complete and requirements met by March 2014 (Current Academic Year)  
+\end{enumerate}
 
 \section{Naming Conventions and Technology}
 \subsection{Definitions of All Terms, Including Acronyms, Used by Stakeholders involved in the Project}
+\begin{enumerate}[(a)]
+	\item \textbf{HHS:} Hamilton Health Sciences
+	\item \textbf{IVR:} Interactive Voice Request - phone system for requesting portering services
+	\item \textbf{Porter:} Staff member responsible for movement of equipment such as beds, wheelchairs, other medical instruments and patient transfers from one location to another
+	\begin{enumerate}[(i)]
+		\item \textbf{Off-System Porter:} Porters that follow a strict scheduled and a predetermined set of activities
+		\item \textbf{On-System Porter:} Porters that respond to ad-hoc and pre-booked requests	
+	\end{enumerate}
+	\item \textbf{Dispatching System:} An automated software system responsible for receiving and assigning requests to Porters
+	\begin{enumerate}[(i)]
+		\item \textbf{RDE} Remote Dispatching E... - portal used to view the current state of all the porter jobs currently in the Dispatching System
+	\end{enumerate}
+	\item \textbf{Zoom Stretcher:} A powered stretched used for patient transportation
+	\item \textbf{Pneumatic Tube:} A transportation system for lab samples and specimens
+	\item \textbf{Priority of Requests:} Requests placed by Hospital Staff can be prioritized on a scale from 0 - 9 with 0 being the most urgent. Porters can place an Assist Call that has a higher priority than 0.
+	\item \textbf{Event State:} A state of the porter service event as dictated by the Dispatching System
+	\begin{enumerate}[(i)]
+		\item \textbf{Pending:} Job has been placed in the system queue
+		\item \textbf{Dispatched:} Job has been matched to an available porter
+		\item \textbf{In-Progress:} Job is being executed by the porter
+		\item \textbf{Complete:} Job has been completed
+		\item \textbf{Dispatch Delay:} Porter states that he/she is delayed during a Dispatched event
+		\item \textbf{In-Progress Delay:} Porter states that he/she is delayed during a In-Progress event
+	\end{enumerate} 
+	\item \textbf{Transaction Time:} the time from Event State: Pending to Event State: Complete
+	\item \textbf{Proactive Page:} A porter pages the request location to inform the requester of his/her impending arrival      
+	\item \textbf{Age of Request:} How long a job has been pending in the dispatch system
+	\item \textbf{Break3:} A state a porter can enter where they are still logged into the system but do not receive any calls from the dispatch system
+	\item \textbf{Zoned:} A term for a porter that only receives certain types of requests as specified by the dispatching system 
+	\item \textbf{System Item Request:} requests that deal with specimens/blood/bed movement/etc \ldots
+\end{enumerate}
 
 \section{Relevant Facts and Assumptions}
 \subsection{Relevant Facts}
+\begin{enumerate}[(a)]
+	\item HHS will provide the project team with available non critical data
+	\item HHS currently uses a Dispatching System to rout its porters to desired locations
+	\item On certain route segments, 2 porters are required to transport the patient 
+	\item Lab/Specimen delivery use Off-System Porters on weekdays from 8:00 to 16:00
+\end{enumerate}
 \subsection{Business Rules}
+\begin{enumerate}[(a)]
+	\item Under their collective agreement a porter cannot be scheduled for less than an X amount of hours per week and X amount of hours per shift 
+	\item Each request has 6 event states (Pending, Dispatch, In-Progress, Complete, Dispatch Delay, In-Progress Delay)
+	\item Requests are prioritized on a 0 - 9 scale
+	\item There are 3 types of transportation equipment (Stretcher, Zoom Stretcher, Wheelchair)
+	\item There are two types of porters (On-System, Off-System)
+	\item Every completed event has an associated transaction time
+	\item Only Off-System porters can be scheduled for pre-booked requests
+	\item Juravinski uses the Pneumatic Tube for 40\% of the lab deliveries and porters for 60 \%
+	\item Dispatch System determines the assignment of requests by using these parameters (Priority, Proximity, Pre-Scheduled Appointment Use, Age of Request) 
+	\item Industry standard for patient transport transaction time is 30 minutes
+	\item Porter service requests can be made using any hospital computer or phone (IVR)
+	\item Porters can enter into an unscheduled break mode (Break3) where they do not receive any requests from the dispatch system
+	\item Porters can be "zoned" into system item requests by the dispatching system  
+\end{enumerate}	    
 \subsection{Assumptions}
+\begin{enumerate}[(a)]
+	\item Every porter is equally capable of performing every task as every other porter
+	\item All transporting equipment is in equal physical condition as other equipment of the same type
+	\item Wheel Chair transport of patients is 4-5min less in transaction time
+	\item Some porters use proactive paging  
+	\item The majority of service requests are made through hospital computers
+	\item Porters do not abuse the "Break3" mode
+\end{enumerate}
 
 \section{Scope of the Work}
 \subsection{Current Situation}
+Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations and are lacking the tools to solve this problem. The biggest problem comes from the lack of compliance and coordination of the many separate entities of the hospital body.
 \subsection{Context of the Work}
+The context of the work is to provide HHS with a simulation that models their porter services. The simulation is not to provide a solution but act as a tool to test new operational ideas.
 \subsection{Business Use Case}
+The simulation tool will be used by members of the operational management staff to model their process as per their variables and the simulation constraints.
 
 \section{Scope of the Product}
 \subsection{Product Boundary}
+\begin{enumerate}[(a)]
+	\item The simulation tool will not model the 100\% full hospital environment
+	\item The simulation will focus on the On-System Porters
+	\item Not all porter activities will be simulated. Simulation will concentrate on the 4 event states tracked by the dispatching system (Pending, Dispatch, In-Progress, Complete)
+	\item The simulation tool will only model the Juravinski Hospital location  
+\end{enumerate} 
 \subsection{Product Use Cases}
+\begin{enumerate}[(a)]
+	\item Operational Manager has a new initiative they want to implement into everyday operation. He/She uses the simulation by changing the adjustable variables with his/her own values and executing it. He/She analyses the output of the simulation and determines if the new initiative should be implemented.
+	\item Operational Manager has to determine how to modify the schedule for the porter service staff. He/She uses the simulation by changing the adjustable variables with his/her own values and executing it. He/She uses the output to design/refine the new schedule.
+	\item Operational Manager wants to increase operational compliance of some particular policy. He/She uses the simulation by changing the adjustable variables related to a certain level of compliance with his/her own values and executing it. Once positive results have been verified he/she shows the results to all the parties involved in the compliance policy to effectively increase compliance.
+	\item Operational Manager wants to experiment with theoretical scenarios. He/She uses the simulation by changing the adjustable variables with his/her own values and executing it. He/She analyses the output data and either creates a new initiative based on result or archives the data.
+	     
+\end{enumerate}
 
 \section{Functional Requirements}
 \subsection{Functional Requirements}
+\begin{enumerate}[(a)]
+	\item \textbf{Description:} Simulation must use a CSV file type as input
+	\\ \textbf{Rationale:} Operational Management staff has indicated that using the CSV file type as the input is the preferred option
+	\\ \textbf{Originator:} Operational Management staff
+	\\ \textbf{Fit Criterion:} Simulation must accept the CSV File type without error 100\% of the time assuming the CSV file is without error
+	\item \textbf{Description:} A series of simulation variables that affect the simulation output must be editable by the user
+	\\ \textbf{Rationale:} Operational Management staff must be able to modify the simulation
+	\\ \textbf{Fit Criterion:} Simulation must include at least 85\% of the following variables   
+	\begin{enumerate}[(i)]
+		\item Number of Porters
+		\item Frequency of Events
+		\item Number of Locations
+	\end{enumerate}
+	\item \textbf{Description:} Simulation Tool must be able to run a pre-designed model incorporating the given input variables and exit
+	\\ \textbf{Rationale:} Operational Staff must be able to run the simulation
+	\\ \textbf{Fit Criterion:} Simulation must be accurate within X range of accuracy 
+	\item \textbf{Description} The output of the simulation must be a CSV file type
+	\\ \textbf{Rationale:} It is best design to use the same file type for output as input
+	\\ \textbf{Fit Criterion:} The output file must be have 0\% errors according to the CSV file type standards 
+\end{enumerate}
 
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
+
 \subsection{Style Requirements}
 
 \section{Usability and Humanity Requirements}

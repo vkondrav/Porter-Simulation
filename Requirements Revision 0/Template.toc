@@ -10,56 +10,56 @@
 \contentsline {section}{\numberline {3}Mandated Constraints}{4}
 \contentsline {subsection}{\numberline {3.1}Solution Constraints}{4}
 \contentsline {subsection}{\numberline {3.2}Schedule Constraints}{4}
-\contentsline {section}{\numberline {4}Naming Conventions and Technology}{4}
-\contentsline {subsection}{\numberline {4.1}Definitions of All Terms, Including Acronyms, Used by Stakeholders involved in the Project}{4}
-\contentsline {section}{\numberline {5}Relevant Facts and Assumptions}{4}
-\contentsline {subsection}{\numberline {5.1}Relevant Facts}{4}
-\contentsline {subsection}{\numberline {5.2}Business Rules}{4}
-\contentsline {subsection}{\numberline {5.3}Assumptions}{4}
-\contentsline {section}{\numberline {6}Scope of the Work}{4}
-\contentsline {subsection}{\numberline {6.1}Current Situation}{4}
-\contentsline {subsection}{\numberline {6.2}Context of the Work}{4}
-\contentsline {subsection}{\numberline {6.3}Business Use Case}{4}
-\contentsline {section}{\numberline {7}Scope of the Product}{4}
-\contentsline {subsection}{\numberline {7.1}Product Boundary}{4}
-\contentsline {subsection}{\numberline {7.2}Product Use Cases}{4}
-\contentsline {section}{\numberline {8}Functional Requirements}{4}
-\contentsline {subsection}{\numberline {8.1}Functional Requirements}{4}
-\contentsline {section}{\numberline {9}Look and Feel Requirements}{4}
-\contentsline {subsection}{\numberline {9.1}Appearance Requirements}{4}
-\contentsline {subsection}{\numberline {9.2}Style Requirements}{4}
-\contentsline {section}{\numberline {10}Usability and Humanity Requirements}{4}
-\contentsline {subsection}{\numberline {10.1}Personalization and Internationalization Requirements}{4}
-\contentsline {subsection}{\numberline {10.2}Learning Requirements}{4}
-\contentsline {subsection}{\numberline {10.3}Understandability and Politeness Requirements}{4}
-\contentsline {subsection}{\numberline {10.4}Accessibility Requirements}{4}
-\contentsline {section}{\numberline {11}Performance Requirements}{4}
-\contentsline {subsection}{\numberline {11.1}Speed and Latency Requirements}{4}
-\contentsline {subsection}{\numberline {11.2}Safety-Critical Requirements}{4}
-\contentsline {subsection}{\numberline {11.3}Precision or Accuracy Requirements}{4}
-\contentsline {subsection}{\numberline {11.4}Reliability and Availability Requirements}{4}
-\contentsline {subsection}{\numberline {11.5}Robustness or Fault-Tolerance Requirements}{4}
-\contentsline {subsection}{\numberline {11.6}Capacity Requirements}{4}
-\contentsline {subsection}{\numberline {11.7}Scalability or Extensibility Requirements}{4}
-\contentsline {subsection}{\numberline {11.8}Longevity Requirements}{4}
-\contentsline {section}{\numberline {12}Operational and Environmental Requirements}{4}
-\contentsline {subsection}{\numberline {12.1}Expected Physical Environment}{4}
-\contentsline {subsection}{\numberline {12.2}Requirements for Interfacing with Adjacent Systems}{4}
-\contentsline {subsection}{\numberline {12.3}Productization Requirements}{4}
-\contentsline {subsection}{\numberline {12.4}Release Requirements}{4}
-\contentsline {section}{\numberline {13}Maintainability and Support Requirements}{4}
-\contentsline {subsection}{\numberline {13.1}Maintenance Requirements}{4}
-\contentsline {subsection}{\numberline {13.2}Supportability Requirements}{4}
-\contentsline {subsection}{\numberline {13.3}Adaptability Requirements}{4}
-\contentsline {section}{\numberline {14}Security Requirements}{4}
-\contentsline {subsection}{\numberline {14.1}Access Requirements}{4}
-\contentsline {subsection}{\numberline {14.2}Integrity Requirements}{4}
-\contentsline {subsection}{\numberline {14.3}Privacy Requirements}{4}
-\contentsline {subsection}{\numberline {14.4}Audit Requirements}{4}
-\contentsline {subsection}{\numberline {14.5}Immunity Requirements}{4}
-\contentsline {section}{\numberline {15}Cultural Requirements}{4}
-\contentsline {subsection}{\numberline {15.1}Cultural Requirements}{4}
-\contentsline {subsection}{\numberline {15.2}Legal Requirements}{4}
-\contentsline {subsection}{\numberline {15.3}Compliance Requirements}{4}
-\contentsline {subsection}{\numberline {15.4}Standards Requirements}{4}
-\contentsline {section}{\numberline {16}Open Issues}{4}
+\contentsline {section}{\numberline {4}Naming Conventions and Technology}{5}
+\contentsline {subsection}{\numberline {4.1}Definitions of All Terms, Including Acronyms, Used by Stakeholders involved in the Project}{5}
+\contentsline {section}{\numberline {5}Relevant Facts and Assumptions}{6}
+\contentsline {subsection}{\numberline {5.1}Relevant Facts}{6}
+\contentsline {subsection}{\numberline {5.2}Business Rules}{6}
+\contentsline {subsection}{\numberline {5.3}Assumptions}{7}
+\contentsline {section}{\numberline {6}Scope of the Work}{7}
+\contentsline {subsection}{\numberline {6.1}Current Situation}{7}
+\contentsline {subsection}{\numberline {6.2}Context of the Work}{7}
+\contentsline {subsection}{\numberline {6.3}Business Use Case}{7}
+\contentsline {section}{\numberline {7}Scope of the Product}{8}
+\contentsline {subsection}{\numberline {7.1}Product Boundary}{8}
+\contentsline {subsection}{\numberline {7.2}Product Use Cases}{8}
+\contentsline {section}{\numberline {8}Functional Requirements}{8}
+\contentsline {subsection}{\numberline {8.1}Functional Requirements}{8}
+\contentsline {section}{\numberline {9}Look and Feel Requirements}{10}
+\contentsline {subsection}{\numberline {9.1}Appearance Requirements}{10}
+\contentsline {subsection}{\numberline {9.2}Style Requirements}{10}
+\contentsline {section}{\numberline {10}Usability and Humanity Requirements}{10}
+\contentsline {subsection}{\numberline {10.1}Personalization and Internationalization Requirements}{10}
+\contentsline {subsection}{\numberline {10.2}Learning Requirements}{10}
+\contentsline {subsection}{\numberline {10.3}Understandability and Politeness Requirements}{10}
+\contentsline {subsection}{\numberline {10.4}Accessibility Requirements}{10}
+\contentsline {section}{\numberline {11}Performance Requirements}{10}
+\contentsline {subsection}{\numberline {11.1}Speed and Latency Requirements}{10}
+\contentsline {subsection}{\numberline {11.2}Safety-Critical Requirements}{10}
+\contentsline {subsection}{\numberline {11.3}Precision or Accuracy Requirements}{10}
+\contentsline {subsection}{\numberline {11.4}Reliability and Availability Requirements}{10}
+\contentsline {subsection}{\numberline {11.5}Robustness or Fault-Tolerance Requirements}{10}
+\contentsline {subsection}{\numberline {11.6}Capacity Requirements}{10}
+\contentsline {subsection}{\numberline {11.7}Scalability or Extensibility Requirements}{10}
+\contentsline {subsection}{\numberline {11.8}Longevity Requirements}{10}
+\contentsline {section}{\numberline {12}Operational and Environmental Requirements}{10}
+\contentsline {subsection}{\numberline {12.1}Expected Physical Environment}{10}
+\contentsline {subsection}{\numberline {12.2}Requirements for Interfacing with Adjacent Systems}{10}
+\contentsline {subsection}{\numberline {12.3}Productization Requirements}{10}
+\contentsline {subsection}{\numberline {12.4}Release Requirements}{10}
+\contentsline {section}{\numberline {13}Maintainability and Support Requirements}{10}
+\contentsline {subsection}{\numberline {13.1}Maintenance Requirements}{10}
+\contentsline {subsection}{\numberline {13.2}Supportability Requirements}{10}
+\contentsline {subsection}{\numberline {13.3}Adaptability Requirements}{10}
+\contentsline {section}{\numberline {14}Security Requirements}{10}
+\contentsline {subsection}{\numberline {14.1}Access Requirements}{10}
+\contentsline {subsection}{\numberline {14.2}Integrity Requirements}{10}
+\contentsline {subsection}{\numberline {14.3}Privacy Requirements}{10}
+\contentsline {subsection}{\numberline {14.4}Audit Requirements}{10}
+\contentsline {subsection}{\numberline {14.5}Immunity Requirements}{10}
+\contentsline {section}{\numberline {15}Cultural Requirements}{10}
+\contentsline {subsection}{\numberline {15.1}Cultural Requirements}{10}
+\contentsline {subsection}{\numberline {15.2}Legal Requirements}{10}
+\contentsline {subsection}{\numberline {15.3}Compliance Requirements}{10}
+\contentsline {subsection}{\numberline {15.4}Standards Requirements}{10}
+\contentsline {section}{\numberline {16}Open Issues}{10}
