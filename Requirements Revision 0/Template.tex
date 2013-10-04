@@ -27,7 +27,7 @@
 %\title{Project Report}
 %
 %%% Preamble
-\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+\documentclass[paper=letter, fontsize=10pt]{scrartcl}
 \usepackage[T1]{fontenc}
 \usepackage{fourier}
 
@@ -40,18 +40,20 @@
 
 %%% Custom sectioning
 \usepackage{sectsty}
-\allsectionsfont{\centering \normalfont\scshape}
+\allsectionsfont{\normalfont\scshape}
 
 
 %%% Custom headers/footers (fancyhdr package)
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead{}											% No page header
-\fancyfoot[L]{}											% Empty 
-\fancyfoot[C]{}											% Empty
-\fancyfoot[R]{\thepage}									% Pagenumbering
-\renewcommand{\headrulewidth}{0pt}			% Remove header underlines
-\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+\fancyhead[L]{}
+\fancyhead[c]{Requirements Revision 0}
+\fancyhead[R]{\today}											
+\fancyfoot[L]{}											 
+\fancyfoot[C]{}											
+\fancyfoot[R]{\thepage\ of \pageref{LastPage}}		% Pagenumbering
+\renewcommand{\headrulewidth}{0.4pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0.4pt}				% Remove footer underlines
 \setlength{\headheight}{13.6pt}
 
 
@@ -71,7 +73,7 @@
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
 
-\center % Center everything on the page
+\begin{center}
  
 %----------------------------------------------------------------------------------------
 %	HEADING SECTIONS
@@ -129,51 +131,94 @@ Dr. Douglas Down % Supervisor's Name
 %----------------------------------------------------------------------------------------
 
 \vfill % Fill the rest of the page with whitespace
-
+\end{center}
 \end{titlepage}
 
 \setcounter{tocdepth}{2}
 
 \tableofcontents
 
-\section{Heading on level 1 (section)}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus:
+\newpage
 
-Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
+\section{Purpose of the Project}
+\subsection{Background}
+\subsection{Goals}
 
-\subsection{Heading on level 2 (subsection)}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+\section{The Stakeholders}
+\subsection{The Client}
+\subsection{The Customer}
+\subsection{Other Stakeholders}
+\subsection{Hands on Users}
 
-Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+\section{Mandated Constraints}
+\subsection{Solution Constraints}
+\subsection{Schedule Constraints}
 
-\subsubsection{Heading on level 3 (subsubsection)}
-Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+\section{Naming Conventions and Technology}
+\subsection{Definitions of All Terms, Including Acronyms, Used by Stakeholders involved in the Project}
 
-\paragraph{Heading on level 4 (paragraph)}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
+\section{Relevant Facts and Assumptions}
+\subsection{Relevant Facts}
+\subsection{Business Rules}
+\subsection{Assumptions}
 
+\section{Scope of the Work}
+\subsection{Current Situation}
+\subsection{Context of the Work}
+\subsection{Business Use Case}
 
-\section{Lists}
+\section{Scope of the Product}
+\subsection{Product Boundary}
+\subsection{Product Use Cases}
 
-\subsection{Example for list (3*itemize)}
-\begin{itemize}
-	\item First item in a list 
-		\begin{itemize}
-		\item First item in a list 
-			\begin{itemize}
-			\item First item in a list 
-			\item Second item in a list 
-			\end{itemize}
-		\item Second item in a list 
-		\end{itemize}
-	\item Second item in a list 
-\end{itemize}
+\section{Functional Requirements}
+\subsection{Functional Requirements}
 
-\subsection{Example for list (enumerate)}
-\begin{enumerate}
-	\item First item in a list 
-	\item Second item in a list 
-	\item Third item in a list
-\end{enumerate}
+\section{Look and Feel Requirements}
+\subsection{Appearance Requirements}
+\subsection{Style Requirements}
+
+\section{Usability and Humanity Requirements}
+\subsection{Personalization and Internationalization Requirements}
+\subsection{Learning Requirements}
+\subsection{Understandability and Politeness Requirements}
+\subsection{Accessibility Requirements}
+
+\section{Performance Requirements}
+\subsection{Speed and Latency Requirements}
+\subsection{Safety-Critical Requirements}
+\subsection{Precision or Accuracy Requirements}
+\subsection{Reliability and Availability Requirements}
+\subsection{Robustness or Fault-Tolerance Requirements}
+\subsection{Capacity Requirements}
+\subsection{Scalability or Extensibility Requirements}
+\subsection{Longevity Requirements}
+
+\section{Operational and Environmental Requirements}
+\subsection{Expected Physical Environment}
+\subsection{Requirements for Interfacing with Adjacent Systems}
+\subsection{Productization Requirements}
+\subsection{Release Requirements}
+
+\section{Maintainability and Support Requirements}
+\subsection{Maintenance Requirements}
+\subsection{Supportability Requirements}
+\subsection{Adaptability Requirements}
+
+\section{Security Requirements}
+\subsection{Access Requirements}
+\subsection{Integrity Requirements}
+\subsection{Privacy Requirements}
+\subsection{Audit Requirements}
+\subsection{Immunity Requirements}
+
+\section{Cultural Requirements}
+\subsection{Cultural Requirements}
+\subsection{Legal Requirements}
+\subsection{Compliance Requirements}
+\subsection{Standards Requirements}
+
+\section{Open Issues}
+
 %%% End document
 \end{document}

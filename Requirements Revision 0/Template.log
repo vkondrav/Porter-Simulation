@@ -1,7 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.18)  3 OCT 2013 17:05
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.18)  4 OCT 2013 00:26
 entering extended mode
 **Template.tex
-("C:\Users\Vitaliy\SkyDrive\School\Year 4\Capstone 4ZP6\Latex\Template.tex"
+
+("C:\Users\Vitaliy\Documents\GitHub\Porter-Simulation\Requirements Revision 0\T
+emplate.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -46,11 +48,11 @@ Package tocbasic Info: omitting babel extension for `lof'
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lot' on input line 117.
-Class scrartcl Info: File `scrsize11pt.clo' used to setup font sizes on input l
+Class scrartcl Info: File `scrsize10pt.clo' used to setup font sizes on input l
 ine 1267.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrsize11pt.clo"
-File: scrsize11pt.clo 2012/07/29 v3.11b KOMA-Script font size class option (11p
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrsize10pt.clo"
+File: scrsize10pt.clo 2012/07/29 v3.11b KOMA-Script font size class option (10p
 t)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\typearea.sty"
@@ -66,21 +68,21 @@ Package typearea, 2012/07/29 v3.11b KOMA-Script package (type area)
 \ta@vblk=\skip43
 \ta@temp=\skip44
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 10
+(typearea)             DIV  = 8
 (typearea)             BCOR = 0.0pt
-(typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 418.25555pt
-(typearea)              DIV departure   = -6%
-(typearea)              \evensidemargin = 17.3562pt
-(typearea)              \oddsidemargin  = 17.3562pt
-(typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 595.80026pt
-(typearea)              \topmargin      = -25.16531pt
-(typearea)              \headheight     = 17.0pt
-(typearea)              \headsep        = 20.40001pt
-(typearea)              \topskip        = 11.0pt
-(typearea)              \footskip       = 47.60002pt
-(typearea)              \baselineskip   = 13.6pt
+(typearea)             \paperwidth      = 614.295pt
+(typearea)              \textwidth      = 383.9344pt
+(typearea)              DIV departure   = -7%
+(typearea)              \evensidemargin = 42.91031pt
+(typearea)              \oddsidemargin  = 42.91031pt
+(typearea)             \paperheight     = 794.96999pt
+(typearea)              \textheight     = 502.0pt
+(typearea)              \topmargin      = -5.89874pt
+(typearea)              \headheight     = 15.0pt
+(typearea)              \headsep        = 18.0pt
+(typearea)              \topskip        = 10.0pt
+(typearea)              \footskip       = 42.0pt
+(typearea)              \baselineskip   = 12.0pt
 (typearea)              on input line 1213.
 )
 \c@part=\count80
@@ -458,56 +460,56 @@ les
 \f@ncyO@olf=\skip61
 \f@ncyO@orf=\skip62
 )
-("C:\Users\Vitaliy\SkyDrive\School\Year 4\Capstone 4ZP6\Latex\Template.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 68.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 68.
+("C:\Users\Vitaliy\Documents\GitHub\Porter-Simulation\Requirements Revision 0\T
+emplate.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 70.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 70.
 
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmlfutm.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmlfutm.fd"
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 68.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 68.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 70.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 70.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmsfutm.fd"
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 68.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 68.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 70.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 70.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmxfutm.fd"
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 68.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 70.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 68.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 70.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\t1futs.fd"
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 )
-LaTeX Info: Redefining \microtypecontext on input line 68.
+LaTeX Info: Redefining \microtypecontext on input line 70.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -537,25 +539,25 @@ Package microtype Info: Loading generic settings for font family
 \everyMPtoPDFconversion=\toks28
 )
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 89.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 91.
 LaTeX Font Info:    Try loading font information for FML+futmi on input line 10
-4.
+6.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmlfutmi.fd"
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 104.
+(Font)              scaled to size 9.19998pt on input line 106.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 104.
+(Font)              scaled to size 6.99199pt on input line 106.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 104.
+(Font)              scaled to size 5.51999pt on input line 106.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 104.
+(Font)              scaled to size 9.19998pt on input line 106.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 104.
+(Font)              scaled to size 6.99199pt on input line 106.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 104.
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+(Font)              scaled to size 5.51999pt on input line 106.
+LaTeX Font Info:    Try loading font information for U+msa on input line 106.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -563,7 +565,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 106.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -573,7 +575,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 137.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 139.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmss.fd"
@@ -584,42 +586,53 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package tocbasic Info: character protrusion at toc deactivated on input line 13
-7.
+9.
 
-("C:\Users\Vitaliy\SkyDrive\School\Year 4\Capstone 4ZP6\Latex\Template.toc")
+("C:\Users\Vitaliy\Documents\GitHub\Porter-Simulation\Requirements Revision 0\T
+emplate.toc"
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 34.
+
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 34.
+
+[2])
 \tf@toc=\write3
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 160
-.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\ts1futs.fd"
-File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
-)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `futs' (encoding: TS1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 162.
- [2] [3]
-("C:\Users\Vitaliy\SkyDrive\School\Year 4\Capstone 4ZP6\Latex\Template.aux") ) 
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 141.
+
+[3]
+Overfull \vbox (942.81306pt too high) has occurred while \output is active []
+
+
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 224.
+
+[4]
+("C:\Users\Vitaliy\Documents\GitHub\Porter-Simulation\Requirements Revision 0\T
+emplate.aux")
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6149 strings out of 493921
- 91646 string characters out of 3147276
- 192118 words of memory out of 3000000
- 9208 multiletter control sequences out of 15000+200000
- 94238 words of font info for 144 fonts, out of 3000000 for 9000
+ 6073 strings out of 493921
+ 90729 string characters out of 3147276
+ 195131 words of memory out of 3000000
+ 9181 multiletter control sequences out of 15000+200000
+ 90554 words of font info for 108 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 35i,10n,47p,513b,362s stack positions out of 5000i,500n,10000p,200000b,50000s
-{
-C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}{C:/Progra
-m Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9
-/fonts/type1/adobe/utopia/putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/a
-dobe/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/pu
-tri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx1095.pfb
->
-Output written on Template.pdf (3 pages, 64212 bytes).
+ 44i,10n,47p,246b,398s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}{C:/Pro
+gram Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 
+2.9/fonts/type1/adobe/utopia/putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/adobe/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia
+/putri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfsx1000.
+pfb>
+Output written on Template.pdf (4 pages, 77918 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
+ 33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41473 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 36865 words of extra memory for PDF output out of 42996 (max. 10000000)
 
