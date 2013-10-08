@@ -1,4 +1,7 @@
-﻿class State(object):
+﻿from InitTaskList import initEventList
+from BinTree import BTree
+
+class State(object):
 
 	def __init__():
 		self.porters = []
@@ -8,20 +11,18 @@
 		
 class FutureEventList(object):
 
-	def __init__():
-		#event datastructure
-		pass
+	def __init__(self):
+		self.eventList = BTree
 		
-	def insert():
-		pass
+	def insert(self,data):
+		self.eventList.insert(data)
 		
-	def pop():
-		pass
+	def pop(self):
+		return self.eventList.pop()
 		
-	def isEmpty():
-		pass
-	
-	
+	def isEmpty(self):
+		return self.eventList.isEmpty()
+
 class Porter(object):
 
 	def __init__():
@@ -89,10 +90,12 @@ class Event(object):
 		
 def main():
 	EventList = FutureEventList()
-	SpanTree = SpanningTree()
-	SimState = State()
+	SpanTree = SpanningTree
+	SimState = State
 	
-	while not EventList.isEmpty():
-		event = EventList.pop()
-		event.log()
-		event.trigger()
+	#while not EventList.isEmpty():
+	#	event = EventList.pop()
+	#	event.log()
+	#	event.trigger()
+		
+main()
