@@ -67,6 +67,7 @@
 
 %%% Maketitle metadata
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+\newcommand{\ts}{\textsuperscript}
 
 %%% Begin document
 \begin{document}
@@ -149,7 +150,15 @@ Hamilton Health Sciences are experiencing inefficiencies when synchronizing thei
 Our goal is to provide HHS with the tools to simulate their porter services so that they can test their own solutions, methods and make calculated decisions based on the results.
 
 \section{The Stakeholders}
-Hamilton Health Sciences (HHS) operational management team is the main stakeholder for this project. Names and position are: 
+Hamilton Health Sciences (HHS) operational management team is the main stakeholder for this project. Names and position are:\\ \\
+Corey Stark (CSS - Sodexo Systems and Performance Manager)\\
+Kym Kempf (Business and Program Manager - Corporate Services)\\
+David DiSimoni (Site Manager - Customer Support Services)\\
+Anita Lamond (Director - Corporate Services)\\
+Steve Metham (Manager - Quality)\\
+Mohammad Majedi (Quality Specialist)\\
+Talha Hussain (Quality Specialist)
+
 \subsection{The Client}
 Hamilton Health Sciences (HHS) operational management team is the client for this project. Names and positions are:
 \subsection{The Customer}
@@ -161,7 +170,7 @@ Operational Management Staff will be the primary hands on users of the finished 
 
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
-Currently there are no solution constraints as per discussion with the stakeholders.
+
 \subsection{Schedule Constraints}
 Simulation Software must be complete and requirements met by March 2014. (Current Academic Year)  
 
@@ -264,10 +273,9 @@ The simulation tool will be used by members of the operational management staff 
 \section{Functional Requirements}
 \subsection{Functional Requirements}
 \begin{enumerate}[(a)]
-	\item \textbf{Description:} Simulation must use a CSV file type as input
-	\\ \textbf{Rationale:} Operational Management staff has indicated that using the CSV file type as the input is the preferred option
-	\\ \textbf{Originator:} Operational Management staff
-	\\ \textbf{Fit Criterion:} Simulation must accept the CSV File type without error 100\% of the time assuming the CSV file is without error
+	\item \textbf{Description:} Simulation must use take a file as input
+	\\ \textbf{Rationale:} Operational Management staff has indicated that using a file as input is the preferred method 
+	\\ \textbf{Fit Criterion:} Simulation must accept the fil without error 100\% of the time assuming the CSV is without error
 	\item \textbf{Description:} A series of simulation variables that affect the simulation output must be editable by the user
 	\\ \textbf{Rationale:} Operational Management staff must be able to modify the simulation
 	\\ \textbf{Fit Criterion:} Simulation must include at least 85\% of the following variables   
@@ -280,9 +288,9 @@ The simulation tool will be used by members of the operational management staff 
 	\item \textbf{Description:} Simulation Tool must be able to run a pre-designed model incorporating the given input variables and exit
 	\\ \textbf{Rationale:} Operational Staff must be able to run the simulation
 	\\ \textbf{Fit Criterion:} Simulation must be accurate within X range of accuracy 
-	\item \textbf{Description} The output of the simulation must be a CSV file type
+	\item \textbf{Description} The output of the simulation must be a file
 	\\ \textbf{Rationale:} It is best design to use the same file type for output as input
-	\\ \textbf{Fit Criterion:} The output file must be have 0\% errors according to the CSV file type standards 
+	\\ \textbf{Fit Criterion:} The output file must be have 0\% errors according to the file type standards 
 \end{enumerate}
 
 \section{Look and Feel Requirements}
@@ -375,19 +383,19 @@ Not Applicable.
 \subsection{Productization Requirements}
 Not Applicable.
 \subsection{Release Requirements}
-Final version of simulation software should be made available by March 2014.
+Final version of simulation software should be made available by April 1\ts{st} 2014.
 
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
 	\begin{enumerate}[(a)]
-		\item The Project Team will provide maintenance to the software up to the projected project finish date (March 2014)
+		\item The Project Team will provide maintenance to the software up to the projected project finish date (April \ts{th} 2014)
 	\end{enumerate}
 \subsection{Supportability Requirements}
 	\begin{enumerate}[(a)]
-		\item The Project Team will provide support for the software up to the projected project finish date (March 2014)
+		\item The Project Team will provide support for the software up to the projected project finish date (April 1\ts{st} 2014)
 	\end{enumerate}
 \subsection{Adaptability Requirements}
-The simulation is being modeled after existing data provided by stakeholders, with the possibility of modifying the software later to accommodate updated base values. 
+The simulation is being modelled after existing data provided by stakeholders, with the possibility of modifying the software later to accommodate updated base values. 
 
 \section{Security Requirements}
 \subsection{Access Requirements}
@@ -415,7 +423,7 @@ Not Applicable.
 
 \section{Off-the-Shelf Solutions}
 \subsection{Ready-Made Products}
-Visual8 produces visual process modeling simulations and have worked with HHS on past projects.
+Visual8 produces visual process modelling simulations and have worked with HHS on past projects.
 \subsection{Reusable Components}
 Simulation model should be adaptable to other HHS locations utilizing on-system porter services.
 \subsection{Products That Can Be Copied}
@@ -425,7 +433,7 @@ None found that are applicable and freely available to duplicate.
 \subsection{Effects on the Current Environment}
 Only when the product simulates positive beneficial results consistently will stakeholders consider implementing modifications to the existing HHS environment.
 \subsection{Effects on the Installed Systems}
-The product should have no effect on installed systems or other software.
+The product will have 0\% effect on installed systems or other software.
 \subsection{Potential User Problems}
 None applicable yet, to be determined.
 \subsection{Limitations in the Anticipated Implementation Environment That May Inhibit the New Product}
@@ -434,28 +442,55 @@ The simulation software should only be executed on systems that meet the previou
 None applicable yet, to be determined.
 
 \section{Tasks}
-\subsection{Project Planning}
-\subsection{Planning of the Development Phases}
-
+\subsection{Academic Milestones}
+\begin{enumerate}[(a)]	
+	\item \textbf{Record of Proposed Project} - due September 20\ts{th}, 2013
+	\item \textbf{Problem Statement} - due September 24\ts{th}, 2013
+	\item \textbf{Requirements Document Revision 0} - due October 10\ts{th}, 2013
+	\item \textbf{Test Plan Revision 0} - due October 24\ts{th}, 2013
+	\item \textbf{Proof of Concept Presentation} - to be complete between November 11\ts{th}, 2013 and November 22\ts{nd}, 2013
+	\item \textbf{Design Documentation Revision 0} - due  January 14\ts{th}, 2014
+	\item \textbf{Revision 0 Demonstration} - to be completed between January 27\ts{th}, 2014 and February 7\ts{th}, 2014
+	\item \textbf{User Guide Revision 0} - due February 18\ts{th}, 2014
+	\item \textbf{Test Report Revision 0} - due March 4\ts{th}, 2014
+	\item \textbf{Final Demonstration Revision 1} - due March 29\ts{th}, 2014
+	\item \textbf{Final Documentation Revision 1} - due April 1\ts{st}, 2014
+\end{enumerate}
+\subsection{Stakeholder Milestones}
+To be discussed and decided with the stakeholders
 \section{Risks}
-
+\begin{enumerate}[(a)]
+	\item Simulation gives false data leading to wrong decisions by the Operational Management Team
+	\item Simulation is used as not intended/ out of scope leading to wrong decisions by the Operational Management Team
+	\item Simulation does not help with decision making process of the Operational Management Team 
+\end{enumerate}
 \section{Costs}
 There are currently no financial costs associated with this project.
 
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
+The users of this software will be provided with detailed documentation outlining the framework, functionality, and usability. Details of this document are to be decided on at a later date.
 \subsection{Training Requirements}
+the users will be provided with hands-on training and training material by the project team. The details of this material are to be decided at a later date. 
 
 \section{Open Issues}
 \begin{enumerate}
-	\item Continue to narrow down complete variable list
+	\item Continue to narrow down complete variable list.
 	\item Clearly define which tasks on/off system porters complete.
 	\item Establish specific precision and accuracy requirements.
+	\item Establish User Documentation Requirements.
+	\item Establish Training Material Requirements.
+	\item Establish Potential User Problems.
+	\item Establish Stakeholder milestones as well as project plan.
+	\item Establish Scalability and Extensibility requirements.
+	\item Establish Longevity Requirements.
+	\item Establish Capacity Requirements.
+	\item Establish Personalization and Internalization requirements.
+	\item Establish Appearance Requirements.
 \end{enumerate}
 
 \section{Waiting Room}
-
-\section{Ideas for Solutions}
+None
 
 %%% End document
 \end{document}
