@@ -187,9 +187,9 @@ Simulation Software must be complete and requirements met by March 2014. (Curren
 	\end{enumerate}
 	\item \textbf{Dispatching System:} An automated software system responsible for receiving and assigning requests to Porters
 	\begin{enumerate}[(i)]
-		\item \textbf{RDE:} Remote Dispatching E... - portal used to view the current state of all the porter jobs currently in the Dispatching System
+		\item \textbf{RDE:} Remote Dispatching E\ldots - portal used to view the current state of all the porter jobs currently in the Dispatching System
 	\end{enumerate}
-	\item \textbf{Zoom Stretcher:} A powered stretched used for patient transportation
+	\item \textbf{Zoom Stretcher:} A powered stretcher used for patient transportation
 	\item \textbf{Pneumatic Tube:} A transportation system for lab samples and specimens
 	\item \textbf{Priority of Requests:} Requests placed by Hospital Staff can be prioritized on a scale from 0 - 9 with 0 being the most urgent. Porters can place an Assist Call that has a higher priority than 0.
 	\item \textbf{Event State:} A state of the porter service event as dictated by the Dispatching System
@@ -215,7 +215,7 @@ Simulation Software must be complete and requirements met by March 2014. (Curren
 \subsection{Relevant Facts}
 \begin{enumerate}[(a)]
 	\item HHS will provide the project team with available non critical data
-	\item HHS currently uses a Dispatching System to rout its porters to desired locations
+	\item HHS currently uses a Dispatching System to route its porters to desired locations
 	\item On certain route segments, two porters are required to transport the patient 
 	\item Lab/Specimen delivery use Off-System Porters on weekdays from 8:00 to 16:00
 \end{enumerate}
@@ -275,7 +275,7 @@ The simulation tool will be used by members of the operational management staff 
 \begin{enumerate}[(a)]
 	\item \textbf{Description:} Simulation must use take a file as input
 	\\ \textbf{Rationale:} Operational Management staff has indicated that using a file as input is the preferred method 
-	\\ \textbf{Fit Criterion:} Simulation must accept the fil without error 100\% of the time assuming the CSV is without error
+	\\ \textbf{Fit Criterion:} Simulation must accept the file without error 100\% of the time assuming the CSV is without error
 	\item \textbf{Description:} A series of simulation variables that affect the simulation output must be editable by the user
 	\\ \textbf{Rationale:} Operational Management staff must be able to modify the simulation
 	\\ \textbf{Fit Criterion:} Simulation must include at least 85\% of the following variables   
@@ -287,7 +287,10 @@ The simulation tool will be used by members of the operational management staff 
 	\end{enumerate}
 	\item \textbf{Description:} Simulation Tool must be able to run a pre-designed model incorporating the given input variables and exit
 	\\ \textbf{Rationale:} Operational Staff must be able to run the simulation
-	\\ \textbf{Fit Criterion:} Simulation must be accurate within X range of accuracy 
+	\\ \textbf{Fit Criterion:} Simulation must be accurate within X range of accuracy
+	\item \textbf{Description} The output of the simulation must be relevant data
+	\\ \textbf{Rationale:} Data must be relevant for the Operational Management's business process
+	\\ \textbf{Fit Criterion:} The output must be 100\% relevant in the scope of the problem
 	\item \textbf{Description} The output of the simulation must be a file
 	\\ \textbf{Rationale:} It is best design to use the same file type for output as input
 	\\ \textbf{Fit Criterion:} The output file must be have 0\% errors according to the file type standards 
@@ -328,8 +331,10 @@ Personalization of the final product will be discussed with stakeholders and end
 	\item \textbf{Content:} Software must be easy to learn with some hands-on training and reading training documentation by a casual user of personal computers
 	\\	  \textbf{Motivation:} Users are not required to have any knowledge of simulation software to operate the product
 	\\	  \textbf{Fit Criterion:} Users will be able to use the software after a few training sessions of less than sixty minutes
-	\\	  \textbf{Consideration:} This Learning requirement considers all of the Product Use Cases	
+	\\	  \textbf{Consideration:} This Learning requirement considers all of the Product Use Cases
+\end{enumerate}
 \subsection{Understandability and Politeness Requirements}
+\begin{enumerate}[(a)]
 	\item \textbf{Content:} Users should be able to quickly understand how the software will benefit them in their business process
 	\\	  \textbf{Motivation:} Users are not expected to understand aspects that do not directly relate to their purpose
 	\\	  \textbf{Fit Criterion:} All of the simulated aspects will be related to the user's business problems unless the case considered is far out of the problem scope stated in these requirements
@@ -471,7 +476,7 @@ There are currently no financial costs associated with this project.
 \subsection{User Documentation Requirements}
 The users of this software will be provided with detailed documentation outlining the framework, functionality, and usability. Details of this document are to be decided on at a later date.
 \subsection{Training Requirements}
-the users will be provided with hands-on training and training material by the project team. The details of this material are to be decided at a later date. 
+The users will be provided with hands-on training and training material by the project team. The details of this material are to be decided at a later date. 
 
 \section{Open Issues}
 \begin{enumerate}
