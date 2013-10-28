@@ -1,0 +1,272 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Example: Project Report
+%
+% Source: http://www.howtotex.com
+%
+% Feel free to distribute this example, but please keep the referral
+% to howtotex.com
+% Date: March 2011 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit the title below to update the display in My Documents
+%\title{Project Report}
+%
+%%% Preamble
+\documentclass[paper=letter, fontsize=10pt]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+
+\usepackage[english]{babel}															% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}	
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{lastpage}
+
+
+%%% Custom sectioning
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\scshape}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[c]{Requirements Revision 0}
+\fancyhead[R]{\today}											
+\fancyfoot[L]{}											 
+\fancyfoot[C]{}											
+\fancyfoot[R]{\thepage\ of \pageref{LastPage}}		% Pagenumbering
+\renewcommand{\headrulewidth}{0.4pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0.4pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+\newcommand{\ts}{\textsuperscript}
+
+%%% Begin document
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\begin{center}
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
+\textsc{\Large CAS 4ZP6 Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
+\textsc{\large Porter Simulation}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Test Plan Revision 0}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+Vitaliy Kondratiev\\
+Nathan Johrendt\\
+Tyler Lyn\\
+Mark Gammie
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Douglas Down % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+%Template taken from: http://www.softwaretestinghelp.com/test-plan-sample-softwaretesting-and-quality-assurance-templates/
+
+\vfill % Fill the rest of the page with whitespace
+\end{center}
+\end{titlepage}
+
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+
+\newpage
+\section{Introduction}
+
+\section{Test Factors and Rationales}
+\subsection{Reliability}
+\subsection{Ease of Use}
+\subsection{Portability}
+\subsection{Correctness}
+
+\section{Specific System Tests}
+\subsection{Test 1}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Simulation event list is generated			
+			\item \textbf{Input:} Event List
+			\item \textbf{Description:} Event should be popped from the list then executed  
+			\item \textbf{Expected Output:} Event list with one less element
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 2}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Existing event list
+			\item \textbf{Input:} Single Event (Any)
+			\item \textbf{Description:} The execution of an event triggers a state change in the system
+			\item \textbf{Expected Output:} State Change (Any)
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 3}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Porters and Events exist
+			\item \textbf{Input:} Porter (Pending State), Event
+			\item \textbf{Description:} The available porter is linked to the event
+			\item \textbf{Expected Output:} Porter (Dispatched State)
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 4}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} No porters with "Available State" 
+			\item \textbf{Input:} Event
+			\item \textbf{Description:} An event that cannot be assigned to any porter is put into a Task Pool
+			\item \textbf{Expected Output:} Task Pool with Event
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 5}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Simulation Finish  
+			\item \textbf{Input:} State
+			\item \textbf{Description:} After reaching end condition simulation ends
+			\item \textbf{Expected Output:} Output file
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 6}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Uninitialized Simulation State  
+			\item \textbf{Input:} Simulation Input File
+			\item \textbf{Description:} Input file will change the values of the simulation
+			\item \textbf{Expected Output:} Initialized Simulation
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 7}
+\begin{enumerate}[a]
+	\item \textbf{Test Factor:}  
+	\item \textbf{Life Cycle Phase:}
+	\item \textbf{Type:}
+	\item \textbf{Dynamic/Static:}
+	\item \textbf{Manual/Automated:}
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Uninitialized Simulation State  
+			\item \textbf{Input:} Simulation Input File
+			\item \textbf{Description:} Input file will change the values of the simulation
+			\item \textbf{Expected Output:} Initialized Simulation
+		\end{enumerate}
+\end{enumerate}
+
+\section{Executive Summary}
+
+\section{Schedule}
+
+%%% End document
+\end{document}
