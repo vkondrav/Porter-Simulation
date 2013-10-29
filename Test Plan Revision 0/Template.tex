@@ -83,7 +83,7 @@
 %----------------------------------------------------------------------------------------
 
 \textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
-\textsc{\Large CAS 4ZP6 Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
+\textsc{\Large CAS 4ZP6 Team 9 Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
 \textsc{\large Porter Simulation}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
@@ -144,22 +144,30 @@ Dr. Douglas Down % Supervisor's Name
 
 \newpage
 \section{Introduction}
-
+This document is designed to outline testing methods and techniques that are to be used during and after development
+of the Porter Simulation. Below listed in detail are the main test factors and the rationale for choosing them. 
+Following the main test factors is a comprehensive list of specific system tests including information about the Test's factor, life cycle phase, type, whether it is static or dynamic, manual or automated, and the specific techniques used to
+conduct the test.
 \section{Test Factors and Rationales}
 \subsection{Reliability}
+\textbf{Rationale:} Since the simulation software is to be used by a non-technical staff, consistent execution and termination of the program is required. Individual simulations could run for long periods of time without requiring user interaction, and are expected to terminate and store results without user supervision.
 \subsection{Ease of Use}
-\subsection{Portability}
+\textbf{Rationale:} End users are non-technical so any interaction with the program, whether input or output, should contain a minimal amount of technical information.  
+\subsection{Portability} 
+\textbf{Rationale:} Control of the systems that the simulation will run on is left to the end users, so the implementation will be designed to function on a wide variety of industry-popular operating systems.
 \subsection{Correctness}
+\textbf{Rationale:} Since the simulation will be reporting statistical data, the simulation must be correct in managing and manipulating that data.  
 
 \section{Specific System Tests}
 \subsection{Test 1}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
-	\item \textbf{Technique:}
+	\item \textbf{Name:} Event List Correctness
+	\item \textbf{Test Factor:} Correctness
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
+	\item \textbf{Technique:} 
 		\begin{enumerate}[i]
 			\item \textbf{Initial State:} Simulation event list is generated			
 			\item \textbf{Input:} Event List
@@ -170,11 +178,12 @@ Dr. Douglas Down % Supervisor's Name
 
 \subsection{Test 2}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
+	\item \textbf{Name:} State Change Correctness
+	\item \textbf{Test Factor:} Correctness
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
 	\item \textbf{Technique:}
 		\begin{enumerate}[i]
 			\item \textbf{Initial State:} Existing event list
@@ -186,11 +195,12 @@ Dr. Douglas Down % Supervisor's Name
 
 \subsection{Test 3}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
+	\item \textbf{Name:} Porter State Change Correctness 	
+	\item \textbf{Test Factor:} Correctness 
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
 	\item \textbf{Technique:}
 		\begin{enumerate}[i]
 			\item \textbf{Initial State:} Porters and Events exist
@@ -202,11 +212,12 @@ Dr. Douglas Down % Supervisor's Name
 
 \subsection{Test 4}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
+	\item \textbf{Name:} Task Pool Correctness
+	\item \textbf{Test Factor:} Correctness
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
 	\item \textbf{Technique:}
 		\begin{enumerate}[i]
 			\item \textbf{Initial State:} No porters with "Available State" 
@@ -218,11 +229,12 @@ Dr. Douglas Down % Supervisor's Name
 
 \subsection{Test 5}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
+	\item \textbf{Name:} Termination Correctness
+	\item \textbf{Test Factor:} Correctness
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
 	\item \textbf{Technique:}
 		\begin{enumerate}[i]
 			\item \textbf{Initial State:} Simulation Finish  
@@ -234,11 +246,12 @@ Dr. Douglas Down % Supervisor's Name
 
 \subsection{Test 6}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
+	\item \textbf{Name:} Input Correctness
+	\item \textbf{Test Factor:} Correctness  
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
 	\item \textbf{Technique:}
 		\begin{enumerate}[i]
 			\item \textbf{Initial State:} Uninitialized Simulation State  
@@ -250,23 +263,78 @@ Dr. Douglas Down % Supervisor's Name
 
 \subsection{Test 7}
 \begin{enumerate}[a]
-	\item \textbf{Test Factor:}  
-	\item \textbf{Life Cycle Phase:}
-	\item \textbf{Type:}
-	\item \textbf{Dynamic/Static:}
-	\item \textbf{Manual/Automated:}
+	\item \textbf{Name:} Sanity Check
+	\item \textbf{Test Factor:} Reliability \& Correctness 
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic \& Static
+	\item \textbf{Manual/Automated:} Manual \& Automated
 	\item \textbf{Technique:}
 		\begin{enumerate}[i]
-			\item \textbf{Initial State:} Uninitialized Simulation State  
-			\item \textbf{Input:} Simulation Input File
-			\item \textbf{Description:} Input file will change the values of the simulation
-			\item \textbf{Expected Output:} Initialized Simulation
+			\item \textbf{Initial State:} 'Gold copy' set of events  
+			\item \textbf{Input:} A modified version of the simulation code
+			\item \textbf{Description:} Using a 'gold copy' of a set of events, any code changes are retested using the 'gold copy' to ensure consistency
+			\item \textbf{Expected Output:} A difference file comparing 'gold copy' statistics against the newly tested code outlining the inconsistencies between them 
 		\end{enumerate}
 \end{enumerate}
 
+\subsection{Test 8}
+\begin{enumerate}[a]
+	\item \textbf{Name:} Usability Test
+	\item \textbf{Test Factor:} Ease of Use
+	\item \textbf{Life Cycle Phase:} Final Stages of Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic and Static
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Simulation prior to execution  
+			\item \textbf{Input:} End user with an example simulation set
+			\item \textbf{Description:} End user is provided with a set of instructions to produce a specific simulation result, and their result is compared to a predetermined result  
+			\item \textbf{Expected Output:} The end user successfully produces the desired values
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 9}
+\begin{enumerate}[a]
+	\item \textbf{Name:} Compatibility 
+	\item \textbf{Test Factor:} Portability 
+	\item \textbf{Life Cycle Phase:} Final Stages of Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} Unknown Operating System with the simulation  
+			\item \textbf{Input:} Predetermined Simulation set
+			\item \textbf{Description:} Simulation is run and compared to simulations of other operating systems
+			\item \textbf{Expected Output:} All executions from all the operating systems are identical
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Test 10}
+\begin{enumerate}[a]
+	\item \textbf{Name:} Distribution Correctness
+	\item \textbf{Test Factor:} Correctness 
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Structural
+	\item \textbf{Dynamic/Static:} Dynamic
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[i]
+			\item \textbf{Initial State:} N/A  
+			\item \textbf{Input:} Known distribution
+			\item \textbf{Description:} Run the known distribution until the distribution can be recognized, within reason and depending on the expected values
+			\item \textbf{Expected Output:} The results follow the distribution after examination
+		\end{enumerate}
+\end{enumerate}
+
+\section{Proof of Concept Test}
+	Test 2, Test 3, Test 5, Test 6
 \section{Executive Summary}
 
 \section{Schedule}
+
 
 %%% End document
 \end{document}
