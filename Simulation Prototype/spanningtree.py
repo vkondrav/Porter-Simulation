@@ -33,18 +33,18 @@ class SpanningTree(object):
 def constructSampleTree(tree):
     #      1
     #     / \
-    #  10/   \15
+    # 100/   \150
     #   /     \
     #  /       \
     # 0---------2
-    #      20
+    #     200
     
     tree.addNode(0)
     tree.addNode(1)
     tree.addNode(2)
-    tree.addBiEdge(0, 1, 10)
-    tree.addBiEdge(1, 2, 15)
-    tree.addBiEdge(2, 0, 20)
+    tree.addBiEdge(0, 1, 100)
+    tree.addBiEdge(1, 2, 150)
+    tree.addBiEdge(2, 0, 200)
 	
 if __name__=='__main__':
     spanTree = SpanningTree()

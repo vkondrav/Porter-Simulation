@@ -38,10 +38,10 @@ def dijkstra(adj, costs, s, t):
         Qd[v] = item
 
     while Q:
-        print Q
+        #print Q
         cost, parent, u = heapq.heappop(Q)
         if u not in visited_set:
-            print 'visit:', u
+            #print 'visit:', u
             p[u]= parent
             visited_set.add(u)
             if u == t:

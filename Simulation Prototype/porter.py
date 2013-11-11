@@ -7,14 +7,27 @@ class Porter(object):
     inprogress = 'inprogress'
     complete = 'complete'
 
-    def __init__(self):
+    def __init__(self, id):
+        self.id = id
         self.state = Porter.pending
         self.unit = 0
         self.origin = None
         self.destination = None
+        
+    def __repr__(self):
+        return "Porter" + str(self.id)
 
-def setStatePending(porter):
+        
+def setStatePending(simState, porter):
     porter.state = Porter.pending
+    
+    if simState.jobPool:
+        # time to go from pending to dispatched
+        delay = 0
+        origin, destination = simState.jobPool.pop()
+        event = Event(setStateDispatched, simState, porter, origin, destination)
+        timedEvent = [simState.curTime + delay, event]
+        simState.eList.insert(timedEvent)
     
 def setStateDispatched(simState, porter, origin, destination):
     porter.state = Porter.dispatched
@@ -33,12 +46,18 @@ def setStateInProgress(simState, porter):
     
     # time to go from dispatched to inprogress
     delay = simState.sTree.getTimeBetween(porter.origin, porter.destination)
-    event = Event(setStateComplete, porter)
+    event = Event(setStateComplete, simState, porter)
     timedEvent = [simState.curTime + delay, event]
     simState.eList.insert(timedEvent)
             
-def setStateComplete(porter):
+def setStateComplete(simState, porter):
     porter.state = Porter.complete
     porter.unit = porter.destination
     porter.origin = None
     porter.destination = None
+    
+    # time to go from complete to pending
+    delay = 0
+    event = Event(setStatePending, simState, porter)
+    timedEvent = [simState.curTime + delay, event]
+    simState.eList.insert(timedEvent)

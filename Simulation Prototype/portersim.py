@@ -35,7 +35,7 @@ def main():
     
     porterList = []
     for i in range(numPorters):
-        newPorter = Porter()
+        newPorter = Porter(i)
         porterList.append(newPorter)
 	
     simState = State(porterList, spanTree, eventList)
@@ -43,8 +43,12 @@ def main():
     dispatcher.simState = simState
 	
     while not eventList.isEmpty():
-        event = eventList.pop()
+        curTime, event = eventList.pop()
+        simState.curTime = curTime
+        print '\nCurrent Time: ', curTime
+        print 'Job Pool:', simState.jobPool
         event.log()
         event.trigger()
+        
 		
 main()
