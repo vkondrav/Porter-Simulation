@@ -40,22 +40,7 @@ class Porter(object):
 				
 	def setStateComplete():
 		self.state = 'complete'
-		
-	
-class SpanningTree(object):
 
-	def __init__():
-		self.nodes = []
-		self.edges = []
-		self.numNodes = 0
-		self.numEdges = 0
-
-	def addNode():
-		pass
-		
-	def addEdge():
-		pass
-		
 		
 class Node(object):
 	
@@ -89,9 +74,13 @@ class Event(object):
 	
 		
 def main():
+	numPorters = 3
+
 	EventList = FutureEventList()
-	SpanTree = SpanningTree
-	SimState = State
+	SpanTree = SpanningTree()
+	constructTree(SpanTree)
+	SimState = State()
+	SimState.porters = 
 	
 	#while not EventList.isEmpty():
 	#	event = EventList.pop()
