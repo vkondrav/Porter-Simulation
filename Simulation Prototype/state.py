@@ -6,3 +6,6 @@ class State(object):
         self.eList = eventList
         self.curTime = 0
         self.jobPool = []
+        
+    def __repr__(self):
+        return "simState"

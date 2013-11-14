@@ -11,6 +11,7 @@ class Porter(object):
         self.id = id
         self.state = Porter.pending
         self.unit = 0
+        self.job = None
         self.origin = None
         self.destination = None
         
@@ -24,37 +25,36 @@ def setStatePending(simState, porter):
     if simState.jobPool:
         # time to go from pending to dispatched
         delay = 0
-        origin, destination = simState.jobPool.pop()
-        event = Event(setStateDispatched, simState, porter, origin, destination)
+        porter.job = simState.jobPool.pop(0)
+        event = Event(setStateDispatched, simState, porter)
         timedEvent = [simState.curTime + delay, event]
         simState.eList.insert(timedEvent)
     
-def setStateDispatched(simState, porter, origin, destination):
+def setStateDispatched(simState, porter):
     porter.state = Porter.dispatched
-    porter.origin = origin
-    porter.destination = destination
     
     # time to go from dispatched to inprogress
-    delay = simState.sTree.getTimeBetween(porter.unit, porter.origin)
+    delay = simState.sTree.getTimeBetween(porter.unit, porter.job.origin)
     event = Event(setStateInProgress, simState, porter)
     timedEvent = [simState.curTime + delay, event]
     simState.eList.insert(timedEvent)
     
 def setStateInProgress(simState, porter):
     porter.state = Porter.inprogress
-    porter.unit = porter.origin
+    porter.unit = porter.job.origin
+    porter.job.startTime = simState.curTime
     
     # time to go from dispatched to inprogress
-    delay = simState.sTree.getTimeBetween(porter.origin, porter.destination)
+    delay = simState.sTree.getTimeBetween(porter.job.origin, porter.job.destination)
     event = Event(setStateComplete, simState, porter)
     timedEvent = [simState.curTime + delay, event]
     simState.eList.insert(timedEvent)
             
 def setStateComplete(simState, porter):
     porter.state = Porter.complete
-    porter.unit = porter.destination
-    porter.origin = None
-    porter.destination = None
+    porter.unit = porter.job.destination
+    porter.job.completionTime = simState.curTime
+    porter.job = None
     
     # time to go from complete to pending
     delay = 0

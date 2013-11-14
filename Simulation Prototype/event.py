@@ -15,17 +15,10 @@ class Event(object):
      
 class DetFutureEventList(object):
 
-    def __init__(self, func=None):
-        self.detEventList = [[0, Event(func, 0, 1)],
-							[10, Event(func, 1, 2)],
-							[20, Event(func, 2, 0)],
-							[30, Event(func, 1, 0)],
-							[40, Event(func, 0, 2)],
-							[50, Event(func, 2, 1)],
-							[60, Event(func, 0, 2)],
-							[70, Event(func, 1, 2)],
-							[80, Event(func, 0, 1)],
-							[90, Event(func, 2, 1)]]
+    def __init__(self, func=None, jobList=None):                         
+        self.detEventList = []
+        for job in jobList:
+            self.detEventList.append([job.creationTime, Event(func, job)])
                             
         self.detEventList = sorted(self.detEventList, key=itemgetter(0), reverse=True)
 						
