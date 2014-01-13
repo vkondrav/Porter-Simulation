@@ -247,13 +247,50 @@ Dr. Douglas Down % Supervisor's Name
 \subsection{Core - Dispatcher}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
+	\item \textbf{Purpose:} To organize pending jobs based on a weighted-value and assign them to porters 
+	\item \textbf{Function:} This module orders pending jobs based off of a Dispatch Value which is computed using several parameters (Proximity Match Value, Weighted Job Priority and Appointment Factor).  The pending job with the greatest Dispatch Value will be assigned to the closest available porter.  Once the job is assigned to the porter the job will be considered as a dispatched job.
+	\item \textbf{Interface:} \newline
+	 assignJob(Job)
+	 	\begin{itemize}
+	 		\item Assigns the job with the greatest Dispatch Value to the closest available porter.
+	 	\end{itemize}
+	 getProxmityMatchValue(Job Origin)
+	 	\begin{itemize}
+	 		\item Input the origin of a pending job
+	 		\item Output a value based on how close an available porter is to a job's origin
+	 	\end{itemize}
+	 getWeightedJobPriority(Job Origin, Job Destination)
+	 	\begin{itemize}
+	 		\item Input the origin and destination of a pending job
+	 		\item Output a value based on the priority of the pending job
+	 	\end{itemize}
+	 getAppointmentFactor(Job)
+	 	\begin{itemize}
+	 		\item Input a pending job
+	 		\item Update the value for a job depending on if it was pre-scheduled or on-demand.
+	 	\end{itemize}
+	 getDispatchValue(Job)
+	 	\begin{itemize}
+	 		\item Input a pending job
+	 		\item Compute the DispatchValue for a job: (ProxmityMatchValue + WeightedJobPriority * AppointmentFactor) 
+	 	\end{itemize}
+	 updateJobPriority(Job)
+	 	\begin{itemize}
+	 		\item Input a pending job
+	 		\item Determine if the pending job has been waiting too long.  If the job has been pending for  a specified amount of time, update it to a higher priority.
+	 	\end{itemize}
+	\item \textbf{Process Steps:}
+	All pending jobs are assessed and given a dispatch value (DV) based on the weighting and values of specified dispatch parameters.
+	
+	These weights and values are determined using either the location of an available porter or the priority of a pending job.
+	
+	All of the pending jobs are then ordered from greatest dispatch value to the least.  When there is an available porter the pending job with the greatest dispatch value is given to the closest porter.
 	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+		\begin{itemize}
+			\item Pending jobs
+		\end{itemize}
+	\item \textbf{Error Handling:} Not Available
+	\item \textbf{Requirement Reference:} Not Available
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Import - Simulation Setting}
