@@ -235,13 +235,38 @@ Dr. Douglas Down % Supervisor's Name
 \subsection{Core - Porter}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	\item \textbf{Purpose:}  To complete jobs provided by the dispatcher
+	\item \textbf{Function:} Completes the transport jobs assigned by the dispatcher.  Unless a job is cancelled the porter will traverse through four states ('pending', 'dispatched', 'inprogress', 'complete')
+	\item \textbf{Interface:} \newline
+	setStatePending(state):
+		\begin{itemize}
+			\item Input the pending state
+			\item Sets the porter's state to pending and waits to be assigned a job
+		\end{itemize}
+	setStateDispatched(state):
+		\begin{itemize}
+			\item Input the dispatched state
+			\item Sets the porter's state to dispatched and calculates the time between the porter's location and the job's origin	
+		\end{itemize}
+	setStateInprogress(state):
+		\begin{itemize}
+			\item Input the inprogress state
+			\item Sets the porter's state to inprogress and calculates the time between the job's origin and destination.
+		\end{itemize}
+	setStateComplete(state):
+		\begin{itemize}
+			\item Input the complete state
+			\item Sets the porter's state to complete, records the completion time and sets the porter back to the pending state.
+		\end{itemize}
+	getAutoLocation():
+		\begin{itemize}
+			\item Output the estimated location of a pending porter
+			\item Estimates the current location of a porter based on how many minutes they have been in the pending state.
+		\end{itemize}
+	\item \textbf{Process Steps:} The module listens for state changes provided by the dispatcher and updates its' internal components as necessary.
+	\item \textbf{Data:} Stores internal data relating to its' current state.
+	\item \textbf{Error Handling:} Not Available
+	\item \textbf{Requirement Reference:} Not Available
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Core - Dispatcher}
@@ -250,31 +275,31 @@ Dr. Douglas Down % Supervisor's Name
 	\item \textbf{Purpose:} To organize pending jobs based on a weighted-value and assign them to porters 
 	\item \textbf{Function:} This module orders pending jobs based off of a Dispatch Value which is computed using several parameters (Proximity Match Value, Weighted Job Priority and Appointment Factor).  The pending job with the greatest Dispatch Value will be assigned to the closest available porter.  Once the job is assigned to the porter the job will be considered as a dispatched job.
 	\item \textbf{Interface:} \newline
-	 assignJob(Job)
+	 assignJob(Job):
 	 	\begin{itemize}
 	 		\item Assigns the job with the greatest Dispatch Value to the closest available porter.
 	 	\end{itemize}
-	 getProxmityMatchValue(Job Origin)
+	 getProxmityMatchValue(Job Origin):
 	 	\begin{itemize}
 	 		\item Input the origin of a pending job
 	 		\item Output a value based on how close an available porter is to a job's origin
 	 	\end{itemize}
-	 getWeightedJobPriority(Job Origin, Job Destination)
+	 getWeightedJobPriority(Job Origin, Job Destination):
 	 	\begin{itemize}
 	 		\item Input the origin and destination of a pending job
 	 		\item Output a value based on the priority of the pending job
 	 	\end{itemize}
-	 getAppointmentFactor(Job)
+	 getAppointmentFactor(Job):
 	 	\begin{itemize}
 	 		\item Input a pending job
 	 		\item Update the value for a job depending on if it was pre-scheduled or on-demand.
 	 	\end{itemize}
-	 getDispatchValue(Job)
+	 getDispatchValue(Job):
 	 	\begin{itemize}
 	 		\item Input a pending job
 	 		\item Compute the DispatchValue for a job: (ProxmityMatchValue + WeightedJobPriority * AppointmentFactor) 
 	 	\end{itemize}
-	 updateJobPriority(Job)
+	 updateJobPriority(Job):
 	 	\begin{itemize}
 	 		\item Input a pending job
 	 		\item Determine if the pending job has been waiting too long.  If the job has been pending for  a specified amount of time, update it to a higher priority.
