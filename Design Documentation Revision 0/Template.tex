@@ -205,7 +205,7 @@ Dr. Douglas Down % Supervisor's Name
 	Once the external data is imported and the core modules are configured, the Simulation Core will begin the simulation and manage the core modules.
 	\item \textbf{Data:} None
 	\item \textbf{Error Handling:} Catch all on the simulation loop to report pertinent errors and to prevent unexpected termination. 
-	\item \textbf{Requirement Reference:} 11.5
+	\item \textbf{Requirement Reference:} 8.1(c), 11.5(a)
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Core - Simulation State}
@@ -226,11 +226,14 @@ Dr. Douglas Down % Supervisor's Name
 		\begin{itemize}
 			\item Returns a list of the porter objects
 		\end{itemize}
-	
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	setEventList(eventList):
+		\begin{itemize}
+			\item Input and store the event list
+		\end{itemize}
+	\item \textbf{Process Steps:} This module is initialized by the simulation core and the state data structure is set to null.  After initialization the the simulation core will populate the state through function calls.  The module will now function as an interface to the state data structure.
+	\item \textbf{Data:} State data structure
+	\item \textbf{Error Handling:} Catch any null values returned by the state data structure 
+	\item \textbf{Requirement Reference:} 11.5(a)
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Core - Task}
@@ -285,11 +288,11 @@ Dr. Douglas Down % Supervisor's Name
 		\end{itemize}
 	getAutoLocation():
 		\begin{itemize}
-			\item Output the estimated location of a pending porter
+			\item Returns the estimated location of a pending porter
 			\item Estimates the current location of a porter based on how many minutes they have been in the pending state.
 		\end{itemize}
-	\item \textbf{Process Steps:} The module listens for state changes provided by the dispatcher and updates its' internal components as necessary.
-	\item \textbf{Data:} Stores internal data relating to its' current state.
+	\item \textbf{Process Steps:} The module listens for state changes provided by the dispatcher and updates its internal components as necessary.
+	\item \textbf{Data:} Stores internal data relating to its current state.
 	\item \textbf{Error Handling:} Not Available
 	\item \textbf{Requirement Reference:} Not Available
 	\item \textbf{Critical Revision 0 Component:} True
@@ -307,17 +310,17 @@ Dr. Douglas Down % Supervisor's Name
 	 getProxmityMatchValue(Job Origin):
 	 	\begin{itemize}
 	 		\item Input the origin of a pending job
-	 		\item Output a value based on how close an available porter is to a job's origin
+	 		\item Returns a value based on how close an available porter is to a job's origin
 	 	\end{itemize}
 	 getWeightedJobPriority(Job Origin, Job Destination):
 	 	\begin{itemize}
 	 		\item Input the origin and destination of a pending job
-	 		\item Output a value based on the priority of the pending job
+	 		\item Returns a value based on the priority of the pending job
 	 	\end{itemize}
 	 getAppointmentFactor(Job):
 	 	\begin{itemize}
 	 		\item Input a pending job
-	 		\item Update the value for a job depending on if it was pre-scheduled or on-demand.
+	 		\item Returns the value for a job depending on if it was pre-scheduled or on-demand.
 	 	\end{itemize}
 	 getDispatchValue(Job):
 	 	\begin{itemize}
@@ -401,47 +404,6 @@ Dr. Douglas Down % Supervisor's Name
 	\item \textbf{Data:}
 	\item \textbf{Error Handling:}
 	\item \textbf{Requirement Reference:}
-	\item \textbf{Critical Revision 0 Component:} True
-\end{enumerate}
-\subsection{GUI - Basic Settings}
-\begin{enumerate}[]
-	\item \textbf{Type:} User Interface
-	\item \textbf{Purpose:} Allows the user to change the basic setting of the simulation and run the simulation
-	\item \textbf{Function:} 
-	\begin{enumerate}[]
-		\item \textbf{Number of Porters:} specify the number of porters for the simulation to run
-		\item \textbf{Start Date:} specify the day the simulation will run from
-		\item \textbf{Start Time:} specific time the simulation runs from
-		\item \textbf{End Date:} specific time day the simulation will end
-		\item \textbf{End Time:} specific time the simulation ends
-		\item \textbf{Job Distribution:} users can choose from predefined distributions or base it on existing statistical data
-		\item \textbf{Job Intensity:} specify the frequency of job distribution
-		\item \textbf{Correct Equipment Usage:} specify the percentage of correct equipment events
-		\item \textbf{Patient Readiness:} specify the percentage of ready patients on porter arrival
-		\item \textbf{Porter Wait Time:} specify the time a porter waits for patient to be ready before abandoning job		
-	\end{enumerate}
-	\item \textbf{Interface:}
-		\begin{enumerate}[]
-			\item \textbf{Advanced Setting:} proceed to Advanced Setting GUI
-			\item \textbf{Simulate:} push settings to Simulation Core
-			\item \textbf{Default Settings:} reset to default values
-		\end{enumerate}
-	\item \textbf{Process Steps:} Not Available
-	\item \textbf{Data:} Not Available
-	\item \textbf{Error Handling:} If any of the below values violates its restriction, excel will not allow the information to be sent to the simulation core.
-	\begin{enumerate}[]
-		\item \textbf{Number of Porters:} restricts the number of porters to a positive integer 
-		\item \textbf{Start Date:} restricts the start date to day/month/year format
-		\item \textbf{Start Time:} restricts the start time to 12 or 24 hour time
-		\item \textbf{End Date:} restricts the end date to day/month/year format and checks that the date is on the same date or a later date than the start date
-		\item \textbf{End Time:} restricts the end time to 12 or 24 hour time and checks that the end time is further in the future than the start time
-		\item \textbf{Job Distribution:} user is restricted to a set series of options
-		\item \textbf{Job Intensity:} user is restricted to a set series of options
-		\item \textbf{Correct Equipment Usage:} restricts the value between 0 and 100 percent 
-		\item \textbf{Patient Readiness:} restricts the value between 0 and 100 percent
-		\item \textbf{Porter Wait Time:} restricts the value to a minimum of 0		
-	\end{enumerate}
-	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \section{Anticipated Changes}
