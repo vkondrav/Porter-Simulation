@@ -187,21 +187,46 @@ Dr. Douglas Down % Supervisor's Name
 \subsection{Core - Simulation Core}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	\item \textbf{Purpose:} This module calls the required functions to fetch the import data, initializes the simulation and initializes processes.
+	\item \textbf{Function:} This module calls the required import modules (Simulation Settings, Hospital Layout Graph, Statistical Data Import), passes their data so that the Simulation State, Event List Builder and Dispatcher can be initialized.
+	\item \textbf{Interface:}\\ 
+	The interface for the Simulation core is the command line used to called it, defined as follows:
+	
+	SimCore settings\_filename graph\_filename data\_filename
+	
+	settings\_filename: the name of the file containing the simulation settings
+	
+	graph\_filename: the name of the file containing the hospital layout graph
+	
+	data\_filename: the name of the file containing the statistical data
+	
+	\item \textbf{Process Steps:} This module first uses the Simulation Settings, Hospital Layout Graph and Statistical data to read in the external data.  This data is used to configure other core modules in the simulation.
+	
+	Once the external data is imported and the core modules are configured, the Simulation Core will begin the simulation and manage the core modules.
+	\item \textbf{Data:} None
+	\item \textbf{Error Handling:} Catch all on the simulation loop to report pertinent errors and to prevent unexpected termination. 
+	\item \textbf{Requirement Reference:} 11.5
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Core - Simulation State}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
+	\item \textbf{Purpose:} This module's purpose is to be an interface between the simulation and its simulation state data structure.
+	\item \textbf{Function:} This module will contain functions that will be used by the simulation to perform queries on the system state data structure.
+	\item \textbf{Interface:}\newline
+	initSimulateState():
+		\begin{itemize}
+			\item Instantiating the simulation state with null values
+		\end{itemize}
+	getSimulationTime():
+		\begin{itemize}
+			\item Returns the current simulation time
+		\end{itemize}
+	getPorterList():
+		\begin{itemize}
+			\item Returns a list of the porter objects
+		\end{itemize}
+	
 	\item \textbf{Process Steps:} 
 	\item \textbf{Data:}
 	\item \textbf{Error Handling:}
