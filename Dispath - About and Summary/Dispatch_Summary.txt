@@ -1,0 +1,126 @@
+This document provides a high level overview of how transport jobs are managed
+within a dispatch set.  Every transport job must go through a dispatch set in 
+order to determine how they should be assigned to a porter.  Pseudo-code has been provided
+to describe the parameters used to assign jobs.  An administrator should be able to create
+different versions of dispatch sets (i.e. the lookup tables and other constant values are configurable).
+
+All available jobs are given a dispatch value.  The dispatch value is calculated by the parameters provided
+and ultimately determines the order in which jobs will be assigned to porters.
+
+/**
+ * Name: GetProximityMatchValues
+ * Input: The origin of the job
+ * Output: Proximity Match Value
+ * Description: Return a value based on how close a porter is to the job's location.
+ *				This will be used as a factor when calculating the Dispatch Value
+**/
+int GetPromximityMatchValues(origin)
+{
+	/* Declare lookup table with all the proximity match values */
+	LU_PMV = [{'LOCATION', 11}, {'ZONE', 7}, {'UNIT', 7}, {'SECTION', 2}, {'FLOOR', 5}, {'BUILDING', 3}, {'CAMPUS', 1}]
+	
+	/* Determine the match between locations of porters and the origin of the job */
+	return findMatch(LU_PMV, origin)
+}
+
+/**
+ * Name: GetAutoLocation
+ * Input: Minutes since the porter became available
+ * Output: An estimated location of the porter
+ * Description: Use the amount of minutes a porter has been available, to estimate where their 
+ *				current location is in relation to their last completed job.
+**/
+int GetAutoLocation(int minutes)
+{
+	/* 	Declare lookup table with all the auto location values and the minutes 
+		(e.g. After 4 minutes the porter's location will be 'ZONE')
+	*/
+	LU_AutoLocation = [{'LOCATION', 4}, {'ZONE', 8}, {'UNIT', 7'}, {'SECTION', 14}, {'FLOOR', 10}, {'BUILDING', 12}, {'BASE', 16}]
+	
+	/* Determine the match between the minutes since available and the auto location */
+	return findMatch(LU_AutoLocation, minutes)
+}
+
+/**
+ * Name: GetWeightedJobPriority
+ * Input: Origin, Destination
+ * Output: Value of the Weighted Job Priority
+ * Description: A destination and origin priority is assigned to each location.  For each transport
+ *				job these priorities are used as factors for the dispatch value.  The job receives
+ *				the highest of the two priorities.
+**/
+int GetWeightedJobPriority(origin, destination)
+{
+	/*	Declare the lookup table for the priority and its' value. */
+	LU_PriorityValue = [{1, 20}, {2, 11}, {3, 7}, {4,5}, {5,4}, {6,3}, {7,2}, {8,1}, {9,0}]
+	
+	/*	Determine the match between the priority lookup value and the highest of the two priorities */
+	return findMatch(LU_PriorityValue, max(origin.priority, destination.priority))
+}
+
+/**
+ * Name: AutomaticJobPriorityUpgrade
+ * Input: Job, NewPriority
+ * Output: None
+ * Description: If a job has been in pending status for a specified amount of time, the job's priority
+ *				should be upgrades automatically to prevent less important jobs from waiting too long.
+ *				(e.g. after 60 minutes a 'priority 5' with a 'value 4' will be updated to a 'priority 3'
+ *				with 'value 7'.  This ensures that a job does not go unattended if there is a constant flow
+ *				of higher priority jobs entering the system
+**/
+void AutomaticJobPriortityUpgrade(Job, NewPriority)
+{
+	/*	Declare the lookup table for priority and the minutes before upgrading */
+	LU_EscalPriority = [{1, None}, {2, 14}, {3, 8}, {4, 8}, {5,5}, {6,5}, {7, 25}, {8, 30}, {9,40}]
+	
+	/*	Iterate through the lookup table and find the matching priority values.  If the job hasn't been
+		upgraded in the specified upgrade time, then set a new priority for the job and reset a timer
+		on the job. */
+	for each escalPriority in LU_EscalPriority
+	{
+		if (Job.priority == escalPriority.priority && Job.timeSinceLastUpgrade >= escalPriority.time)
+		{
+			Job.priority = NewPriority
+			Job.timeSinceLastUpgrade = 0
+		}
+	}
+}
+	
+/**
+ * Name: GetAppointmentFactor
+ * Input: Job
+ * Output: Appointment Factor
+ * Description:	Transport jobs can either be pre-scheduled (appointments) or generated on-demand, meaning
+ *				that the request is made when the transport is needed.  The Appointment Factor gives precedence
+ *				to job's that are pre-scheduled.  It does this by multiplying the Appointment Factor by the job's
+ *				weighted job priority.
+**/	
+
+void GetAppointmentFactor(Job)
+{
+	/* Appointment factor, can be changed from 1.0 - 3.0 */
+	APPT_FACTOR = 1.2
+	
+	if (Job.isAppointment)
+	{
+		return APPT_FACTOR
+	}
+	return 1.0
+}
+
+/**
+ * Name: GetDispatchValue
+ * Input: Job
+ * Output: DispatchValue
+ * Description: Each transport job receives a Dispatch Value (DV).  This is calculated when a porter is being
+ *				considered for a job assignment.  All transport requests are given a DV, the job with the highest
+ *				DV is assigned to a porter.  The DispatchValue is calculated by: 
+ *				DispatchValue = ProximityMatchValue + (WeightedJobPriority * AppointmentFactor)
+**/
+int GetDispatchValue(Job)
+{
+	/* Calculate the current dispatch value for the job */
+	DispatchValue = GetProxmityMatchValues(Job.Origin) + GetWeightedJobPriority(Job.Origin, Job.Destination) * GetJobAppointmentFactor(Job)
+	
+	return DispatchValue
+}
