@@ -240,25 +240,58 @@ Simulation will be built on the SimPy 3.0.2 library. GUI will be built in Excel 
 \subsection{Core - Task}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	\item \textbf{Purpose:} Provide information about a job to the porter.
+	\item \textbf{Function:} The task is declared with an origin, destination, required equipment and a priority.  This information is necessary to allowing a porter to complete a job.
+	\item \textbf{Interface:} \newline
+		getOriginLocation():
+			\begin{itemize}
+				\item Returns the origin of a job
+			\end{itemize}
+		getDestinationLocation():
+			\begin{itemize}
+				\item Returns the destination of a job
+			\end{itemize}
+		getEquipment():
+			\begin{itemize}
+				\item Returns the equipment required for a job
+			\end{itemize}
+		getPriority():
+			\begin{itemize}
+				\item Returns the priority of a job
+			\end{itemize}
+		getTime():
+			\begin{itemize}
+				\item Returns the time that the task will be requested
+			\end{itemize}			
+		updatePriority():
+			\begin{itemize}
+				\item A process that will set the job to a higher priority after a specified amount of time has passed.
+			\end{itemize}
+	\item \textbf{Process Steps:}  Tasks will be initialized once the Simulation Core shares the import modules with the Event List Builder.  An initialized task will be able to provide the Dispatcher all the required information to organize a list of tasks.  Also, once a task is given to a porter, the porter will then be able to start and complete a transport job.
+	\item \textbf{Data:} Transport Job Information
+	\item \textbf{Error Handling:} Catch any null values returned by the task's properties
+	\item \textbf{Requirement Reference:} None
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
-\subsection{Core - Event List Builder}
+\subsection{Core - Task List Builder}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Produces the list of events for the Simulation Core module to process
-	\item \textbf{Function:} Takes Task List as input to produce Event List
-	\item \textbf{Interface:} nextEvent(): upon query takes the top event from the stack and returns it
-	\item \textbf{Process Steps:} TBD
-	\item \textbf{Data:} Built on BinTree
-	\item \textbf{Error Handling:} TBD
-	\item \textbf{Requirement Reference:} 8.1 (c)
+	\item \textbf{Purpose:} Produces the list of tasks for the Simulation Core and Dispatcher modules to process
+	\item \textbf{Function:} This module populates a series of tasks following either a distribution or statistical data.
+	\item \textbf{Interface:} \newline
+		addTask(origin, destination, equipment, priority, time):
+		\begin{itemize}
+			\item Input the origin, destination, equipment and priority of a job.  Also include the time the task will be added to the Dispatcher
+		\end{itemize}
+		setTaskBuilderStats(data)
+		\begin{itemize}
+			\item Input the statistical or distribution data as it is required for creating meaningful data
+		\end{itemize}
+		
+	\item \textbf{Process Steps:} The Task List Builder will first receive the data from the Simulation Core.  This data will allow the Task List Builder to create jobs based on user specified parameters.  Secondly, the Task List Builder will generate tasks and append them to the BinTree data structure, to allow for ordering, inserting and retrieval of tasks.  Once a task reaches its "time" it will be added to the Dispatcher where it can be given to an available porter.
+	\item \textbf{Data:} Task List BinTree
+	\item \textbf{Error Handling:} Catch any null tasks
+	\item \textbf{Requirement Reference:} 8.1 (d)
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Core - Porter}
@@ -280,15 +313,17 @@ Simulation will be built on the SimPy 3.0.2 library. GUI will be built in Excel 
 	setStateInprogress(state):
 		\begin{itemize}
 			\item Input the inprogress state
-			\item Sets the porter's state to inprogress and calculates the time between the job's origin and destination.
+			\item Sets the porter's state to inprogress and calculates the time between the job's origin and destination
 		\end{itemize}
 	setStateComplete(state):
 		\begin{itemize}
 			\item Input the complete state
-			\item Sets the porter's state to complete, records the completion time and sets the porter back to the pending state.
+			\item Sets the porter's state to complete, records the completion time and sets the porter back to the pending state
 		\end{itemize}
 	getAutoLocation():
 		\begin{itemize}
+			\item Returns the estimated location of a pending porter
+			\item Estimates the current location of a porter based on how many minutes they have been in 
 			\item Output the estimated location of a pending porter
 			\item Estimates the current location of a porter based on how many minutes they have been in the pending state.
 		\end{itemize}
@@ -304,34 +339,29 @@ Simulation will be built on the SimPy 3.0.2 library. GUI will be built in Excel 
 	\item \textbf{Purpose:} To organize pending jobs based on a weighted-value and assign them to porters 
 	\item \textbf{Function:} This module orders pending jobs based off of a Dispatch Value which is computed using several parameters (Proximity Match Value, Weighted Job Priority and Appointment Factor).  The pending job with the greatest Dispatch Value will be assigned to the closest available porter.  Once the job is assigned to the porter the job will be considered as a dispatched job.
 	\item \textbf{Interface:} \newline
-	 assignJob(Job):
+	 assignJob(Task):
 	 	\begin{itemize}
 	 		\item Assigns the job with the greatest Dispatch Value to the closest available porter.
 	 	\end{itemize}
-	 getProxmityMatchValue(Job Origin):
+	 getProxmityMatchValue(TaskOrigin):
 	 	\begin{itemize}
 	 		\item Input the origin of a pending job
 	 		\item Output a value based on how close an available porter is to a job's origin
 	 	\end{itemize}
-	 getWeightedJobPriority(Job Origin, Job Destination):
+	 getWeightedJobPriority(TaskOrigin, TaskDestination):
 	 	\begin{itemize}
 	 		\item Input the origin and destination of a pending job
 	 		\item Output a value based on the priority of the pending job
 	 	\end{itemize}
-	 getAppointmentFactor(Job):
+	 getAppointmentFactor(Task):
 	 	\begin{itemize}
 	 		\item Input a pending job
 	 		\item Update the value for a job depending on if it was pre-scheduled or on-demand.
 	 	\end{itemize}
-	 getDispatchValue(Job):
+	 getDispatchValue(Task):
 	 	\begin{itemize}
 	 		\item Input a pending job
 	 		\item Compute the DispatchValue for a job: (ProxmityMatchValue + WeightedJobPriority * AppointmentFactor) 
-	 	\end{itemize}
-	 updateJobPriority(Job):
-	 	\begin{itemize}
-	 		\item Input a pending job
-	 		\item Determine if the pending job has been waiting too long.  If the job has been pending for  a specified amount of time, update it to a higher priority.
 	 	\end{itemize}
 	\item \textbf{Process Steps:}
 	All pending jobs are assessed and given a dispatch value (DV) based on the weighting and values of specified dispatch parameters.
