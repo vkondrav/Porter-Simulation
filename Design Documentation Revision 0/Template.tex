@@ -416,21 +416,33 @@ Simulation will be built on the SimPy 3.0.2 library. GUI will be built in Excel 
 \subsection{Export - Statistical Data Export}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
+	\item \textbf{Purpose:} Format and output the raw data from the simulation.
+	\item \textbf{Function:} This module will gather all of the raw data from the simulation and format it  so that it can be exported into a readable excel file.
 	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
+	addExportData(data)
+	\begin{itemize}
+		\item Input raw data
+	\end{itemize}
+	publishExportData()
+	\begin{itemize}
+		\item This function will format the simulation's raw data, create an excel file and populate the file with the formatted data
+	\end{itemize}
+	\item \textbf{Process Steps:} All data that is to be exported must be added to this module.  Once the simulation's raw data is gathered the module will publish the data.  The publishing will generate an excel file and outline the results from the simulation.
+	\item \textbf{Data:} None
+	\item \textbf{Error Handling:}  Produce warning message if data is missing during the publishing.
 	\item \textbf{Requirement Reference:}
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Logging}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
+	\item \textbf{Purpose:} Provide logging capabilities across all Python modules
+	\item \textbf{Function:} This module will contain python's native logging library as well provide any additional logging functionality specific to the simulation.
 	\item \textbf{Interface:}
+	initializeLogging()
+		\begin{itemize}
+			\item Initialize python's native logging across the modules
+		\end{itemize}
 	\item \textbf{Process Steps:} 
 	\item \textbf{Data:}
 	\item \textbf{Error Handling:}
