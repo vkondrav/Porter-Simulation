@@ -39,6 +39,7 @@
 \usepackage{enumerate}
 \usepackage{lastpage}
 \usepackage{float}
+\usepackage{hyperref}
 
 
 %%% Custom sectioning
@@ -167,7 +168,7 @@ The purpose of this document is to outline the design of each component and how 
 \subsection{Language of Implementation}
 Visual Basic in Excel will be used to interface GUI to Simulation Core module. Python Version 2.7.5 will be used for Simulation Core module and all other modules.
 \subsection{Supporting Technology and Frameworks}
-Simulation will be built on the SimPy 3.0.2 library. GUI will be built in Excel 2010. 
+Simulation will be built on the SimPy 3.0.2 library \ \underline{\url{https://simpy.readthedocs.org/en/latest/}}. GUI will be built in Excel 2010. 
 \newpage
 \section{Process Diagram}
 \begin{figure}[h!]
@@ -380,37 +381,61 @@ Simulation will be built on the SimPy 3.0.2 library. GUI will be built in Excel 
 \subsection{Import - Simulation Setting}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	\item \textbf{Purpose:} Receives the settings data from the GUI and translates them for use by the simulation core
+	\item \textbf{Function:} Receives data in the form of a csv and converts it to a readable format
+	\item \textbf{Interface:} \newline
+	receiveSettings(Settings):
+	 	\begin{itemize}
+	 		\item Load and store setting into module
+	 	\end{itemize}
+	 translateSettings():
+	 	\begin{itemize}
+	 		\item Outputs translated setting from the current loaded setting in the module
+	 	\end{itemize}
+	\item \textbf{Process Steps:} the module is called by the GUI from which it receives the settings as a csv file and stores them. Simulation Core calls the module to receive the current setting in the translated format. 
+	\item \textbf{Data:} Settings
+	\item \textbf{Error Handling:} return NUll on incorrect settings received
+	\item \textbf{Requirement Reference:} Not Available
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Import - Hospital Layout Graph}
-\begin{enumerate}[]
+\begin{enumerate}[] 
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	\item \textbf{Purpose:} Receives layout data for the hospital from a .csv file and translates it for use by the simulation core.
+	\item \textbf{Function:} Interprets the data from the .csv file into a graph representing a HHS hospital transportation layout for porter movement.
+	\item \textbf{Interface:} \newline
+	receiveLayout(Layout):
+	 	\begin{itemize}
+	 		\item Load and store layout into module
+	 	\end{itemize}
+	 translateLayout():
+	 	\begin{itemize}
+	 		\item Outputs translated layout from the currently loaded .csv file to the module
+	 	\end{itemize}
+	\item \textbf{Process Steps:} Simulation core calls the module to receive the translated layout.
+	\item \textbf{Data:} Layout Graph
+	\item \textbf{Error Handling:} Returns NULL on incorrect settings.
+	\item \textbf{Requirement Reference:} Not Available
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Import - Statistical Data Import}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} 
-	\item \textbf{Function:} 
-	\item \textbf{Interface:}
-	\item \textbf{Process Steps:} 
-	\item \textbf{Data:}
-	\item \textbf{Error Handling:}
-	\item \textbf{Requirement Reference:}
+	\item \textbf{Purpose:} Receives statistical data for the hospital from a .csv file and translates it for use by the simulation core.
+	\item \textbf{Function:} Interprets the data from the .csv file into statistical data and places them into variables for use by the Simulation Core.  
+	\item \textbf{Interface:} \newline
+	receiveStatistics(Statistics):
+	 	\begin{itemize}
+	 		\item Load and store statistics into module
+	 	\end{itemize}
+	 translateStatistics():
+	 	\begin{itemize}
+	 		\item Outputs translated statistics from the currently loaded .csv file to the module
+	 	\end{itemize}
+	\item \textbf{Process Steps:} Simulation core calls the module to receive the translated statistical data variables.
+	\item \textbf{Data:} Statistic data variables
+	\item \textbf{Error Handling:} Returns NULL on incorrect settings.
+	\item \textbf{Requirement Reference:} Not Available
 	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 \subsection{Export - Statistical Data Export}
