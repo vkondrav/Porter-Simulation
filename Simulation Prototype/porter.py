@@ -1,4 +1,4 @@
-from event import Event
+from job import Job
 
 class Porter(object):
     
@@ -17,47 +17,31 @@ class Porter(object):
         
     def __repr__(self):
         return "Porter" + str(self.id)
-
         
-def setStatePending(simState, porter):
-    porter.state = Porter.pending
-    
-    if simState.jobPool:
-        # time to go from pending to dispatched
-        delay = 0
-        porter.job = simState.jobPool.pop(0)
-        event = Event(setStateDispatched, simState, porter)
-        timedEvent = [simState.curTime + delay, event]
-        simState.eList.insert(timedEvent)
-    
-def setStateDispatched(simState, porter):
-    porter.state = Porter.dispatched
-    
-    # time to go from dispatched to inprogress
-    delay = simState.sTree.getTimeBetween(porter.unit, porter.job.origin)
-    event = Event(setStateInProgress, simState, porter)
-    timedEvent = [simState.curTime + delay, event]
-    simState.eList.insert(timedEvent)
-    
-def setStateInProgress(simState, porter):
-    porter.state = Porter.inprogress
-    porter.unit = porter.job.origin
-    porter.job.startTime = simState.curTime
-    
-    # time to go from dispatched to inprogress
-    delay = simState.sTree.getTimeBetween(porter.job.origin, porter.job.destination)
-    event = Event(setStateComplete, simState, porter)
-    timedEvent = [simState.curTime + delay, event]
-    simState.eList.insert(timedEvent)
-            
-def setStateComplete(simState, porter):
-    porter.state = Porter.complete
-    porter.unit = porter.job.destination
-    porter.job.completionTime = simState.curTime
-    porter.job = None
-    
-    # time to go from complete to pending
-    delay = 0
-    event = Event(setStatePending, simState, porter)
-    timedEvent = [simState.curTime + delay, event]
-    simState.eList.insert(timedEvent)
+    def work(self, simState):
+        # dispatch
+        print "%s is dispatched %s" % (self, self.job)
+        self.state = Porter.dispatched
+        done_in = simState.sGraph.getTimeBetween(self.unit, self.job.origin)
+        yield simState.env.timeout(done_in)
+        
+        # in progress
+        print "%s is in-progress %s" % (self, self.job)
+        self.state = Porter.inprogress
+        self.unit = self.job.origin
+        self.job.startTime = simState.env.now
+        done_in = simState.sGraph.getTimeBetween(self.job.origin, self.job.destination)
+        yield simState.env.timeout(done_in)
+        
+        # complete
+        print "%s is complete %s" % (self, self.job)
+        self.state = Porter.complete
+        self.unit = self.job.destination
+        self.job.completionTime = simState.env.now
+        self.job = None
+        done_in = 0
+        yield simState.env.timeout(done_in)
+        
+        # pending
+        print "%s is pending" % (self)
+        self.state = Porter.pending

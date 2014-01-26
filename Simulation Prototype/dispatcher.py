@@ -1,42 +1,47 @@
-from porter import Porter, setStateDispatched
-from event import Event
+from porter import Porter
+from job import Job
 
 class Dispatcher(object):
 
     def __init__(self):
-        self.simState = None
+        self.pending_jobs = []
+        
+    def addJob(self, job):
+        self.pending_jobs.append(job)
 		
-    def assignJob(self, job):
-        # generate list of porters who are in a pending state
-        pendingPorters = [porter for porter in self.simState.porters if porter.state == Porter.pending]
-        print "PendingPorters ", pendingPorters
-        
-        if not pendingPorters:
-            # no porters in pending state, so add the job to the job pool
-            self.simState.jobPool.append(job)
-            return
+    def assignJobs(self, simState):
+        while not simState.jobList.isEmpty() or self.pending_jobs:
+            yield simState.env.timeout(1)
+            job = None  
+            if self.pending_jobs:
+                job = self.pending_jobs.pop()
+            else:
+                continue
             
-        closestPorter = None
-        minDistance = None
-        for porter in pendingPorters:
-            if porter.unit == job.origin:
-                porter.job = job
-                event = Event(setStateDispatched, self.simState, porter)
-                timedEvent = [self.simState.curTime, event]
-                self.simState.eList.insert(timedEvent)
-                return
+            # generate list of porters who are in a pending state
+            pendingPorters = [porter for porter in simState.porters if porter.state == Porter.pending]
             
-            distance = self.simState.sTree.getTimeBetween(porter.unit, job.origin)
-            if minDistance is None:
-                minDistance = distance
-                closestPorter = porter
-            elif distance < minDistance:
-                minDistance = distance
-                closestPorter = porter
+            if not pendingPorters:
+                # no porters in pending state, so add the job to the job pool
+                self.pending_jobs.append(job)
+                continue
                 
-        closestPorter.job = job
-        event = Event(setStateDispatched, self.simState, closestPorter)
-        timedEvent = [self.simState.curTime, event]
-        self.simState.eList.insert(timedEvent)
-        return
-        
+            closestPorter = None
+            minDistance = None
+            for porter in pendingPorters:
+                if porter.unit == job.origin:
+                    porter.job = job
+                    simState.env.process(porter.work(simState))
+                    break
+                
+                distance = simState.sGraph.getTimeBetween(porter.unit, job.origin)
+                if minDistance is None:
+                    minDistance = distance
+                    closestPorter = porter
+                elif distance < minDistance:
+                    minDistance = distance
+                    closestPorter = porter
+                    
+            if not porter.job:
+                closestPorter.job = job
+                simState.env.process(closestPorter.work(simState))

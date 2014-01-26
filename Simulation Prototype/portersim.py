@@ -1,28 +1,15 @@
-﻿# from InitTaskList import initEventList
-# from BinTree import BTree
+﻿import simpy
 
 from porter import Porter
-from spanningtree import SpanningTree, constructSampleTree
-from event import DetFutureEventList
+from spanningGraph import SpanningGraph, constructSampleGraph
 from state import State
 from dispatcher import Dispatcher
-from job import Job
-		
-		
-# class FutureEventList(object):
+from job import Job, JobList
 
-	# def __init__(self):
-		# self.eventList = BTree
-		
-	# def insert(self,data):
-		# self.eventList.insert(data)
-		
-	# def pop(self):
-		# return self.eventList.pop()
-		
-	# def isEmpty(self):
-		# return self.eventList.isEmpty()
-        
+
+SIM_TIME = None
+
+  
 def reportStatistics(jobList):
     numJobs = len(jobList)
 
@@ -79,20 +66,22 @@ def reportStatistics(jobList):
     print "Shortest time to complete a job: %d" % shortestTimeToComplete
     print "Longest time to complete a job: %d" % longestTimeToComplete
     print "Average time to complete a job: %d" % averageTimeToComplete
-            
-		
+
+    
 def main():
-    jobList = []
-    jobList.append(Job(0, 0, 1))
-    jobList.append(Job(10, 1, 2))
-    jobList.append(Job(20, 2, 0))
-    jobList.append(Job(30, 1, 0))
-    jobList.append(Job(40, 0, 2))
-    jobList.append(Job(50, 2, 1))
-    jobList.append(Job(60, 0, 2))
-    jobList.append(Job(70, 1, 2))
-    jobList.append(Job(80, 0, 1))
-    jobList.append(Job(90, 2, 1))
+    jobList = JobList()
+    jobList.insert(Job(0, 0, 1))
+    jobList.insert(Job(10, 1, 2))
+    jobList.insert(Job(20, 2, 0))
+    jobList.insert(Job(30, 1, 0))
+    jobList.insert(Job(40, 0, 2))
+    jobList.insert(Job(50, 2, 1))
+    jobList.insert(Job(60, 0, 2))
+    jobList.insert(Job(70, 1, 2))
+    jobList.insert(Job(80, 0, 1))
+    jobList.insert(Job(90, 2, 1))
+    
+    env = simpy.Environment()
     
     while True:
         try:
@@ -101,30 +90,23 @@ def main():
         except ValueError:
             print 'Please input an integer'
     
-    # Using DetEventList until FutureEventList works correctly
-    # EventList = FutureEventList()
     dispatcher = Dispatcher()
-    eventList = DetFutureEventList(func=dispatcher.assignJob, jobList=jobList)
-    spanTree = SpanningTree()
-    constructSampleTree(spanTree)
+    spanGraph = SpanningGraph()
+    constructSampleGraph(spanGraph)
     
     porterList = []
     for i in range(numPorters):
         newPorter = Porter(i)
         porterList.append(newPorter)
 	
-    simState = State(porterList, spanTree, eventList)
-    
-    dispatcher.simState = simState
+    simState = State(env, porterList, spanGraph, dispatcher, jobList)
 	
-    while not eventList.isEmpty():
-        curTime, event = eventList.pop()
-        simState.curTime = curTime
-        print '\nCurrent Time: ', curTime
-        print 'Job Pool:', simState.jobPool
-        event.log()
-        event.trigger()
+    env.process(dispatcher.assignJobs(simState))
+    env.process(jobList.jobReleaser(simState))
+    
+    env.run(until=SIM_TIME)
         
-    reportStatistics(jobList)
-		
+    reportStatistics(jobList.releasedJobList)
+
+    
 main()
