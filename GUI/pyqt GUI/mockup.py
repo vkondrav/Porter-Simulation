@@ -252,7 +252,7 @@ class Ui_Dialog(object):
 "border-color: rgb(141, 141, 141);\n"
 ""))
         self.hhs.setText(_fromUtf8(""))
-        self.hhs.setPixmap(QtGui.QPixmap(os.getcwd() + "/HHS_RGB.jpg"))
+        self.hhs.setPixmap(QtGui.QPixmap(os.getcwd() + "/hhs.png"))
         self.hhs.setScaledContents(True)
         self.hhs.setObjectName(_fromUtf8("hhs"))
 

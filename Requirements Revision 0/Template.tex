@@ -143,10 +143,29 @@ Dr. Douglas Down % Supervisor's Name
 \tableofcontents
 
 \newpage
+\section{Revision History}
+\begin{center}
+    \begin{tabular}{| c | l | l | l |}
+    \hline
+    Revision \# & Author & Date & Comment \\ \hline
+  	1 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & October 28 & Info Missing \\ \hline
+  	2 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & October 29 & Info Missing \\ \hline
+  	3 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & October 29 & Info Missing \\ \hline
+  	4 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & October 30 & Info Missing\\
+    \hline
+    \end{tabular}
+\end{center}
+
+\section{List Of Figures}
+Section Missing
+\section{List of Tables}
+Section Missing
 
 \section{Purpose of the Project}
+\subsection{Template}
+Section Missing
 \subsection{Background}
-Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations. Porter services, in this context, are defined as the movement of equipment such as beds, wheelchairs, other medical instruments and patient transfers from one location to another. Porters are a key piece of overall patient experience and satisfaction; the flow of day to day operations in a hospital depends on their efficiency. The problem HHS is facing is synchronization of porter services with the existing constraints.  Porters should be able to achieve greater efficiency by minimizing client (patient/doctor/nurse/technician/etc.) wait times and reducing the total time wasted in everyday operations. Hamilton Health Sciences are lacking the tools to solve this problem.
+Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations. Porter services, in this context, are defined as the movement of equipment such as beds, wheelchairs, other medical instruments and patient transfers from one location to another. Porters are a key piece of overall patient experience and satisfaction; the flow of day to day operations in a hospital depends on their efficiency. The problem HHS is facing is, synchronization of porter services with the existing constraints (time/money/porter availability/policy compliance).  Porters should be able to achieve greater efficiency by minimizing client (patient/doctor/nurse/technician/etc.) wait times and reducing the total time wasted in everyday operations. Hamilton Health Sciences are lacking the tools to solve this problem.
 \subsection{Goals}
 Our goal is to provide HHS with the tools to simulate their porter services so that they can test their own solutions, methods and make calculated decisions based on the results.
 
@@ -187,7 +206,7 @@ Operational Management Staff will be the primary hands on users of the finished 
 
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
-
+Section Missing: fill in or remove
 \subsection{Schedule Constraints}
 Simulation Software must be complete and requirements met by March 2014. (Current Academic Year)  
 
@@ -213,7 +232,7 @@ Simulation Software must be complete and requirements met by March 2014. (Curren
 		\item \textbf{In-Progress:} Job is being executed by the porter
 		\item \textbf{Complete:} Job has been completed
 		\item \textbf{Dispatch Delay:} Porter states that he/she is delayed during a Dispatched event
-		\item \textbf{In-Progress Delay:} Porter states that he/she is delayed during a In-Progress				\item \textbf{Break3:} A state a porter can enter where they are still logged into the system but event
+		\item \textbf{In-Progress Delay:} Porter states that he/she is delayed during a In-Progress		
 	\end{enumerate} 
 	\item \textbf{Transaction Time:} the time from Event State (Pending) to Event State (Complete)
 	\item \textbf{Proactive Page:} A porter pages the request location to inform the requester of his/her impending arrival      
@@ -242,7 +261,6 @@ Simulation Software must be complete and requirements met by March 2014. (Curren
 	\item Dispatch System determines the assignment of requests by using these parameters (Priority, Proximity, Pre-Scheduled Appointment Use, Age of Request) 
 	\item Industry standard for patient transport transaction time is 30 minutes
 	\item Porter service requests can be made using any hospital computer or phone (IVR)
-	\item Porters can enter into an unscheduled break mode (Break3) where they do not receive any requests from the dispatch system
 	\item Porters can be "zoned" into system item requests by the dispatching system  
 \end{enumerate}	    
 \subsection{Assumptions}
@@ -252,14 +270,13 @@ Simulation Software must be complete and requirements met by March 2014. (Curren
 	\item Wheel Chair transport of patients is four to five minutes less in transaction time
 	\item Some of the porters use proactive paging  
 	\item The majority of service requests are made through hospital computers
-	\item Porters do not abuse the "Break3" mode
 \end{enumerate}
 
 \section{Scope of the Work}
 \subsection{Current Situation}
-Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations and are lacking the tools to solve this problem. The biggest problem comes from the lack of compliance and coordination of the many separate entities of the hospital body.
+Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations and are lacking the tools to solve this problem. The biggest problem comes from the lack of compliance and coordination of the many separate entities of the hospital body. The porters are currently being scheduled by an online dispatching system, which also tracks their progress. Although the system is very efficient at how it completes it's dispatching, it has no insight or analysis capabilities to support daily operations. 
 \subsection{Context of the Work}
-The context of the work is to provide HHS with a simulation that models their porter services. The simulation is not to provide a solution but act as a tool to test new operational ideas.
+HHS requires a tool to support their daily operations and decision making. The tool is to provide the stakeholders with the data and insight to complete their objectives.
 \subsection{Business Use Case}
 The simulation tool will be used by members of the operational management staff to model their process as per their variables and the simulation constraints.
 
@@ -269,7 +286,6 @@ The simulation tool will be used by members of the operational management staff 
 	\item The simulation tool will not model the 100\% full hospital environment
 	\item The simulation will only consider the On-System Porters
 	\item Not all porter activities will be simulated. Simulation will concentrate on the 6 event states tracked by the dispatching system (Pending, Dispatch, In-Progress, Complete, Dispatch Delay, In-Progress Delay).
-	\item The simulation tool will only model the Juravinski Hospital location  
 \end{enumerate} 
 \subsection{Product Use Cases}
 \begin{enumerate}[(a)]
@@ -283,17 +299,21 @@ The simulation tool will be used by members of the operational management staff 
 \section{Functional Requirements}
 \subsection{Functional Requirements}
 \begin{enumerate}
-	\item \textbf{Description:} Simulation must use take a file as input
+	\item \textbf{Description:} Simulation must take a file as input. This file contains data logs from the dispatching system concerning past porter events
 	\\ \textbf{Rationale:} Operational Management staff has indicated that using a file as input is the preferred method 
-	\\ \textbf{Fit Criterion:} Simulation must accept the file without error 100\% of the time assuming the CSV is without error
+	\\ \textbf{Fit Criterion:} Simulation must accept the file without error 100\% of the time
 	\item \textbf{Description:} A series of simulation variables that affect the simulation output must be editable by the user
 	\\ \textbf{Rationale:} Operational Management staff must be able to modify the simulation
-	\\ \textbf{Fit Criterion:} Simulation must include at least 85\% of the following variables   
+	\\ \textbf{Fit Criterion:} Simulation must include the following variables   
 	\begin{enumerate}[(i)]
 		\item Number of Porters
-		\item Frequency of Events
-		\item Number of Locations
-		\item To be decided \ldots
+		\item Start Date of Data Input
+		\item End Date of Data Input
+		\item Event Distribution Type
+		\item Event Intensity
+		\item Compliance (Equipment Usage)
+		\item Compliance (Patient Readiness)
+		\item Compliance (Porter Wait Times)
 	\end{enumerate}
 	\item \textbf{Description:} Simulation Tool must be able to run a pre-designed model incorporating the given input variables and exit
 	\\ \textbf{Rationale:} Operational Staff must be able to run the simulation
@@ -302,7 +322,7 @@ The simulation tool will be used by members of the operational management staff 
 	\\ \textbf{Rationale:} Data must be relevant for the Operational Management's business process
 	\\ \textbf{Fit Criterion:} The output must be 100\% relevant in the scope of the problem
 	\item \textbf{Description} The output of the simulation must be a file
-	\\ \textbf{Rationale:} It is best design to use the same file type for output as input
+	\\ \textbf{Rationale:} A file can be analysed for data manually or used as input for other software
 	\\ \textbf{Fit Criterion:} The output file must be have 0\% errors according to the file type standards 
 \end{enumerate}
 
@@ -321,10 +341,14 @@ Appearance Requirements are still in the discussion stage with the stakeholders.
 	\\	  \textbf{Motivation:} Users of this software are not assumed to be advanced computer users. Users are not expected to know how to use command line or similar interfaces. 
 	\\	  \textbf{Fit Criterion:} All basic functions of the software are accessible through a GUI
 	\\	  \textbf{Considerations:} This Ease of Use requirement considers all of the Product Use Cases
-	\item \textbf{Content:} Software must be able to undo actions
-	\\	  \textbf{Motivation:} As per the familiarity requirements the software must mimic some of the main functions of popular software
-	\\	  \textbf{Fit Criterion:} All basic actions completed in the GUI will be able to be undone up to a certain point (to be decided)
+	\item \textbf{Content:} The GUI must have checks in place to prevent the user from using invalid inputs 
+	\\	  \textbf{Motivation:} All inputs must comply with the arguments of the execution program
+	\\	  \textbf{Fit Criterion:} GUI restricts the user to a predetermined set of inputs
 	\\	  \textbf{Considerations:} This Ease of Use requirement considers all of the Product Use Cases
+	%\item \textbf{Content:} Software must be able to undo actions
+	%\\	  \textbf{Motivation:} As per the familiarity requirements the software must mimic some of the main functions of popular software
+	%\\	  \textbf{Fit Criterion:} All basic actions completed in the GUI will be able to be undone up to a certain point (to be decided)
+	%\\	  \textbf{Considerations:} This Ease of Use requirement considers all of the Product Use Cases
 	\item \textbf{Content:} Software must be easy to navigate
 	\\	  \textbf{Motivation:} Users should be able to easily move between different screens
 	\\	  \textbf{Fit Criterion:} Each screen is linked to each other with an easily accessible interface feature
@@ -509,8 +533,13 @@ The users will be provided with hands-on training and training material by the p
 	\item Establish Appearance Requirements.
 \end{enumerate}
 
+\section{Off The Shelf Solutions}
+Section Missing
+
 \section{Waiting Room}
 None
+
+
 
 %%% End document
 \end{document}

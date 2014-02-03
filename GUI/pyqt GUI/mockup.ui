@@ -505,7 +505,7 @@ border-color: rgb(141, 141, 141);
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>HHS_RGB.jpg</pixmap>
+      <pixmap>hhs.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
