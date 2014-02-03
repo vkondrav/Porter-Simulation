@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>549</height>
+    <width>772</width>
+    <height>638</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,8 +36,8 @@
     <rect>
      <x>10</x>
      <y>60</y>
-     <width>661</width>
-     <height>481</height>
+     <width>751</width>
+     <height>561</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -47,7 +47,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -465,14 +465,14 @@ QLineEdit
     <widget class="QSplitter" name="splitter_11">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>270</y>
-       <width>221</width>
-       <height>171</height>
+       <x>20</x>
+       <y>450</y>
+       <width>381</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QPushButton" name="resetAllButton">
       <property name="text">
@@ -485,41 +485,704 @@ QLineEdit
       </property>
      </widget>
     </widget>
-    <widget class="QLabel" name="hhs">
-     <property name="geometry">
-      <rect>
-       <x>420</x>
-       <y>10</y>
-       <width>221</width>
-       <height>141</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);
-border: solid;
-border-width: 2px;
-border-color: rgb(141, 141, 141);
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap>hhs.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
      <string>Advanced Settings</string>
     </attribute>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>711</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox{
+	border-color: rgb(0, 0, 0);
+	border-width : 1.2px;
+	border-style: inset;
+}
+
+QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
+{
+	background-color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="title">
+      <string>Dispatcher</string>
+     </property>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>691</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Automatic Job Priority Values</string>
+      </property>
+      <widget class="QSplitter" name="splitter_23">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>651</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QSplitter" name="splitter_22">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>Job Priority</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>Minutes</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QSplitter" name="splitter_13">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb1"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_14">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>2</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb2"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_15">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb3"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_16">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>4</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb4"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_17">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>5</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb5"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_18">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>6</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb6"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_19">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string>7</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb7"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_20">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_28">
+         <property name="text">
+          <string>8</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb8"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_21">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>9</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="ajb9"/>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>691</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Proximity Match Value</string>
+      </property>
+      <widget class="QSplitter" name="splitter_45">
+       <property name="geometry">
+        <rect>
+         <x>555</x>
+         <y>30</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="QSplitter" name="splitter_46">
+       <property name="geometry">
+        <rect>
+         <x>561</x>
+         <y>30</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="QSplitter" name="splitter_36">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>651</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QSplitter" name="splitter_37">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_41">
+         <property name="text">
+          <string>Section</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_42">
+         <property name="text">
+          <string>Weight</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QSplitter" name="splitter_38">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_43">
+         <property name="text">
+          <string>Location</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv1"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_39">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_44">
+         <property name="text">
+          <string>Zone</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv2"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_40">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_45">
+         <property name="text">
+          <string>Unit</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv3"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_41">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_46">
+         <property name="text">
+          <string>Section</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv4"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_42">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_47">
+         <property name="text">
+          <string>Floor</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv5"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_43">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_48">
+         <property name="text">
+          <string>Building</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv6"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_44">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_49">
+         <property name="text">
+          <string>Campus</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pmv7"/>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>380</y>
+        <width>691</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Autolocation Values</string>
+      </property>
+      <widget class="QSplitter" name="splitter_56">
+       <property name="geometry">
+        <rect>
+         <x>555</x>
+         <y>30</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="QSplitter" name="splitter_57">
+       <property name="geometry">
+        <rect>
+         <x>561</x>
+         <y>30</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="QSplitter" name="splitter_47">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>651</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QSplitter" name="splitter_48">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_50">
+         <property name="text">
+          <string>Section</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_51">
+         <property name="text">
+          <string>Weight</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QSplitter" name="splitter_49">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_52">
+         <property name="text">
+          <string>Location</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av1"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_50">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_53">
+         <property name="text">
+          <string>Zone</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av2"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_51">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_54">
+         <property name="text">
+          <string>Unit</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av3"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_52">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_55">
+         <property name="text">
+          <string>Section</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av4"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_53">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_56">
+         <property name="text">
+          <string>Floor</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av5"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_54">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_57">
+         <property name="text">
+          <string>Building</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av6"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_55">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_58">
+         <property name="text">
+          <string>Campus</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="av7"/>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>691</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Weighted Job List</string>
+      </property>
+      <widget class="QSplitter" name="splitter_25">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>651</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QSplitter" name="splitter_26">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>Job Priority</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Weight</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QSplitter" name="splitter_27">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_32">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl1"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_28">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_33">
+         <property name="text">
+          <string>2</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl2"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_29">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl3"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_30">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>4</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl4"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_31">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>5</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl5"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_32">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_37">
+         <property name="text">
+          <string>6</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl6"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_33">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_38">
+         <property name="text">
+          <string>7</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl7"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_34">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_39">
+         <property name="text">
+          <string>8</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl8"/>
+       </widget>
+       <widget class="QSplitter" name="splitter_35">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_40">
+         <property name="text">
+          <string>9</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="wjl9"/>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="resetAllDispatch">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>20</y>
+        <width>111</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reset All</string>
+      </property>
+     </widget>
+     <widget class="QSplitter" name="splitter_24">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>501</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Apointment Factor</string>
+       </property>
+      </widget>
+      <widget class="QSlider" name="appFactor">
+       <property name="minimum">
+        <number>100</number>
+       </property>
+       <property name="maximum">
+        <number>300</number>
+       </property>
+       <property name="singleStep">
+        <number>3</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksAbove</enum>
+       </property>
+       <property name="tickInterval">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="appFactorValue">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+     </widget>
+     <zorder>appFactor</zorder>
+     <zorder>label_13</zorder>
+     <zorder>appFactorValue</zorder>
+     <zorder>splitter_14</zorder>
+     <zorder>splitter_14</zorder>
+     <zorder>splitter_14</zorder>
+     <zorder>groupBox_5</zorder>
+     <zorder>groupBox_7</zorder>
+     <zorder>groupBox_8</zorder>
+     <zorder>groupBox_6</zorder>
+     <zorder>resetAllDispatch</zorder>
+    </widget>
+    <zorder>groupBox_4</zorder>
+    <zorder>splitter_47</zorder>
    </widget>
+  </widget>
+  <widget class="QLabel" name="hhs">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>10</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);
+border: solid;
+border-width: 2px;
+border-color: rgb(141, 141, 141);
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>hhs.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
   </widget>
   <zorder>tabWidget</zorder>
   <zorder>label</zorder>
+  <zorder>hhs</zorder>
  </widget>
  <resources/>
  <connections/>
