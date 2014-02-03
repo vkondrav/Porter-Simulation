@@ -1,0 +1,27 @@
+Dispatcher input list
+
+Appointment Factor
+	-Increases the the priority of a job depending on pre-scheduled or on-demand
+	-Values 1.0-3.0
+	
+Automatic Job Priority Values
+	-Minutes before a job is automatically upgraded in priority
+	-Values (Priority, Minutes)
+	-Change this list [{1, None}, {2, 14}, {3, 8}, {4, 8}, {5,5}, {6,5}, {7, 25}, {8, 30}, {9,40}]
+	
+Weighted Job List
+	-Depending on the job`s priority change the weight
+	-Values (Priority, Weight Value)
+	-[{1, 20}, {2, 11}, {3, 7}, {4,5}, {5,4}, {6,3}, {7,2}, {8,1}, {9,0}]
+	
+Proximity Match Value
+	-Values based on how close a porter is
+	-Values (Location, Weight Value)
+	[{'LOCATION', 11}, {'ZONE', 7}, {'UNIT', 7}, {'SECTION', 2}, {'FLOOR', 5}, {'BUILDING', 3}, {'CAMPUS', 1}]
+
+AutoLocation Values
+	-Esimates where a porter is based on how many minutes he/she has been available
+	-Values (Location, Minutes since Available)
+	LU_AutoLocation = [{'LOCATION', 4}, {'ZONE', 8}, {'UNIT', 7'}, {'SECTION', 14}, {'FLOOR', 10}, {'BUILDING', 12}, {'BASE', 16}]
+	
+	
