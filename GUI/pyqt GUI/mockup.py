@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Feb  3 00:14:41 2014
+# Created: Mon Feb  3 01:01:50 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -243,6 +243,19 @@ class Ui_Dialog(object):
 
         self.simulateButton = QtGui.QPushButton(self.splitter_11)
         self.simulateButton.setObjectName(_fromUtf8("simulateButton"))
+
+        self.hhs = QtGui.QLabel(self.tab)
+        self.hhs.setGeometry(QtCore.QRect(420, 10, 221, 141))
+        self.hhs.setStyleSheet(_fromUtf8("background-color: rgba(255, 255, 255, 0);\n"
+"border: solid;\n"
+"border-width: 2px;\n"
+"border-color: rgb(141, 141, 141);\n"
+""))
+        self.hhs.setText(_fromUtf8(""))
+        self.hhs.setPixmap(QtGui.QPixmap(os.getcwd() + "/HHS_RGB.jpg"))
+        self.hhs.setScaledContents(True)
+        self.hhs.setObjectName(_fromUtf8("hhs"))
+
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
