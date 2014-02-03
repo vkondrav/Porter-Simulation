@@ -47,7 +47,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -58,7 +58,7 @@
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>381</width>
+       <width>321</width>
        <height>190</height>
       </rect>
      </property>
@@ -82,7 +82,7 @@ QSpinBox,QDateEdit,QComboBox
        <rect>
         <x>30</x>
         <y>20</y>
-        <width>331</width>
+        <width>271</width>
         <height>161</height>
        </rect>
       </property>
@@ -267,10 +267,10 @@ QSpinBox,QDateEdit,QComboBox
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>210</y>
+       <x>350</x>
+       <y>10</y>
        <width>381</width>
-       <height>141</height>
+       <height>161</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -288,17 +288,47 @@ QDoubleSpinBox
      <property name="title">
       <string>Compliance</string>
      </property>
-     <widget class="QSplitter" name="splitter_10">
+     <widget class="QSplitter" name="splitter_9">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>311</width>
-        <height>91</height>
+        <x>300</x>
+        <y>20</y>
+        <width>21</width>
+        <height>131</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true"/>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>%</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>%</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>min</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>%</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QSplitter" name="splitter_24">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>271</width>
+        <height>131</height>
+       </rect>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -351,7 +381,7 @@ QDoubleSpinBox
         </property>
        </widget>
       </widget>
-      <widget class="QSplitter" name="splitter_9">
+      <widget class="QSplitter" name="splitter_10">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -375,36 +405,32 @@ QDoubleSpinBox
         </property>
        </widget>
       </widget>
-     </widget>
-     <widget class="QSplitter" name="splitter_12">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>30</y>
-        <width>21</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>%</string>
+      <widget class="QSplitter" name="splitter_12">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-      </widget>
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>%</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>min</string>
-       </property>
+       <widget class="QLabel" name="label_59">
+        <property name="text">
+         <string>Chance of Job Cancellation</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="jobCancel">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>100.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>90.000000000000000</double>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -514,6 +540,63 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
      <property name="title">
       <string>Dispatcher</string>
      </property>
+     <widget class="QSlider" name="appFactor">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>30</y>
+        <width>461</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>100</number>
+      </property>
+      <property name="maximum">
+       <number>300</number>
+      </property>
+      <property name="singleStep">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksAbove</enum>
+      </property>
+      <property name="tickInterval">
+       <number>3</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>10</y>
+        <width>104</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apointment Factor</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="appFactorValue">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>41</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
@@ -561,6 +644,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>1</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb1"/>
        </widget>
@@ -571,6 +657,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_22">
          <property name="text">
           <string>2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb2"/>
@@ -583,6 +672,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>3</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb3"/>
        </widget>
@@ -593,6 +685,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_24">
          <property name="text">
           <string>4</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb4"/>
@@ -605,6 +700,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>5</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb5"/>
        </widget>
@@ -615,6 +713,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_26">
          <property name="text">
           <string>6</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb6"/>
@@ -627,6 +728,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>7</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb7"/>
        </widget>
@@ -638,6 +742,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>8</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb8"/>
        </widget>
@@ -648,6 +755,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_29">
          <property name="text">
           <string>9</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="ajb9"/>
@@ -727,6 +837,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Location</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv1"/>
        </widget>
@@ -737,6 +850,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_44">
          <property name="text">
           <string>Zone</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv2"/>
@@ -749,6 +865,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Unit</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv3"/>
        </widget>
@@ -759,6 +878,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_46">
          <property name="text">
           <string>Section</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv4"/>
@@ -771,6 +893,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Floor</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv5"/>
        </widget>
@@ -782,6 +907,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Building</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv6"/>
        </widget>
@@ -792,6 +920,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_49">
          <property name="text">
           <string>Campus</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="pmv7"/>
@@ -871,6 +1002,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Location</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av1"/>
        </widget>
@@ -881,6 +1015,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_53">
          <property name="text">
           <string>Zone</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av2"/>
@@ -893,6 +1030,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Unit</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av3"/>
        </widget>
@@ -903,6 +1043,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_55">
          <property name="text">
           <string>Section</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av4"/>
@@ -915,6 +1058,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Floor</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av5"/>
        </widget>
@@ -926,6 +1072,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>Building</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av6"/>
        </widget>
@@ -936,6 +1085,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_58">
          <property name="text">
           <string>Campus</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="av7"/>
@@ -989,6 +1141,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>1</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl1"/>
        </widget>
@@ -999,6 +1154,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_33">
          <property name="text">
           <string>2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl2"/>
@@ -1011,6 +1169,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>3</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl3"/>
        </widget>
@@ -1021,6 +1182,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_35">
          <property name="text">
           <string>4</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl4"/>
@@ -1033,6 +1197,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>5</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl5"/>
        </widget>
@@ -1043,6 +1210,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_37">
          <property name="text">
           <string>6</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl6"/>
@@ -1055,6 +1225,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>7</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl7"/>
        </widget>
@@ -1066,6 +1239,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
          <property name="text">
           <string>8</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl8"/>
        </widget>
@@ -1076,6 +1252,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         <widget class="QLabel" name="label_40">
          <property name="text">
           <string>9</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="wjl9"/>
@@ -1094,49 +1273,6 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
       <property name="text">
        <string>Reset All</string>
       </property>
-     </widget>
-     <widget class="QSplitter" name="splitter_24">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>501</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QLabel" name="label_13">
-       <property name="text">
-        <string>Apointment Factor</string>
-       </property>
-      </widget>
-      <widget class="QSlider" name="appFactor">
-       <property name="minimum">
-        <number>100</number>
-       </property>
-       <property name="maximum">
-        <number>300</number>
-       </property>
-       <property name="singleStep">
-        <number>3</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="tickPosition">
-        <enum>QSlider::TicksAbove</enum>
-       </property>
-       <property name="tickInterval">
-        <number>3</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="appFactorValue">
-       <property name="text">
-        <string>1</string>
-       </property>
-      </widget>
      </widget>
      <zorder>appFactor</zorder>
      <zorder>label_13</zorder>

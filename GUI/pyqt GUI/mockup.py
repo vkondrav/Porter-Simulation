@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Feb  3 16:12:12 2014
+# Created: Mon Feb  3 17:44:40 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -272,6 +272,22 @@ class Ui_Dialog(object):
 "    background-color: rgb(255, 255, 255);\n"
 "}"))
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
+        self.appFactor = QtGui.QSlider(self.groupBox_4)
+        self.appFactor.setGeometry(QtCore.QRect(80, 30, 461, 27))
+        self.appFactor.setMinimum(100)
+        self.appFactor.setMaximum(300)
+        self.appFactor.setSingleStep(3)
+        self.appFactor.setOrientation(QtCore.Qt.Horizontal)
+        self.appFactor.setTickPosition(QtGui.QSlider.TicksAbove)
+        self.appFactor.setTickInterval(3)
+        self.appFactor.setObjectName(_fromUtf8("appFactor"))
+        self.label_13 = QtGui.QLabel(self.groupBox_4)
+        self.label_13.setGeometry(QtCore.QRect(250, 10, 104, 16))
+        self.label_13.setObjectName(_fromUtf8("label_13"))
+        self.appFactorValue = QtGui.QLabel(self.groupBox_4)
+        self.appFactorValue.setGeometry(QtCore.QRect(30, 30, 41, 16))
+        self.appFactorValue.setAlignment(QtCore.Qt.AlignCenter)
+        self.appFactorValue.setObjectName(_fromUtf8("appFactorValue"))
         self.groupBox_5 = QtGui.QGroupBox(self.groupBox_4)
         self.groupBox_5.setGeometry(QtCore.QRect(10, 70, 691, 91))
         self.groupBox_5.setObjectName(_fromUtf8("groupBox_5"))
@@ -294,6 +310,7 @@ class Ui_Dialog(object):
         self.splitter_13.setObjectName(_fromUtf8("splitter_13"))
 
         self.label_21 = QtGui.QLabel(self.splitter_13)
+        self.label_21.setAlignment(QtCore.Qt.AlignCenter)
         self.label_21.setObjectName(_fromUtf8("label_21"))
 
         self.ajb1 = QtGui.QDoubleSpinBox(self.splitter_13)
@@ -305,6 +322,7 @@ class Ui_Dialog(object):
         self.splitter_14.setObjectName(_fromUtf8("splitter_14"))
 
         self.label_22 = QtGui.QLabel(self.splitter_14)
+        self.label_22.setAlignment(QtCore.Qt.AlignCenter)
         self.label_22.setObjectName(_fromUtf8("label_22"))
 
         self.ajb2 = QtGui.QDoubleSpinBox(self.splitter_14)
@@ -316,6 +334,7 @@ class Ui_Dialog(object):
         self.splitter_15.setObjectName(_fromUtf8("splitter_15"))
 
         self.label_23 = QtGui.QLabel(self.splitter_15)
+        self.label_23.setAlignment(QtCore.Qt.AlignCenter)
         self.label_23.setObjectName(_fromUtf8("label_23"))
 
         self.ajb3 = QtGui.QDoubleSpinBox(self.splitter_15)
@@ -327,6 +346,7 @@ class Ui_Dialog(object):
         self.splitter_16.setObjectName(_fromUtf8("splitter_16"))
 
         self.label_24 = QtGui.QLabel(self.splitter_16)
+        self.label_24.setAlignment(QtCore.Qt.AlignCenter)
         self.label_24.setObjectName(_fromUtf8("label_24"))
 
         self.ajb4 = QtGui.QDoubleSpinBox(self.splitter_16)
@@ -338,6 +358,7 @@ class Ui_Dialog(object):
         self.splitter_17.setObjectName(_fromUtf8("splitter_17"))
 
         self.label_25 = QtGui.QLabel(self.splitter_17)
+        self.label_25.setAlignment(QtCore.Qt.AlignCenter)
         self.label_25.setObjectName(_fromUtf8("label_25"))
 
         self.ajb5 = QtGui.QDoubleSpinBox(self.splitter_17)
@@ -349,6 +370,7 @@ class Ui_Dialog(object):
         self.splitter_18.setObjectName(_fromUtf8("splitter_18"))
 
         self.label_26 = QtGui.QLabel(self.splitter_18)
+        self.label_26.setAlignment(QtCore.Qt.AlignCenter)
         self.label_26.setObjectName(_fromUtf8("label_26"))
 
         self.ajb6 = QtGui.QDoubleSpinBox(self.splitter_18)
@@ -360,6 +382,7 @@ class Ui_Dialog(object):
         self.splitter_19.setObjectName(_fromUtf8("splitter_19"))
 
         self.label_27 = QtGui.QLabel(self.splitter_19)
+        self.label_27.setAlignment(QtCore.Qt.AlignCenter)
         self.label_27.setObjectName(_fromUtf8("label_27"))
 
         self.ajb7 = QtGui.QDoubleSpinBox(self.splitter_19)
@@ -371,6 +394,7 @@ class Ui_Dialog(object):
         self.splitter_20.setObjectName(_fromUtf8("splitter_20"))
 
         self.label_28 = QtGui.QLabel(self.splitter_20)
+        self.label_28.setAlignment(QtCore.Qt.AlignCenter)
         self.label_28.setObjectName(_fromUtf8("label_28"))
 
         self.ajb8 = QtGui.QDoubleSpinBox(self.splitter_20)
@@ -382,6 +406,7 @@ class Ui_Dialog(object):
         self.splitter_21.setObjectName(_fromUtf8("splitter_21"))
 
         self.label_29 = QtGui.QLabel(self.splitter_21)
+        self.label_29.setAlignment(QtCore.Qt.AlignCenter)
         self.label_29.setObjectName(_fromUtf8("label_29"))
 
         self.ajb9 = QtGui.QDoubleSpinBox(self.splitter_21)
@@ -418,6 +443,7 @@ class Ui_Dialog(object):
         self.splitter_38.setObjectName(_fromUtf8("splitter_38"))
 
         self.label_43 = QtGui.QLabel(self.splitter_38)
+        self.label_43.setAlignment(QtCore.Qt.AlignCenter)
         self.label_43.setObjectName(_fromUtf8("label_43"))
 
         self.pmv1 = QtGui.QDoubleSpinBox(self.splitter_38)
@@ -429,6 +455,7 @@ class Ui_Dialog(object):
         self.splitter_39.setObjectName(_fromUtf8("splitter_39"))
 
         self.label_44 = QtGui.QLabel(self.splitter_39)
+        self.label_44.setAlignment(QtCore.Qt.AlignCenter)
         self.label_44.setObjectName(_fromUtf8("label_44"))
 
         self.pmv2 = QtGui.QDoubleSpinBox(self.splitter_39)
@@ -440,6 +467,7 @@ class Ui_Dialog(object):
         self.splitter_40.setObjectName(_fromUtf8("splitter_40"))
 
         self.label_45 = QtGui.QLabel(self.splitter_40)
+        self.label_45.setAlignment(QtCore.Qt.AlignCenter)
         self.label_45.setObjectName(_fromUtf8("label_45"))
 
         self.pmv3 = QtGui.QDoubleSpinBox(self.splitter_40)
@@ -451,6 +479,7 @@ class Ui_Dialog(object):
         self.splitter_41.setObjectName(_fromUtf8("splitter_41"))
 
         self.label_46 = QtGui.QLabel(self.splitter_41)
+        self.label_46.setAlignment(QtCore.Qt.AlignCenter)
         self.label_46.setObjectName(_fromUtf8("label_46"))
 
         self.pmv4 = QtGui.QDoubleSpinBox(self.splitter_41)
@@ -462,6 +491,7 @@ class Ui_Dialog(object):
         self.splitter_42.setObjectName(_fromUtf8("splitter_42"))
 
         self.label_47 = QtGui.QLabel(self.splitter_42)
+        self.label_47.setAlignment(QtCore.Qt.AlignCenter)
         self.label_47.setObjectName(_fromUtf8("label_47"))
 
         self.pmv5 = QtGui.QDoubleSpinBox(self.splitter_42)
@@ -473,6 +503,7 @@ class Ui_Dialog(object):
         self.splitter_43.setObjectName(_fromUtf8("splitter_43"))
 
         self.label_48 = QtGui.QLabel(self.splitter_43)
+        self.label_48.setAlignment(QtCore.Qt.AlignCenter)
         self.label_48.setObjectName(_fromUtf8("label_48"))
 
         self.pmv6 = QtGui.QDoubleSpinBox(self.splitter_43)
@@ -484,6 +515,7 @@ class Ui_Dialog(object):
         self.splitter_44.setObjectName(_fromUtf8("splitter_44"))
 
         self.label_49 = QtGui.QLabel(self.splitter_44)
+        self.label_49.setAlignment(QtCore.Qt.AlignCenter)
         self.label_49.setObjectName(_fromUtf8("label_49"))
 
         self.pmv7 = QtGui.QDoubleSpinBox(self.splitter_44)
@@ -522,6 +554,7 @@ class Ui_Dialog(object):
         self.splitter_49.setObjectName(_fromUtf8("splitter_49"))
 
         self.label_52 = QtGui.QLabel(self.splitter_49)
+        self.label_52.setAlignment(QtCore.Qt.AlignCenter)
         self.label_52.setObjectName(_fromUtf8("label_52"))
 
         self.av1 = QtGui.QDoubleSpinBox(self.splitter_49)
@@ -533,6 +566,7 @@ class Ui_Dialog(object):
         self.splitter_50.setObjectName(_fromUtf8("splitter_50"))
 
         self.label_53 = QtGui.QLabel(self.splitter_50)
+        self.label_53.setAlignment(QtCore.Qt.AlignCenter)
         self.label_53.setObjectName(_fromUtf8("label_53"))
 
         self.av2 = QtGui.QDoubleSpinBox(self.splitter_50)
@@ -544,6 +578,7 @@ class Ui_Dialog(object):
         self.splitter_51.setObjectName(_fromUtf8("splitter_51"))
 
         self.label_54 = QtGui.QLabel(self.splitter_51)
+        self.label_54.setAlignment(QtCore.Qt.AlignCenter)
         self.label_54.setObjectName(_fromUtf8("label_54"))
 
         self.av3 = QtGui.QDoubleSpinBox(self.splitter_51)
@@ -554,6 +589,7 @@ class Ui_Dialog(object):
         self.splitter_52.setObjectName(_fromUtf8("splitter_52"))
 
         self.label_55 = QtGui.QLabel(self.splitter_52)
+        self.label_55.setAlignment(QtCore.Qt.AlignCenter)
         self.label_55.setObjectName(_fromUtf8("label_55"))
 
         self.av4 = QtGui.QDoubleSpinBox(self.splitter_52)
@@ -565,6 +601,7 @@ class Ui_Dialog(object):
         self.splitter_53.setObjectName(_fromUtf8("splitter_53"))
 
         self.label_56 = QtGui.QLabel(self.splitter_53)
+        self.label_56.setAlignment(QtCore.Qt.AlignCenter)
         self.label_56.setObjectName(_fromUtf8("label_56"))
 
         self.av5 = QtGui.QDoubleSpinBox(self.splitter_53)
@@ -576,6 +613,7 @@ class Ui_Dialog(object):
         self.splitter_54.setObjectName(_fromUtf8("splitter_54"))
 
         self.label_57 = QtGui.QLabel(self.splitter_54)
+        self.label_57.setAlignment(QtCore.Qt.AlignCenter)
         self.label_57.setObjectName(_fromUtf8("label_57"))
 
         self.av6 = QtGui.QDoubleSpinBox(self.splitter_54)
@@ -587,6 +625,7 @@ class Ui_Dialog(object):
         self.splitter_55.setObjectName(_fromUtf8("splitter_55"))
 
         self.label_58 = QtGui.QLabel(self.splitter_55)
+        self.label_58.setAlignment(QtCore.Qt.AlignCenter)
         self.label_58.setObjectName(_fromUtf8("label_58"))
 
         self.av7 = QtGui.QDoubleSpinBox(self.splitter_55)
@@ -606,7 +645,7 @@ class Ui_Dialog(object):
         self.splitter_26.setObjectName(_fromUtf8("splitter_26"))
 
         self.label_30 = QtGui.QLabel(self.splitter_26)
-        self.label_30.setObjectName(_fromUtf8("label_30"))        
+        self.label_30.setObjectName(_fromUtf8("label_30"))
         self.label_31 = QtGui.QLabel(self.splitter_26)
         self.label_31.setObjectName(_fromUtf8("label_31"))
 
@@ -615,6 +654,7 @@ class Ui_Dialog(object):
         self.splitter_27.setObjectName(_fromUtf8("splitter_27"))
 
         self.label_32 = QtGui.QLabel(self.splitter_27)
+        self.label_32.setAlignment(QtCore.Qt.AlignCenter)
         self.label_32.setObjectName(_fromUtf8("label_32"))
 
         self.wjl1 = QtGui.QDoubleSpinBox(self.splitter_27)
@@ -626,6 +666,7 @@ class Ui_Dialog(object):
         self.splitter_28.setObjectName(_fromUtf8("splitter_28"))
 
         self.label_33 = QtGui.QLabel(self.splitter_28)
+        self.label_33.setAlignment(QtCore.Qt.AlignCenter)
         self.label_33.setObjectName(_fromUtf8("label_33"))
 
         self.wjl2 = QtGui.QDoubleSpinBox(self.splitter_28)
@@ -637,6 +678,7 @@ class Ui_Dialog(object):
         self.splitter_29.setObjectName(_fromUtf8("splitter_29"))
 
         self.label_34 = QtGui.QLabel(self.splitter_29)
+        self.label_34.setAlignment(QtCore.Qt.AlignCenter)
         self.label_34.setObjectName(_fromUtf8("label_34"))
 
         self.wjl3 = QtGui.QDoubleSpinBox(self.splitter_29)
@@ -648,6 +690,7 @@ class Ui_Dialog(object):
         self.splitter_30.setObjectName(_fromUtf8("splitter_30"))
 
         self.label_35 = QtGui.QLabel(self.splitter_30)
+        self.label_35.setAlignment(QtCore.Qt.AlignCenter)
         self.label_35.setObjectName(_fromUtf8("label_35"))
 
         self.wjl4 = QtGui.QDoubleSpinBox(self.splitter_30)
@@ -659,6 +702,7 @@ class Ui_Dialog(object):
         self.splitter_31.setObjectName(_fromUtf8("splitter_31"))
 
         self.label_36 = QtGui.QLabel(self.splitter_31)
+        self.label_36.setAlignment(QtCore.Qt.AlignCenter)
         self.label_36.setObjectName(_fromUtf8("label_36"))
 
         self.wjl5 = QtGui.QDoubleSpinBox(self.splitter_31)
@@ -670,6 +714,7 @@ class Ui_Dialog(object):
         self.splitter_32.setObjectName(_fromUtf8("splitter_32"))
 
         self.label_37 = QtGui.QLabel(self.splitter_32)
+        self.label_37.setAlignment(QtCore.Qt.AlignCenter)
         self.label_37.setObjectName(_fromUtf8("label_37"))
 
         self.wjl6 = QtGui.QDoubleSpinBox(self.splitter_32)
@@ -681,6 +726,7 @@ class Ui_Dialog(object):
         self.splitter_33.setObjectName(_fromUtf8("splitter_33"))
 
         self.label_38 = QtGui.QLabel(self.splitter_33)
+        self.label_38.setAlignment(QtCore.Qt.AlignCenter)
         self.label_38.setObjectName(_fromUtf8("label_38"))
 
         self.wjl7 = QtGui.QDoubleSpinBox(self.splitter_33)
@@ -692,6 +738,7 @@ class Ui_Dialog(object):
         self.splitter_34.setObjectName(_fromUtf8("splitter_34"))
 
         self.label_39 = QtGui.QLabel(self.splitter_34)
+        self.label_39.setAlignment(QtCore.Qt.AlignCenter)
         self.label_39.setObjectName(_fromUtf8("label_39"))
 
         self.wjl8 = QtGui.QDoubleSpinBox(self.splitter_34)
@@ -703,6 +750,7 @@ class Ui_Dialog(object):
         self.splitter_35.setObjectName(_fromUtf8("splitter_35"))
 
         self.label_40 = QtGui.QLabel(self.splitter_35)
+        self.label_40.setAlignment(QtCore.Qt.AlignCenter)
         self.label_40.setObjectName(_fromUtf8("label_40"))
 
         self.wjl9 = QtGui.QDoubleSpinBox(self.splitter_35)
@@ -712,26 +760,6 @@ class Ui_Dialog(object):
         self.resetAllDispatch = QtGui.QPushButton(self.groupBox_4)
         self.resetAllDispatch.setGeometry(QtCore.QRect(580, 20, 111, 28))
         self.resetAllDispatch.setObjectName(_fromUtf8("resetAllDispatch"))
-
-        self.splitter_24 = QtGui.QSplitter(self.groupBox_4)
-        self.splitter_24.setGeometry(QtCore.QRect(20, 20, 361, 27))
-        self.splitter_24.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter_24.setObjectName(_fromUtf8("splitter_24"))
-
-        self.label_13 = QtGui.QLabel(self.splitter_24)
-        self.label_13.setObjectName(_fromUtf8("label_13"))
-
-        self.appFactor = QtGui.QSlider(self.splitter_24)
-        self.appFactor.setMinimum(10)
-        self.appFactor.setMaximum(30)
-        self.appFactor.setOrientation(QtCore.Qt.Horizontal)
-        self.appFactor.setTickPosition(QtGui.QSlider.TicksAbove)
-        self.appFactor.setTickInterval(1)
-        self.appFactor.setObjectName(_fromUtf8("appFactor"))
-
-        self.appFactorValue = QtGui.QLabel(self.splitter_24)
-        self.appFactorValue.setObjectName(_fromUtf8("appFactorValue"))
-
         self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
 
         self.hhs = QtGui.QLabel(Dialog)
@@ -836,7 +864,7 @@ class Ui_Dialog(object):
         self.resetAllDispatch.setText(_translate("Dialog", "Reset All", None))
         self.label_13.setText(_translate("Dialog", "Apointment Factor", None))
 
-        self.appFactorValue.setText(_translate("Dialog", "0", None))
+        self.appFactorValue.setText(_translate("Dialog", "1", None))
         self.appFactorInitial = self.appFactorValue.text()
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Advanced Settings", None))
