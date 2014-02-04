@@ -988,7 +988,7 @@ class Ui_Dialog(object):
         self.fileLocation.setText(fname)
 
     def appFactorChange(self,value):
-        self.appFactorValue.setText(str(value/100))
+        self.appFactorValue.setText(str(float(value)/100))
 
     def recordInitialDispatch(self):
         
