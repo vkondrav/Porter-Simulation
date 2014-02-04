@@ -68,7 +68,7 @@ def reportStatistics(jobList):
     print "Average time to complete a job: %d" % averageTimeToComplete
 
     
-def main():
+def main(config):
     jobList = JobList()
     # jobList.insert(Job(0, 0, 1))
     # jobList.insert(Job(10, 1, 2))
@@ -83,7 +83,7 @@ def main():
     
     importer = StatImport()
     jobList = JobList()
-    dispatchTable = importer.runImport('data.csv', jobList, "2013-10-31 8:00:00", "2013-10-31 20:00:00")
+    dispatchTable = importer.runImport(config["fileLocation"], jobList, config["startDate"], config["endDate"])
     
     env = simpy.Environment()
     
@@ -110,5 +110,5 @@ def main():
         
     reportStatistics(jobList.releasedJobList)
 
-    
-main()
+if __name__=='__main__':
+	main()
