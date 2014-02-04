@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Feb  3 23:02:47 2014
+# Created: Tue Feb 04 01:28:36 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -283,6 +283,7 @@ class Ui_Dialog(object):
         self.appFactor.setMinimum(100)
         self.appFactor.setMaximum(300)
         self.appFactor.setSingleStep(3)
+        self.appFactor.setProperty("value", 120)
         self.appFactor.setOrientation(QtCore.Qt.Horizontal)
         self.appFactor.setTickPosition(QtGui.QSlider.TicksAbove)
         self.appFactor.setTickInterval(3)
@@ -332,6 +333,7 @@ class Ui_Dialog(object):
         self.label_22.setObjectName(_fromUtf8("label_22"))
 
         self.ajb2 = QtGui.QDoubleSpinBox(self.splitter_14)
+        self.ajb2.setProperty("value", 14.0)
         self.ajb2.setObjectName(_fromUtf8("ajb2"))
         self.ajb.append(self.ajb2)
 
@@ -344,6 +346,7 @@ class Ui_Dialog(object):
         self.label_23.setObjectName(_fromUtf8("label_23"))
 
         self.ajb3 = QtGui.QDoubleSpinBox(self.splitter_15)
+        self.ajb3.setProperty("value", 8.0)
         self.ajb3.setObjectName(_fromUtf8("ajb3"))
         self.ajb.append(self.ajb3)
 
@@ -356,6 +359,7 @@ class Ui_Dialog(object):
         self.label_24.setObjectName(_fromUtf8("label_24"))
 
         self.ajb4 = QtGui.QDoubleSpinBox(self.splitter_16)
+        self.ajb4.setProperty("value", 8.0)
         self.ajb4.setObjectName(_fromUtf8("ajb4"))
         self.ajb.append(self.ajb4)
 
@@ -368,6 +372,7 @@ class Ui_Dialog(object):
         self.label_25.setObjectName(_fromUtf8("label_25"))
 
         self.ajb5 = QtGui.QDoubleSpinBox(self.splitter_17)
+        self.ajb5.setProperty("value", 5.0)
         self.ajb5.setObjectName(_fromUtf8("ajb5"))
         self.ajb.append(self.ajb5)
 
@@ -380,6 +385,7 @@ class Ui_Dialog(object):
         self.label_26.setObjectName(_fromUtf8("label_26"))
 
         self.ajb6 = QtGui.QDoubleSpinBox(self.splitter_18)
+        self.ajb6.setProperty("value", 5.0)
         self.ajb6.setObjectName(_fromUtf8("ajb6"))
         self.ajb.append(self.ajb6)
 
@@ -392,6 +398,7 @@ class Ui_Dialog(object):
         self.label_27.setObjectName(_fromUtf8("label_27"))
 
         self.ajb7 = QtGui.QDoubleSpinBox(self.splitter_19)
+        self.ajb7.setProperty("value", 25.0)
         self.ajb7.setObjectName(_fromUtf8("ajb7"))
         self.ajb.append(self.ajb7)
 
@@ -404,6 +411,7 @@ class Ui_Dialog(object):
         self.label_28.setObjectName(_fromUtf8("label_28"))
 
         self.ajb8 = QtGui.QDoubleSpinBox(self.splitter_20)
+        self.ajb8.setProperty("value", 30.0)
         self.ajb8.setObjectName(_fromUtf8("ajb8"))
         self.ajb.append(self.ajb8)
 
@@ -416,6 +424,7 @@ class Ui_Dialog(object):
         self.label_29.setObjectName(_fromUtf8("label_29"))
 
         self.ajb9 = QtGui.QDoubleSpinBox(self.splitter_21)
+        self.ajb9.setProperty("value", 40.0)
         self.ajb9.setObjectName(_fromUtf8("ajb9"))
         self.ajb.append(self.ajb9)
 
@@ -453,6 +462,7 @@ class Ui_Dialog(object):
         self.label_43.setObjectName(_fromUtf8("label_43"))
 
         self.pmv1 = QtGui.QDoubleSpinBox(self.splitter_38)
+        self.pmv1.setProperty("value", 11.0)
         self.pmv1.setObjectName(_fromUtf8("pmv1"))
         self.pmv.append(self.pmv1)
 
@@ -465,6 +475,7 @@ class Ui_Dialog(object):
         self.label_44.setObjectName(_fromUtf8("label_44"))
 
         self.pmv2 = QtGui.QDoubleSpinBox(self.splitter_39)
+        self.pmv2.setProperty("value", 0.7)
         self.pmv2.setObjectName(_fromUtf8("pmv2"))
         self.pmv.append(self.pmv2)
 
@@ -477,6 +488,7 @@ class Ui_Dialog(object):
         self.label_45.setObjectName(_fromUtf8("label_45"))
 
         self.pmv3 = QtGui.QDoubleSpinBox(self.splitter_40)
+        self.pmv3.setProperty("value", 7.0)
         self.pmv3.setObjectName(_fromUtf8("pmv3"))
         self.pmv.append(self.pmv3)
 
@@ -489,6 +501,7 @@ class Ui_Dialog(object):
         self.label_46.setObjectName(_fromUtf8("label_46"))
 
         self.pmv4 = QtGui.QDoubleSpinBox(self.splitter_41)
+        self.pmv4.setProperty("value", 2.0)
         self.pmv4.setObjectName(_fromUtf8("pmv4"))
         self.pmv.append(self.pmv4)
 
@@ -501,6 +514,7 @@ class Ui_Dialog(object):
         self.label_47.setObjectName(_fromUtf8("label_47"))
 
         self.pmv5 = QtGui.QDoubleSpinBox(self.splitter_42)
+        self.pmv5.setProperty("value", 5.0)
         self.pmv5.setObjectName(_fromUtf8("pmv5"))
         self.pmv.append(self.pmv5)
 
@@ -513,6 +527,7 @@ class Ui_Dialog(object):
         self.label_48.setObjectName(_fromUtf8("label_48"))
 
         self.pmv6 = QtGui.QDoubleSpinBox(self.splitter_43)
+        self.pmv6.setProperty("value", 3.0)
         self.pmv6.setObjectName(_fromUtf8("pmv6"))
         self.pmv.append(self.pmv6)
 
@@ -525,6 +540,7 @@ class Ui_Dialog(object):
         self.label_49.setObjectName(_fromUtf8("label_49"))
 
         self.pmv7 = QtGui.QDoubleSpinBox(self.splitter_44)
+        self.pmv7.setProperty("value", 1.0)
         self.pmv7.setObjectName(_fromUtf8("pmv7"))
 
         self.groupBox_8 = QtGui.QGroupBox(self.groupBox_4)
@@ -564,6 +580,7 @@ class Ui_Dialog(object):
         self.label_52.setObjectName(_fromUtf8("label_52"))
 
         self.av1 = QtGui.QDoubleSpinBox(self.splitter_49)
+        self.av1.setProperty("value", 4.0)
         self.av1.setObjectName(_fromUtf8("av1"))
         self.av.append(self.av1)
 
@@ -576,6 +593,7 @@ class Ui_Dialog(object):
         self.label_53.setObjectName(_fromUtf8("label_53"))
 
         self.av2 = QtGui.QDoubleSpinBox(self.splitter_50)
+        self.av2.setProperty("value", 8.0)
         self.av2.setObjectName(_fromUtf8("av2"))
         self.av.append(self.av2)
 
@@ -588,6 +606,7 @@ class Ui_Dialog(object):
         self.label_54.setObjectName(_fromUtf8("label_54"))
 
         self.av3 = QtGui.QDoubleSpinBox(self.splitter_51)
+        self.av3.setProperty("value", 7.0)
         self.av3.setObjectName(_fromUtf8("av3"))
 
         self.splitter_52 = QtGui.QSplitter(self.splitter_47)
@@ -599,6 +618,7 @@ class Ui_Dialog(object):
         self.label_55.setObjectName(_fromUtf8("label_55"))
 
         self.av4 = QtGui.QDoubleSpinBox(self.splitter_52)
+        self.av4.setProperty("value", 14.0)
         self.av4.setObjectName(_fromUtf8("av4"))
         self.av.append(self.av4)
 
@@ -611,6 +631,7 @@ class Ui_Dialog(object):
         self.label_56.setObjectName(_fromUtf8("label_56"))
 
         self.av5 = QtGui.QDoubleSpinBox(self.splitter_53)
+        self.av5.setProperty("value", 10.0)
         self.av5.setObjectName(_fromUtf8("av5"))
         self.av.append(self.av5)
 
@@ -623,6 +644,7 @@ class Ui_Dialog(object):
         self.label_57.setObjectName(_fromUtf8("label_57"))
 
         self.av6 = QtGui.QDoubleSpinBox(self.splitter_54)
+        self.av6.setProperty("value", 12.0)
         self.av6.setObjectName(_fromUtf8("av6"))
         self.av.append(self.av6)
 
@@ -635,6 +657,7 @@ class Ui_Dialog(object):
         self.label_58.setObjectName(_fromUtf8("label_58"))
 
         self.av7 = QtGui.QDoubleSpinBox(self.splitter_55)
+        self.av7.setProperty("value", 10.0)
         self.av7.setObjectName(_fromUtf8("av7"))
         self.av.append(self.av7)
 
@@ -664,6 +687,7 @@ class Ui_Dialog(object):
         self.label_32.setObjectName(_fromUtf8("label_32"))
 
         self.wjl1 = QtGui.QDoubleSpinBox(self.splitter_27)
+        self.wjl1.setProperty("value", 20.0)
         self.wjl1.setObjectName(_fromUtf8("wjl1"))
         self.wjl.append(self.wjl1)
 
@@ -676,6 +700,7 @@ class Ui_Dialog(object):
         self.label_33.setObjectName(_fromUtf8("label_33"))
 
         self.wjl2 = QtGui.QDoubleSpinBox(self.splitter_28)
+        self.wjl2.setProperty("value", 11.0)
         self.wjl2.setObjectName(_fromUtf8("wjl2"))
         self.wjl.append(self.wjl2)
 
@@ -688,6 +713,7 @@ class Ui_Dialog(object):
         self.label_34.setObjectName(_fromUtf8("label_34"))
 
         self.wjl3 = QtGui.QDoubleSpinBox(self.splitter_29)
+        self.wjl3.setProperty("value", 7.0)
         self.wjl3.setObjectName(_fromUtf8("wjl3"))
         self.wjl.append(self.wjl3)
 
@@ -700,6 +726,7 @@ class Ui_Dialog(object):
         self.label_35.setObjectName(_fromUtf8("label_35"))
 
         self.wjl4 = QtGui.QDoubleSpinBox(self.splitter_30)
+        self.wjl4.setProperty("value", 5.0)
         self.wjl4.setObjectName(_fromUtf8("wjl4"))
         self.wjl.append(self.wjl4)
 
@@ -712,6 +739,7 @@ class Ui_Dialog(object):
         self.label_36.setObjectName(_fromUtf8("label_36"))
 
         self.wjl5 = QtGui.QDoubleSpinBox(self.splitter_31)
+        self.wjl5.setProperty("value", 4.0)
         self.wjl5.setObjectName(_fromUtf8("wjl5"))
         self.wjl.append(self.wjl5)
 
@@ -724,6 +752,7 @@ class Ui_Dialog(object):
         self.label_37.setObjectName(_fromUtf8("label_37"))
 
         self.wjl6 = QtGui.QDoubleSpinBox(self.splitter_32)
+        self.wjl6.setProperty("value", 3.0)
         self.wjl6.setObjectName(_fromUtf8("wjl6"))
         self.wjl.append(self.wjl6)
 
@@ -736,6 +765,7 @@ class Ui_Dialog(object):
         self.label_38.setObjectName(_fromUtf8("label_38"))
 
         self.wjl7 = QtGui.QDoubleSpinBox(self.splitter_33)
+        self.wjl7.setProperty("value", 2.0)
         self.wjl7.setObjectName(_fromUtf8("wjl7"))
         self.wjl.append(self.wjl7)
 
@@ -748,6 +778,7 @@ class Ui_Dialog(object):
         self.label_39.setObjectName(_fromUtf8("label_39"))
 
         self.wjl8 = QtGui.QDoubleSpinBox(self.splitter_34)
+        self.wjl8.setProperty("value", 1.0)
         self.wjl8.setObjectName(_fromUtf8("wjl8"))
         self.wjl.append(self.wjl8)
 
@@ -828,7 +859,7 @@ class Ui_Dialog(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Basic Settings", None))
         self.groupBox_4.setTitle(_translate("Dialog", "Dispatcher", None))
         self.label_13.setText(_translate("Dialog", "Apointment Factor", None))
-        self.appFactorValue.setText(_translate("Dialog", "1", None))
+        self.appFactorValue.setText(_translate("Dialog", "1.2", None))
         self.groupBox_5.setTitle(_translate("Dialog", "Automatic Job Priority Values", None))
         self.label_19.setText(_translate("Dialog", "Job Priority", None))
         self.label_20.setText(_translate("Dialog", "Minutes", None))
@@ -853,7 +884,7 @@ class Ui_Dialog(object):
         self.label_49.setText(_translate("Dialog", "Campus", None))
         self.groupBox_8.setTitle(_translate("Dialog", "Autolocation Values", None))
         self.label_50.setText(_translate("Dialog", "Section", None))
-        self.label_51.setText(_translate("Dialog", "Weight", None))
+        self.label_51.setText(_translate("Dialog", "Minutes", None))
         self.label_52.setText(_translate("Dialog", "Location", None))
         self.label_53.setText(_translate("Dialog", "Zone", None))
         self.label_54.setText(_translate("Dialog", "Unit", None))
@@ -876,7 +907,7 @@ class Ui_Dialog(object):
         self.resetAllDispatch.setText(_translate("Dialog", "Reset All", None))
         self.label_13.setText(_translate("Dialog", "Apointment Factor", None))
 
-        self.appFactorValue.setText(_translate("Dialog", "1", None))
+        self.appFactorValue.setText(_translate("Dialog", "1.2", None))
         self.appFactorInitial = self.appFactorValue.text()
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Advanced Settings", None))
@@ -1006,6 +1037,7 @@ class Ui_Dialog(object):
 
     def resetAllDispatchClicked(self):
         self.appFactorValue.setText(self.appFactorInitial)
+        self.appFactor.setProperty("value", int(float(self.appFactorInitial)*100))
 
         i = 0
         while i < len(self.ajb):

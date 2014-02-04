@@ -47,7 +47,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -555,6 +555,9 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
       <property name="singleStep">
        <number>3</number>
       </property>
+      <property name="value">
+       <number>120</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -588,7 +591,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
        </rect>
       </property>
       <property name="text">
-       <string>1</string>
+       <string>1.2</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -659,7 +662,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb2"/>
+        <widget class="QDoubleSpinBox" name="ajb2">
+         <property name="value">
+          <double>14.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_15">
         <property name="orientation">
@@ -673,7 +680,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb3"/>
+        <widget class="QDoubleSpinBox" name="ajb3">
+         <property name="value">
+          <double>8.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_16">
         <property name="orientation">
@@ -687,7 +698,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb4"/>
+        <widget class="QDoubleSpinBox" name="ajb4">
+         <property name="value">
+          <double>8.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_17">
         <property name="orientation">
@@ -701,7 +716,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb5"/>
+        <widget class="QDoubleSpinBox" name="ajb5">
+         <property name="value">
+          <double>5.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_18">
         <property name="orientation">
@@ -715,7 +734,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb6"/>
+        <widget class="QDoubleSpinBox" name="ajb6">
+         <property name="value">
+          <double>5.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_19">
         <property name="orientation">
@@ -729,7 +752,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb7"/>
+        <widget class="QDoubleSpinBox" name="ajb7">
+         <property name="value">
+          <double>25.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_20">
         <property name="orientation">
@@ -743,7 +770,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb8"/>
+        <widget class="QDoubleSpinBox" name="ajb8">
+         <property name="value">
+          <double>30.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_21">
         <property name="orientation">
@@ -757,7 +788,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="ajb9"/>
+        <widget class="QDoubleSpinBox" name="ajb9">
+         <property name="value">
+          <double>40.000000000000000</double>
+         </property>
+        </widget>
        </widget>
       </widget>
      </widget>
@@ -838,7 +873,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv1"/>
+        <widget class="QDoubleSpinBox" name="pmv1">
+         <property name="value">
+          <double>11.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_39">
         <property name="orientation">
@@ -852,7 +891,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv2"/>
+        <widget class="QDoubleSpinBox" name="pmv2">
+         <property name="value">
+          <double>0.700000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_40">
         <property name="orientation">
@@ -866,7 +909,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv3"/>
+        <widget class="QDoubleSpinBox" name="pmv3">
+         <property name="value">
+          <double>7.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_41">
         <property name="orientation">
@@ -880,7 +927,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv4"/>
+        <widget class="QDoubleSpinBox" name="pmv4">
+         <property name="value">
+          <double>2.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_42">
         <property name="orientation">
@@ -894,7 +945,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv5"/>
+        <widget class="QDoubleSpinBox" name="pmv5">
+         <property name="value">
+          <double>5.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_43">
         <property name="orientation">
@@ -908,7 +963,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv6"/>
+        <widget class="QDoubleSpinBox" name="pmv6">
+         <property name="value">
+          <double>3.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_44">
         <property name="orientation">
@@ -922,7 +981,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="pmv7"/>
+        <widget class="QDoubleSpinBox" name="pmv7">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
        </widget>
       </widget>
      </widget>
@@ -987,7 +1050,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QLabel" name="label_51">
          <property name="text">
-          <string>Weight</string>
+          <string>Minutes</string>
          </property>
         </widget>
        </widget>
@@ -1003,7 +1066,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av1"/>
+        <widget class="QDoubleSpinBox" name="av1">
+         <property name="value">
+          <double>4.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_50">
         <property name="orientation">
@@ -1017,7 +1084,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av2"/>
+        <widget class="QDoubleSpinBox" name="av2">
+         <property name="value">
+          <double>8.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_51">
         <property name="orientation">
@@ -1031,7 +1102,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av3"/>
+        <widget class="QDoubleSpinBox" name="av3">
+         <property name="value">
+          <double>7.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_52">
         <property name="orientation">
@@ -1045,7 +1120,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av4"/>
+        <widget class="QDoubleSpinBox" name="av4">
+         <property name="value">
+          <double>14.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_53">
         <property name="orientation">
@@ -1059,7 +1138,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av5"/>
+        <widget class="QDoubleSpinBox" name="av5">
+         <property name="value">
+          <double>10.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_54">
         <property name="orientation">
@@ -1073,7 +1156,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av6"/>
+        <widget class="QDoubleSpinBox" name="av6">
+         <property name="value">
+          <double>12.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_55">
         <property name="orientation">
@@ -1087,7 +1174,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="av7"/>
+        <widget class="QDoubleSpinBox" name="av7">
+         <property name="value">
+          <double>10.000000000000000</double>
+         </property>
+        </widget>
        </widget>
       </widget>
      </widget>
@@ -1142,7 +1233,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl1"/>
+        <widget class="QDoubleSpinBox" name="wjl1">
+         <property name="value">
+          <double>20.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_28">
         <property name="orientation">
@@ -1156,7 +1251,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl2"/>
+        <widget class="QDoubleSpinBox" name="wjl2">
+         <property name="value">
+          <double>11.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_29">
         <property name="orientation">
@@ -1170,7 +1269,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl3"/>
+        <widget class="QDoubleSpinBox" name="wjl3">
+         <property name="value">
+          <double>7.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_30">
         <property name="orientation">
@@ -1184,7 +1287,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl4"/>
+        <widget class="QDoubleSpinBox" name="wjl4">
+         <property name="value">
+          <double>5.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_31">
         <property name="orientation">
@@ -1198,7 +1305,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl5"/>
+        <widget class="QDoubleSpinBox" name="wjl5">
+         <property name="value">
+          <double>4.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_32">
         <property name="orientation">
@@ -1212,7 +1323,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl6"/>
+        <widget class="QDoubleSpinBox" name="wjl6">
+         <property name="value">
+          <double>3.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_33">
         <property name="orientation">
@@ -1226,7 +1341,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl7"/>
+        <widget class="QDoubleSpinBox" name="wjl7">
+         <property name="value">
+          <double>2.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_34">
         <property name="orientation">
@@ -1240,7 +1359,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="wjl8"/>
+        <widget class="QDoubleSpinBox" name="wjl8">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
        </widget>
        <widget class="QSplitter" name="splitter_35">
         <property name="orientation">
