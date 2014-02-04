@@ -47,7 +47,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -131,16 +131,6 @@ QSpinBox,QDateEdit,QComboBox
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="dateTime">
-         <datetime>
-          <hour>0</hour>
-          <minute>0</minute>
-          <second>0</second>
-          <year>2000</year>
-          <month>1</month>
-          <day>1</day>
-         </datetime>
         </property>
         <property name="displayFormat">
          <string>dd-MM-yyyy</string>
