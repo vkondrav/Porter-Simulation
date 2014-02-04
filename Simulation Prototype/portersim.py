@@ -1,4 +1,4 @@
-﻿import simpy
+import simpy
 
 from porter import Porter
 from state import State
@@ -67,7 +67,7 @@ def reportStatistics(jobList):
     print "Longest time to complete a job: %d" % longestTimeToComplete
     print "Average time to complete a job: %d" % averageTimeToComplete
 
-    
+
 def main(config):
     jobList = JobList()
     # jobList.insert(Job(0, 0, 1))
@@ -110,5 +110,7 @@ def main(config):
         
     reportStatistics(jobList.releasedJobList)
 
+
 if __name__=='__main__':
 	main()
+

@@ -5,27 +5,35 @@ from random import randint, seed
 seed(0)
 
 class Porter(object):
-    
     pending = 'pending'
     dispatched = 'dispatched'
     inprogress = 'inprogress'
     complete = 'complete'
 
-    def __init__(self, id):
+    AUTOLOCATION_VALUE = [['LOCATION', 4], ['ZONE', 8], ['UNIT', 7], ['SECTION', 14], ['FLOOR', 10], ['BUILDING', 12], ['BASE', 16]]
+
+
+    def __init__(self, id, au):
         self.id = id
         self.state = Porter.pending
         self.unit = 0
         self.job = None
         self.origin = None
         self.destination = None
+        self.autoLocation = au
         self.clearProc = None
+
+    def configData():
+        for i in xrange(0,9):
+            AUTOLOCATION_VALUE[i][1] = self.autoLocation[i]
+        self.autoLocation = AUTOLOCATION_VALUE
         
     def __repr__(self):
         return "Porter" + str(self.id)
 
     # porter will no longer be at their completed destination after a specific amout of time
     def clearLocation():
-        yield simState.env.timeout(4.0*60)
+        yield simState.env.timeout(self.autoLocation[0]*60)
         self.unit = 0     
         
     def work(self, simState):
