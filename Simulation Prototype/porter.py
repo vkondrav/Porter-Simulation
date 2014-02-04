@@ -1,4 +1,8 @@
 from job import Job
+from random import randint, seed
+
+# maintain determinism
+seed(0)
 
 class Porter(object):
     pending = 'pending'
@@ -38,24 +42,25 @@ class Porter(object):
             self.clearProc.Interrupt()
         print "%s is dispatched %s" % (self, self.job)
         self.state = Porter.dispatched
-        done_in = simState.sGraph.getTimeBetween(self.unit, self.job.origin)
+        dispatchTimes = simState.dispatchTable[self.job.origin]
+        done_in = dispatchTimes[randint(0, len(dispatchTimes) - 1)]
         yield simState.env.timeout(done_in)
         
         # in progress
         print "%s is in-progress %s" % (self, self.job)
         self.state = Porter.inprogress
         self.unit = self.job.origin
-        self.job.startTime = simState.env.now
-        done_in = simState.sGraph.getTimeBetween(self.job.origin, self.job.destination)
+        self.job.jobStartTime = simState.env.now
+        done_in = self.job.inProgressTime
         yield simState.env.timeout(done_in)
         
         # complete
         print "%s is complete %s" % (self, self.job)
         self.state = Porter.complete
         self.unit = self.job.destination
-        self.job.completionTime = simState.env.now
+        self.job.jobCompletionTime = simState.env.now
+        done_in = self.job.completeTime
         self.job = None
-        done_in = 0
         yield simState.env.timeout(done_in)
         
         # pending

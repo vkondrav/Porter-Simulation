@@ -78,22 +78,13 @@ class Dispatcher(object):
                 self.pending_jobs.append(job)
                 continue
                 
-            closestPorter = None
-            minDistance = None
             for porter in pendingPorters:
                 if porter.unit == job.origin:
                     porter.job = job
                     simState.env.process(porter.work(simState))
                     break
-                
-                distance = simState.sGraph.getTimeBetween(porter.unit, job.origin)
-                if minDistance is None:
-                    minDistance = distance
-                    closestPorter = porter
-                elif distance < minDistance:
-                    minDistance = distance
-                    closestPorter = porter
                     
             if not porter.job:
-                closestPorter.job = job
-                simState.env.process(closestPorter.work(simState))
+                porter = pendingPorters[0]
+                porter.job = job
+                simState.env.process(porter.work(simState))

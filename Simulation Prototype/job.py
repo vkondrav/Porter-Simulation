@@ -1,21 +1,24 @@
 class Job(object):
     _jobId = 0
 
-    def __init__(self, creationTime, origin, destination, au):
+    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination):
         self.creationTime = creationTime
+        self.inProgressTime = inProgressTime
+        self.completeTime = completeTime
         self.origin = origin
         self.destination = destination
-        self.startTime = None
-        self.completionTime = None
+        self.jobStartTime = None
+        self.jobCompletionTime = None
         self.priority = None
         self.appointment = None
         self.autoProc = None
+
         self.jobId = Job._jobId
-        self.automaticUpgrade = au
+        self.automaticUpgrade = None
         Job._jobId += 1
         
     def __repr__(self):
-        return "Job%d: %d -> %d" % (self.jobId, self.origin, self.destination)
+        return "Job%d: %s -> %s" % (self.jobId, self.origin, self.destination)
 
     # process to update the job's priority
     def autoUpdateProcess():
@@ -27,6 +30,7 @@ class Job(object):
                     yield simState.env.timeout(upgrade[1] * 60)                
                     self.priority = self.priority - 1
                     break
+
         
 class JobList(object):
     AUTOMATIC_UPGRADE = [[1, None], [2, 14], [3, 8], [4, 8], [5,5], [6,5], [7, 25], [8, 30], [9,40]]
@@ -56,6 +60,7 @@ class JobList(object):
         while self.jobList:
             # peek at the end of the job list to ensure atomicity of job lists
             job = self.jobList[-1]
+            print job
             yield simState.env.timeout(job.creationTime - simState.env.now)
             self.releasedJobList.append(self.jobList.pop())
             simState.dispatcher.addJob(job)
