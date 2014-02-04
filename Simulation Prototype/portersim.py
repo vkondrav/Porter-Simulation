@@ -1,10 +1,10 @@
 ﻿import simpy
 
 from porter import Porter
-from spanningGraph import SpanningGraph, constructSampleGraph
 from state import State
 from dispatcher import Dispatcher
 from job import Job, JobList
+from statImport import StatImport
 
 
 SIM_TIME = None
@@ -26,7 +26,7 @@ def reportStatistics(jobList):
     averageTimeToComplete = None
     
     for job in jobList:
-        timeToStart = job.startTime - job.creationTime
+        timeToStart = job.jobStartTime - job.creationTime
         summedTimeToStart += timeToStart
         
         if shortestTimeToStart is None:
@@ -40,7 +40,7 @@ def reportStatistics(jobList):
             longestTimeToStart = timeToStart
             
         
-        timeToComplete = job.completionTime - job.creationTime
+        timeToComplete = job.jobCompletionTime - job.creationTime
         summedTimeToComplete += timeToComplete
             
         if shortestTimeToComplete is None:
@@ -70,16 +70,20 @@ def reportStatistics(jobList):
     
 def main():
     jobList = JobList()
-    jobList.insert(Job(0, 0, 1))
-    jobList.insert(Job(10, 1, 2))
-    jobList.insert(Job(20, 2, 0))
-    jobList.insert(Job(30, 1, 0))
-    jobList.insert(Job(40, 0, 2))
-    jobList.insert(Job(50, 2, 1))
-    jobList.insert(Job(60, 0, 2))
-    jobList.insert(Job(70, 1, 2))
-    jobList.insert(Job(80, 0, 1))
-    jobList.insert(Job(90, 2, 1))
+    # jobList.insert(Job(0, 0, 1))
+    # jobList.insert(Job(10, 1, 2))
+    # jobList.insert(Job(20, 2, 0))
+    # jobList.insert(Job(30, 1, 0))
+    # jobList.insert(Job(40, 0, 2))
+    # jobList.insert(Job(50, 2, 1))
+    # jobList.insert(Job(60, 0, 2))
+    # jobList.insert(Job(70, 1, 2))
+    # jobList.insert(Job(80, 0, 1))
+    # jobList.insert(Job(90, 2, 1))
+    
+    importer = StatImport()
+    jobList = JobList()
+    dispatchTable = importer.runImport('data.csv', jobList, "2013-10-31 8:00:00", "2013-10-31 20:00:00")
     
     env = simpy.Environment()
     
@@ -91,15 +95,13 @@ def main():
             print 'Please input an integer'
     
     dispatcher = Dispatcher()
-    spanGraph = SpanningGraph()
-    constructSampleGraph(spanGraph)
     
     porterList = []
     for i in range(numPorters):
         newPorter = Porter(i)
         porterList.append(newPorter)
 	
-    simState = State(env, porterList, spanGraph, dispatcher, jobList)
+    simState = State(env, porterList, dispatchTable, dispatcher, jobList)
 	
     env.process(dispatcher.assignJobs(simState))
     env.process(jobList.jobReleaser(simState))

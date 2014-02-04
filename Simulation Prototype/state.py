@@ -1,9 +1,9 @@
 class State(object):
 
-    def __init__(self, env, porterList, spanningGraph, dispatcher, jobList):
+    def __init__(self, env, porterList, dispatchTable, dispatcher, jobList):
         self.env = env
         self.porters = porterList
-        self.sGraph = spanningGraph
+        self.dispatchTable = dispatchTable
         self.dispatcher = dispatcher
         self.jobList = jobList
         self.curTime = 0
