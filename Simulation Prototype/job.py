@@ -1,11 +1,17 @@
 class Job(object):
     _jobId = 0
+<<<<<<< HEAD
 
     def __init__(self, creationTime, inProgressTime, completeTime, origin, destination):
+=======
+
+    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination):
+>>>>>>> StatImport is now functioning
         self.creationTime = creationTime
         self.inProgressTime = inProgressTime
         self.completeTime = completeTime
         self.origin = origin
+<<<<<<< HEAD
         self.destination = destination
         self.jobStartTime = None
         self.jobCompletionTime = None
@@ -13,10 +19,16 @@ class Job(object):
         self.appointment = None
         self.autoProc = None
 
+=======
+        self.destination = destination
+        self.jobStartTime = None
+        self.jobCompletionTime = None
+>>>>>>> StatImport is now functioning
         self.jobId = Job._jobId
         self.automaticUpgrade = None
         Job._jobId += 1
         
+<<<<<<< HEAD
     def __repr__(self):
         return "Job%d: %s -> %s" % (self.jobId, self.origin, self.destination)
 
@@ -31,6 +43,11 @@ class Job(object):
                     self.priority = self.priority - 1
                     break
 
+=======
+    def __repr__(self):
+        return "Job%d: %s -> %s" % (self.jobId, self.origin, self.destination)
+        
+>>>>>>> StatImport is now functioning
         
 class JobList(object):
     AUTOMATIC_UPGRADE = [[1, None], [2, 14], [3, 8], [4, 8], [5,5], [6,5], [7, 25], [8, 30], [9,40]]

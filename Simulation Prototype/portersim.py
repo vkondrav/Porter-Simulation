@@ -77,6 +77,22 @@ def main():
     
     importer = StatImport()
     jobList = JobList()
+<<<<<<< HEAD
+=======
+    # jobList.insert(Job(0, 0, 1))
+    # jobList.insert(Job(10, 1, 2))
+    # jobList.insert(Job(20, 2, 0))
+    # jobList.insert(Job(30, 1, 0))
+    # jobList.insert(Job(40, 0, 2))
+    # jobList.insert(Job(50, 2, 1))
+    # jobList.insert(Job(60, 0, 2))
+    # jobList.insert(Job(70, 1, 2))
+    # jobList.insert(Job(80, 0, 1))
+    # jobList.insert(Job(90, 2, 1))
+    
+    importer = StatImport()
+    jobList = JobList()
+>>>>>>> StatImport is now functioning
     dispatchTable = importer.runImport('data.csv', jobList, "2013-10-31 8:00:00", "2013-10-31 20:00:00")
     
     env = simpy.Environment()
@@ -89,9 +105,13 @@ def main():
             print 'Please input an integer'
 
     
+<<<<<<< HEAD
     dispatcher = Dispatcher(inputDict['appFactorValue'],inputDict['wjl'],inputDict['pmv'])
     dispatcher.configData()
 
+=======
+    dispatcher = Dispatcher()
+>>>>>>> StatImport is now functioning
     
     porterList = []
     for i in range(numPorters):

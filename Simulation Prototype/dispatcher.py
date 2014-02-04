@@ -84,7 +84,11 @@ class Dispatcher(object):
                     simState.env.process(porter.work(simState))
                     break
                     
+<<<<<<< HEAD
             if not porter.job:
+=======
+            if not porter.job:
+>>>>>>> StatImport is now functioning
                 porter = pendingPorters[0]
                 porter.job = job
                 simState.env.process(porter.work(simState))
