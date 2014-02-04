@@ -1,21 +1,23 @@
 from porter import Porter
 from job import Job
 
-APPOINTMENT_FACTOR = 1.2
-AUTOMATIC_UPGRADE = [[1, None], [2, 14], [3, 8], [4, 8], [5,5], [6,5], [7, 25], [8, 30], [9,40]]
-PRIORITY_WEIGHT = [[1, 20], [2, 11], [3, 7], [4,5], [5,4], [6,3], [7,2], [8,1], [9,0]]
-PROXMITY_WEIGHT = [['LOCATION', 11], ['ZONE', 7], ['UNIT', 7], ['SECTION', 2], ['FLOOR', 5], ['BUILDING', 3], ['CAMPUS', 1]]
-AUTOLOCATION_VALUE = [['LOCATION', 4], ['ZONE', 8], ['UNIT', 7], ['SECTION', 14], ['FLOOR', 10], ['BUILDING', 12], ['BASE', 16]]
-
 class Dispatcher(object):
+    
+    PRIORITY_WEIGHT = [[1, 20], [2, 11], [3, 7], [4,5], [5,4], [6,3], [7,2], [8,1], [9,0]]
+    PROXIMITY_WEIGHT = [['LOCATION', 11], ['ZONE', 7], ['UNIT', 7], ['SECTION', 2], ['FLOOR', 5], ['BUILDING', 3], ['CAMPUS', 1]]
 
-    def __init__(self, af=APPOINTMENT_FACTOR, au=AUTOMATIC_UPGRADE, pw=PRIORITY_WEIGHT, pm=PROXIMITY_WEIGHT, av=AUTOLOCATION_VALUE):
+    def __init__(self, af, pw, pm):
         self.pending_jobs = []
         self.appointmentFactor = af
-        self.automaticUpgrade = au
         self.priorityWeight = pw
         self.proximityWeight = pm
-        self.autolocationValue = av
+
+    def configData():
+        for i in xrange(0,9):
+            PRIORITY_WEIGHT[i][1] = self.pw[i]
+            PROXIMITY_WEIGHT[i][1] = self.pm[i]
+        self.pw = PRIORITY_WEIGHT
+        self.pm = PROXIMITY_WEIGHT
 
     # get the priority weight
     def getJobPriorityWeight(priority):
@@ -26,7 +28,7 @@ class Dispatcher(object):
     # check to see if porter is at the job's origin
     def getProximityMatchValue(origin):
         for porter in pendingPorter:
-            if porter.unit == origin
+            if porter.unit == origin:
                 return self.proximityWeight[1][2]
         return 0
 

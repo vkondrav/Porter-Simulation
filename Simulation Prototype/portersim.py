@@ -1,4 +1,4 @@
-﻿import simpy
+import simpy
 
 from porter import Porter
 from spanningGraph import SpanningGraph, constructSampleGraph
@@ -69,7 +69,11 @@ def reportStatistics(jobList):
 
     
 def main():
-    jobList = JobList()
+    #name of input dictionary
+    configDict = None
+    
+    jobList = JobList(configDict['ajb'])
+    jobList.configData()
     jobList.insert(Job(0, 0, 1))
     jobList.insert(Job(10, 1, 2))
     jobList.insert(Job(20, 2, 0))
@@ -89,14 +93,18 @@ def main():
             break
         except ValueError:
             print 'Please input an integer'
+
     
-    dispatcher = Dispatcher()
+    dispatcher = Dispatcher(inputDict['appFactorValue'],inputDict['wjl'],inputDict['pmv'])
+    dispatcher.configData()
+    
     spanGraph = SpanningGraph()
     constructSampleGraph(spanGraph)
     
     porterList = []
     for i in range(numPorters):
-        newPorter = Porter(i)
+        newPorter = Porter(inputDict['av'])
+        newPorter.configData()
         porterList.append(newPorter)
 	
     simState = State(env, porterList, spanGraph, dispatcher, jobList)
