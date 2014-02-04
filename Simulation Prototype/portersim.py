@@ -97,7 +97,7 @@ def main(config):
     dispatcher = Dispatcher()
     
     porterList = []
-    for i in range(numPorters):
+    for i in range(config["numberOfPorters"]):
         newPorter = Porter(i)
         porterList.append(newPorter)
 	
