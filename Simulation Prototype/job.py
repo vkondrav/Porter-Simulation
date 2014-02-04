@@ -2,17 +2,19 @@ class Job(object):
     
     _jobId = 0
 
-    def __init__(self, creationTime, origin, destination):
+    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination):
         self.creationTime = creationTime
+        self.inProgressTime = inProgressTime
+        self.completeTime = completeTime
         self.origin = origin
         self.destination = destination
-        self.startTime = None
-        self.completionTime = None
+        self.jobStartTime = None
+        self.jobCompletionTime = None
         self.jobId = Job._jobId
         Job._jobId += 1
         
     def __repr__(self):
-        return "Job%d: %d -> %d" % (self.jobId, self.origin, self.destination)
+        return "Job%d: %s -> %s" % (self.jobId, self.origin, self.destination)
         
         
 class JobList(object):
@@ -35,6 +37,7 @@ class JobList(object):
         while self.jobList:
             # peek at the end of the job list to ensure atomicity of job lists
             job = self.jobList[-1]
+            print job
             yield simState.env.timeout(job.creationTime - simState.env.now)
             self.releasedJobList.append(self.jobList.pop())
             simState.dispatcher.addJob(job)
