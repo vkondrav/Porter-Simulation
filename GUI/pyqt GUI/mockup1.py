@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Feb  3 20:56:07 2014
+# Created: Mon Feb  3 23:02:47 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -66,7 +66,7 @@ class Ui_Dialog(object):
         self.numberOfPorters = QtGui.QSpinBox(self.splitter_5)
         self.numberOfPorters.setStyleSheet(_fromUtf8(""))
         self.numberOfPorters.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.numberOfPorters.setMaximum(1000)
+        self.numberOfPorters.setMaximum(9999)
         self.numberOfPorters.setProperty("value", 10)
         self.numberOfPorters.setObjectName(_fromUtf8("numberOfPorters"))
         self.splitter_4 = QtGui.QSplitter(self.splitter_6)
@@ -169,7 +169,7 @@ class Ui_Dialog(object):
         self.porterWait = QtGui.QDoubleSpinBox(self.splitter_10)
         self.porterWait.setStyleSheet(_fromUtf8(""))
         self.porterWait.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.porterWait.setMaximum(1000.0)
+        self.porterWait.setMaximum(99999.99)
         self.porterWait.setProperty("value", 5.0)
         self.porterWait.setObjectName(_fromUtf8("porterWait"))
         self.splitter_12 = QtGui.QSplitter(self.splitter_24)
@@ -601,7 +601,7 @@ class Ui_Dialog(object):
         self.hhs.setObjectName(_fromUtf8("hhs"))
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

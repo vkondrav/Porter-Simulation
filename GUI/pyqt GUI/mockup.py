@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Feb  3 20:56:07 2014
+# Created: Mon Feb  3 23:02:47 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -86,7 +86,7 @@ class Ui_Dialog(object):
         self.numberOfPorters = QtGui.QSpinBox(self.splitter_5)
         self.numberOfPorters.setStyleSheet(_fromUtf8(""))
         self.numberOfPorters.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.numberOfPorters.setMaximum(1000)
+        self.numberOfPorters.setMaximum(9999)
         self.numberOfPorters.setProperty("value", 10)
         self.numberOfPorters.setObjectName(_fromUtf8("numberOfPorters"))
 
@@ -203,7 +203,7 @@ class Ui_Dialog(object):
         self.porterWait = QtGui.QDoubleSpinBox(self.splitter_10)
         self.porterWait.setStyleSheet(_fromUtf8(""))
         self.porterWait.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.porterWait.setMaximum(1000.0)
+        self.porterWait.setMaximum(99999.99)
         self.porterWait.setProperty("value", 5.0)
         self.porterWait.setObjectName(_fromUtf8("porterWait"))
         self.splitter_12 = QtGui.QSplitter(self.splitter_24)
@@ -793,7 +793,7 @@ class Ui_Dialog(object):
         self.resetAllButton.clicked.connect(self.resetAllButtonClicked)
         self.fileBrowseButton.clicked.connect(self.fileBrowseButtonClicked)
         self.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
-        self.appFactor.valueChanged[int].connect(self.appFactorChange)
+        self.appFactor.valueChanged[int].connect(self.appFactorChange) 
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
@@ -888,16 +888,16 @@ class Ui_Dialog(object):
 
         if self.startDate.date() > self.endDate.date():
             ex = False
-            errorStr = errorStr + "Start Date cannot be more than the End Date "
+            errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
         
         if not os.path.isfile(self.fileLocation.text()):
             ex = False
-            errorStr = errorStr + "File does not exist "
+            errorStr = errorStr + "File does not exist. "
 
         if ex:
             self.assignAndExecute()
         else:
-            print (errorStr)
+            QtGui.QMessageBox.information(Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
 
     def assignAndExecute(self):
         #float

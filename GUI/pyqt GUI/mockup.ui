@@ -47,7 +47,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -109,7 +109,7 @@ QSpinBox,QDateEdit,QComboBox
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="maximum">
-         <number>1000</number>
+         <number>9999</number>
         </property>
         <property name="value">
          <number>10</number>
@@ -369,7 +369,7 @@ QDoubleSpinBox
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="maximum">
-          <double>1000.000000000000000</double>
+          <double>99999.990000000005239</double>
          </property>
          <property name="value">
           <double>5.000000000000000</double>
