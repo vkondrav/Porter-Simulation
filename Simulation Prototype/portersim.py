@@ -87,12 +87,12 @@ def main(config):
     
     env = simpy.Environment()
     
-    while True:
-        try:
-            numPorters = int(raw_input('Number of porters: '))
-            break
-        except ValueError:
-            print 'Please input an integer'
+    # while True:
+        # try:
+            # numPorters = int(raw_input('Number of porters: '))
+            # break
+        # except ValueError:
+            # print 'Please input an integer'
     
     dispatcher = Dispatcher()
     
