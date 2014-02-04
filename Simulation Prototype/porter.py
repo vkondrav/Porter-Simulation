@@ -18,12 +18,20 @@ class Porter(object):
         self.job = None
         self.origin = None
         self.destination = None
+        self.clearProc = None
         
     def __repr__(self):
         return "Porter" + str(self.id)
+
+    # porter will no longer be at their completed destination after a specific amout of time
+    def clearLocation():
+        yield simState.env.timeout(4.0*60)
+        self.unit = 0     
         
     def work(self, simState):
         # dispatch
+        if self.clearProc:
+            self.clearProc.Interrupt()
         print "%s is dispatched %s" % (self, self.job)
         self.state = Porter.dispatched
         dispatchTimes = simState.dispatchTable[self.job.origin]
@@ -50,3 +58,4 @@ class Porter(object):
         # pending
         print "%s is pending" % (self)
         self.state = Porter.pending
+        self.clearProc = simState.env.process(clearLocation())

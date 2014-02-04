@@ -20,7 +20,7 @@ Proximity Match Value
 	[{'LOCATION', 11}, {'ZONE', 7}, {'UNIT', 7}, {'SECTION', 2}, {'FLOOR', 5}, {'BUILDING', 3}, {'CAMPUS', 1}]
 
 AutoLocation Values
-	-Esimates where a porter is based on how many minutes he/she has been available
+	-Estimates where a porter is based on how many minutes he/she has been available
 	-Values (Location, Minutes since Available)
 	LU_AutoLocation = [{'LOCATION', 4}, {'ZONE', 8}, {'UNIT', 7'}, {'SECTION', 14}, {'FLOOR', 10}, {'BUILDING', 12}, {'BASE', 16}]
 	
