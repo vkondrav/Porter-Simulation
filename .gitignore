@@ -244,3 +244,9 @@ pip-log.txt
 *.mtc1
 *.out
 *.synctex.gz
+
+############
+#Directories
+############
+
+/Simulation Prototype/.idea
