@@ -71,7 +71,7 @@ attributes = [
                 # "PatientMins",
                 # "LostPorterMinsOnCancel",
                 "PatientTransportFlag",
-                # "Created_Status",
+                "Created_Status",
                 # "ModeOfTravel"
              ]
 
@@ -108,7 +108,9 @@ class StatImport(object):
                             completeTime = strToDeltaT(data["CompleteDT"], pendingTimeAbs)
                             origin = data["Origin"]
                             destination = data["Destination"]
-                            jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination))
+                            priority = int(data["OriginalPriorityID"])
+                            appointment = 1 if data["Created_Status"] == "Appointment" else 0
+                            jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
                             self.addDispatchTime(origin, dispatchTime)
                         else:
                             print "Invalid CSV Entry:"

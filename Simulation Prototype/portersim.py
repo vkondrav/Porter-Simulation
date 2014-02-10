@@ -94,7 +94,8 @@ def main(config):
         # except ValueError:
             # print 'Please input an integer'
     
-    dispatcher = Dispatcher()
+    dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["pmv"], config["ajb"], config["av"])
+    dispatcher.configData()
     
     porterList = []
     for i in range(config["numberOfPorters"]):

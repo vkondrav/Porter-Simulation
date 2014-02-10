@@ -10,36 +10,19 @@ class Porter(object):
     inprogress = 'inprogress'
     complete = 'complete'
 
-    AUTOLOCATION_VALUE = [['LOCATION', 4], ['ZONE', 8], ['UNIT', 7], ['SECTION', 14], ['FLOOR', 10], ['BUILDING', 12], ['BASE', 16]]
-
-
-    def __init__(self, id, au):
+    def __init__(self, id):
         self.id = id
         self.state = Porter.pending
         self.unit = 0
         self.job = None
         self.origin = None
         self.destination = None
-        self.autoLocation = au
-        self.clearProc = None
-
-    def configData():
-        for i in xrange(0,9):
-            AUTOLOCATION_VALUE[i][1] = self.autoLocation[i]
-        self.autoLocation = AUTOLOCATION_VALUE
         
     def __repr__(self):
-        return "Porter" + str(self.id)
-
-    # porter will no longer be at their completed destination after a specific amout of time
-    def clearLocation():
-        yield simState.env.timeout(self.autoLocation[0]*60)
-        self.unit = 0     
+        return "Porter" + str(self.id)  
         
     def work(self, simState):
         # dispatch
-        if self.clearProc:
-            self.clearProc.Interrupt()
         print "%s is dispatched %s" % (self, self.job)
         self.state = Porter.dispatched
         dispatchTimes = simState.dispatchTable[self.job.origin]
@@ -66,4 +49,3 @@ class Porter(object):
         # pending
         print "%s is pending" % (self)
         self.state = Porter.pending
-        self.clearProc = simState.env.process(clearLocation())

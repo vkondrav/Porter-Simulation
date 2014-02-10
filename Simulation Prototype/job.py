@@ -1,7 +1,7 @@
 class Job(object):
     _jobId = 0
 
-    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination):
+    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination, priority, appointment):
         self.creationTime = creationTime
         self.inProgressTime = inProgressTime
         self.completeTime = completeTime
@@ -11,39 +11,36 @@ class Job(object):
         self.jobCompletionTime = None
         self.startTime = None
         self.completionTime = None
-        self.priority = None
-        self.appointment = None
+        self.priority = priority
+        self.appointment = appointment
         self.autoProc = None
         self.jobId = Job._jobId
-        self.automaticUpgrade = au
         Job._jobId += 1
         
     def __repr__(self):
         return "Job%d: %s -> %s" % (self.jobId, self.origin, self.destination)
 
     # process to update the job's priority
-    def autoUpdateProcess():
+    def autoUpdateProcess(self, au):
         # continue updating until priority is 1 or it is interrupted by the dispatcher
-        while self.priority != 1:
+        while self.priority != 0:
             # find the matching priority and wait X minutes before lowering the job's priority
-            for upgrade in self.automaticUpgrade:
-                if upgrade[0] == self.priority and self.priority != 1:
-                    yield simState.env.timeout(upgrade[1] * 60)                
+            for upgrade in au:
+                if upgrade[0] == self.priority and self.priority != 0:
+                    try:
+                        yield simState.env.timeout(upgrade[1] * 60)
+                    except:
+                        self.autoProc = None
                     self.priority = self.priority - 1
                     break
+        self.autoProc = None
         
 class JobList(object):
-    AUTOMATIC_UPGRADE = [[1, None], [2, 14], [3, 8], [4, 8], [5,5], [6,5], [7, 25], [8, 30], [9,40]]
 
     def __init__(self, au):                         
         self.jobList = []
         self.releasedJobList = []
         self.automaticUpgrade = au
-
-    def configData():
-        for i in xrange(0,9):
-            AUTOMATIC_UPGRADE[i][1] = self.automaticUpgrade
-        self.automaticUpgrade = AUTOMATIC_UPGRADE
 						
     def insert(self, job):
         job.automaticUpgrade = self.automaticUpgrade
