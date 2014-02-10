@@ -59,7 +59,7 @@
        <x>20</x>
        <y>10</y>
        <width>321</width>
-       <height>190</height>
+       <height>271</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -69,7 +69,7 @@
 	border-style: inset;
 }
 
-QSpinBox,QDateEdit,QComboBox
+QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
 {
 	background-color: rgb(255, 255, 255);
 }</string>
@@ -77,17 +77,27 @@ QSpinBox,QDateEdit,QComboBox
      <property name="title">
       <string>Basic Settings</string>
      </property>
+     <widget class="QSplitter" name="splitter">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>154</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
      <widget class="QSplitter" name="splitter_6">
       <property name="geometry">
        <rect>
         <x>30</x>
         <y>20</y>
-        <width>271</width>
-        <height>161</height>
+        <width>242</width>
+        <height>91</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -116,70 +126,6 @@ QSpinBox,QDateEdit,QComboBox
         </property>
        </widget>
       </widget>
-      <widget class="QSplitter" name="splitter_4">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Start Date</string>
-        </property>
-       </widget>
-       <widget class="QDateEdit" name="startDate">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="displayFormat">
-         <string>dd-MM-yyyy</string>
-        </property>
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-        <property name="currentSectionIndex">
-         <number>0</number>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QSplitter" name="splitter_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>End Date</string>
-        </property>
-       </widget>
-       <widget class="QDateEdit" name="endDate">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="dateTime">
-         <datetime>
-          <hour>0</hour>
-          <minute>0</minute>
-          <second>0</second>
-          <year>2000</year>
-          <month>1</month>
-          <day>1</day>
-         </datetime>
-        </property>
-        <property name="displayFormat">
-         <string>dd-MM-yyyy</string>
-        </property>
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-        <property name="currentSectionIndex">
-         <number>0</number>
-        </property>
-       </widget>
-      </widget>
       <widget class="QSplitter" name="splitter_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -195,6 +141,9 @@ QSpinBox,QDateEdit,QComboBox
         </property>
         <property name="styleSheet">
          <string notr="true"/>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
         </property>
         <property name="sizeAdjustPolicy">
          <enum>QComboBox::AdjustToContents</enum>
@@ -216,40 +165,27 @@ QSpinBox,QDateEdit,QComboBox
         </item>
        </widget>
       </widget>
-      <widget class="QSplitter" name="splitter">
+      <widget class="QSplitter" name="splitter_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>Job Intensity</string>
+         <string>Simulation Duration</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="jobIntensity">
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
+       <widget class="QDoubleSpinBox" name="simDuration">
+        <property name="decimals">
+         <number>2</number>
         </property>
-        <property name="styleSheet">
-         <string notr="true"/>
+        <property name="maximum">
+         <double>99999.990000000005239</double>
         </property>
-        <property name="sizeAdjustPolicy">
-         <enum>QComboBox::AdjustToContents</enum>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>h</string>
         </property>
-        <item>
-         <property name="text">
-          <string>High</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Moderate</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Low</string>
-         </property>
-        </item>
        </widget>
       </widget>
      </widget>
@@ -421,65 +357,11 @@ QDoubleSpinBox
       </widget>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>360</y>
-       <width>381</width>
-       <height>80</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QGroupBox{
-	border-color: rgb(0, 0, 0);
-	border-width : 1.2px;
-	border-style: inset;
-}
-
-QLineEdit
-{
-	background-color: rgb(255, 255, 255);
-}</string>
-     </property>
-     <property name="title">
-      <string>Data Source</string>
-     </property>
-     <widget class="QLineEdit" name="fileLocation">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>291</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="fileBrowseButton">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>30</y>
-        <width>31</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>...</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QSplitter" name="splitter_11">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>450</y>
+       <x>350</x>
+       <y>360</y>
        <width>381</width>
        <height>41</height>
       </rect>
@@ -496,6 +378,197 @@ QLineEdit
       <property name="text">
        <string>Simulate</string>
       </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_9">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>180</y>
+       <width>381</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox{
+	border-color: rgb(0, 0, 0);
+	border-width : 1.2px;
+	border-style: inset;
+}
+
+QSpinBox,QDateEdit,QComboBox,QLineEdit
+{
+	background-color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="title">
+      <string>Data Source</string>
+     </property>
+     <widget class="QLineEdit" name="fileLocation">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="fileBrowseButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>90</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>70</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Statisitical Data Source:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fileLocation_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="fileBrowseButton_2">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>140</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_60">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>120</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Schedule Data Source</string>
+      </property>
+     </widget>
+     <widget class="QSplitter" name="splitter_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Use Data from:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="startDate">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="displayFormat">
+        <string>dd-MM-yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="currentSectionIndex">
+        <number>0</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>to:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="endDate">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="dateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2000</year>
+         <month>1</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="displayFormat">
+        <string>dd-MM-yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="currentSectionIndex">
+        <number>0</number>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -563,12 +636,12 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
        <rect>
         <x>250</x>
         <y>10</y>
-        <width>104</width>
+        <width>111</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Apointment Factor</string>
+       <string>Appointment Factor</string>
       </property>
      </widget>
      <widget class="QLabel" name="appFactorValue">

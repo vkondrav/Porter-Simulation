@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Tue Feb 04 01:28:36 2014
+# Created: Fri Feb 07 21:40:52 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -11,7 +11,9 @@
 import os
 import datetime
 from PyQt4 import QtCore, QtGui
-from portersim import main as porterMain
+import csv
+import dateutil.parser as parser
+#from portersim import main as porterMain
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -29,7 +31,7 @@ except AttributeError:
 
 class Ui_Dialog(object):
 
-    appFactorInitial = "1";
+    appFactorInitial = "1"
 
     ajbInitial = list()
     wjlInitial = list()
@@ -59,22 +61,24 @@ class Ui_Dialog(object):
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
         self.groupBox = QtGui.QGroupBox(self.tab)
-        self.groupBox.setGeometry(QtCore.QRect(20, 10, 321, 190))
+        self.groupBox.setGeometry(QtCore.QRect(20, 10, 321, 271))
         self.groupBox.setStyleSheet(_fromUtf8("QGroupBox{\n"
 "    border-color: rgb(0, 0, 0);\n"
 "    border-width : 1.2px;\n"
 "    border-style: inset;\n"
 "}\n"
 "\n"
-"QSpinBox,QDateEdit,QComboBox\n"
+"QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox\n"
 "{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "}"))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
-
+        self.splitter = QtGui.QSplitter(self.groupBox)
+        self.splitter.setGeometry(QtCore.QRect(30, 154, 71, 16))
+        self.splitter.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter.setObjectName(_fromUtf8("splitter"))
         self.splitter_6 = QtGui.QSplitter(self.groupBox)
-        self.splitter_6.setGeometry(QtCore.QRect(30, 20, 271, 161))
-        self.splitter_6.setStyleSheet(_fromUtf8(""))
+        self.splitter_6.setGeometry(QtCore.QRect(30, 20, 242, 91))
         self.splitter_6.setOrientation(QtCore.Qt.Vertical)
         self.splitter_6.setObjectName(_fromUtf8("splitter_6"))
         self.splitter_5 = QtGui.QSplitter(self.splitter_6)
@@ -90,41 +94,6 @@ class Ui_Dialog(object):
         self.numberOfPorters.setMaximum(9999)
         self.numberOfPorters.setProperty("value", 10)
         self.numberOfPorters.setObjectName(_fromUtf8("numberOfPorters"))
-
-        self.splitter_4 = QtGui.QSplitter(self.splitter_6)
-        self.splitter_4.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter_4.setObjectName(_fromUtf8("splitter_4"))
-
-        self.label_3 = QtGui.QLabel(self.splitter_4)
-        self.label_3.setObjectName(_fromUtf8("label_3"))
-
-        self.startDate = QtGui.QDateEdit(self.splitter_4)
-        self.startDate.setStyleSheet(_fromUtf8(""))
-        self.startDate.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-
-        #self.startDate.setDateTime(QtCore.QDateTime.currentDateTime())
-        self.startDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 22), QtCore.QTime(0, 0, 0)))
-        self.startDate.setCalendarPopup(True)
-        self.startDate.setCurrentSectionIndex(0)
-        self.startDate.setObjectName(_fromUtf8("startDate"))
-
-        self.splitter_3 = QtGui.QSplitter(self.splitter_6)
-        self.splitter_3.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter_3.setObjectName(_fromUtf8("splitter_3"))
-
-        self.label_4 = QtGui.QLabel(self.splitter_3)
-        self.label_4.setObjectName(_fromUtf8("label_4"))
-
-        self.endDate = QtGui.QDateEdit(self.splitter_3)
-        self.endDate.setStyleSheet(_fromUtf8(""))
-        self.endDate.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-
-        #self.endDate.setDateTime(QtCore.QDateTime.currentDateTime())
-        self.endDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 23), QtCore.QTime(0, 0, 0)))
-        self.endDate.setCalendarPopup(True)
-        self.endDate.setCurrentSectionIndex(0)
-        self.endDate.setObjectName(_fromUtf8("endDate"))
-
         self.splitter_2 = QtGui.QSplitter(self.splitter_6)
         self.splitter_2.setOrientation(QtCore.Qt.Horizontal)
         self.splitter_2.setObjectName(_fromUtf8("splitter_2"))
@@ -135,27 +104,23 @@ class Ui_Dialog(object):
         self.jobDistribution = QtGui.QComboBox(self.splitter_2)
         self.jobDistribution.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.jobDistribution.setStyleSheet(_fromUtf8(""))
+        self.jobDistribution.setEditable(False)
         self.jobDistribution.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContents)
         self.jobDistribution.setObjectName(_fromUtf8("jobDistribution"))
         self.jobDistribution.addItem(_fromUtf8(""))
         self.jobDistribution.addItem(_fromUtf8(""))
         self.jobDistribution.addItem(_fromUtf8(""))
-
-        self.splitter = QtGui.QSplitter(self.splitter_6)
-        self.splitter.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter.setObjectName(_fromUtf8("splitter"))
-
-        self.label_6 = QtGui.QLabel(self.splitter)
+        self.splitter_4 = QtGui.QSplitter(self.splitter_6)
+        self.splitter_4.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter_4.setObjectName(_fromUtf8("splitter_4"))
+        self.label_6 = QtGui.QLabel(self.splitter_4)
         self.label_6.setObjectName(_fromUtf8("label_6"))
-
-        self.jobIntensity = QtGui.QComboBox(self.splitter)
-        self.jobIntensity.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.jobIntensity.setStyleSheet(_fromUtf8(""))
-        self.jobIntensity.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContents)
-        self.jobIntensity.setObjectName(_fromUtf8("jobIntensity"))
-        self.jobIntensity.addItem(_fromUtf8(""))
-        self.jobIntensity.addItem(_fromUtf8(""))
-        self.jobIntensity.addItem(_fromUtf8(""))
+        self.simDuration = QtGui.QDoubleSpinBox(self.splitter_4)
+        self.simDuration.setDecimals(2)
+        self.simDuration.setMaximum(99999.99)
+        self.simDuration.setObjectName(_fromUtf8("simDuration"))
+        self.label_15 = QtGui.QLabel(self.splitter_4)
+        self.label_15.setObjectName(_fromUtf8("label_15"))
         self.groupBox_2 = QtGui.QGroupBox(self.tab)
         self.groupBox_2.setGeometry(QtCore.QRect(350, 10, 381, 161))
         self.groupBox_2.setStyleSheet(_fromUtf8("QGroupBox{\n"
@@ -234,39 +199,75 @@ class Ui_Dialog(object):
         self.label_12.setObjectName(_fromUtf8("label_12"))
         self.label_14 = QtGui.QLabel(self.splitter_9)
         self.label_14.setObjectName(_fromUtf8("label_14"))
-        self.groupBox_3 = QtGui.QGroupBox(self.tab)
-        self.groupBox_3.setGeometry(QtCore.QRect(20, 360, 381, 80))
-        self.groupBox_3.setStyleSheet(_fromUtf8("QGroupBox{\n"
+        self.splitter_11 = QtGui.QSplitter(self.tab)
+        self.splitter_11.setGeometry(QtCore.QRect(350, 360, 381, 41))
+        self.splitter_11.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter_11.setObjectName(_fromUtf8("splitter_11"))
+        self.resetAllButton = QtGui.QPushButton(self.splitter_11)
+        self.resetAllButton.setObjectName(_fromUtf8("resetAllButton"))
+        self.simulateButton = QtGui.QPushButton(self.splitter_11)
+        self.simulateButton.setObjectName(_fromUtf8("simulateButton"))
+        self.groupBox_9 = QtGui.QGroupBox(self.tab)
+        self.groupBox_9.setGeometry(QtCore.QRect(350, 180, 381, 171))
+        self.groupBox_9.setStyleSheet(_fromUtf8("QGroupBox{\n"
 "    border-color: rgb(0, 0, 0);\n"
 "    border-width : 1.2px;\n"
 "    border-style: inset;\n"
 "}\n"
 "\n"
-"QLineEdit\n"
+"QSpinBox,QDateEdit,QComboBox,QLineEdit\n"
 "{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "}"))
-        self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
-
-        self.fileLocation = QtGui.QLineEdit(self.groupBox_3)
-        self.fileLocation.setGeometry(QtCore.QRect(30, 30, 291, 21))
+        self.groupBox_9.setObjectName(_fromUtf8("groupBox_9"))
+        self.fileLocation = QtGui.QLineEdit(self.groupBox_9)
+        self.fileLocation.setEnabled(False)
+        self.fileLocation.setGeometry(QtCore.QRect(20, 90, 291, 21))
         self.fileLocation.setStyleSheet(_fromUtf8(""))
         self.fileLocation.setObjectName(_fromUtf8("fileLocation"))
-
-        self.fileBrowseButton = QtGui.QPushButton(self.groupBox_3)
-        self.fileBrowseButton.setGeometry(QtCore.QRect(330, 30, 31, 21))
+        self.fileBrowseButton = QtGui.QPushButton(self.groupBox_9)
+        self.fileBrowseButton.setEnabled(False)
+        self.fileBrowseButton.setGeometry(QtCore.QRect(320, 90, 31, 21))
         self.fileBrowseButton.setStyleSheet(_fromUtf8(""))
         self.fileBrowseButton.setObjectName(_fromUtf8("fileBrowseButton"))
-        self.splitter_11 = QtGui.QSplitter(self.tab)
-        self.splitter_11.setGeometry(QtCore.QRect(20, 450, 381, 41))
-        self.splitter_11.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter_11.setObjectName(_fromUtf8("splitter_11"))
-
-        self.resetAllButton = QtGui.QPushButton(self.splitter_11)
-        self.resetAllButton.setObjectName(_fromUtf8("resetAllButton"))
-
-        self.simulateButton = QtGui.QPushButton(self.splitter_11)
-        self.simulateButton.setObjectName(_fromUtf8("simulateButton"))
+        self.label_18 = QtGui.QLabel(self.groupBox_9)
+        self.label_18.setGeometry(QtCore.QRect(20, 70, 141, 16))
+        self.label_18.setObjectName(_fromUtf8("label_18"))
+        self.fileLocation_2 = QtGui.QLineEdit(self.groupBox_9)
+        self.fileLocation_2.setEnabled(True)
+        self.fileLocation_2.setGeometry(QtCore.QRect(20, 140, 291, 21))
+        self.fileLocation_2.setStyleSheet(_fromUtf8(""))
+        self.fileLocation_2.setObjectName(_fromUtf8("fileLocation_2"))
+        self.fileBrowseButton_2 = QtGui.QPushButton(self.groupBox_9)
+        self.fileBrowseButton_2.setGeometry(QtCore.QRect(320, 140, 31, 21))
+        self.fileBrowseButton_2.setStyleSheet(_fromUtf8(""))
+        self.fileBrowseButton_2.setObjectName(_fromUtf8("fileBrowseButton_2"))
+        self.label_60 = QtGui.QLabel(self.groupBox_9)
+        self.label_60.setGeometry(QtCore.QRect(20, 120, 141, 16))
+        self.label_60.setObjectName(_fromUtf8("label_60"))
+        self.splitter_3 = QtGui.QSplitter(self.groupBox_9)
+        self.splitter_3.setGeometry(QtCore.QRect(20, 20, 341, 31))
+        self.splitter_3.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter_3.setObjectName(_fromUtf8("splitter_3"))
+        self.label_3 = QtGui.QLabel(self.splitter_3)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.startDate = QtGui.QDateEdit(self.splitter_3)
+        self.startDate.setEnabled(False)
+        self.startDate.setStyleSheet(_fromUtf8(""))
+        self.startDate.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.startDate.setCalendarPopup(True)
+        self.startDate.setCurrentSectionIndex(0)
+        self.startDate.setObjectName(_fromUtf8("startDate"))
+        self.label_4 = QtGui.QLabel(self.splitter_3)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.endDate = QtGui.QDateEdit(self.splitter_3)
+        self.endDate.setEnabled(False)
+        self.endDate.setStyleSheet(_fromUtf8(""))
+        self.endDate.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.endDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2000, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.endDate.setCalendarPopup(True)
+        self.endDate.setCurrentSectionIndex(0)
+        self.endDate.setObjectName(_fromUtf8("endDate"))
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
@@ -294,7 +295,7 @@ class Ui_Dialog(object):
         self.appFactor.setTickInterval(3)
         self.appFactor.setObjectName(_fromUtf8("appFactor"))
         self.label_13 = QtGui.QLabel(self.groupBox_4)
-        self.label_13.setGeometry(QtCore.QRect(250, 10, 104, 16))
+        self.label_13.setGeometry(QtCore.QRect(250, 10, 111, 16))
         self.label_13.setObjectName(_fromUtf8("label_13"))
         self.appFactorValue = QtGui.QLabel(self.groupBox_4)
         self.appFactorValue.setGeometry(QtCore.QRect(30, 30, 41, 16))
@@ -829,25 +830,20 @@ class Ui_Dialog(object):
         self.resetAllButton.clicked.connect(self.resetAllButtonClicked)
         self.fileBrowseButton.clicked.connect(self.fileBrowseButtonClicked)
         self.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
-        self.appFactor.valueChanged[int].connect(self.appFactorChange) 
+        self.appFactor.valueChanged[int].connect(self.appFactorChange)
+        self.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.label.setText(_translate("Dialog", "Porter Simulation", None))
         self.groupBox.setTitle(_translate("Dialog", "Basic Settings", None))
         self.label_2.setText(_translate("Dialog", "Number of Porters", None))
-        self.label_3.setText(_translate("Dialog", "Start Date", None))
-        self.startDate.setDisplayFormat(_translate("Dialog", "dd-MM-yyyy", None))
-        self.label_4.setText(_translate("Dialog", "End Date", None))
-        self.endDate.setDisplayFormat(_translate("Dialog", "dd-MM-yyyy", None))
         self.label_5.setText(_translate("Dialog", "Job Distribution", None))
         self.jobDistribution.setItemText(0, _translate("Dialog", "Data Based", None))
         self.jobDistribution.setItemText(1, _translate("Dialog", "Poisson Distribution", None))
         self.jobDistribution.setItemText(2, _translate("Dialog", "Lagrange Distribution", None))
-        self.label_6.setText(_translate("Dialog", "Job Intensity", None))
-        self.jobIntensity.setItemText(0, _translate("Dialog", "High", None))
-        self.jobIntensity.setItemText(1, _translate("Dialog", "Moderate", None))
-        self.jobIntensity.setItemText(2, _translate("Dialog", "Low", None))
+        self.label_6.setText(_translate("Dialog", "Simulation Duration", None))
+        self.label_15.setText(_translate("Dialog", "h", None))
         self.groupBox_2.setTitle(_translate("Dialog", "Compliance", None))
         self.label_7.setText(_translate("Dialog", "Correct Equipment Usage", None))
         self.label_8.setText(_translate("Dialog", "Patient Readiness", None))
@@ -857,13 +853,20 @@ class Ui_Dialog(object):
         self.label_10.setText(_translate("Dialog", "%", None))
         self.label_12.setText(_translate("Dialog", "min", None))
         self.label_14.setText(_translate("Dialog", "%", None))
-        self.groupBox_3.setTitle(_translate("Dialog", "Data Source", None))
-        self.fileBrowseButton.setText(_translate("Dialog", "...", None))
         self.resetAllButton.setText(_translate("Dialog", "Reset All", None))
         self.simulateButton.setText(_translate("Dialog", "Simulate", None))
+        self.groupBox_9.setTitle(_translate("Dialog", "Data Source", None))
+        self.fileBrowseButton.setText(_translate("Dialog", "...", None))
+        self.label_18.setText(_translate("Dialog", "Statisitical Data Source:", None))
+        self.fileBrowseButton_2.setText(_translate("Dialog", "...", None))
+        self.label_60.setText(_translate("Dialog", "Schedule Data Source", None))
+        self.label_3.setText(_translate("Dialog", "Use Data from:", None))
+        self.startDate.setDisplayFormat(_translate("Dialog", "dd-MM-yyyy", None))
+        self.label_4.setText(_translate("Dialog", "to:", None))
+        self.endDate.setDisplayFormat(_translate("Dialog", "dd-MM-yyyy", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Basic Settings", None))
         self.groupBox_4.setTitle(_translate("Dialog", "Dispatcher", None))
-        self.label_13.setText(_translate("Dialog", "Apointment Factor", None))
+        self.label_13.setText(_translate("Dialog", "Appointment Factor", None))
         self.appFactorValue.setText(_translate("Dialog", "1.2", None))
         self.groupBox_5.setTitle(_translate("Dialog", "Automatic Job Priority Values", None))
         self.label_19.setText(_translate("Dialog", "Job Priority", None))
@@ -910,12 +913,9 @@ class Ui_Dialog(object):
         self.label_39.setText(_translate("Dialog", "8", None))
         self.label_40.setText(_translate("Dialog", "9", None))
         self.resetAllDispatch.setText(_translate("Dialog", "Reset All", None))
-        self.label_13.setText(_translate("Dialog", "Apointment Factor", None))
-
-        self.appFactorValue.setText(_translate("Dialog", "1.2", None))
-        self.appFactorInitial = self.appFactorValue.text()
-
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Advanced Settings", None))
+
+        self.jobDistChange()
 
     def buttonClicked(self):
 
@@ -928,7 +928,11 @@ class Ui_Dialog(object):
         
         if not os.path.isfile(self.fileLocation.text()):
             ex = False
-            errorStr = errorStr + "File does not exist. "
+            errorStr = errorStr + "Statistical Data File does not exist. "
+
+        if not os.path.isfile(self.fileLocation_2.text()):
+            ex = False
+            errorStr = errorStr + "Schedule Data File does not exist. "
 
         if ex:
             self.assignAndExecute()
@@ -938,6 +942,8 @@ class Ui_Dialog(object):
     def assignAndExecute(self):
         #float
         numberOfPorters = self.numberOfPorters.value()
+        #float
+        simDuration = self.simDuration.value()
         #date
         startDate = self.startDate.date()
         startDate = startDate.toPyDate()
@@ -948,8 +954,6 @@ class Ui_Dialog(object):
         endDate = str(endDate) + " 00:00:00"
         #int
         jobDistribution = self.jobDistribution.currentIndex()
-        #int
-        jobIntensity = self.jobIntensity.currentIndex()
         #float
         correctEquipment = self.correctEquipment.value()
         #float
@@ -960,10 +964,21 @@ class Ui_Dialog(object):
         jobCancel = self.jobCancel.value()
         #string
         fileLocation = self.fileLocation.text()
+        #string
+        fileLocation_2 = self.fileLocation_2.text()
         #float
         appFactorValue = float(self.appFactorValue.text())
         #list of float
         ajb = list()
+
+        with open(fileLocation_2, 'r') as f:
+            reader = csv.reader(f)
+
+            next(reader)
+            l = []
+            for row in reader:
+                l.append((parser.parse(row[1]), parser.parse(row[2])))
+
         i = 0
         while i < len(self.ajb):
             ajb.append(self.ajb[i].value())
@@ -990,10 +1005,10 @@ class Ui_Dialog(object):
         #Dictionary
         inputDict = dict()
         inputDict["numberOfPorters"] = numberOfPorters
+        inputDict["simulationDuration"] = simDuration
         inputDict["startDate"] = startDate
         inputDict["endDate"] = endDate
         inputDict["jobDistribution"] = jobDistribution
-        inputDict["jobIntensity"] = jobIntensity
         inputDict["correctEquipment"] = correctEquipment
         inputDict["patientReadiness"] = patientReadiness
         inputDict["porterWait"] = porterWait
@@ -1005,10 +1020,10 @@ class Ui_Dialog(object):
         inputDict["pmv"] = pmv
         inputDict["av"] = av
 
-        #for i in inputDict:
-        #    print(i + " : " + str(inputDict[i]))
+        for i in inputDict:
+            print(i + " : " + str(inputDict[i]))
 
-        porterMain (inputDict)
+        #porterMain (inputDict)
 
 
 
@@ -1027,6 +1042,11 @@ class Ui_Dialog(object):
         fname = QtGui.QFileDialog.getOpenFileName(Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
                 
         self.fileLocation.setText(fname)
+
+    def fileBrowseButton2Clicked(self):
+        fname = QtGui.QFileDialog.getOpenFileName(Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
+
+        self.fileLocation_2.setText(fname)
 
     def appFactorChange(self,value):
         self.appFactorValue.setText(str(float(value)/100))
@@ -1069,6 +1089,17 @@ class Ui_Dialog(object):
             self.av[i].setProperty("value", self.avInitial[i])
             i += 1
 
+    def jobDistChange(self):
+        if self.jobDistribution.currentIndex() == 0:
+            self.fileLocation.setEnabled(True)
+            self.fileBrowseButton.setEnabled(True)
+            self.startDate.setEnabled(True)
+            self.endDate.setEnabled(True)
+        else:
+            self.fileLocation.setEnabled(False)
+            self.fileBrowseButton.setEnabled(False)
+            self.startDate.setEnabled(False)
+            self.endDate.setEnabled(False)
 
 
 if __name__ == "__main__":
