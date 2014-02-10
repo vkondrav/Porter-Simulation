@@ -829,6 +829,7 @@ class Ui_Dialog(object):
         self.simulateButton.clicked.connect(self.buttonClicked)
         self.resetAllButton.clicked.connect(self.resetAllButtonClicked)
         self.fileBrowseButton.clicked.connect(self.fileBrowseButtonClicked)
+        self.fileBrowseButton_2.clicked.connect(self.fileBrowseButton2Clicked)
         self.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
         self.appFactor.valueChanged[int].connect(self.appFactorChange)
         self.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
