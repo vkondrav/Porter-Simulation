@@ -10,10 +10,11 @@
 
 import os
 import datetime
+
 from PyQt4 import QtCore, QtGui
 import csv
 import dateutil.parser as parser
-#from portersim import main as porterMain
+from portersim import main as porterMain
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -1022,10 +1023,10 @@ class Ui_Dialog(object):
         inputDict["pmv"] = pmv
         inputDict["av"] = av
 
-        for i in inputDict:
-            print(i + " : " + str(inputDict[i]))
+        #for i in inputDict:
+        #    print(i + " : " + str(inputDict[i]))
 
-        #porterMain (inputDict)
+        porterMain(inputDict)
 
 
 
