@@ -21,7 +21,7 @@ class Job(object):
         return "Job%d: %s -> %s" % (self.jobId, self.origin, self.destination)
 
     # process to update the job's priority
-    def autoUpdateProcess(self, au):
+    def autoUpdateProcess(self, simsState, au):
         # continue updating until priority is 1 or it is interrupted by the dispatcher
         while self.priority != 0:
             # find the matching priority and wait X minutes before lowering the job's priority
@@ -37,13 +37,11 @@ class Job(object):
         
 class JobList(object):
 
-    def __init__(self, au):                         
+    def __init__(self):                         
         self.jobList = []
         self.releasedJobList = []
-        self.automaticUpgrade = au
-						
+    
     def insert(self, job):
-        job.automaticUpgrade = self.automaticUpgrade
         self.jobList.append(job)
         self.jobList = sorted(self.jobList, key=self._jobListKey, reverse=True)
         
@@ -60,5 +58,5 @@ class JobList(object):
             print job
             yield simState.env.timeout(job.creationTime - simState.env.now)
             self.releasedJobList.append(self.jobList.pop())
-            simState.dispatcher.addJob(job)
+            simState.dispatcher.addJob(job, simState)
             
