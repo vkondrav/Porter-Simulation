@@ -8,13 +8,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-import os
-import datetime
-
 from PyQt4 import QtCore, QtGui
-import csv
-import dateutil.parser as parser
-from portersim import main as porterMain
+import GUI_functions as guif
+import os
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -32,21 +28,14 @@ except AttributeError:
 
 class Ui_Dialog(object):
 
-    appFactorInitial = "1"
-
-    ajbInitial = list()
-    wjlInitial = list()
-    pmvInitial = list()
-    avInitial = list()
-
-    ajb = list()
-    wjl = list()
-    pmv = list()
-    av = list()
+    fun = guif.functions()
 
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(772, 638)
+        self.fun.ui = self
+        self.fun.Dialog = Dialog
+
         self.label = QtGui.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(10, 0, 358, 57))
         font = QtGui.QFont()
@@ -330,7 +319,6 @@ class Ui_Dialog(object):
 
         self.ajb1 = QtGui.QDoubleSpinBox(self.splitter_13)
         self.ajb1.setObjectName(_fromUtf8("ajb1"))
-        self.ajb.append(self.ajb1)
 
         self.splitter_14 = QtGui.QSplitter(self.splitter_23)
         self.splitter_14.setOrientation(QtCore.Qt.Vertical)
@@ -343,7 +331,6 @@ class Ui_Dialog(object):
         self.ajb2 = QtGui.QDoubleSpinBox(self.splitter_14)
         self.ajb2.setProperty("value", 14.0)
         self.ajb2.setObjectName(_fromUtf8("ajb2"))
-        self.ajb.append(self.ajb2)
 
         self.splitter_15 = QtGui.QSplitter(self.splitter_23)
         self.splitter_15.setOrientation(QtCore.Qt.Vertical)
@@ -356,7 +343,6 @@ class Ui_Dialog(object):
         self.ajb3 = QtGui.QDoubleSpinBox(self.splitter_15)
         self.ajb3.setProperty("value", 8.0)
         self.ajb3.setObjectName(_fromUtf8("ajb3"))
-        self.ajb.append(self.ajb3)
 
         self.splitter_16 = QtGui.QSplitter(self.splitter_23)
         self.splitter_16.setOrientation(QtCore.Qt.Vertical)
@@ -369,7 +355,6 @@ class Ui_Dialog(object):
         self.ajb4 = QtGui.QDoubleSpinBox(self.splitter_16)
         self.ajb4.setProperty("value", 8.0)
         self.ajb4.setObjectName(_fromUtf8("ajb4"))
-        self.ajb.append(self.ajb4)
 
         self.splitter_17 = QtGui.QSplitter(self.splitter_23)
         self.splitter_17.setOrientation(QtCore.Qt.Vertical)
@@ -382,7 +367,6 @@ class Ui_Dialog(object):
         self.ajb5 = QtGui.QDoubleSpinBox(self.splitter_17)
         self.ajb5.setProperty("value", 5.0)
         self.ajb5.setObjectName(_fromUtf8("ajb5"))
-        self.ajb.append(self.ajb5)
 
         self.splitter_18 = QtGui.QSplitter(self.splitter_23)
         self.splitter_18.setOrientation(QtCore.Qt.Vertical)
@@ -395,7 +379,6 @@ class Ui_Dialog(object):
         self.ajb6 = QtGui.QDoubleSpinBox(self.splitter_18)
         self.ajb6.setProperty("value", 5.0)
         self.ajb6.setObjectName(_fromUtf8("ajb6"))
-        self.ajb.append(self.ajb6)
 
         self.splitter_19 = QtGui.QSplitter(self.splitter_23)
         self.splitter_19.setOrientation(QtCore.Qt.Vertical)
@@ -408,7 +391,6 @@ class Ui_Dialog(object):
         self.ajb7 = QtGui.QDoubleSpinBox(self.splitter_19)
         self.ajb7.setProperty("value", 25.0)
         self.ajb7.setObjectName(_fromUtf8("ajb7"))
-        self.ajb.append(self.ajb7)
 
         self.splitter_20 = QtGui.QSplitter(self.splitter_23)
         self.splitter_20.setOrientation(QtCore.Qt.Vertical)
@@ -421,7 +403,6 @@ class Ui_Dialog(object):
         self.ajb8 = QtGui.QDoubleSpinBox(self.splitter_20)
         self.ajb8.setProperty("value", 30.0)
         self.ajb8.setObjectName(_fromUtf8("ajb8"))
-        self.ajb.append(self.ajb8)
 
         self.splitter_21 = QtGui.QSplitter(self.splitter_23)
         self.splitter_21.setOrientation(QtCore.Qt.Vertical)
@@ -434,7 +415,6 @@ class Ui_Dialog(object):
         self.ajb9 = QtGui.QDoubleSpinBox(self.splitter_21)
         self.ajb9.setProperty("value", 40.0)
         self.ajb9.setObjectName(_fromUtf8("ajb9"))
-        self.ajb.append(self.ajb9)
 
         self.groupBox_7 = QtGui.QGroupBox(self.groupBox_4)
         self.groupBox_7.setGeometry(QtCore.QRect(10, 270, 691, 91))
@@ -472,7 +452,6 @@ class Ui_Dialog(object):
         self.pmv1 = QtGui.QDoubleSpinBox(self.splitter_38)
         self.pmv1.setProperty("value", 11.0)
         self.pmv1.setObjectName(_fromUtf8("pmv1"))
-        self.pmv.append(self.pmv1)
 
         self.splitter_39 = QtGui.QSplitter(self.splitter_36)
         self.splitter_39.setOrientation(QtCore.Qt.Vertical)
@@ -485,7 +464,6 @@ class Ui_Dialog(object):
         self.pmv2 = QtGui.QDoubleSpinBox(self.splitter_39)
         self.pmv2.setProperty("value", 0.7)
         self.pmv2.setObjectName(_fromUtf8("pmv2"))
-        self.pmv.append(self.pmv2)
 
         self.splitter_40 = QtGui.QSplitter(self.splitter_36)
         self.splitter_40.setOrientation(QtCore.Qt.Vertical)
@@ -498,7 +476,6 @@ class Ui_Dialog(object):
         self.pmv3 = QtGui.QDoubleSpinBox(self.splitter_40)
         self.pmv3.setProperty("value", 7.0)
         self.pmv3.setObjectName(_fromUtf8("pmv3"))
-        self.pmv.append(self.pmv3)
 
         self.splitter_41 = QtGui.QSplitter(self.splitter_36)
         self.splitter_41.setOrientation(QtCore.Qt.Vertical)
@@ -511,7 +488,6 @@ class Ui_Dialog(object):
         self.pmv4 = QtGui.QDoubleSpinBox(self.splitter_41)
         self.pmv4.setProperty("value", 2.0)
         self.pmv4.setObjectName(_fromUtf8("pmv4"))
-        self.pmv.append(self.pmv4)
 
         self.splitter_42 = QtGui.QSplitter(self.splitter_36)
         self.splitter_42.setOrientation(QtCore.Qt.Vertical)
@@ -524,7 +500,6 @@ class Ui_Dialog(object):
         self.pmv5 = QtGui.QDoubleSpinBox(self.splitter_42)
         self.pmv5.setProperty("value", 5.0)
         self.pmv5.setObjectName(_fromUtf8("pmv5"))
-        self.pmv.append(self.pmv5)
 
         self.splitter_43 = QtGui.QSplitter(self.splitter_36)
         self.splitter_43.setOrientation(QtCore.Qt.Vertical)
@@ -537,7 +512,6 @@ class Ui_Dialog(object):
         self.pmv6 = QtGui.QDoubleSpinBox(self.splitter_43)
         self.pmv6.setProperty("value", 3.0)
         self.pmv6.setObjectName(_fromUtf8("pmv6"))
-        self.pmv.append(self.pmv6)
 
         self.splitter_44 = QtGui.QSplitter(self.splitter_36)
         self.splitter_44.setOrientation(QtCore.Qt.Vertical)
@@ -590,7 +564,6 @@ class Ui_Dialog(object):
         self.av1 = QtGui.QDoubleSpinBox(self.splitter_49)
         self.av1.setProperty("value", 4.0)
         self.av1.setObjectName(_fromUtf8("av1"))
-        self.av.append(self.av1)
 
         self.splitter_50 = QtGui.QSplitter(self.splitter_47)
         self.splitter_50.setOrientation(QtCore.Qt.Vertical)
@@ -603,7 +576,6 @@ class Ui_Dialog(object):
         self.av2 = QtGui.QDoubleSpinBox(self.splitter_50)
         self.av2.setProperty("value", 8.0)
         self.av2.setObjectName(_fromUtf8("av2"))
-        self.av.append(self.av2)
 
         self.splitter_51 = QtGui.QSplitter(self.splitter_47)
         self.splitter_51.setOrientation(QtCore.Qt.Vertical)
@@ -628,7 +600,6 @@ class Ui_Dialog(object):
         self.av4 = QtGui.QDoubleSpinBox(self.splitter_52)
         self.av4.setProperty("value", 14.0)
         self.av4.setObjectName(_fromUtf8("av4"))
-        self.av.append(self.av4)
 
         self.splitter_53 = QtGui.QSplitter(self.splitter_47)
         self.splitter_53.setOrientation(QtCore.Qt.Vertical)
@@ -641,7 +612,6 @@ class Ui_Dialog(object):
         self.av5 = QtGui.QDoubleSpinBox(self.splitter_53)
         self.av5.setProperty("value", 10.0)
         self.av5.setObjectName(_fromUtf8("av5"))
-        self.av.append(self.av5)
 
         self.splitter_54 = QtGui.QSplitter(self.splitter_47)
         self.splitter_54.setOrientation(QtCore.Qt.Vertical)
@@ -654,7 +624,6 @@ class Ui_Dialog(object):
         self.av6 = QtGui.QDoubleSpinBox(self.splitter_54)
         self.av6.setProperty("value", 12.0)
         self.av6.setObjectName(_fromUtf8("av6"))
-        self.av.append(self.av6)
 
         self.splitter_55 = QtGui.QSplitter(self.splitter_47)
         self.splitter_55.setOrientation(QtCore.Qt.Vertical)
@@ -667,7 +636,6 @@ class Ui_Dialog(object):
         self.av7 = QtGui.QDoubleSpinBox(self.splitter_55)
         self.av7.setProperty("value", 10.0)
         self.av7.setObjectName(_fromUtf8("av7"))
-        self.av.append(self.av7)
 
         self.groupBox_6 = QtGui.QGroupBox(self.groupBox_4)
         self.groupBox_6.setGeometry(QtCore.QRect(10, 170, 691, 91))
@@ -697,7 +665,6 @@ class Ui_Dialog(object):
         self.wjl1 = QtGui.QDoubleSpinBox(self.splitter_27)
         self.wjl1.setProperty("value", 20.0)
         self.wjl1.setObjectName(_fromUtf8("wjl1"))
-        self.wjl.append(self.wjl1)
 
         self.splitter_28 = QtGui.QSplitter(self.splitter_25)
         self.splitter_28.setOrientation(QtCore.Qt.Vertical)
@@ -710,7 +677,6 @@ class Ui_Dialog(object):
         self.wjl2 = QtGui.QDoubleSpinBox(self.splitter_28)
         self.wjl2.setProperty("value", 11.0)
         self.wjl2.setObjectName(_fromUtf8("wjl2"))
-        self.wjl.append(self.wjl2)
 
         self.splitter_29 = QtGui.QSplitter(self.splitter_25)
         self.splitter_29.setOrientation(QtCore.Qt.Vertical)
@@ -723,7 +689,6 @@ class Ui_Dialog(object):
         self.wjl3 = QtGui.QDoubleSpinBox(self.splitter_29)
         self.wjl3.setProperty("value", 7.0)
         self.wjl3.setObjectName(_fromUtf8("wjl3"))
-        self.wjl.append(self.wjl3)
 
         self.splitter_30 = QtGui.QSplitter(self.splitter_25)
         self.splitter_30.setOrientation(QtCore.Qt.Vertical)
@@ -736,7 +701,6 @@ class Ui_Dialog(object):
         self.wjl4 = QtGui.QDoubleSpinBox(self.splitter_30)
         self.wjl4.setProperty("value", 5.0)
         self.wjl4.setObjectName(_fromUtf8("wjl4"))
-        self.wjl.append(self.wjl4)
 
         self.splitter_31 = QtGui.QSplitter(self.splitter_25)
         self.splitter_31.setOrientation(QtCore.Qt.Vertical)
@@ -749,7 +713,6 @@ class Ui_Dialog(object):
         self.wjl5 = QtGui.QDoubleSpinBox(self.splitter_31)
         self.wjl5.setProperty("value", 4.0)
         self.wjl5.setObjectName(_fromUtf8("wjl5"))
-        self.wjl.append(self.wjl5)
 
         self.splitter_32 = QtGui.QSplitter(self.splitter_25)
         self.splitter_32.setOrientation(QtCore.Qt.Vertical)
@@ -762,7 +725,6 @@ class Ui_Dialog(object):
         self.wjl6 = QtGui.QDoubleSpinBox(self.splitter_32)
         self.wjl6.setProperty("value", 3.0)
         self.wjl6.setObjectName(_fromUtf8("wjl6"))
-        self.wjl.append(self.wjl6)
 
         self.splitter_33 = QtGui.QSplitter(self.splitter_25)
         self.splitter_33.setOrientation(QtCore.Qt.Vertical)
@@ -775,7 +737,6 @@ class Ui_Dialog(object):
         self.wjl7 = QtGui.QDoubleSpinBox(self.splitter_33)
         self.wjl7.setProperty("value", 2.0)
         self.wjl7.setObjectName(_fromUtf8("wjl7"))
-        self.wjl.append(self.wjl7)
 
         self.splitter_34 = QtGui.QSplitter(self.splitter_25)
         self.splitter_34.setOrientation(QtCore.Qt.Vertical)
@@ -788,7 +749,6 @@ class Ui_Dialog(object):
         self.wjl8 = QtGui.QDoubleSpinBox(self.splitter_34)
         self.wjl8.setProperty("value", 1.0)
         self.wjl8.setObjectName(_fromUtf8("wjl8"))
-        self.wjl.append(self.wjl8)
 
         self.splitter_35 = QtGui.QSplitter(self.splitter_25)
         self.splitter_35.setOrientation(QtCore.Qt.Vertical)
@@ -800,7 +760,6 @@ class Ui_Dialog(object):
 
         self.wjl9 = QtGui.QDoubleSpinBox(self.splitter_35)
         self.wjl9.setObjectName(_fromUtf8("wjl9"))
-        self.wjl.append(self.wjl9)
 
         self.resetAllDispatch = QtGui.QPushButton(self.groupBox_4)
         self.resetAllDispatch.setGeometry(QtCore.QRect(580, 20, 111, 28))
@@ -823,18 +782,9 @@ class Ui_Dialog(object):
         self.hhs.setObjectName(_fromUtf8("hhs"))
 
         self.retranslateUi(Dialog)
-        self.recordInitialDispatch()
+
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
-        ####EVENTS####
-        self.simulateButton.clicked.connect(self.buttonClicked)
-        self.resetAllButton.clicked.connect(self.resetAllButtonClicked)
-        self.fileBrowseButton.clicked.connect(self.fileBrowseButtonClicked)
-        self.fileBrowseButton_2.clicked.connect(self.fileBrowseButton2Clicked)
-        self.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
-        self.appFactor.valueChanged[int].connect(self.appFactorChange)
-        self.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
@@ -918,192 +868,13 @@ class Ui_Dialog(object):
         self.resetAllDispatch.setText(_translate("Dialog", "Reset All", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Advanced Settings", None))
 
-        self.jobDistChange()
+        self.assignGUIfunctions(Dialog)
 
-    def buttonClicked(self):
-
-        ex = True
-        errorStr = ""
-
-        if self.startDate.date() > self.endDate.date():
-            ex = False
-            errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
-        
-        if not os.path.isfile(self.fileLocation.text()):
-            ex = False
-            errorStr = errorStr + "Statistical Data File does not exist. "
-
-        if not os.path.isfile(self.fileLocation_2.text()):
-            ex = False
-            errorStr = errorStr + "Schedule Data File does not exist. "
-
-        if ex:
-            self.assignAndExecute()
-        else:
-            QtGui.QMessageBox.information(Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
-
-    def assignAndExecute(self):
-        #float
-        numberOfPorters = self.numberOfPorters.value()
-        #float
-        simDuration = self.simDuration.value()
-        #date
-        startDate = self.startDate.date()
-        startDate = startDate.toPyDate()
-        startDate = str(startDate) + " 00:00:00"
-        #date
-        endDate = self.endDate.date()
-        endDate = endDate.toPyDate()
-        endDate = str(endDate) + " 00:00:00"
-        #int
-        jobDistribution = self.jobDistribution.currentIndex()
-        #float
-        correctEquipment = self.correctEquipment.value()
-        #float
-        patientReadiness = self.patientReadiness.value()
-        #float
-        porterWait = self.porterWait.value()
-        #float
-        jobCancel = self.jobCancel.value()
-        #string
-        fileLocation = self.fileLocation.text()
-        #string
-        fileLocation_2 = self.fileLocation_2.text()
-        #float
-        appFactorValue = float(self.appFactorValue.text())
-        #list of float
-        ajb = list()
-
-        with open(fileLocation_2, 'r') as f:
-            reader = csv.reader(f)
-
-            next(reader)
-            l = []
-            for row in reader:
-                l.append((parser.parse(row[1]), parser.parse(row[2])))
-
-        i = 0
-        while i < len(self.ajb):
-            ajb.append(self.ajb[i].value())
-            i += 1
-        #list of float
-        i = 0
-        wjl = list()
-        while i < len(self.wjl):
-            wjl.append(self.wjl[i].value())
-            i += 1
-        #list of float
-        i = 0
-        pmv = list()
-        while i < len(self.pmv):
-            pmv.append(self.pmv[i].value())
-            i += 1
-        #list of float
-        i = 0
-        av = list()
-        while i < len(self.av):
-            av.append(self.av[i].value())
-            i += 1
-
-        #Dictionary
-        inputDict = dict()
-        inputDict["numberOfPorters"] = numberOfPorters
-        inputDict["simulationDuration"] = simDuration
-        inputDict["startDate"] = startDate
-        inputDict["endDate"] = endDate
-        inputDict["jobDistribution"] = jobDistribution
-        inputDict["correctEquipment"] = correctEquipment
-        inputDict["patientReadiness"] = patientReadiness
-        inputDict["porterWait"] = porterWait
-        inputDict["jobCancel"] = jobCancel
-        inputDict["fileLocation"] = fileLocation
-        inputDict["appFactorValue"] = appFactorValue
-        inputDict["ajb"] = ajb
-        inputDict["wjl"] = wjl
-        inputDict["pmv"] = pmv
-        inputDict["av"] = av
-
-        #for i in inputDict:
-        #    print(i + " : " + str(inputDict[i]))
-
-        porterMain(inputDict)
-
-
-
-    def resetAllButtonClicked(self):
-        self.numberOfPorters.setProperty("value", 10)
-        self.startDate.setDateTime(QtCore.QDateTime.currentDateTime())
-        self.endDate.setDateTime(QtCore.QDateTime.currentDateTime())
-        self.jobDistribution.setItemText(0, _translate("Dialog", "Data Based", None))
-        self.jobIntensity.setItemText(0, _translate("Dialog", "High", None))
-        self.correctEquipment.setProperty("value", 80.0)
-        self.patientReadiness.setProperty("value", 80.0)
-        self.porterWait.setProperty("value", 5.0)
-        self.fileLocation.setText("")
-
-    def fileBrowseButtonClicked(self):
-        fname = QtGui.QFileDialog.getOpenFileName(Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
-                
-        self.fileLocation.setText(fname)
-
-    def fileBrowseButton2Clicked(self):
-        fname = QtGui.QFileDialog.getOpenFileName(Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
-
-        self.fileLocation_2.setText(fname)
-
-    def appFactorChange(self,value):
-        self.appFactorValue.setText(str(float(value)/100))
-
-    def recordInitialDispatch(self):
-        
-        for i in self.ajb:
-            self.ajbInitial.append(i.value())
-
-        for i in self.wjl:
-            self.wjlInitial.append(i.value())
-
-        for i in self.pmv:
-            self.pmvInitial.append(i.value())
-
-        for i in self.av:
-            self.avInitial.append(i.value())
-
-    def resetAllDispatchClicked(self):
-        self.appFactorValue.setText(self.appFactorInitial)
-        self.appFactor.setProperty("value", int(float(self.appFactorInitial)*100))
-
-        i = 0
-        while i < len(self.ajb):
-            self.ajb[i].setProperty("value", self.ajbInitial[i])
-            i += 1
-
-        i = 0
-        while i < len(self.wjl):
-            self.wjl[i].setProperty("value", self.wjlInitial[i])
-            i += 1
-
-        i = 0
-        while i < len(self.pmv):
-            self.pmv[i].setProperty("value", self.pmvInitial[i])
-            i += 1
-
-        i = 0
-        while i < len(self.av):
-            self.av[i].setProperty("value", self.avInitial[i])
-            i += 1
-
-    def jobDistChange(self):
-        if self.jobDistribution.currentIndex() == 0:
-            self.fileLocation.setEnabled(True)
-            self.fileBrowseButton.setEnabled(True)
-            self.startDate.setEnabled(True)
-            self.endDate.setEnabled(True)
-        else:
-            self.fileLocation.setEnabled(False)
-            self.fileBrowseButton.setEnabled(False)
-            self.startDate.setEnabled(False)
-            self.endDate.setEnabled(False)
-
+    def assignGUIfunctions(self, Dialog):
+        self.fun.appendDispatchLists()
+        self.fun.assignEvents()
+        self.fun.jobDistChange()
+        self.fun.recordInitialDispatch()
 
 if __name__ == "__main__":
     import sys

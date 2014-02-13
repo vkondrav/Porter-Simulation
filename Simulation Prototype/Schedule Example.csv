@@ -1,3 +1,4 @@
-Porter Name,Porter StartTime,Porter End Time
-Andrew Smith,8:00 AM,1:00 PM
-Jacob Face,4:00 AM,1:00 PM
+Shift ID,StartTime,EndTime,Number of Porters,Day
+0,8:00 AM,1:00 PM,5,0
+1,4:00 AM,1:00 PM,6,"4,6,7"
+3,10:00 AM,6:00 PM,4,2
