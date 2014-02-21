@@ -1,0 +1,185 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Example: Project Report
+%
+% Source: http://www.howtotex.com
+%
+% Feel free to distribute this example, but please keep the referral
+% to howtotex.com
+% Date: March 2011 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit the title below to update the display in My Documents
+%\title{Project Report}
+%
+%%% Preamble
+\documentclass[paper=letter, fontsize=10pt]{scrartcl}
+\usepackage[body={7in,7.5in},top=1in, bottom=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+
+\usepackage[english]{babel}															% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}	
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{lastpage}
+
+
+%%% Custom sectioning
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\scshape}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[c]{Requirements Revision 0}
+\fancyhead[R]{\today}											
+\fancyfoot[L]{}											 
+\fancyfoot[C]{}											
+\fancyfoot[R]{\thepage\ of \pageref{LastPage}}		% Pagenumbering
+\renewcommand{\headrulewidth}{0.4pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0.4pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+\newcommand{\ts}{\textsuperscript}
+
+%%% Begin document
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\begin{center}
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
+\textsc{\Large CAS 4ZP6 Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
+\textsc{\large Porter Simulation}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries User Manual Revision 0}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+Vitaliy Kondratiev - 0945220\\
+Nathan Johrendt - 0950519\\
+Tyler Lyn - 0948978\\
+Mark Gammie - 0964156
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Douglas Down % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+\end{center}
+\end{titlepage}
+
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+
+\newpage
+\section{Introduction}
+
+\section{Installation}
+
+\section{Input Configuration}
+	\subsection{Basic Settings - General}
+	\begin{enumerate}[(i)]
+		\item \textbf{Number of Porters:}
+		\item \textbf{Job Distribution:}
+		\item \textbf{Simulation Duration:}
+	\end{enumerate}
+	
+	\subsection{Basic Settings - Compliance}
+	\begin{enumerate}[(i)]
+		\item \textbf{Correct Equipment Usage:}
+		\item \textbf{Patient Readiness:}
+		\item \textbf{Porter Wait Times:}
+		\item \textbf{Chance of Job Cancellation:}
+	\end{enumerate}
+	
+	\subsection{Basic Settings - Data Source}
+	\begin{enumerate}[(i)]
+		\item \textbf{Use Data From:}
+		\item \textbf{Statistical Data Source:}
+		\item \textbf{Schedule Data Source:}
+	\end{enumerate}
+	
+	\subsection{Advanced Settings - Dispatcher}
+	\begin{enumerate}[(i)]
+		\item \textbf{Appointment Factor:} Jobs that are scheduled in advanced need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
+		\item \textbf{Automatic Job Priority Values:} Jobs waiting for a porter need to increase their priority after waiting for a specified amount of time.  The "Minutes" will determine how long a job waits until it increases in priority.
+		\item \textbf{Weighted Job List:} Jobs of different priorities need to have different weights.  This weight helps determine how quickly the job should be assigned to a porter.
+		\item \textbf{Proximity Match Values:} The closeness of a porter to pending jobs will factor into how quickly a job is assigned to a porter.
+	\end{enumerate}
+	
+
+\section{Output Data}
+
+%%% End document	
+\end{document}	
