@@ -144,23 +144,33 @@ Dr. Douglas Down % Supervisor's Name
 
 \newpage
 \section{Introduction}
+Welcome to the User Manual for the Porter Simulation designed for use at the Juravinski Hospital in Hamilton Ontario. This manual will guide you through the functions and features available when using the simulation software. In addition, this manual will provide you steps for software setup, and provide troubleshooting options should any issues arise.
 
 \section{Installation}
+Setup of the Porter Simulation is quick and easy, by following these steps the software will be accessible for use.
+\begin{enumerate}
+	\item Locate the Porter Simulation folder on your computer. This folder will be located on a USB removable device, CD or through an email download.
+	\item Inside the folder, double click to run the PorterSimulation.exe.
+	\item Some initial setup time may occur. After a few moments, the simulation will be ready to use!
+\end{enumerate}
 
 \section{Input Configuration}
+The first step in using the software is to configure the simulation with a series of different inputs. These different input variables represent changes to the hospital environment, which will affect the simulated results. 
 	\subsection{Basic Settings - General}
+	These general settings define base values for the simulation.
 	\begin{enumerate}[(i)]
-		\item \textbf{Number of Porters:}
-		\item \textbf{Job Distribution:}
-		\item \textbf{Simulation Duration:}
+		\item \textbf{Number of Porters:} Defines how many individual porters are working in the simulated hospital.
+		\item \textbf{Job Distribution:} Jobs are added to a pool for available porters to receive. This setting allows the volume and frequency of jobs to be adjusted.
+		\item \textbf{Simulation Duration:} The number of hours or days the software will simulate. Note that this is not how long the simulation will run, but how much time will be modeled virtually by the software. 
 	\end{enumerate}
 	
 	\subsection{Basic Settings - Compliance}
+	Compliance settings reflect the performance of the virtual porters and modify how they will react to situations in the hospital.
 	\begin{enumerate}[(i)]
-		\item \textbf{Correct Equipment Usage:}
-		\item \textbf{Patient Readiness:}
-		\item \textbf{Porter Wait Times:}
-		\item \textbf{Chance of Job Cancellation:}
+		\item \textbf{Correct Equipment Usage:} The frequency at which jobs encounter no delays from improper equipment use or management.
+		\item \textbf{Patient Readiness:} The frequency at which patients are prepared for transport immediately when a porter arrives to pick them up for a job.
+		\item \textbf{Porter Wait Times:} This variable represents how long on average porters will wait for a patient who is not ready. Handy for testing variations on the 5 and 5 compliance rule.
+		\item \textbf{Chance of Job Cancellation:} The frequency that a porter will cancel a job after waiting too long for patient that is not ready. This job is then re-entered into the job pool to be dispatched again.
 	\end{enumerate}
 	
 	\subsection{Basic Settings - Data Source}
@@ -178,8 +188,17 @@ Dr. Douglas Down % Supervisor's Name
 		\item \textbf{Proximity Match Values:} The closeness of a porter to pending jobs will factor into how quickly a job is assigned to a porter.
 	\end{enumerate}
 	
-
 \section{Output Data}
+Once the simulation has finished modeling and computing the data, the results of all of the completed jobs are exported to an excel file. This file contains some graphs and plots, as well as some data averages to better analyze the simulated results. This file is located in the same directory as PorterSimulation.exe. 
+
+Details on the specific graphs and data layout will be available once development is finished.
+
+\section{Troubleshooting}
+
+\section{Figures and Tables Appendix}
+
+\section{Legal and Copyright Information}
+
 
 %%% End document	
 \end{document}	
