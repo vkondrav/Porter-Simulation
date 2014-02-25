@@ -144,10 +144,10 @@ Dr. Douglas Down % Supervisor's Name
 
 \newpage
 \section{Introduction}
-Welcome to the User Manual for the Porter Simulation designed for use at the Juravinski Hospital in Hamilton Ontario. This manual will guide you through the functions and features available when using the simulation software. In addition, this manual will provide you steps for software setup, and provide troubleshooting options should any issues arise.
+Welcome to the User Manual for the Hamilton Health Science's Porter Simulation, designed for use at the Juravinski Hospital in Hamilton Ontario. This manual will guide a Hamilton Health Science professional through the functions and features available when using the simulation software. In addition, this manual will provide you steps for software setup, an overview of the configuration settings (user interface) and provide troubleshooting options should any issues arise.
 
 \section{Installation}
-Setup of the Porter Simulation is quick and easy, by following these steps the software will be accessible for use.
+Setup of the Porter Simulation is quick and easy, by following these steps the software will be accessible for use.  This software is designed to be installed on Windows XP/Vista/7/8.
 \begin{enumerate}
 	\item Locate the Porter Simulation folder on your computer. This folder will be located on a USB removable device, CD or through an email download.
 	\item Inside the folder, double click to run the Porter Simulation-0.1-win32.msi
@@ -164,7 +164,14 @@ Setup of the Porter Simulation is quick and easy, by following these steps the s
 \end{figure}
 
 \section{Input Configuration}
-The first step in using the software is to configure the simulation with a series of different inputs. These different input variables represent changes to the hospital environment, which will affect the simulated results. 
+The first step in using the software is to configure the simulation with a series of different inputs. These different input variables represent changes to the hospital environment, which will affect the simulated results.
+
+	\begin{figure}[!htbp]
+	\begin{center}
+		\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{BasicSettings.png}
+		\caption{Basic Settings}
+	\end{center}
+	\end{figure} 
 	\subsection{Basic Settings - General}
 	These general settings define base values for the simulation.
 	\begin{enumerate}[(i)]
@@ -191,6 +198,14 @@ The first step in using the software is to configure the simulation with a serie
 	\end{enumerate}
 	
 	\subsection{Advanced Settings - Dispatcher}
+	The dispatcher will be ordering the pending jobs and giving them to available porters.  These settings reflect the current dispatcher system at Jurvinski Hospital.
+	
+	\begin{figure}[!htbp]
+	\begin{center}
+		\includegraphics[width=1\columnwidth, height=0.48\textheight, keepaspectratio]{AdvancedSettings.png}
+		\caption{Advanced Settings}
+	\end{center}
+	\end{figure} 
 	\begin{enumerate}[(i)]
 		\item \textbf{Appointment Factor:} Jobs that are scheduled in advanced need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
 		\item \textbf{Automatic Job Priority Values:} Jobs waiting for a porter need to increase their priority after waiting for a specified amount of time.  The "Minutes" will determine how long a job waits until it increases in priority.
@@ -198,11 +213,29 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Proximity Match Values:} The closeness of a porter to pending jobs will factor into how quickly a job is assigned to a porter.
 	\end{enumerate}
 	
+	\subsection{Porter Schedule}
+	Porters need to be scheduled by shifts in order to give the users flexibility over the simulation.  This will allow the user full control over the amount of porters available over the course of a simulation.
+	
+	\begin{figure}[!htbp]
+	\begin{center}
+		\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{Schedule.png}
+		\caption{Porter Schedule}
+	\end{center}
+	\end{figure}
+	
+	\begin{enumerate}[(i)]
+		\item \textbf{Shift ID:} An identifier for a shift.  The Shift ID will allow for the easier of traceability of shifts in the output data.
+		\item \textbf{StartTime:} A shift will begin at this time in the simulation.
+		\item \textbf{EndTime:} A shift will end at this time in the simulation.
+		\item \textbf{Porters Ids:} Allows for the assignment of one or more porter(s) to a shift.  A porter is assigned to a shift by adding an identifier.  Multiple porters can be assigned to the same shift by adding multiple identifiers each separated by a comma.  In the Figure 3.3 \textit{Shift ID 0} has three  porters assigned to it \textit{0,1,4}.
+		\item \textbf{Day:} The day of the week on which the shift occurs.  It must be a number from 1-7, 1 being Monday and 7 being Sunday.
+	\end{enumerate}
 \section{Output Data}
 Once the simulation has finished modeling and computing the data, the results of all of the completed jobs are exported to an excel file. This file contains some graphs and plots, as well as some data averages to better analyze the simulated results. The file is located in the same directory as PorterSimulation.exe. While the existing plots will be beneficial in interpreting the resulting output, users are encouraged to explore their data using the tools built into excel. Details on the specific graphs and data layout will be available once development is complete.
 
 \section{Troubleshooting}
 The Porter Simulation has been designed to operate effectively and error free, however, this troubleshooting section will help address any minor issues that may arise.
+
 \begin{enumerate}[(i)]
 	\item \textbf{Simulation Stops:} In the event that the simulation is running and suddenly halts before producing output data, it will be necessary to close the simulation manually by clicking the X in the top right corner of the window. If the simulation continues to malfunction, please contact the development team.
 	\item \textbf{Data Files Missing:} When selecting source data files, if the files do not appear in the listings on the Basic Settings screen, check the Porter Simulation installation directory. If the files are missing, they can easily be added again by copying them from the Porter Simulation installer package, either by download or from USB storage.
@@ -211,8 +244,9 @@ The Porter Simulation has been designed to operate effectively and error free, h
 \section{Figures and Tables Appendix}
 \begin{enumerate}[(a)]
 	\item Figure 2.1: Installer.png
-	\item Figure 3.1: 
-	\item Figure 3.2:
+	\item Figure 3.1: BasicSettings.png
+	\item Figure 3.2: AdvancedSettings.png
+	\item Figure 3.3: Schedule.png
 \end{enumerate}
 
 \section{Legal and Copyright Information}
