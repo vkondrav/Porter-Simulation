@@ -2,6 +2,7 @@ import os
 from PyQt4 import QtCore, QtGui
 import csv
 import dateutil.parser as parser
+import pprint
 from portersim import main as portermain
 
 class functions():
@@ -125,14 +126,6 @@ class functions():
         #list of float
         ajb = list()
 
-        with open(fileLocation_2, 'r') as f:
-            reader = csv.reader(f)
-
-            next(reader)
-            l = []
-            for row in reader:
-                l.append((parser.parse(row[1]), parser.parse(row[2])))
-
         i = 0
         while i < len(self.ajb):
             ajb.append(self.ajb[i].value())
@@ -173,6 +166,7 @@ class functions():
         inputDict["wjl"] = wjl
         inputDict["pmv"] = pmv
         inputDict["av"] = av
+        inputDict["schedule"] = self.scheduleParser()
 
         #for i in inputDict:
         #    print(i + " : " + str(inputDict[i]))
@@ -254,3 +248,28 @@ class functions():
             self.ui.fileBrowseButton.setEnabled(False)
             self.ui.startDate.setEnabled(False)
             self.ui.endDate.setEnabled(False)
+
+    def scheduleParser(self):
+
+        with open(self.ui.fileLocation_2.text(), 'r') as f:
+            reader = csv.reader(f)
+
+            next(reader)
+            parsedSchedule = []
+            for row in reader:
+                parsedSchedule.append((row[0], parser.parse(row[1]), parser.parse(row[2]), row[3].split(','), row[4].split(',')))
+
+        reformattedSchedule = {}
+
+        for ps in parsedSchedule:
+            for pid in ps[3]:
+
+                if str(pid) not in reformattedSchedule:
+                    reformattedSchedule[str(pid)] = []
+
+                for day in ps[4]:
+                    reformattedSchedule[str(pid)].append((ps[0], ps[1], ps[2], day))
+
+        #pprint.pprint(reformattedSchedule, None, 1, 80, 3)
+
+        return reformattedSchedule

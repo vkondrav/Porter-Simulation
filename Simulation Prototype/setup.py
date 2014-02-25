@@ -1,5 +1,6 @@
 import sys
 import os
+import winshell
 
 from cx_Freeze import setup, Executable
 
@@ -17,6 +18,7 @@ base = None
 if sys.platform == "win32":
     base = "Win32GUI"
 
+
 setup(  name = "Porter Simulation",
         version = "0.7",
         author = "Team 9",
@@ -30,10 +32,9 @@ setup(  name = "Porter Simulation",
         executables = [
             Executable(
                 "GUI.py",
-                #shortcutName="Porter Simulation",
-                #shortcutDir=desktop,
-                #targetName = "PorterSimulation.exe",
-                #icon="icon.ico"
+                shortcutName="Porter Simulation",
+                shortcutDir="DesktopFolder",
+                icon="icon.ico"
             )
             ]
         )
