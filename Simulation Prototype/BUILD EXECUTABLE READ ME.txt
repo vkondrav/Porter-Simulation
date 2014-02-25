@@ -1,0 +1,6 @@
+Building the python executable using cx_freeze
+
+1. Download and install cx_freeze for Python 2.7
+2. From command prompt. Type: python setup.py bdist_msi
+3. The windows executable will be in the build folder and the installer in the dist folder
+4. These folders are in gitignore, don't do any work in them

@@ -247,3 +247,5 @@ pip-log.txt
 
 #####Directories############
 /Simulation Prototype/.idea
+/Simulation Prototype/build
+/Simulation Prototype/dist

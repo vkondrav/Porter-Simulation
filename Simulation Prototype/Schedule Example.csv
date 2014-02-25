@@ -1,4 +1,4 @@
-Shift ID,StartTime,EndTime,Number of Porters,Day
-0,8:00 AM,1:00 PM,5,0
-1,4:00 AM,1:00 PM,6,"4,6,7"
-3,10:00 AM,6:00 PM,4,2
+Shift ID,StartTime,EndTime,Porter Ids,Day
+0,8:00 AM,1:00 PM,"0,1,4",0
+1,4:00 AM,1:00 PM,"2,4,7","4,6,7"
+3,10:00 AM,6:00 PM,"9,2,7",2
