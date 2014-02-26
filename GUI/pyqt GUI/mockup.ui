@@ -107,11 +107,17 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
         <enum>Qt::Horizontal</enum>
        </property>
        <widget class="QLabel" name="label_2">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="text">
          <string>Number of Porters</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="numberOfPorters">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -136,6 +142,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
         </property>
        </widget>
        <widget class="QComboBox" name="jobDistribution">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
@@ -175,6 +184,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
         </property>
        </widget>
        <widget class="QDoubleSpinBox" name="simDuration">
+        <property name="toolTip">
+         <string>Choose the number of hours to simulate</string>
+        </property>
         <property name="decimals">
          <number>2</number>
         </property>
@@ -432,6 +444,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
         <height>21</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>browse files</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -477,6 +492,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
         <height>21</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>browse files</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -518,6 +536,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="toolTip">
+        <string>start date of statistical data to be used</string>
+       </property>
        <property name="styleSheet">
         <string notr="true"/>
        </property>
@@ -542,6 +563,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
       <widget class="QDateEdit" name="endDate">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>ebd date of the statistical data to be used</string>
        </property>
        <property name="styleSheet">
         <string notr="true"/>

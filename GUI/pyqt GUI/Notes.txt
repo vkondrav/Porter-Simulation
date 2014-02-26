@@ -1,0 +1,7 @@
+to compile, pyqt must be installed. In command prompt type: 
+
+| pyuic4 -x input.ui -o output.py | 
+
+where input.ui is the UI created in QT Designer and output.py is the python destination
+
+note: this will overwrite everything in output.py

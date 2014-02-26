@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Fri Feb 07 21:40:52 2014
+# Created: Wed Feb 26 11:09:57 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -76,9 +76,11 @@ class Ui_Dialog(object):
         self.splitter_5.setObjectName(_fromUtf8("splitter_5"))
 
         self.label_2 = QtGui.QLabel(self.splitter_5)
+        self.label_2.setEnabled(True)
         self.label_2.setObjectName(_fromUtf8("label_2"))
 
         self.numberOfPorters = QtGui.QSpinBox(self.splitter_5)
+        self.numberOfPorters.setEnabled(False)
         self.numberOfPorters.setStyleSheet(_fromUtf8(""))
         self.numberOfPorters.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.numberOfPorters.setMaximum(9999)
@@ -92,6 +94,7 @@ class Ui_Dialog(object):
         self.label_5.setObjectName(_fromUtf8("label_5"))
 
         self.jobDistribution = QtGui.QComboBox(self.splitter_2)
+        self.jobDistribution.setEnabled(False)
         self.jobDistribution.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.jobDistribution.setStyleSheet(_fromUtf8(""))
         self.jobDistribution.setEditable(False)
@@ -796,6 +799,7 @@ class Ui_Dialog(object):
         self.jobDistribution.setItemText(1, _translate("Dialog", "Poisson Distribution", None))
         self.jobDistribution.setItemText(2, _translate("Dialog", "Lagrange Distribution", None))
         self.label_6.setText(_translate("Dialog", "Simulation Duration", None))
+        self.simDuration.setToolTip(_translate("Dialog", "Choose the number of hours to simulate", None))
         self.label_15.setText(_translate("Dialog", "h", None))
         self.groupBox_2.setTitle(_translate("Dialog", "Compliance", None))
         self.label_7.setText(_translate("Dialog", "Correct Equipment Usage", None))
@@ -809,13 +813,17 @@ class Ui_Dialog(object):
         self.resetAllButton.setText(_translate("Dialog", "Reset All", None))
         self.simulateButton.setText(_translate("Dialog", "Simulate", None))
         self.groupBox_9.setTitle(_translate("Dialog", "Data Source", None))
+        self.fileBrowseButton.setToolTip(_translate("Dialog", "browse files", None))
         self.fileBrowseButton.setText(_translate("Dialog", "...", None))
         self.label_18.setText(_translate("Dialog", "Statisitical Data Source:", None))
+        self.fileBrowseButton_2.setToolTip(_translate("Dialog", "browse files", None))
         self.fileBrowseButton_2.setText(_translate("Dialog", "...", None))
         self.label_60.setText(_translate("Dialog", "Schedule Data Source", None))
         self.label_3.setText(_translate("Dialog", "Use Data from:", None))
+        self.startDate.setToolTip(_translate("Dialog", "start date of statistical data to be used", None))
         self.startDate.setDisplayFormat(_translate("Dialog", "dd-MM-yyyy", None))
         self.label_4.setText(_translate("Dialog", "to:", None))
+        self.endDate.setToolTip(_translate("Dialog", "ebd date of the statistical data to be used", None))
         self.endDate.setDisplayFormat(_translate("Dialog", "dd-MM-yyyy", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Basic Settings", None))
         self.groupBox_4.setTitle(_translate("Dialog", "Dispatcher", None))
