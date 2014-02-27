@@ -249,3 +249,8 @@ pip-log.txt
 /Simulation Prototype/.idea
 /Simulation Prototype/build
 /Simulation Prototype/dist
+
+####Files##################
+/Simulation Prototype/test.py
+/Simulation Prototype/output.xls
+/Simulation Prototype/output.pickle

@@ -4,6 +4,7 @@ import winshell
 
 from cx_Freeze import setup, Executable
 
+includefiles = ['hhs.png']
 includes = []
 excludes = []
 packages = []
@@ -26,6 +27,7 @@ setup(  name = "Porter Simulation",
         options = {"build_exe": {"includes": includes,
                                  "excludes": excludes,
                                  "packages": packages,
+                                 'include_files':includefiles,
                                  "path": path
                                 }
         },
