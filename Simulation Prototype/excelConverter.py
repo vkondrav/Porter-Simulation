@@ -5,6 +5,9 @@ import tempfile
 import os
 import win32com.client
 
+from datetime import datetime, timedelta
+from time import sleep
+
 #jobList attributes#
 
 #creationTime
@@ -22,6 +25,8 @@ import win32com.client
 #jobId
 
 class converter():
+
+    timeRef = datetime(2014,1,1,8)
 
     jobList = None
 
@@ -51,13 +56,19 @@ class converter():
 
         i = 1
         for j in self.jobList:
-            sheet1.write(i, 0, j.creationTime)
+
+            crT = self.timeRef + timedelta(seconds=j.creationTime)
+            cpT = self.timeRef + timedelta(seconds=j.completeTime)
+            jsT = self.timeRef + timedelta(seconds=j.jobStartTime)
+            jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
+
+            sheet1.write(i, 0, crT)
             sheet1.write(i, 1, j.inProgressTime)
-            sheet1.write(i, 2, j.completeTime)
+            sheet1.write(i, 2, cpT)
             sheet1.write(i, 3, j.origin)
             sheet1.write(i, 4, j.destination)
-            sheet1.write(i, 5, j.jobStartTime)
-            sheet1.write(i, 6, j.jobCompletionTime)
+            sheet1.write(i, 5, jsT)
+            sheet1.write(i, 6, jcT)
             sheet1.write(i, 7, j.startTime)
             sheet1.write(i, 8, j.completionTime)
             sheet1.write(i, 9, j.priority)
@@ -76,6 +87,9 @@ class converter():
 
         xl.Workbooks.Open(Filename=path,ReadOnly=1)
         xl.Application.Run("main")
+
+        sleep(5)
+        os.startfile(path)
 
 def main():
     c = converter()
