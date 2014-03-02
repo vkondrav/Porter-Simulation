@@ -9,6 +9,7 @@ class Job(object):
         self.destination = destination
         self.jobStartTime = None
         self.jobCompletionTime = None
+		self.jobCompletionPorterID = None
         self.startTime = None
         self.completionTime = None
         self.priority = priority
