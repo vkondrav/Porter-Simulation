@@ -23,7 +23,7 @@ from time import sleep
 #appointment
 #autoProc
 #jobId
-
+#jobCompletionPorterID
 class converter():
 
     timeRef = datetime(2014,1,1,8)
@@ -53,6 +53,7 @@ class converter():
         sheet1.write(0, 10, "Appoinment")
         sheet1.write(0, 11, "Auto Process")
         sheet1.write(0, 12, "Job ID")
+        sheet1.write(0, 13, "Completed by Porter")
 
         i = 1
         for j in self.jobList:
@@ -75,6 +76,7 @@ class converter():
             sheet1.write(i, 10, j.appointment)
             sheet1.write(i, 11, j.autoProc)
             sheet1.write(i, 12, j.jobId)
+            sheet1.write(i, 13, j.jobCompletionPorterID)
 
             i += 1
 
