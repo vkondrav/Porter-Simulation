@@ -101,10 +101,12 @@ class functions():
         simDuration = self.ui.simDuration.value()
         #date
         startDate = self.ui.startDate.date()
+        startDay = startDate.dayOfWeek()
         startDate = startDate.toPyDate()
         startDate = str(startDate) + " 00:00:00"
         #date
         endDate = self.ui.endDate.date()
+        endDay = endDate.dayOfWeek()
         endDate = endDate.toPyDate()
         endDate = str(endDate) + " 00:00:00"
         #int
@@ -155,6 +157,8 @@ class functions():
         inputDict["simulationDuration"] = simDuration
         inputDict["startDate"] = startDate
         inputDict["endDate"] = endDate
+        inputDict["startDay"] = startDay
+        inputDict["endDay"] = endDay
         inputDict["jobDistribution"] = jobDistribution
         inputDict["correctEquipment"] = correctEquipment
         inputDict["patientReadiness"] = patientReadiness
@@ -257,7 +261,11 @@ class functions():
             next(reader)
             parsedSchedule = []
             for row in reader:
-                parsedSchedule.append((row[0], parser.parse(row[1]), parser.parse(row[2]), row[3].split(','), row[4].split(',')))
+                startTime = parser.parse(row[1])
+                startTime = (startTime.hour * 3600) + (startTime.minute * 60)
+                endTime = parser.parse(row[2])
+                endTime = (endTime.hour * 3600) + (endTime.minute * 60)
+                parsedSchedule.append((row[0], startTime, endTime, row[3].split(','), row[4].split(',')))
 
         reformattedSchedule = {}
 

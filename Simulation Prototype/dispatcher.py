@@ -77,8 +77,7 @@ class Dispatcher(object):
                 continue
             
             # generate list of porters who are in a pending state
-            pendingPorters = [porter for porter in simState.porters if porter.state == Porter.pending]
-            
+            pendingPorters = simState.porterManager.getPendingPorters(job.creationTime)
             if not pendingPorters:
                 # no porters in pending state, so add the job to the job pool
                 self.pending_jobs.append(job)

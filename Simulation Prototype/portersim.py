@@ -5,6 +5,7 @@ from state import State
 from dispatcher import Dispatcher
 from job import Job, JobList
 from statImport import StatImport
+from porterManager import PorterManager
 
 
 SIM_TIME = None
@@ -93,16 +94,14 @@ def main(config):
             # break
         # except ValueError:
             # print 'Please input an integer'
-    
+     
     dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["pmv"], config["ajb"], config["av"])
     dispatcher.configData()
-    
-    porterList = []
-    for i in range(config["numberOfPorters"]):
-        newPorter = Porter(i)
-        porterList.append(newPorter)
+
+    porterManager = PorterManager(config["startDay"])
+    porterManager.importPorterSched(config["schedule"])
 	
-    simState = State(env, porterList, dispatchTable, dispatcher, jobList)
+    simState = State(env, porterManager, dispatchTable, dispatcher, jobList)
 	
     env.process(dispatcher.assignJobs(simState))
     env.process(jobList.jobReleaser(simState))
