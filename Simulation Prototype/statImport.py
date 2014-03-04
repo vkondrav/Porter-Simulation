@@ -1,7 +1,11 @@
 import csv
 import time
 import calendar
+import string
+from random import randint, seed
 from job import JobList, Job
+
+seed(0)
 
 keys = {
         "TransportJobID": 0,
@@ -80,11 +84,9 @@ class StatImport(object):
     
     def __init__(self):
         self.dispatchTable = {}
+        self.statData = StatData()
        
-    def runImport(self, fileName, jobList, startTimeStr, endTimeStr):
-        startTimeAbs = strToT(startTimeStr)
-        endTimeAbs = strToT(endTimeStr)
-        
+    def runImport(self, fileName, jobList):
         with open(fileName, 'rb') as csvFile:
             reader = csv.reader(csvFile, delimiter= ',')
 
@@ -95,30 +97,19 @@ class StatImport(object):
                     if len(row) == len(keys) and row[keys[attr]] != "NULL":
                         data[attr] = row[keys[attr]]
                     
-                if "Last_Status" in data and data["Last_Status"] == "Complete" and data["PatientTransportFlag"] == "1": # time filter goes here
-                    pendingTimeAbs = strToT(data["PendingDT"])
-                    pendingTime = pendingTimeAbs - startTimeAbs
+                if "Last_Status" in data and data["Last_Status"] == "Complete" and data["PatientTransportFlag"] == "1":
+                    if all(k in data for k in attributes):
+                        pendingTimeAbs = strToT(data["PendingDT"])
+                        dispatchTime = strToDeltaT(data["DispatchedDT"], pendingTimeAbs)
+                        origin = data["Origin"]
+                        self.addDispatchTime(origin, dispatchTime)
+                        self.statData.addToSegment(data)
+                    else:
+                        print "Invalid CSV Entry:"
+                        print data
+                        continue
                     
-                    if pendingTimeAbs >= startTimeAbs and pendingTimeAbs <= endTimeAbs:
-                        
-                        #print pendingTime
-                        if all(k in data for k in attributes):
-                            dispatchTime = strToDeltaT(data["DispatchedDT"], pendingTimeAbs)
-                            inProgressTime = strToDeltaT(data["InProgressDT"], pendingTimeAbs)
-                            completeTime = strToDeltaT(data["CompleteDT"], pendingTimeAbs)
-                            origin = data["Origin"]
-                            destination = data["Destination"]
-                            priority = int(data["OriginalPriorityID"])
-                            appointment = 1 if data["Created_Status"] == "Appointment" else 0
-                            jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
-                            self.addDispatchTime(origin, dispatchTime)
-                        else:
-                            print "Invalid CSV Entry:"
-                            print Data
-                            continue
-                        
-                        #print data
-                        
+        self.statData.constructJobList(jobList)
         
         return self.dispatchTable
                         
@@ -128,6 +119,63 @@ class StatImport(object):
         else:
             self.dispatchTable[origin] = [dispatchTime]
                         
+                        
+class StatData(object):
+
+    secondsInDay = 86400
+    secondsInHour = 3600
+    secondsInMin = 60
+
+    def __init__(self):
+        self.numSegments = 6
+        self.segmentSize = 4
+        self.statData = []
+        for i in range(7):
+            self.statData.append([])
+            for j in range(self.numSegments):
+                self.statData[i].append({})
+        
+    def addToSegment(self, data):
+        timeStruct = time.strptime(data["PendingDT"] , "%Y-%m-%d %H:%M:%S")
+        day = timeStruct.tm_wday
+        segment = timeStruct.tm_hour / self.segmentSize;
+        key = string.split(data["PendingDT"])[0]
+        
+        if self.statData[day][segment].has_key(key):
+            self.statData[day][segment][key].append(data)
+        else:
+            self.statData[day][segment][key] = [data]
+        
+    def constructJobList(self, jobList):
+        for day in self.statData:
+            for segment in day:
+                keys = segment.keys()
+                key = keys[randint(0, len(keys) - 1)]
+                
+                activeSegment = segment[key]
+                
+                for data in activeSegment:
+                    pendingTime = self.strToS(data["PendingDT"])
+                    inProgressTime = self.strToS(data["InProgressDT"]) - pendingTime
+                    inProgressTime = self.strToS(data["InProgressDT"]) - pendingTime
+                    completeTime = self.strToS(data["CompleteDT"]) - pendingTime
+                    origin = data["Origin"]
+                    destination = data["Destination"]
+                    priority = int(data["OriginalPriorityID"])
+                    appointment = 1 if data["Created_Status"] == "Appointment" else 0
+                    jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
+                    
+                    
+    def strToS(self, timeString):
+        timeStruct = time.strptime(timeString , "%Y-%m-%d %H:%M:%S")
+        day = timeStruct.tm_wday
+        hour = timeStruct.tm_hour
+        min = timeStruct.tm_min
+        sec = timeStruct.tm_sec
+        return (day * StatData.secondsInDay
+                + hour * StatData.secondsInHour
+                + min * StatData.secondsInMin
+                + sec)
 
 def strToT(timeString):
     return calendar.timegm(time.strptime(timeString , "%Y-%m-%d %H:%M:%S"))
@@ -139,5 +187,31 @@ def strToDeltaT(timeString, refTime):
 
 if __name__=='__main__':
     a = StatImport()
-    print a.runImport('data.csv', JobList(), "2013-10-31 8:00:00", "2013-10-31 20:00:00")
+    jobList = JobList()
+    print a.runImport('data.csv', jobList)
+    print
+    print jobList.jobList
+    
+# pendingTimeAbs = strToT(data["PendingDT"])
+# pendingTime = pendingTimeAbs - startTimeAbs
+
+# if pendingTimeAbs >= startTimeAbs and pendingTimeAbs <= endTimeAbs:
+    
+    # #print pendingTime
+    # if all(k in data for k in attributes):
+        # dispatchTime = strToDeltaT(data["DispatchedDT"], pendingTimeAbs)
+        # inProgressTime = strToDeltaT(data["InProgressDT"], pendingTimeAbs)
+        # completeTime = strToDeltaT(data["CompleteDT"], pendingTimeAbs)
+        # origin = data["Origin"]
+        # destination = data["Destination"]
+        # priority = int(data["OriginalPriorityID"])
+        # appointment = 1 if data["Created_Status"] == "Appointment" else 0
+        # jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
+        # self.addDispatchTime(origin, dispatchTime)
+    # else:
+        # print "Invalid CSV Entry:"
+        # print Data
+        # continue
+    
+    # #print data
             
