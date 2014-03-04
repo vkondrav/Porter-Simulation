@@ -1,3 +1,4 @@
+import math
 from state import State
 from porter import Porter
 
@@ -28,11 +29,11 @@ class PorterManager(object):
                         workingList.append(porterID)
                 else:
                     #Get the number of days since the first day
-                    numDays = int(creationTime) % SECONDS_IN_DAY
+                    numDays = int(math.floor(int(creationTime) / SECONDS_IN_DAY))
                     #Get the time based on the number of days passed
                     creationTimeDay = creationTime / (numDays * SECONDS_IN_DAY)
-        
-                    if int(shift[3]) == self.startDay + numDays and int(shift[1]) <= creationTimeDay and int(shift[2]) >= creationTimeDay:
+
+                    if int(shift[3]) == int(self.startDay) + numDays and int(shift[1]) <= int(creationTimeDay) and int(shift[2]) >= int(creationTimeDay):
                         workingList.append(porterID)
 
         pendingList = []
