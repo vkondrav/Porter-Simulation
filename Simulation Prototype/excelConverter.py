@@ -65,12 +65,12 @@ class converter(object):
             else:
                 crT = self.timeRef + timedelta(seconds=j.creationTime)
 
-            if j.completionTime == None:
+            if j.completeTime == None:
                 cpT = -1
             else:
                 cpT = self.timeRef + timedelta(seconds=j.completeTime)
 
-            if j.jobCompletionTime == None:
+            if j.jobStartTime == None:
                 jsT = -1
             else:
                 jsT = self.timeRef + timedelta(seconds=j.jobStartTime)
@@ -93,7 +93,7 @@ class converter(object):
             sheet1.write(i, 10, j.appointment)
             sheet1.write(i, 11, j.autoProc)
             sheet1.write(i, 12, j.jobId)
-            #sheet1.write(i, 13, j.jobCompletionPorterID)
+            sheet1.write(i, 13, j.jobCompletionPorterID)
 
             i += 1
 
