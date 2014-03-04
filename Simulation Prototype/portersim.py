@@ -84,7 +84,7 @@ def main(config):
     
     importer = StatImport()
     jobList = JobList()
-    dispatchTable = importer.runImport(config["fileLocation"], jobList, config["startDate"], config["endDate"])
+    dispatchTable = importer.runImport(config["fileLocation"], jobList)
     
     env = simpy.Environment()
     
