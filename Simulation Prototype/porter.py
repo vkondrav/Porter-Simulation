@@ -42,8 +42,8 @@ class Porter(object):
         self.state = Porter.complete
         self.unit = self.job.destination
         self.job.jobCompletionTime = simState.env.now
-        jobCompletionPorterID = self.id
         done_in = self.job.completeTime
+        self.job.jobCompletionPorterID = self.id
         self.job = None
         yield simState.env.timeout(done_in)
         
