@@ -38,6 +38,7 @@ class converter(object):
 
     def write(self):
 
+        print "writing to output.xls"
         book = xlwt.Workbook()
         sheet1 = book.add_sheet('Sheet 1')
 
@@ -81,9 +82,11 @@ class converter(object):
 
             i += 1
 
+        print "saving output.xls"
         book.save('output.xls')
         #book.save(tempfile.TemporaryFile())
 
+        print "building dashboard.xlsm"
         xl=win32com.client.Dispatch("Excel.Application")
 
         path = os.getcwd() + "\dashboard.xlsm"
@@ -91,6 +94,7 @@ class converter(object):
         xl.Workbooks.Open(Filename=path,ReadOnly=1)
         xl.Application.Run("main")
 
+        print "dashboard complete"
         #xl.SaveAs("c:\myBook.xlsm")
         xl.Quit()
         #os.startfile(path)
