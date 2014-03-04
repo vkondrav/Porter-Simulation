@@ -60,10 +60,25 @@ class converter(object):
         i = 1
         for j in self.jobList:
 
-            crT = self.timeRef + timedelta(seconds=j.creationTime)
-            cpT = self.timeRef + timedelta(seconds=j.completeTime)
-            jsT = self.timeRef + timedelta(seconds=j.jobStartTime)
-            jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
+            if j.creationTime == None:
+                crT = -1
+            else:
+                crT = self.timeRef + timedelta(seconds=j.creationTime)
+
+            if j.completionTime == None:
+                cpT = -1
+            else:
+                cpT = self.timeRef + timedelta(seconds=j.completeTime)
+
+            if j.jobCompletionTime == None:
+                jsT = -1
+            else:
+                jsT = self.timeRef + timedelta(seconds=j.jobStartTime)
+
+            if j.jobCompletionTime == None:
+                jcT = -1
+            else:
+                jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
 
             sheet1.write(i, 0, crT)
             sheet1.write(i, 1, j.inProgressTime)
