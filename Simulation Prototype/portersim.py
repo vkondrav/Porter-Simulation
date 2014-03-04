@@ -6,6 +6,7 @@ from dispatcher import Dispatcher
 from job import Job, JobList
 from statImport import StatImport
 from porterManager import PorterManager
+from excelConverter import main as dashOutput
 
 
 SIM_TIME = None
@@ -108,7 +109,8 @@ def main(config):
     
     env.run(until=SIM_TIME)
         
-    reportStatistics(jobList.releasedJobList)
+    #reportStatistics(jobList.releasedJobList)
+    dashOutput(jobList.releasedJobList)
 
 
 if __name__=='__main__':

@@ -24,11 +24,12 @@ from time import sleep
 #autoProc
 #jobId
 #jobCompletionPorterID
-class converter():
+class converter(object):
 
-    timeRef = datetime(2014,1,1,8)
+    timeRef = datetime(2014,1,1,0)
 
-    jobList = None
+    def __init__(self,jobList):
+        self.jobList = jobList
 
     def getList(self):
 
@@ -76,12 +77,12 @@ class converter():
             sheet1.write(i, 10, j.appointment)
             sheet1.write(i, 11, j.autoProc)
             sheet1.write(i, 12, j.jobId)
-            sheet1.write(i, 13, j.jobCompletionPorterID)
+            #sheet1.write(i, 13, j.jobCompletionPorterID)
 
             i += 1
 
         book.save('output.xls')
-        book.save(tempfile.TemporaryFile())
+        #book.save(tempfile.TemporaryFile())
 
         xl=win32com.client.Dispatch("Excel.Application")
 
@@ -90,13 +91,15 @@ class converter():
         xl.Workbooks.Open(Filename=path,ReadOnly=1)
         xl.Application.Run("main")
 
-        sleep(5)
-        os.startfile(path)
+        #xl.SaveAs("c:\myBook.xlsm")
+        xl.Quit()
+        #os.startfile(path)
 
-def main():
-    c = converter()
-    c.getList()
+def main(jobList):
+    c = converter(jobList)
+    #c.jobList = jobList
+    #c.getList()
     c.write()
 
-if __name__=='__main__':
-	main()
+#if __name__=='__main__':
+#	main()
