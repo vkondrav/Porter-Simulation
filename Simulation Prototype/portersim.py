@@ -108,7 +108,8 @@ def main(config):
     env.process(jobList.jobReleaser(simState))
     
     env.run(until=SIM_TIME)
-        
+
+    print "fini"
     #reportStatistics(jobList.releasedJobList)
     dashOutput(jobList.releasedJobList)
 
