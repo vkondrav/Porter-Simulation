@@ -9,7 +9,7 @@ from porterManager import PorterManager
 from excelConverter import main as dashOutput
 
 
-SIM_TIME = 432000
+SIM_TIME = 86400
 
   
 def reportStatistics(jobList):

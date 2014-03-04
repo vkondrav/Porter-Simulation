@@ -80,22 +80,23 @@ class converter(object):
             else:
                 jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
 
-            sheet1.write(i, 0, crT)
-            sheet1.write(i, 1, j.inProgressTime)
-            sheet1.write(i, 2, cpT)
-            sheet1.write(i, 3, j.origin)
-            sheet1.write(i, 4, j.destination)
-            sheet1.write(i, 5, jsT)
-            sheet1.write(i, 6, jcT)
-            sheet1.write(i, 7, j.startTime)
-            sheet1.write(i, 8, j.completionTime)
-            sheet1.write(i, 9, j.priority)
-            sheet1.write(i, 10, j.appointment)
-            sheet1.write(i, 11, j.autoProc)
-            sheet1.write(i, 12, j.jobId)
-            sheet1.write(i, 13, j.jobCompletionPorterID)
+            if not crT == -1 and not cpT == -1 and not jsT == -1 and not jcT == -1 and not j.jobCompletionPorterID == None:
+                sheet1.write(i, 0, crT)
+                sheet1.write(i, 1, j.inProgressTime)
+                sheet1.write(i, 2, cpT)
+                sheet1.write(i, 3, j.origin)
+                sheet1.write(i, 4, j.destination)
+                sheet1.write(i, 5, jsT)
+                sheet1.write(i, 6, jcT)
+                sheet1.write(i, 7, j.startTime)
+                sheet1.write(i, 8, j.completionTime)
+                sheet1.write(i, 9, j.priority)
+                sheet1.write(i, 10, j.appointment)
+                sheet1.write(i, 11, j.autoProc)
+                sheet1.write(i, 12, j.jobId)
+                sheet1.write(i, 13, j.jobCompletionPorterID)
+                i += 1
 
-            i += 1
 
         print "saving output.xls"
         book.save('output.xls')
