@@ -66,7 +66,7 @@ class Dispatcher(object):
 		
     def assignJobs(self, simState):
         while not simState.jobList.isEmpty() or self.pending_jobs:
-            yield simState.env.timeout(1)
+            yield simState.env.timeout(60)
             job = None  
             if self.pending_jobs:
                 job = self.getNextJob()
