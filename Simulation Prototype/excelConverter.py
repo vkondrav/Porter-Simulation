@@ -100,6 +100,7 @@ class converter(object):
 
         print "saving output.xls"
         book.save('output.xls')
+
         #book.save(tempfile.TemporaryFile())
 
         print "building dashboard.xlsm"
@@ -111,7 +112,7 @@ class converter(object):
         xl.Application.Run("main")
 
         print "dashboard complete"
-        #xl.SaveAs("c:\myBook.xlsm")
+        #xl.SaveAs("c:\myBook.xls")
         xl.Quit()
         #os.startfile(path)
 
