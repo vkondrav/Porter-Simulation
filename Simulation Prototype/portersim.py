@@ -28,6 +28,13 @@ def reportStatistics(jobList):
     averageTimeToComplete = None
     
     for job in jobList:
+        if not job.jobStartTime:
+            print "Negative start time on %s by %s of %s" % (job.jobId, job.jobCompletionPorterID, job.jobStartTime)
+            continue
+        if not job.jobCompletionTime:
+            print "Negative completion time on %s by %s of %s" % (job.jobId, job.jobCompletionPorterID, job.jobStartTime)
+            continue
+    
         timeToStart = job.jobStartTime - job.creationTime
         summedTimeToStart += timeToStart
         

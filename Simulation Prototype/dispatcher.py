@@ -56,6 +56,7 @@ class Dispatcher(object):
             # store the job with the highest dispatch value
             if dv > nextDV:
                 nextJob = job
+                nextDV = dv
         self.pending_jobs.remove(nextJob)
         return nextJob
                     
@@ -80,7 +81,7 @@ class Dispatcher(object):
             pendingPorters = simState.porterManager.getPendingPorters(job.creationTime)
             if not pendingPorters:
                 # no porters in pending state, so add the job to the job pool
-                self.pending_jobs.append(job)
+                self.pending_jobs.insert(0, job)
                 continue
                 
             for porter in pendingPorters:
