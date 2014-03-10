@@ -24,6 +24,7 @@ from time import sleep
 #autoProc
 #jobId
 #jobCompletionPorterID
+
 class converter(object):
 
     timeRef = datetime(2014,1,1,0)
@@ -60,25 +61,25 @@ class converter(object):
         i = 1
         for j in self.jobList:
 
-            if j.creationTime == None:
-                crT = -1
-            else:
-                crT = self.timeRef + timedelta(seconds=j.creationTime)
+            #if j.creationTime == None:
+            #    crT = -1
+            #else:
+            crT = self.timeRef + timedelta(seconds=j.creationTime)
 
-            if j.completeTime == None:
-                cpT = -1
-            else:
-                cpT = self.timeRef + timedelta(seconds=j.completeTime)
+            #if j.completeTime == None:
+            #    cpT = -1
+            #else:
+            cpT = self.timeRef + timedelta(seconds=j.completeTime)
 
-            if j.jobStartTime == None:
-                jsT = -1
-            else:
-                jsT = self.timeRef + timedelta(seconds=j.jobStartTime)
+            #if j.jobStartTime == None:
+            #    jsT = -1
+            #else:
+            jsT = self.timeRef + timedelta(seconds=j.jobStartTime)
 
-            if j.jobCompletionTime == None:
-                jcT = -1
-            else:
-                jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
+            #if j.jobCompletionTime == None:
+            #    jcT = -1
+            #else:
+            jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
 
             if not crT == -1 and not cpT == -1 and not jsT == -1 and not jcT == -1 and not j.jobCompletionPorterID == None:
                 sheet1.write(i, 0, crT)
