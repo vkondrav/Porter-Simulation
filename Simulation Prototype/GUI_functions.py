@@ -122,7 +122,7 @@ class functions():
                 QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
 
     def assignAndExecute(self):
-
+        self.ui.output.setText("")
         print "*****STARTING SIMULATION*****"
         #float
         numberOfPorters = self.ui.numberOfPorters.value()

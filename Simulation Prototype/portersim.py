@@ -113,8 +113,10 @@ def main(config):
 	
     env.process(dispatcher.assignJobs(simState))
     env.process(jobList.jobReleaser(simState))
-    
-    env.run(until=SIM_TIME)
+
+    sim_time = config["simulationDuration"] * 24 * 60 * 60
+    print sim_time
+    env.run(until=sim_time)
 
     print "*****SIMULATION COMPLETE*****"
     #reportStatistics(jobList.releasedJobList)
