@@ -116,7 +116,7 @@ def main(config):
     
     env.run(until=SIM_TIME)
 
-    print "fini"
+    print "*****SIMULATION COMPLETE*****"
     #reportStatistics(jobList.releasedJobList)
     dashOutput(jobList.releasedJobList, config["outputLocation"])
 

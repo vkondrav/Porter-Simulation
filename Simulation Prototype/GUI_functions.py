@@ -5,6 +5,14 @@ import dateutil.parser as parser
 import datetime as dt
 import pprint
 from portersim import main as portermain
+import sys
+
+class EmittingStream(QtCore.QObject):
+
+    textWritten = QtCore.pyqtSignal(str)
+
+    def write(self, text):
+        self.textWritten.emit(str(text))
 
 class functions():
 
@@ -73,6 +81,19 @@ class functions():
         self.ui.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
         ########################################################################
 
+    def connectOutput(self):
+        sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
+
+    def normalOutputWritten(self, text):
+        """Append text to the QTextEdit."""
+        # Maybe QTextEdit.append() works as well, but this is how I do it:
+        #cursor = self.ui.output.textCursor()
+        #cursor.movePosition(QtGui.QTextCursor.End)
+        #cursor.insertText(text)
+        #self.ui.output.setTextCursor(cursor)
+        #self.ui.output.ensureCursorVisible()
+        self.ui.output.append(text)
+
     def buttonClicked(self):
 
             ex = True
@@ -102,6 +123,7 @@ class functions():
 
     def assignAndExecute(self):
 
+        print "*****STARTING SIMULATION*****"
         #float
         numberOfPorters = self.ui.numberOfPorters.value()
         #float
@@ -277,6 +299,10 @@ class functions():
             self.ui.startDate.setEnabled(False)
             self.ui.endDate.setEnabled(False)
 
+    def initFileLocations(self):
+        self.ui.fileLocation.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/data.csv")
+        self.ui.fileLocation_2.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/Schedule.csv")
+
     def scheduleParser(self):
 
         with open(self.ui.fileLocation_2.text(), 'r') as f:
@@ -305,3 +331,10 @@ class functions():
         #pprint.pprint(reformattedSchedule, None, 1, 80, 3)
 
         return reformattedSchedule
+
+class EmittingStream(QtCore.QObject):
+
+    textWritten = QtCore.pyqtSignal(str)
+
+    def write(self, text):
+        self.textWritten.emit(str(text))

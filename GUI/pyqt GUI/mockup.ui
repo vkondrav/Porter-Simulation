@@ -111,14 +111,20 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
        </property>
       </widget>
       <widget class="QDoubleSpinBox" name="porterWait">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="styleSheet">
         <string notr="true"/>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
+       <property name="minimum">
+        <double>0.000000000000000</double>
+       </property>
        <property name="maximum">
-        <double>99999.990000000005239</double>
+        <double>60.000000000000000</double>
        </property>
        <property name="value">
         <double>5.000000000000000</double>
@@ -362,6 +368,22 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
        <string>...</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QTextEdit" name="output">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>340</y>
+       <width>731</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTextEdit
+{
+	background-color: rgb(255, 255, 255);
+}</string>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_2">

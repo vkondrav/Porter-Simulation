@@ -3,7 +3,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Mar 10 18:44:49 2014
+# Created: Tue Mar 11 00:42:23 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -11,6 +11,7 @@
 from PyQt4 import QtCore, QtGui
 import GUI_functions as guif
 import os
+import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -75,9 +76,11 @@ class Ui_Dialog(object):
         self.label_9 = QtGui.QLabel(self.splitter_3)
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.porterWait = QtGui.QDoubleSpinBox(self.splitter_3)
+        self.porterWait.setEnabled(False)
         self.porterWait.setStyleSheet(_fromUtf8(""))
         self.porterWait.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.porterWait.setMaximum(99999.99)
+        self.porterWait.setMinimum(0.0)
+        self.porterWait.setMaximum(60.0)
         self.porterWait.setProperty("value", 5.0)
         self.porterWait.setObjectName(_fromUtf8("porterWait"))
         self.label_12 = QtGui.QLabel(self.splitter_3)
@@ -153,6 +156,13 @@ class Ui_Dialog(object):
         self.fileBrowseButton_3.setGeometry(QtCore.QRect(320, 190, 31, 21))
         self.fileBrowseButton_3.setStyleSheet(_fromUtf8(""))
         self.fileBrowseButton_3.setObjectName(_fromUtf8("fileBrowseButton_3"))
+        self.output = QtGui.QTextEdit(self.tab)
+        self.output.setGeometry(QtCore.QRect(10, 340, 731, 181))
+        self.output.setStyleSheet(_fromUtf8("QTextEdit\n"
+"{\n"
+"    background-color: rgb(255, 255, 255);\n"
+"}"))
+        self.output.setObjectName(_fromUtf8("output"))
         self.notUsed.addTab(self.tab, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
@@ -872,7 +882,10 @@ class Ui_Dialog(object):
         self.fun.appendDispatchLists()
         self.fun.assignEvents()
         self.fun.jobDistChange()
+        self.fun.initFileLocations()
         self.fun.recordInitialDispatch()
+        self.fun.connectOutput()
+
 
 if __name__ == "__main__":
     import sys

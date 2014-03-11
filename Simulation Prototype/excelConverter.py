@@ -7,6 +7,7 @@ import win32com.client
 
 from datetime import datetime, timedelta
 from time import sleep
+import pythoncom
 
 #jobList attributes#
 
@@ -40,7 +41,7 @@ class converter(object):
 
     def write(self):
 
-        print "writing to output.xls"
+        print "*****WRITING OUTPUT*****"
         book = xlwt.Workbook()
         sheet1 = book.add_sheet('Sheet 1')
 
@@ -100,23 +101,27 @@ class converter(object):
                 i += 1
 
 
-        print "saving output.xls"
+        print "*****SAVING OUTPUT*****"
         book.save('output.xls')
 
         #book.save(tempfile.TemporaryFile())
 
-        print "building dashboard.xlsm"
+        print "*****BUILDING DASHBOARD*****"
         ol = str(self.outputLocation)
         ol = ol.replace("/","\\")
-        print ol
+
         xl=win32com.client.Dispatch("Excel.Application")
 
         path = os.getcwd() + "\dashboard.xlsm"
 
         xl.Workbooks.Open(Filename=path)
-        xl.Application.Run("main", ol)
 
-        print "dashboard complete"
+        try:
+            xl.Application.Run("main", ol)
+        except pythoncom.com_error as error:
+            print "*****DASHBOARD COMPLETE*****"
+
+        print "*****DASHBOARD COMPLETE*****"
         #xl.SaveAs("c:\myBook.xls")
         xl.Quit()
         #os.startfile(path)
