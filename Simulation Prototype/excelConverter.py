@@ -29,8 +29,9 @@ class converter(object):
 
     timeRef = datetime(2014,1,1,0)
 
-    def __init__(self,jobList):
+    def __init__(self,jobList, outputLocation):
         self.jobList = jobList
+        self.outputLocation = outputLocation
 
     def getList(self):
 
@@ -105,20 +106,23 @@ class converter(object):
         #book.save(tempfile.TemporaryFile())
 
         print "building dashboard.xlsm"
+        ol = str(self.outputLocation)
+        ol = ol.replace("/","\\")
+        print ol
         xl=win32com.client.Dispatch("Excel.Application")
 
         path = os.getcwd() + "\dashboard.xlsm"
 
-        xl.Workbooks.Open(Filename=path,ReadOnly=1)
-        xl.Application.Run("main")
+        xl.Workbooks.Open(Filename=path)
+        xl.Application.Run("main", ol)
 
         print "dashboard complete"
         #xl.SaveAs("c:\myBook.xls")
         xl.Quit()
         #os.startfile(path)
 
-def main(jobList):
-    c = converter(jobList)
+def main(jobList, outputLocation):
+    c = converter(jobList, outputLocation)
     #c.jobList = jobList
     #c.getList()
     c.write()

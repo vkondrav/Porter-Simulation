@@ -2,6 +2,7 @@ import os
 from PyQt4 import QtCore, QtGui
 import csv
 import dateutil.parser as parser
+import datetime as dt
 import pprint
 from portersim import main as portermain
 
@@ -66,6 +67,7 @@ class functions():
         self.ui.resetAllButton.clicked.connect(self.resetAllButtonClicked)
         self.ui.fileBrowseButton.clicked.connect(self.fileBrowseButtonClicked)
         self.ui.fileBrowseButton_2.clicked.connect(self.fileBrowseButton2Clicked)
+        self.ui.fileBrowseButton_3.clicked.connect(self.fileBrowseButton3Clicked)
         self.ui.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
         self.ui.appFactor.valueChanged[int].connect(self.appFactorChange)
         self.ui.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
@@ -82,11 +84,16 @@ class functions():
 
             if not os.path.isfile(self.ui.fileLocation.text()):
                 ex = False
-                errorStr = errorStr + "Statistical Data File does not exist. "
+                errorStr = errorStr + "Statistical Data File does not exist.\n"
 
             if not os.path.isfile(self.ui.fileLocation_2.text()):
                 ex = False
-                errorStr = errorStr + "Schedule Data File does not exist. "
+                errorStr = errorStr + "Schedule Data File does not exist.\n"
+
+            s = self.ui.fileLocation_3.text()
+            if not s[-5:] == ".xlsm":
+                ex = False
+                errorStr = errorStr + "Output File must end with (.xlsm)"
 
             if ex:
                 self.assignAndExecute()
@@ -123,6 +130,8 @@ class functions():
         fileLocation = self.ui.fileLocation.text()
         #string
         fileLocation_2 = self.ui.fileLocation_2.text()
+        #string
+        fileLocation_3 = self.ui.fileLocation_3.text()
         #float
         appFactorValue = float(self.ui.appFactorValue.text())
         #list of float
@@ -171,6 +180,7 @@ class functions():
         inputDict["pmv"] = pmv
         inputDict["av"] = av
         inputDict["schedule"] = self.scheduleParser()
+        inputDict["outputLocation"] = fileLocation_3
 
         #for i in inputDict:
         #    print(i + " : " + str(inputDict[i]))
@@ -187,6 +197,7 @@ class functions():
         self.ui.porterWait.setProperty("value", 5.0)
         self.ui.fileLocation.setText("")
         self.ui.fileLocation_2.setText("")
+        self.ui.fileLocation_3.setText("")
 
     def fileBrowseButtonClicked(self):
         fname = QtGui.QFileDialog.getOpenFileName(self.Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
@@ -197,6 +208,19 @@ class functions():
         fname = QtGui.QFileDialog.getOpenFileName(self.Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
 
         self.ui.fileLocation_2.setText(fname)
+
+    def fileBrowseButton3Clicked(self):
+        fileName = str(dt.datetime.now())
+
+        fileName = fileName.replace(':', "-")
+        fileName = fileName.replace('.', "-")
+        fileName = fileName.replace(' ', "_")
+
+        fileName = fileName + ".xlsm"
+
+        fname = QtGui.QFileDialog.getSaveFileName(self.Dialog, 'Save File', fileName, "Excel Macro Enabled Files (*.xlsm)")
+        self.ui.fileLocation_3.setText(fname)
+
 
     def appFactorChange(self):
         self.ui.appFactorValue.setText(str(float(self.ui.appFactor.value())/100))

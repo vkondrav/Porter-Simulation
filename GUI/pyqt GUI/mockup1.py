@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mockup.ui'
 #
-# Created: Mon Mar 10 18:15:52 2014
+# Created: Mon Mar 10 18:44:49 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -131,6 +131,18 @@ class Ui_Dialog(object):
         self.label_60 = QtGui.QLabel(self.groupBox_9)
         self.label_60.setGeometry(QtCore.QRect(20, 120, 141, 16))
         self.label_60.setObjectName(_fromUtf8("label_60"))
+        self.fileLocation_3 = QtGui.QLineEdit(self.groupBox_9)
+        self.fileLocation_3.setEnabled(True)
+        self.fileLocation_3.setGeometry(QtCore.QRect(20, 190, 291, 21))
+        self.fileLocation_3.setStyleSheet(_fromUtf8(""))
+        self.fileLocation_3.setObjectName(_fromUtf8("fileLocation_3"))
+        self.label_63 = QtGui.QLabel(self.groupBox_9)
+        self.label_63.setGeometry(QtCore.QRect(20, 170, 141, 16))
+        self.label_63.setObjectName(_fromUtf8("label_63"))
+        self.fileBrowseButton_3 = QtGui.QPushButton(self.groupBox_9)
+        self.fileBrowseButton_3.setGeometry(QtCore.QRect(320, 190, 31, 21))
+        self.fileBrowseButton_3.setStyleSheet(_fromUtf8(""))
+        self.fileBrowseButton_3.setObjectName(_fromUtf8("fileBrowseButton_3"))
         self.notUsed.addTab(self.tab, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
@@ -660,6 +672,9 @@ class Ui_Dialog(object):
         self.fileBrowseButton_2.setToolTip(_translate("Dialog", "browse files", None))
         self.fileBrowseButton_2.setText(_translate("Dialog", "...", None))
         self.label_60.setText(_translate("Dialog", "Schedule Data Source", None))
+        self.label_63.setText(_translate("Dialog", "Output Location", None))
+        self.fileBrowseButton_3.setToolTip(_translate("Dialog", "browse files", None))
+        self.fileBrowseButton_3.setText(_translate("Dialog", "...", None))
         self.notUsed.setTabText(self.notUsed.indexOf(self.tab), _translate("Dialog", "Basic Settings", None))
         self.groupBox_4.setTitle(_translate("Dialog", "Dispatcher", None))
         self.label_13.setText(_translate("Dialog", "Appointment Factor", None))

@@ -118,7 +118,7 @@ def main(config):
 
     print "fini"
     #reportStatistics(jobList.releasedJobList)
-    dashOutput(jobList.releasedJobList)
+    dashOutput(jobList.releasedJobList, config["outputLocation"])
 
 
 if __name__=='__main__':
