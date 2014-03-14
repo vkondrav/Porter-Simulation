@@ -1,0 +1,20 @@
+Demo / Meeting Notes March 11 With Corey and Talha
+
+- 2 Types of users -Technical who setup and analyze
+		   -Basic who just interpret or suggest configurations
+
+Need to find out if we can automate the Excel reclculation macro.
+
+- Information in the graphs needs more explaination / description
+	- Adding average lines behind spiky bar graphs can help interpretation
+	- Number of pending jobs added onto the completed job bar graph
+	- Add graph breaking down job frequency (over periods?)
+	- Separate data into time periods for Weekday, Weekend and Evenings
+
+Get more UI variables working.
+	-Equipment delays and separate patient delays as a factor.
+	- Doctor, patient and nurse delays could be handled individually
+
+Generating the Data - should be easy to add a modifier to increase or decrease job frequency. Including volume and intensity options / variables.
+
+Determine High Medium and Low intensities from data.
