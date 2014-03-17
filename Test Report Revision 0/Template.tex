@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Example: Project Report
+%
+% Source: http://www.howtotex.com
+%
+% Feel free to distribute this example, but please keep the referral
+% to howtotex.com
+% Date: March 2011 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit the title below to update the display in My Documents
+%\title{Project Report}
+%
+%%% Preamble
+\documentclass[paper=letter, fontsize=10pt]{scrartcl}
+\usepackage[body={7in,7.5in},top=1in, bottom=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+
+\usepackage[english]{babel}															% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}	
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{lastpage}
+
+
+%%% Custom sectioning
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\scshape}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[c]{Requirements Revision 0}
+\fancyhead[R]{\today}											
+\fancyfoot[L]{}											 
+\fancyfoot[C]{}											
+\fancyfoot[R]{\thepage\ of \pageref{LastPage}}		% Pagenumbering
+\renewcommand{\headrulewidth}{0.4pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0.4pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+\newcommand{\ts}{\textsuperscript}
+
+%%% Begin document
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+\newcommand{\authors}{\shortstack{Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie}}
+
+\begin{center}
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
+\textsc{\Large CAS 4ZP6}\\[0.5cm]
+\textsc{\Large Team 9} \\[0.5cm]
+\textsc{\Large Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
+\textsc{\large Porter Simulation}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Test Report Revision 0}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+Vitaliy Kondratiev - 0945220\\
+Nathan Johrendt - 0950519\\
+Tyler Lyn - 0948978\\
+Mark Gammie - 0964156
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Douglas Down % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+%Template taken from: http://www.softwaretestinghelp.com/test-plan-sample-softwaretesting-and-quality-assurance-templates/
+
+\vfill % Fill the rest of the page with whitespace
+\end{center}
+\end{titlepage}
+
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+
+\newpage
+
+\section{Revision History}
+\begin{center}
+    \begin{tabular}{| c | l | l | l |}
+    \hline
+    Revision \# & Author & Date & Comment \\ \hline
+  	1 & \shortstack{\\Nathan Johrendt} & March 17 & Test Report Template Complete \\ \hline
+    \end{tabular}
+\end{center}
+
+\section{Introduction}
+%Intro, refer to test plan, manual testing ommitted
+
+\section{System Test Reports}
+%Specific system tests summarized in terms of initial state, input and expected output. Traceability to requirements and modules
+\subsection{Input/Initialization Correctness 1}
+Once input values are loaded by the simulation, it has become initialized with modified values. Before beginning simulation, the simulation will re-print the information it just imported to confirm that it has found the right information.
+\begin{enumerate}[(i)]
+	\item \textbf{Initial State:} Uninitialized Simulation   
+	\item \textbf{Input:} Simulation input variables from interface, as well as a file location for both data.csv and schedule.csv for importing job data and porter shift information respectively.
+%Input screenshot
+	\item \textbf{Expected Output:} Simulation outputs variable data identical to that defined by the interface.
+	\item \textbf{Actual Output:} 
+%Output Values just text dump
+\end{enumerate}
+\subsection{Event List Correctness 1}
+\subsection{State Change Correctness 1}
+\subsection{Porter/Event Linkage Correctness 1}
+\subsection{Task Pool Correctness 1}
+\subsection{Termination Correctness 1}
+\subsection{The Golden Test}
+\subsection{Compatibility Test 1}
+
+\section{Nonfunctional Test Reports}
+%Usability, Performance and Robustness. Note: Write a new test case for performance, stakeholders wanted 'reasonable' time for execution.
+\subsection{Usability Test 1}
+
+\section{Summary}
+%Changes made as a result of testing, talk about automated testing
+
+\section{Figures and Tables Appendix}
+\begin{enumerate}[(a)]
+	\item Figure 3.1: 
+\end{enumerate}
+
+%%% End document
+\end{document}
