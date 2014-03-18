@@ -421,7 +421,9 @@ The project stakeholders have placed a loose time limit on the duration of execu
 
 \section{Summary}
 %Changes made as a result of testing, talk about automated testing
-In many of the above test cases, the user interface is used to specify simulation parameters, even though it may not be the focus of the particular test case. This is primarily for convenience, as the interface itself serves to automate and centralize some of the data required to begin a simulation. As such, many of our original automated test cases have been removed to account for the added capability of the interface.
+In many of the above test cases, the user interface is used to specify simulation parameters, even though it may not be the focus of the particular test case. This is primarily for convenience, as the interface itself serves to automate and centralize some of the data required to begin a simulation. As such, many of our original automated test cases have been removed to account for the added capability of the interface.\\
+\\
+These test cases, whether performed as a formal testing suite or quick samples during implementation changes, have provided useful information for repairing or improving the simulation software. Many of these tests have produced expected results without fail, but they provide essential security by repeatedly checking the core features of the software, ensuring accuracy throughout development.   One test in particular, Task Pool Correctness 1, which overloads a single porter with many tasks to test the dispatcher's ability to store pending jobs, highlighted a major problem with how jobs were dispatched. Jobs from the beginning of a day weren't being handled by a porter until the very end, this led to an examination of the dispatcher module and the resolution of the issue. 
 \section{Figures and Tables Appendix}
 \begin{enumerate}[(a)]
 	\item Figure 3.1: User Interface
