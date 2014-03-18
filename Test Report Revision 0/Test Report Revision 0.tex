@@ -327,7 +327,32 @@ With only a single porter active, the majority of the jobs added by the simulati
 	\end{center}
 	\end{table}
 	\item \textbf{Expected Output:} Simulation output properly stores many incomplete job entries.
-	\item \textbf{Actual Output:} %Need Output Here
+	\item \textbf{Actual Output:} \\
+Job134: X-Ray Core - B1 (2245) -> F5 ALC Room 01 Bed 01\\
+Porter0 is pending\\
+Porter0 is dispatched Job33: C3 Oncology Room 07 Bed 01 -> X-Ray Core - B1 (2245)\\
+Porter0 is in-progress Job33: C3 Oncology Room 07 Bed 01 -> X-Ray Core - B1 (2245)\\
+Job137: CT - B1 (3023) -> Intensive Care Unit [ICU] (3486)\\
+Job141: Emergency Department Bed 10 -> C4 Haematology Nurse (3396)\\
+Job135: X-Ray Core - B1 (2245) -> E4 Room 06 Bed 01\\
+Job117: E4 Room 06 Bed 03 -> X-Ray Core - B1 (2245)\\
+Job142: C4 Haematology Room 52 Bed 01 -> CT - B1 (3023)\\
+Job146: Emergency Department - GRIDLOCK (2286) -> E3 Medicine CTU (9300)\\
+Job143: Emergency Department - GRIDLOCK (2286) -> E3 Medicine CTU (9300)\\
+Porter0 is complete Job33: C3 Oncology Room 07 Bed 01 -> X-Ray Core - B1 (2245)\\
+Job148: Emergency Department - GRIDLOCK (2286) -> F4 Surg Oncology (3501)\\
+Job147: Emergency Department - GRIDLOCK (2286) -> E3 Nurse Station (3497)\\
+Job145: E2 Orthopedics Room 07 Bed 03 -> E3 Nurse Station (3497)\\
+Porter0 is pending\\
+Porter0 is dispatched Job39: F4 Surg Oncology Room 05 Bed 02 -> PACU (3415)\\
+Job144: E2 Orthopedics Room 15 Bed 02 -> E3 Nurse Station (3497)\\
+Porter0 is in-progress Job39: F4 Surg Oncology Room 05 Bed 02 -> PACU (3415)\\
+Job150: Emergency Department Bed 01 -> F4 Surg Oncology (3501)\\
+Porter0 is complete Job39: F4 Surg Oncology Room 05 Bed 02 -> PACU (3415)\\
+Porter0 is pending\\
+Porter0 is dispatched Job11: E3 Medicine Room 01 Bed 01 -> CT - B1 (3023)\\
+Porter0 is in-progress Job11: E3 Medicine Room 01 Bed 01 -> CT - B1 (3023)\\
+*****SIMULATION COMPLETE*****\\
 \end{enumerate}
 
 \subsection{Task Pool Correctness 3}
@@ -408,16 +433,36 @@ The project stakeholders have placed a loose time limit on the duration of execu
 	\begin{table}
 	\caption{Simulation Execution Times for Performance Test 1}
 	\begin{center}
-    	\begin{tabular}{| c | c |}
+    	\begin{tabular}{| c | c | c |}
     		\hline
-        	Simulation Run & Duration of Execution \\ \hline
-  			1 & 2:45 \\ \hline
-  			2 & 3:42 \\ \hline
-  			3 & 3:17 \\ \hline
+        	Simulation Run & Simulation Period (\# of days) & Duration of Execution (seconds) \\ \hline
+  			1 & 1 & 19.945 \\ \hline
+  			2 & 1 & 21.861 \\ \hline
+  			3 & 1 & 20.442 \\ \hline
+  			4 & 2 & 25.713 \\ \hline
+  			5 & 2 & 22.823 \\ \hline
+  			6 & 2 & 22.592 \\ \hline
+  			7 & 3 & 25.569 \\ \hline
+  			8 & 3 & 28.569 \\ \hline
+  			9 & 3 & 26.850 \\ \hline
+  			10 & 4 & 33.673 \\ \hline
+  			11 & 4 & 32.964 \\ \hline
+  			12 & 4 & 32.206 \\ \hline
+  			13 & 5 & 39.469 \\ \hline
+  			14 & 5 & 39.942 \\ \hline
+  			15 & 5 & 39.157 \\ \hline
     	\end{tabular}
 	\end{center}
 	\end{table}
+		
 \end{enumerate}
+
+	\begin{figure}[!htbp]
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio] {performancereport.png}
+			\caption{Performance Report}
+		\end{center}
+	\end{figure}
 
 \section{Summary}
 %Changes made as a result of testing, talk about automated testing

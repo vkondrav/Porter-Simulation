@@ -6,6 +6,7 @@ import datetime as dt
 import pprint
 from portersim import main as portermain
 import sys
+import time
 
 class EmittingStream(QtCore.QObject):
 
@@ -207,7 +208,11 @@ class functions():
         #for i in inputDict:
         #    print(i + " : " + str(inputDict[i]))
 
+        start_time = time.time()
+
         portermain(inputDict)
+
+        print "Process Complete in " + str(time.time() - start_time) + "seconds"
 
     def resetAllButtonClicked(self):
         self.ui.numberOfPorters.setProperty("value", 10)

@@ -8,7 +8,6 @@ from statImport import StatImport
 from porterManager import PorterManager
 from excelConverter import main as dashOutput
 
-
 SIM_TIME = 86400
 
   
@@ -120,8 +119,8 @@ def main(config):
 
     print "*****SIMULATION COMPLETE*****"
     #reportStatistics(jobList.releasedJobList)
-    dashOutput(jobList.releasedJobList, config["outputLocation"])
 
+    dashOutput(jobList.releasedJobList, config["outputLocation"])
 
 if __name__=='__main__':
 	main()
