@@ -332,7 +332,7 @@ The template for this test plan document was derived from examining the testing 
 		\begin{enumerate}[(i)]
 			\item \textbf{Initial State:} Simulation is initialized through the interface  
 			\item \textbf{Input:} Event list is generated from jobs stored in the data.csv file. Porter schedule is generated from the schedule.csv file. The simulation will be configured to add jobs for five days, with 30 porters scheduled 24 hours a day.
-			\item \textbf{Description:} After accepting all inputs and initializing, the simulation will compute 5 days of operational data and output the results.
+			\item \textbf{Description:} After accepting all inputs and initializing, the simulation will compute five days of operational data and output the results.
 			\item \textbf{Expected Output:} Simulation outputs that it has completed each step and has written the results to the dashboard.
 		\end{enumerate}
 \end{enumerate}
@@ -373,7 +373,7 @@ The template for this test plan document was derived from examining the testing 
 \begin{enumerate}[]
 	\item \textbf{Test Factor:} Ease of Use
 	\item \textbf{Life Cycle Phase:} Final Stages of Development
-	\item \textbf{Type:} Functional
+	\item \textbf{Type:} Nonfunctional
 	\item \textbf{Dynamic/Static:} Dynamic
 	\item \textbf{Manual/Automated:} Manual
 	\item \textbf{Technique:}
@@ -382,6 +382,22 @@ The template for this test plan document was derived from examining the testing 
 			\item \textbf{Input:} End user with a copy of both the simulation software package and accompanying user manual.
 			\item \textbf{Description:} End user is provided with a set of instructions from the user manual on how to initialize and run the simulation. The success of this test is determined by how much external assistance the End User requires from the development team on their first use of the software. 
 			\item \textbf{Expected Output:} The end user successfully Initializes the Simulation
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Performance Test 1}
+\begin{enumerate}[]
+	\item \textbf{Test Factor:} Ease of Use
+	\item \textbf{Life Cycle Phase:} Final Stages of Development
+	\item \textbf{Type:} Nonfunctional
+	\item \textbf{Dynamic/Static:} Dynamic
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[(i)]
+			\item \textbf{Initial State:} Simulation prior to execution  
+			\item \textbf{Input:} Any combination of inputs that the interface will accept and begin simulating
+			\item \textbf{Description:} The project stakeholders have placed a loose time limit on the duration of execution for a single simulation run of fifteen minutes. No correct simulation execution has taken longer than five minutes, with most between one and two minutes, but ensuring this general timing on each system the simulation is run on is the purpose of this test.
+			\item \textbf{Expected Output:} The simulation completes execution taking between thirty seconds and five minutes 
 		\end{enumerate}
 \end{enumerate}
 
