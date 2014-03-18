@@ -320,6 +320,21 @@ The template for this test plan document was derived from examining the testing 
 		\end{enumerate}
 \end{enumerate}
 
+\subsection{Task Pool Correctness 3}
+\begin{enumerate}[]
+	\item \textbf{Test Factor:} Correctness
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Unit
+	\item \textbf{Dynamic/Static:} Dynamic
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[(i)]
+			\item \textbf{Initial State:} Initialized simulation
+			\item \textbf{Input:} dispatcherUnit.py unit testing file
+			\item \textbf{Description:} Through the use of UnitTest in python, this test checks that the dispatcher correctly adds a new job to the Task Pool if there are no available Porters. Three specific variables are tested for: Priority Weight, Appointment Factor and the length of the pending jobs list.
+			\item \textbf{Expected Output:} Conclude that the Task Pool contains one additional event as the number of pending jobs has increased by one.
+		\end{enumerate}
+\end{enumerate}
 
 \subsection{Termination Correctness 1}
 \begin{enumerate}[]
