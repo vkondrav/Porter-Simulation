@@ -352,22 +352,6 @@ The template for this test plan document was derived from examining the testing 
 		\end{enumerate}
 \end{enumerate}
 
-\subsection{The Golden Test}
-\begin{enumerate}[]
-	\item \textbf{Test Factor:} Reliability \& Correctness 
-	\item \textbf{Life Cycle Phase:} Throughout Development
-	\item \textbf{Type:} Functional
-	\item \textbf{Dynamic/Static:} Dynamic
-	\item \textbf{Manual/Automated:} Manual
-	\item \textbf{Technique:}
-		\begin{enumerate}[(i)]
-			\item \textbf{Initial State:} Simulation is initialized through the interface
-			\item \textbf{Input:} 'Gold Copy' set of events imported from golddata.csv, as well as Porter shift information from goldschedule.csv 
-			\item \textbf{Description:} Using a 'gold copy' of a set of events and Porter shifts, new program builds are retested using the 'gold copies' to ensure consistency of execution by examining inconsistencies in the output file. This specific set of events is maintained and retested on new revisions of the software. A difference file can then be created in excel comparing 'gold copy' statistics against the newly tested code outlining the inconsistencies between them. The maximum variance allowed in the results is still being determined. 
-			\item \textbf{Expected Output:} Simulation outputs that it has completed each step and has written the results to the dashboard.  
-		\end{enumerate}
-\end{enumerate}
-
 \subsection{Compatibility Test 1}
 \begin{enumerate}[] 
 	\item \textbf{Test Factor:} Portability 
@@ -378,7 +362,7 @@ The template for this test plan document was derived from examining the testing 
 	\item \textbf{Technique:}
 		\begin{enumerate}[(i)]
 			\item \textbf{Initial State:} Unknown Operating System with the simulation accessible on local storage  
-			\item \textbf{Input:} 'Gold Copy' simulation parameters (details outline previously under 'The Golden Test')
+			\item \textbf{Input:} 'Termination Correctness 1' simulation parameters (details outline previously under 'Termination Correctness 1')
 			\item \textbf{Description:} Simulation is run and compared to results computed on other operating systems to ensure it is functioning normally in the new environment
 			\item \textbf{Expected Output:} Simulated results are consistent with previously generated values
 		\end{enumerate}
