@@ -263,6 +263,20 @@ Porter3 is in-progress Job38: E3 Medicine Room 02 Bed 04 -> MRI (2778)\\
 *****SIMULATION COMPLETE*****\\
 \end{enumerate}
 
+\subsection{State Change Correctness 3}
+\begin{enumerate}[(i)]
+		\item \textbf{Initial State:} Initialized simulation
+		\item \textbf{Input:} porterUnit.py unit testing file
+		\item \textbf{Description:} Through the use of UnitTest in python, this test checks that a porter starts in a pending state and is able to iterates through all states when a porter is given a job.
+		\item \textbf{Expected Output:} The porter is in the pending state after work is complete.
+		\item \textbf{Actual Output:} Run the python module: python porterUnit.py\\
+.\\
+----------------------------------------------------------------------\\
+Ran 1 test in 0.001s\\
+
+OK
+\end{enumerate}
+
 \subsection{Porter/Event Linkage Correctness 1}
 Every time an Event moves from pending to dispatched, a Porter must be linked to that event. This test is to ensure that all pairings of job and Porter are unique, and that after completing a job, a porter will return to "available" and continue accepting new jobs. This test involves the simulation core, dispatch and export modules.
 \begin{enumerate}[(i)]
@@ -322,7 +336,12 @@ Through the use of UnitTest in python, this test checks that the dispatcher corr
 	\item \textbf{Initial State:} Initialized simulation
 	\item \textbf{Input:} dispatcherUnit.py unit testing file %Could include source code here
 	\item \textbf{Expected Output:} Conclude that the Task Pool contains one additional event as the number of pending jobs has increased by one.
-	\item \textbf{Actual Output:} %Output Somehow
+	\item \textbf{Actual Output:} Run the python module: python dispatcherUnit.py\\
+...\\
+----------------------------------------------------------------------\\
+Ran 3 tests in 0.003s\\
+
+OK
 \end{enumerate}
 
 \subsection{Termination Correctness 1}
