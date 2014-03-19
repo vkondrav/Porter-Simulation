@@ -1,12 +1,12 @@
 import os
-from PyQt4 import QtCore, QtGui
-import csv
-import dateutil.parser as parser
-import datetime as dt
-import pprint
-from portersim import main as portermain
 import sys
-import time
+from PyQt4 import QtCore, QtGui
+from csv import reader as csvreader
+import dateutil.parser as parser
+from datetime import datetime as dt
+from time import time
+from re import match
+from portersim import main as portermain
 
 class EmittingStream(QtCore.QObject):
 
@@ -30,6 +30,8 @@ class functions():
     wjl = list()
     pmv = list()
     av = list()
+
+    schedule = None
 
     def appendDispatchLists(self):
 
@@ -96,31 +98,30 @@ class functions():
         self.ui.output.append(text)
 
     def buttonClicked(self):
+            self.ui.output.setText("")
 
-            ex = True
             errorStr = ""
 
             if self.ui.startDate.date() > self.ui.endDate.date():
-                ex = False
-                errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
+               errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
 
             if not os.path.isfile(self.ui.fileLocation.text()):
-                ex = False
-                errorStr = errorStr + "Statistical Data File does not exist.\n"
+                errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File does not exist\n"
 
             if not os.path.isfile(self.ui.fileLocation_2.text()):
-                ex = False
-                errorStr = errorStr + "Schedule Data File does not exist.\n"
+                errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File does not exist.\n"
 
             s = self.ui.fileLocation_3.text()
             if not s[-5:] == ".xlsm":
-                ex = False
-                errorStr = errorStr + "Output File must end with (.xlsm)"
+                errorStr = errorStr + "*****OUTPUT FILE ERROR*****\n" + "Message: Output File must end with (.xlsm)\n"
 
-            if ex:
+            errorStr = errorStr + self.scheduleChecker()
+
+            if errorStr == "":
                 self.assignAndExecute()
             else:
-                QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
+                #QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
+                print errorStr
 
     def assignAndExecute(self):
         self.ui.output.setText("")
@@ -208,11 +209,11 @@ class functions():
         #for i in inputDict:
         #    print(i + " : " + str(inputDict[i]))
 
-        start_time = time.time()
+        start_time = time()
 
         portermain(inputDict)
 
-        print "Process Complete in " + str(time.time() - start_time) + "seconds"
+        print "Process Complete in " + str(time() - start_time) + "seconds"
 
     def resetAllButtonClicked(self):
         self.ui.numberOfPorters.setProperty("value", 10)
@@ -237,7 +238,7 @@ class functions():
         self.ui.fileLocation_2.setText(fname)
 
     def fileBrowseButton3Clicked(self):
-        fileName = str(dt.datetime.now())
+        fileName = str(dt.now())
 
         fileName = fileName.replace(':', "-")
         fileName = fileName.replace('.', "-")
@@ -308,17 +309,146 @@ class functions():
         self.ui.fileLocation.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/data.csv")
         self.ui.fileLocation_2.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/Schedule.csv")
 
+    def scheduleChecker(self):
+        with open(self.ui.fileLocation_2.text(), 'r') as f:
+            reader = csvreader(f)
+
+            next(reader)
+
+            strError = ""
+            i = 2
+
+            for row in reader:
+
+                cell = "Row: " + str(i) + " Column: 1"
+                strError = strError + self.verifyShiftID(row[0], cell)
+
+                cell = "Row: " + str(i) + " Column: 2"
+                strError = strError + self.verifyStartTime(row[1], cell)
+
+                cell = "Row: " + str(i) + " Column: 3"
+                strError = strError + self.verifyEndTime(row[2], cell)
+
+                cell = "Row: " + str(i) + " Column: 4"
+                strError = strError + self.verifyPorterID(row[3], cell)
+
+                cell = "Row: " + str(i) + " Column: 5"
+                strError = strError + self.verifyDays(row[4], cell)
+
+                i = i + 1
+
+        if strError == "":
+            return strError
+        else:
+            strError = "*****SCHEDULE DATA FILE ERROR*****\n" + strError
+            return strError
+
+    def verifyShiftID(self, string, cell):
+
+        strError = ""
+        if string == "":
+            strError += "*****SHIFT ID ERROR*****\n", "Please check cell " + cell + " in schedule.\n", "Message: empty shift ID at position\n"
+        if not bool(match("^[A-Za-z0-9 ]*$", string)):
+            strError += "*****SHIFT ID ERROR*****\n", "Please check cell " + cell + " in schedule.\n", "Message: invalid shift ID at position\n"
+
+        return strError
+
+    def verifyStartTime(self, string, cell):
+
+        strError = ""
+
+        try:
+            if string == "":
+                strError = strError + "*****START TIME ERROR*****\n" + "Please check " + cell + " in the schedule.\n" + "Message: empty start time\n"
+            startTime = parser.parse(string)
+
+        except ValueError as e:
+            strError =  strError + "*****START TIME ERROR*****\n" + "Please check " + cell + " in the schedule.\n" +  "Message: " + str(e.message) + "\n"
+            pass
+        except TypeError as e:
+            strError = strError + "*****START TIME ERROR*****\n" + "Please check " + cell + " in the schedule.\n" + "Message: " + str(e.message) + "\n"
+            pass
+        except:
+            e = sys.exc_info()[0]
+            strError = strError + "*****START TIME ERROR*****\n" + "Man, you must have done something special to get this. Check " + cell + "\n" + "Message: " + str(e) + "\n"
+            pass
+
+        return strError
+
+    def verifyEndTime(self, string, cell):
+
+        strError = ""
+
+        try:
+            if string == "":
+                strError = strError + "*****END TIME ERROR*****\n" + "Please check " + cell + " in schedule.\n" + "Message: empty start time\n"
+            endTime = parser.parse(string)
+
+        except ValueError as e:
+            strError =  strError + "*****END TIME ERROR*****\n" + "Please check cell " + cell + " in the schedule.\n" + "Message: " + e.message + "\n"
+            pass
+        except TypeError as e:
+            strError = strError + "*****END TIME ERROR*****\n" + "Please check cell " + cell + " in the schedule.\n" + "Message: " + e.message + "\n"
+            pass
+        except:
+            e = sys.exc_info()[0]
+            strError = strError + "*****END TIME ERROR*****\n" + "Man, you must have done something special to get this. Check " + cell + "\n" + "Message: " + str(e) + "\n"
+            pass
+
+        return strError
+
+
+    def verifyPorterID(self, string, cell):
+
+        strError = ""
+
+        if string == "":
+            strError += "*****PORTER ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: empty porter ID\n"
+
+        string = string.split(",")
+        i = 1
+
+        for c in string:
+            if c == "":
+                strError += "*****PORTER ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: empty porter ID at position " + str(i) + "\n"
+            if not bool(match("^[A-Za-z0-9 ]*$", c)):
+                strError += "*****PORTER ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: invalid porter ID at position " + str(i) + "\n"
+            i = i + 1
+
+        return strError
+
+    def verifyDays(self, string, cell):
+
+        strError = ""
+        if string == "":
+            strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: empty Day ID\n"
+
+        string = string.split(",")
+        i = 1
+        for c in string:
+
+            if c == "":
+                strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: empty Day ID at position " + str(i) + "\n"
+            if not bool(match("^[1-5]$", c)):
+                strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: invalid Day ID at position " + str(i) + "\n"
+            i = i + 1
+
+        return strError
+
+
     def scheduleParser(self):
 
         with open(self.ui.fileLocation_2.text(), 'r') as f:
-            reader = csv.reader(f)
+            reader = csvreader(f)
 
             next(reader)
             parsedSchedule = []
+
             for row in reader:
+
                 startTime = parser.parse(row[1])
-                startTime = (startTime.hour * 3600) + (startTime.minute * 60)
                 endTime = parser.parse(row[2])
+                startTime = (startTime.hour * 3600) + (startTime.minute * 60)
                 endTime = (endTime.hour * 3600) + (endTime.minute * 60)
                 parsedSchedule.append((row[0], startTime, endTime, row[3].split(','), row[4].split(',')))
 
