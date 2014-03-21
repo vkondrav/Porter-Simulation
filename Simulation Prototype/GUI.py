@@ -882,7 +882,7 @@ class Ui_Dialog(object):
         self.fun.appendDispatchLists()
         self.fun.assignEvents()
         self.fun.jobDistChange()
-        self.fun.initFileLocations()
+        #self.fun.initFileLocations()
         self.fun.recordInitialDispatch()
         self.fun.connectOutput()
 
