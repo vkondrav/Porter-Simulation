@@ -21,7 +21,7 @@ if sys.platform == "win32":
 
 
 setup(  name = "Porter Simulation",
-        version = "0.9",
+        version = "0.93",
         author = "Team 9",
         description = "Porter Simulation for Hamilton Health Sciences",
         options = {"build_exe": {"includes": includes,

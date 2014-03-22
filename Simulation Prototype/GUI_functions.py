@@ -7,6 +7,7 @@ from datetime import datetime as dt
 from time import time
 from re import match
 from portersim import main as portermain
+import pprint
 
 class EmittingStream(QtCore.QObject):
 
@@ -337,6 +338,8 @@ class functions():
 
                 i = i + 1
 
+            f.close()
+
         if strError == "":
             return strError
         else:
@@ -429,7 +432,7 @@ class functions():
 
             if c == "":
                 strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: empty Day ID at position " + str(i) + "\n"
-            if not bool(match("^[1-5]$", c)):
+            if not bool(match("^[0-4]$", c)):
                 strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: invalid Day ID at position " + str(i) + "\n"
             i = i + 1
 
@@ -447,11 +450,16 @@ class functions():
             for row in reader:
 
                 startTime = parser.parse(row[1])
-                endTime = parser.parse(row[2])
+
                 startTime = (startTime.hour * 3600) + (startTime.minute * 60)
+
+                endTime = parser.parse(row[2])
+
                 endTime = (endTime.hour * 3600) + (endTime.minute * 60)
+
                 parsedSchedule.append((row[0], startTime, endTime, row[3].split(','), row[4].split(',')))
 
+            f.close()
         reformattedSchedule = {}
 
         for ps in parsedSchedule:
@@ -463,7 +471,7 @@ class functions():
                 for day in ps[4]:
                     reformattedSchedule[str(pid)].append((ps[0], ps[1], ps[2], day))
 
-        #pprint.pprint(reformattedSchedule, None, 1, 80, 3)
+        pprint.pprint(reformattedSchedule, None, 1, 80, 3)
 
         return reformattedSchedule
 
