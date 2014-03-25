@@ -105,7 +105,8 @@ def main(config):
     dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["pmv"], config["ajb"], config["av"])
     dispatcher.configData()
 
-    porterManager = PorterManager(config["startDay"])
+    #porterManager = PorterManager(config["startDay"])
+    porterManager = PorterManager(0)
     porterManager.importPorterSched(config["schedule"])
 	
     simState = State(env, porterManager, dispatchTable, dispatcher, jobList)

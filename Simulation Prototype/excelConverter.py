@@ -111,7 +111,11 @@ class converter(object):
         ol = str(self.outputLocation)
         ol = ol.replace("/","\\")
 
-        xl=win32com.client.Dispatch("Excel.Application")
+        try:
+            xl=win32com.client.Dispatch("Excel.Application")
+        except pythoncom.com_error as error:
+            print "*****EXCEL DISPATCH FAILURE*****"
+            return
 
         path = os.getcwd() + "\dashboard.xlsm"
 
