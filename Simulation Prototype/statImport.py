@@ -82,9 +82,9 @@ attributes = [
 
 class StatImport(object):
     
-    def __init__(self):
+    def __init__(self, rate):
         self.dispatchTable = {}
-        self.statData = StatData()
+        self.statData = StatData(rate)
        
     def runImport(self, fileName, jobList):
         with open(fileName, 'rb') as csvFile:
@@ -126,10 +126,12 @@ class StatData(object):
     secondsInHour = 3600
     secondsInMin = 60
 
-    def __init__(self):
+    def __init__(self, rate):
         self.numSegments = 6
         self.segmentSize = 4
         self.statData = []
+        self.rate = rate
+        
         for i in range(7):
             self.statData.append([])
             for j in range(self.numSegments):
@@ -149,10 +151,11 @@ class StatData(object):
     def constructJobList(self, jobList):
         for day in self.statData:
             for segment in day:
-                keys = segment.keys()
-                key = keys[randint(0, len(keys) - 1)]
+                # keys = segment.keys()
+                # key = keys[randint(0, len(keys) - 1)]
                 
-                activeSegment = segment[key]
+                # activeSegment = segment[key]
+                activeSegment = self.segmentSelector(segment)
                 
                 for data in activeSegment:
                     pendingTime = self.strToS(data["PendingDT"])
@@ -165,7 +168,17 @@ class StatData(object):
                     appointment = 1 if data["Created_Status"] == "Appointment" else 0
                     jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
                     
-                    
+    def segmentSelector(self, segment):
+        sorted_keys = sorted(segment, key=lambda k: len(segment[k]))
+        
+        size = len(sorted_keys)
+        third = (size - 1) / 3
+        modulus = (size - 1) % 3
+        offset = self.rate * third
+        key = sorted_keys[randint(offset, offset + third + modulus)]
+        
+        return segment[key]
+
     def strToS(self, timeString):
         timeStruct = time.strptime(timeString , "%Y-%m-%d %H:%M:%S")
         day = timeStruct.tm_wday
@@ -176,6 +189,7 @@ class StatData(object):
                 + hour * StatData.secondsInHour
                 + min * StatData.secondsInMin
                 + sec)
+
 
 def strToT(timeString):
     return calendar.timegm(time.strptime(timeString , "%Y-%m-%d %H:%M:%S"))

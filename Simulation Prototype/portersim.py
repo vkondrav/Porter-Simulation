@@ -89,7 +89,7 @@ def main(config):
     # jobList.insert(Job(80, 0, 1))
     # jobList.insert(Job(90, 2, 1))
     
-    importer = StatImport()
+    importer = StatImport(0) # This should be fetched from the config
     jobList = JobList()
     dispatchTable = importer.runImport(config["fileLocation"], jobList)
     
