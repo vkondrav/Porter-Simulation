@@ -7,6 +7,7 @@ from job import Job, JobList
 from statImport import StatImport
 from porterManager import PorterManager
 from excelConverter import main as dashOutput
+from random import seed
 
 SIM_TIME = 86400
 
@@ -77,51 +78,34 @@ def reportStatistics(jobList):
 
 
 def main(config):
-    jobList = JobList()
-    # jobList.insert(Job(0, 0, 1))
-    # jobList.insert(Job(10, 1, 2))
-    # jobList.insert(Job(20, 2, 0))
-    # jobList.insert(Job(30, 1, 0))
-    # jobList.insert(Job(40, 0, 2))
-    # jobList.insert(Job(50, 2, 1))
-    # jobList.insert(Job(60, 0, 2))
-    # jobList.insert(Job(70, 1, 2))
-    # jobList.insert(Job(80, 0, 1))
-    # jobList.insert(Job(90, 2, 1))
+    seed(0)
+    
+    simState = State()
+    
+    simState.maxDelayReason = {"Patient Not Ready": config['porterWait'] * 60}
     
     importer = StatImport(config["jobFlow"]) # This should be fetched from the config
-    jobList = JobList()
-    dispatchTable = importer.runImport(config["fileLocation"], jobList)
+    simState.dispatchTable, simState.jobList = importer.runImport(config["fileLocation"])
     
-    env = simpy.Environment()
-    
-    # while True:
-        # try:
-            # numPorters = int(raw_input('Number of porters: '))
-            # break
-        # except ValueError:
-            # print 'Please input an integer'
+    simState.env = simpy.Environment()
      
-    dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["pmv"], config["ajb"], config["av"])
-    dispatcher.configData()
+    simState.dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["pmv"], config["ajb"], config["av"])
+    simState.dispatcher.configData()
 
     #porterManager = PorterManager(config["startDay"])
-    porterManager = PorterManager(0)
-    porterManager.importPorterSched(config["schedule"])
+    simState.porterManager = PorterManager(0)
+    simState.porterManager.importPorterSched(config["schedule"])
 	
-    simState = State(env, porterManager, dispatchTable, dispatcher, jobList)
-	
-    env.process(dispatcher.assignJobs(simState))
-    env.process(jobList.jobReleaser(simState))
+    simState.env.process(simState.dispatcher.assignJobs(simState))
+    simState.env.process(simState.jobList.jobReleaser(simState))
 
     sim_time = config["simulationDuration"] * 24 * 60 * 60
     print sim_time
-    env.run(until=sim_time)
+    simState.env.run(until=sim_time)
 
     print "*****SIMULATION COMPLETE*****"
-    #reportStatistics(jobList.releasedJobList)
 
-    dashOutput(jobList.releasedJobList, config["outputLocation"])
+    dashOutput(simState.jobList.releasedJobList, config["outputLocation"])
 
 if __name__=='__main__':
 	main()

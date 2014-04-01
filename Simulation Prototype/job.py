@@ -1,7 +1,7 @@
 class Job(object):
     _jobId = 0
 
-    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination, priority, appointment):
+    def __init__(self, creationTime, inProgressTime, completeTime, origin, destination, priority, appointment, delayReason, delayTime):
         self.creationTime = creationTime
         self.inProgressTime = inProgressTime
         self.completeTime = completeTime
@@ -12,8 +12,13 @@ class Job(object):
         self.jobCompletionPorterID = None
         self.startTime = None
         self.completionTime = None
-        self.priority = priority
+        self.originalPriority = priority
+        self.priority = self.originalPriority
         self.appointment = appointment
+        self.delayReason = delayReason
+        self.delayTime = delayTime
+        self.cancelled = False
+        
         self.autoProc = None
         self.jobId = Job._jobId
         Job._jobId += 1
@@ -54,10 +59,19 @@ class JobList(object):
         
     def jobReleaser(self, simState):
         while self.jobList:
+            # ** This is an old method that was prone to failing the assertion check
             # peek at the end of the job list to ensure atomicity of job lists
-            job = self.jobList[-1]
-            print job
-            yield simState.env.timeout(job.creationTime - simState.env.now)
-            self.releasedJobList.append(self.jobList.pop())
-            simState.dispatcher.addJob(job, simState)
+            # job = self.jobList[-1]
+            # print job
+            # yield simState.env.timeout(job.creationTime - simState.env.now)
+            # releasedJob = self.jobList.pop()
+            # assert(job == releasedJob)
+            # self.releasedJobList.append(releasedJob)
+            # simState.dispatcher.addJob(job, simState)
+            
+            yield simState.env.timeout(60)
+            while simState.env.now >= self.jobList[-1].creationTime:
+                job = self.jobList.pop()
+                self.releasedJobList.append(job)
+                simState.dispatcher.addJob(job, simState)
             

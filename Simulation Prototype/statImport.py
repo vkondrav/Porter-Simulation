@@ -2,10 +2,9 @@ import csv
 import time
 import calendar
 import string
-from random import randint, seed
+from random import randint
 from job import JobList, Job
 
-seed(0)
 
 keys = {
         "TransportJobID": 0,
@@ -55,29 +54,54 @@ keys = {
         }
 
 attributes = [
-                "Last_Status",
-                #"StatusDate",
-                "Origin",
-                "Destination",
-                "OriginalPriorityID",
-                #"AppointmentDT",
-                "PendingDT",
-                "DispatchedDT",
-                "InProgressDT",
-                "CompleteDT",
-                # "DelayMin",
-                # "DelayReason",
-                # "DispatchMins",
-                # "ResponseMins",
-                # "ArrivalMins",
-                # "TransactionMins",
-                # "TripMins",
-                # "PatientMins",
-                # "LostPorterMinsOnCancel",
-                "PatientTransportFlag",
-                "Created_Status",
-                # "ModeOfTravel"
-             ]
+        "Last_Status",
+        #"StatusDate",
+        "Origin",
+        "Destination",
+        "OriginalPriorityID",
+        #"AppointmentDT",
+        "PendingDT",
+        "DispatchedDT",
+        "InProgressDT",
+        "CompleteDT",
+        "DelayMin",
+        "DelayReason",
+        # "DispatchMins",
+        # "ResponseMins",
+        # "ArrivalMins",
+        # "TransactionMins",
+        # "TripMins",
+        # "PatientMins",
+        # "LostPorterMinsOnCancel",
+        "PatientTransportFlag",
+        "Created_Status",
+        # "ModeOfTravel"
+     ]
+             
+required_attributes = [
+        "Last_Status",
+        #"StatusDate",
+        "Origin",
+        "Destination",
+        "OriginalPriorityID",
+        #"AppointmentDT",
+        "PendingDT",
+        "DispatchedDT",
+        "InProgressDT",
+        "CompleteDT",
+        # "DelayMin",
+        # "DelayReason",
+        # "DispatchMins",
+        # "ResponseMins",
+        # "ArrivalMins",
+        # "TransactionMins",
+        # "TripMins",
+        # "PatientMins",
+        # "LostPorterMinsOnCancel",
+        "PatientTransportFlag",
+        "Created_Status",
+        # "ModeOfTravel"
+     ]
 
 
 class StatImport(object):
@@ -86,7 +110,7 @@ class StatImport(object):
         self.dispatchTable = {}
         self.statData = StatData(rate)
        
-    def runImport(self, fileName, jobList):
+    def runImport(self, fileName):
         with open(fileName, 'rb') as csvFile:
             reader = csv.reader(csvFile, delimiter= ',')
 
@@ -98,11 +122,22 @@ class StatImport(object):
                         data[attr] = row[keys[attr]]
                     
                 if "Last_Status" in data and data["Last_Status"] == "Complete" and data["PatientTransportFlag"] == "1":
-                    if all(k in data for k in attributes):
-                        pendingTimeAbs = strToT(data["PendingDT"])
+                    if all(k in data for k in required_attributes):
                         dispatchTimeAbs = strToT(data["DispatchedDT"])
                         dispatchTimeDelta = strToDeltaT(data["InProgressDT"], dispatchTimeAbs)
                         origin = data["Origin"]
+                        
+                        delayReason = data.get("DelayReason")
+                        delayMin = data.get("DelayMin")
+                        
+                        if delayReason == "Patient Not Ready":
+                            if delayMin:
+                                dispatchTimeDelta -= int(delayMin) * 60
+                            else:
+                                # delay reason but no delay min
+                                # discard dispatch time
+                                continue
+                        
                         self.addDispatchTime(origin, dispatchTimeDelta)
                         self.statData.addToSegment(data)
                     else:
@@ -110,9 +145,9 @@ class StatImport(object):
                         print data
                         continue
                     
-        self.statData.constructJobList(jobList)
+        jobList = self.statData.constructJobList()
         
-        return self.dispatchTable
+        return (self.dispatchTable, jobList)
                         
     def addDispatchTime(self, origin, dispatchTime):
         if origin in self.dispatchTable:
@@ -149,7 +184,8 @@ class StatData(object):
         else:
             self.statData[day][segment][key] = [data]
         
-    def constructJobList(self, jobList):
+    def constructJobList(self):
+        jobList = JobList()
         for day in self.statData:
             for segment in day:
                 # keys = segment.keys()
@@ -159,10 +195,14 @@ class StatData(object):
                 activeSegment = self.segmentSelector(segment)
                 
                 for data in activeSegment:
-                    pendingTime = self.strToS(data["PendingDT"])
-                    inProgressTime = self.strToS(data["InProgressDT"]) - pendingTime
-                    inProgressTime = self.strToS(data["InProgressDT"]) - pendingTime
-                    completeTime = self.strToS(data["CompleteDT"]) - pendingTime
+                    delayReason = data.get("DelayReason")
+                    delayTime = data.get("DelayMin")
+                    
+                    if not delayTime:
+                        delayTime = 0
+                        
+                    delayTime = int(delayTime) * 60
+                    
                     pendingTimeAbs = self.strToS(data["PendingDT"])
                     inProgressTimeDelta = self.strToS(data["InProgressDT"]) - self.strToS(data["DispatchedDT"])
                     completeTimeDelta = self.strToS(data["CompleteDT"]) - self.strToS(data["InProgressDT"])
@@ -171,7 +211,10 @@ class StatData(object):
                     destination = data["Destination"]
                     priority = int(data["OriginalPriorityID"])
                     appointment = 1 if data["Created_Status"] == "Appointment" else 0
-                    jobList.insert(Job(pendingTimeAbs, inProgressTimeDelta, completeTimeDelta, origin, destination, priority, appointment))
+
+                    jobList.insert(Job(pendingTimeAbs, inProgressTimeDelta, completeTimeDelta, origin, destination, priority, appointment, delayReason, delayTime))
+                    
+        return jobList
                     
     def segmentSelector(self, segment):
         sorted_keys = sorted(segment, key=lambda k: len(segment[k]))
