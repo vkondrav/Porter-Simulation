@@ -82,7 +82,7 @@ class functions():
         self.ui.fileBrowseButton_3.clicked.connect(self.fileBrowseButton3Clicked)
         self.ui.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
         self.ui.appFactor.valueChanged[int].connect(self.appFactorChange)
-        self.ui.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
+        #self.ui.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
         ########################################################################
 
     def connectOutput(self):
@@ -128,29 +128,31 @@ class functions():
         self.ui.output.setText("")
         print "*****STARTING SIMULATION*****"
         #float
-        numberOfPorters = self.ui.numberOfPorters.value()
+        #numberOfPorters = self.ui.numberOfPorters.value()
         #float
         simDuration = self.ui.simDuration.value()
         #date
-        startDate = self.ui.startDate.date()
-        startDay = startDate.dayOfWeek()
-        startDate = startDate.toPyDate()
-        startDate = str(startDate) + " 00:00:00"
+        #startDate = self.ui.startDate.date()
+        #startDay = startDate.dayOfWeek()
+        #startDate = startDate.toPyDate()
+        #startDate = str(startDate) + " 00:00:00"
         #date
-        endDate = self.ui.endDate.date()
-        endDay = endDate.dayOfWeek()
-        endDate = endDate.toPyDate()
-        endDate = str(endDate) + " 00:00:00"
+        #endDate = self.ui.endDate.date()
+        #endDay = endDate.dayOfWeek()
+        #endDate = endDate.toPyDate()
+        #endDate = str(endDate) + " 00:00:00"
         #int
-        jobDistribution = self.ui.jobDistribution.currentIndex()
+        #jobDistribution = self.ui.jobDistribution.currentIndex()
         #float
-        correctEquipment = self.ui.correctEquipment.value()
+        #correctEquipment = self.ui.correctEquipment.value()
         #float
-        patientReadiness = self.ui.patientReadiness.value()
+        #patientReadiness = self.ui.patientReadiness.value()
         #float
         porterWait = self.ui.porterWait.value()
+        #int
+        jobFlow = self.ui.jobFlow.currentIndex()
         #float
-        jobCancel = self.ui.jobCancel.value()
+        #jobCancel = self.ui.jobCancel.value()
         #string
         fileLocation = self.ui.fileLocation.text()
         #string
@@ -187,17 +189,18 @@ class functions():
 
         #Dictionary
         inputDict = dict()
-        inputDict["numberOfPorters"] = numberOfPorters
+        #inputDict["numberOfPorters"] = numberOfPorters
         inputDict["simulationDuration"] = simDuration
-        inputDict["startDate"] = startDate
-        inputDict["endDate"] = endDate
-        inputDict["startDay"] = startDay
-        inputDict["endDay"] = endDay
-        inputDict["jobDistribution"] = jobDistribution
-        inputDict["correctEquipment"] = correctEquipment
-        inputDict["patientReadiness"] = patientReadiness
+        #inputDict["startDate"] = startDate
+        #inputDict["endDate"] = endDate
+        #inputDict["startDay"] = startDay
+        #inputDict["endDay"] = endDay
+        #inputDict["jobDistribution"] = jobDistribution
+        #inputDict["correctEquipment"] = correctEquipment
+        #inputDict["patientReadiness"] = patientReadiness
         inputDict["porterWait"] = porterWait
-        inputDict["jobCancel"] = jobCancel
+        inputDict["jobFlow"] = jobFlow
+        #inputDict["jobCancel"] = jobCancel
         inputDict["fileLocation"] = fileLocation
         inputDict["appFactorValue"] = appFactorValue
         inputDict["ajb"] = ajb
@@ -217,13 +220,15 @@ class functions():
         print "Process Complete in " + str(time() - start_time) + "seconds"
 
     def resetAllButtonClicked(self):
-        self.ui.numberOfPorters.setProperty("value", 10)
-        self.ui.startDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 22), QtCore.QTime(0, 0, 0)))
-        self.ui.endDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 23), QtCore.QTime(0, 0, 0)))
-        self.ui.jobDistribution.setCurrentIndex(0)
-        self.ui.correctEquipment.setProperty("value", 80.0)
-        self.ui.patientReadiness.setProperty("value", 80.0)
+        #self.ui.numberOfPorters.setProperty("value", 10)
+        #self.ui.startDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 22), QtCore.QTime(0, 0, 0)))
+        #self.ui.endDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 23), QtCore.QTime(0, 0, 0)))
+        #self.ui.jobDistribution.setCurrentIndex(0)
+        #self.ui.correctEquipment.setProperty("value", 80.0)
+        #self.ui.patientReadiness.setProperty("value", 80.0)
+        self.ui.simDuration.setProperty("value", 1.0)
         self.ui.porterWait.setProperty("value", 5.0)
+        self.ui.jobFlow.setCurrentIndex(1)
         self.ui.fileLocation.setText("")
         self.ui.fileLocation_2.setText("")
         self.ui.fileLocation_3.setText("")
@@ -293,18 +298,6 @@ class functions():
         while i < len(self.av):
             self.av[i].setProperty("value", self.avInitial[i])
             i += 1
-
-    def jobDistChange(self):
-        if self.ui.jobDistribution.currentIndex() == 0:
-            self.ui.fileLocation.setEnabled(True)
-            self.ui.fileBrowseButton.setEnabled(True)
-            self.ui.startDate.setEnabled(True)
-            self.ui.endDate.setEnabled(True)
-        else:
-            self.ui.fileLocation.setEnabled(False)
-            self.ui.fileBrowseButton.setEnabled(False)
-            self.ui.startDate.setEnabled(False)
-            self.ui.endDate.setEnabled(False)
 
     def initFileLocations(self):
         self.ui.fileLocation.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/data.csv")

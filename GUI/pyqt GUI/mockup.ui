@@ -93,84 +93,123 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QSplitter" name="splitter_3">
+     <widget class="QSplitter" name="splitter_5">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>140</y>
+        <x>20</x>
+        <y>90</y>
         <width>261</width>
-        <height>20</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Vertical</enum>
       </property>
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Porter Wait Times</string>
+      <widget class="QSplitter" name="splitter_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Simulation Duration</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="simDuration">
+        <property name="toolTip">
+         <string>Choose the number of days to simulate</string>
+        </property>
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="minimum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>5.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>days</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QDoubleSpinBox" name="porterWait">
-       <property name="enabled">
-        <bool>false</bool>
+      <widget class="QSplitter" name="splitter_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="minimum">
-        <double>0.000000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>60.000000000000000</double>
-       </property>
-       <property name="value">
-        <double>5.000000000000000</double>
-       </property>
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Porter Wait Times</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="porterWait">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="toolTip">
+         <string>maximum time a porter waits for patient before abandoning jb</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>60.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>5.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>min</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>min</string>
+      <widget class="QSplitter" name="splitter_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-      </widget>
-     </widget>
-     <widget class="QSplitter" name="splitter_2">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>80</y>
-        <width>261</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Simulation Duration</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="simDuration">
-       <property name="toolTip">
-        <string>Choose the number of hours to simulate</string>
-       </property>
-       <property name="decimals">
-        <number>2</number>
-       </property>
-       <property name="minimum">
-        <double>1.000000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>5.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_15">
-       <property name="text">
-        <string>days</string>
-       </property>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Job Flow</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="jobFlow">
+        <property name="toolTip">
+         <string>choose the rate of job generation</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="currentText">
+         <string>Normal</string>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Low</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Normal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>High</string>
+         </property>
+        </item>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -233,13 +272,16 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
         <height>21</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Excel File with Data</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
      </widget>
      <widget class="QPushButton" name="fileBrowseButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -283,6 +325,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
         <width>291</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>CSV file with schedule</string>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
@@ -331,6 +376,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
         <width>291</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>File to write to dashboard to</string>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
@@ -752,7 +800,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv1">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>11.000000000000000</double>
@@ -773,7 +821,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv2">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>0.700000000000000</double>
@@ -794,7 +842,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv3">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>7.000000000000000</double>
@@ -815,7 +863,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv4">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>2.000000000000000</double>
@@ -836,7 +884,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv5">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>5.000000000000000</double>
@@ -857,7 +905,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv6">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>3.000000000000000</double>
@@ -878,7 +926,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="pmv7">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>1.000000000000000</double>
@@ -966,7 +1014,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av1">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>4.000000000000000</double>
@@ -987,7 +1035,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av2">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>8.000000000000000</double>
@@ -1008,7 +1056,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av3">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>7.000000000000000</double>
@@ -1029,7 +1077,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av4">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>14.000000000000000</double>
@@ -1050,7 +1098,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av5">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>10.000000000000000</double>
@@ -1071,7 +1119,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av6">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>12.000000000000000</double>
@@ -1092,7 +1140,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
         </widget>
         <widget class="QDoubleSpinBox" name="av7">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="value">
           <double>10.000000000000000</double>
@@ -1313,320 +1361,6 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
        <string>Reset All</string>
       </property>
      </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_3">
-    <attribute name="title">
-     <string>N/A</string>
-    </attribute>
-    <widget class="QSpinBox" name="numberOfPorters">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>20</y>
-       <width>52</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="maximum">
-      <number>9999</number>
-     </property>
-     <property name="value">
-      <number>10</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>20</y>
-       <width>99</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Number of Porters</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_17">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>50</y>
-       <width>87</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Job Distribution</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="jobDistribution">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>50</y>
-       <width>155</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="editable">
-      <bool>false</bool>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QComboBox::AdjustToContents</enum>
-     </property>
-     <item>
-      <property name="text">
-       <string>Data Based</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Poisson Distribution</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Lagrange Distribution</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QLabel" name="label_61">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>90</y>
-       <width>215</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Correct Equipment Usage</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="correctEquipment">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>90</y>
-       <width>93</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="maximum">
-      <double>100.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>80.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>130</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Patient Readiness</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="patientReadiness">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>130</y>
-       <width>81</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="maximum">
-      <double>100.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>80.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_62">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>180</y>
-       <width>147</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Chance of Job Cancellation</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="jobCancel">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>180</y>
-       <width>63</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>100.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>90.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>230</y>
-       <width>87</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Use Data from:</string>
-     </property>
-    </widget>
-    <widget class="QDateEdit" name="startDate">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>230</y>
-       <width>90</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>start date of statistical data to be used</string>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="displayFormat">
-      <string>dd-MM-yyyy</string>
-     </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-     <property name="currentSectionIndex">
-      <number>0</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>350</x>
-       <y>230</y>
-       <width>16</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>to:</string>
-     </property>
-    </widget>
-    <widget class="QDateEdit" name="endDate">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>230</y>
-       <width>90</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>ebd date of the statistical data to be used</string>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="dateTime">
-      <datetime>
-       <hour>0</hour>
-       <minute>0</minute>
-       <second>0</second>
-       <year>2000</year>
-       <month>1</month>
-       <day>1</day>
-      </datetime>
-     </property>
-     <property name="displayFormat">
-      <string>dd-MM-yyyy</string>
-     </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-     <property name="currentSectionIndex">
-      <number>0</number>
-     </property>
     </widget>
    </widget>
   </widget>
