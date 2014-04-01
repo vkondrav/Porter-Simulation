@@ -100,9 +100,10 @@ class StatImport(object):
                 if "Last_Status" in data and data["Last_Status"] == "Complete" and data["PatientTransportFlag"] == "1":
                     if all(k in data for k in attributes):
                         pendingTimeAbs = strToT(data["PendingDT"])
-                        dispatchTime = strToDeltaT(data["DispatchedDT"], pendingTimeAbs)
+                        dispatchTimeAbs = strToT(data["DispatchedDT"])
+                        dispatchTimeDelta = strToDeltaT(data["InProgressDT"], dispatchTimeAbs)
                         origin = data["Origin"]
-                        self.addDispatchTime(origin, dispatchTime)
+                        self.addDispatchTime(origin, dispatchTimeDelta)
                         self.statData.addToSegment(data)
                     else:
                         print "Invalid CSV Entry:"
@@ -162,11 +163,15 @@ class StatData(object):
                     inProgressTime = self.strToS(data["InProgressDT"]) - pendingTime
                     inProgressTime = self.strToS(data["InProgressDT"]) - pendingTime
                     completeTime = self.strToS(data["CompleteDT"]) - pendingTime
+                    pendingTimeAbs = self.strToS(data["PendingDT"])
+                    inProgressTimeDelta = self.strToS(data["InProgressDT"]) - self.strToS(data["DispatchedDT"])
+                    completeTimeDelta = self.strToS(data["CompleteDT"]) - self.strToS(data["InProgressDT"])
+                        
                     origin = data["Origin"]
                     destination = data["Destination"]
                     priority = int(data["OriginalPriorityID"])
                     appointment = 1 if data["Created_Status"] == "Appointment" else 0
-                    jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
+                    jobList.insert(Job(pendingTimeAbs, inProgressTimeDelta, completeTimeDelta, origin, destination, priority, appointment))
                     
     def segmentSelector(self, segment):
         sorted_keys = sorted(segment, key=lambda k: len(segment[k]))
