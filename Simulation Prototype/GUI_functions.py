@@ -103,8 +103,8 @@ class functions():
 
             errorStr = ""
 
-            if self.ui.startDate.date() > self.ui.endDate.date():
-               errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
+            #if self.ui.startDate.date() > self.ui.endDate.date():
+            #   errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
 
             if not os.path.isfile(self.ui.fileLocation.text()):
                 errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File does not exist\n"
