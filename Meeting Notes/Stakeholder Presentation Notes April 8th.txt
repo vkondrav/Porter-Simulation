@@ -3,10 +3,10 @@ Stakeholder Presentation Notes - April 8th 2014
 The numbers below indicate the 4 key changes the stakeholders would like to see.
 
 User Interface - Graphs are liked, final graph is a real winner.
-			   - Average transaction time seems a bit wonky, atrributed to ouliers and errors in the data.
-			 1 - Add tracking for the cumulative number of cancelled jobs relating to the threshold of the porter wait time variable.
-			 2 - Add pop-up when the simulation finished execution. Maybe one for the excel calcualtion too?
-			   - Refine UI for more obvious explainations of each basic input variable.
+			   - Average transaction time seems a bit wonky, attributed to outliers and errors in the data.
+			 1 - Add tracking for the cumulative number of canceled jobs relating to the threshold of the porter wait time variable.
+			 2 - Add pop-up when the simulation finished execution. Maybe one for the excel calculation too?
+			   - Refine UI for more obvious explanations of each basic input variable.
 
 Scheduling 3 - Add support for use of Porter Control ID's to log and track individual, unique porters more effectively.
 		     - Corey can likely develop the schedule generating tool on his own, but we could look into it for added brownie points.
