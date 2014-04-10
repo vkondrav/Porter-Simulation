@@ -3,32 +3,22 @@ from job import Job
 
 AUTOMATIC_UPGRADE = [[0, None], [1, 14], [2, 8], [3, 8], [4,5], [5,5], [6, 25], [7, 30], [8,40]]
 PRIORITY_WEIGHT = [[0, 20], [1, 11], [2, 7], [3,5], [4,4], [5,3], [6,2], [7,1], [8,0]]
-PROXIMITY_WEIGHT = [['LOCATION', 11], ['ZONE', 7], ['UNIT', 7], ['SECTION', 2], ['FLOOR', 5], ['BUILDING', 3], ['CAMPUS', 1]]
-AUTOLOCATION_VALUE = [['LOCATION', 4], ['ZONE', 8], ['UNIT', 7], ['SECTION', 14], ['FLOOR', 10], ['BUILDING', 12], ['BASE', 16]]
 
 class Dispatcher(object):
 
-    def __init__(self, af, pw, pm, amu, al):
+    def __init__(self, af, pw, amu):
         self.pending_jobs = []
         self.appointmentFactor = af
         self.priorityWeight = pw
-        self.proximityWeight = pm
         self.automaticUpgrade = amu
-        self.autoLocation = al
 
     def configData(self):
         for i in xrange(0,9):
             PRIORITY_WEIGHT[i][1] = self.priorityWeight[i]
             AUTOMATIC_UPGRADE[i][1] = self.automaticUpgrade[i]
 
-        for i in xrange(0,6):
-            AUTOLOCATION_VALUE[i][1] = self.autoLocation[i]
-            PROXIMITY_WEIGHT[i][1] = self.proximityWeight[i]
-
-        self.autoLocation = AUTOLOCATION_VALUE
         self.automaticUpgrade = AUTOMATIC_UPGRADE
         self.priorityWeight = PRIORITY_WEIGHT
-        self.proximityWeight = PROXIMITY_WEIGHT
 
     # get the priority weight
     def getJobPriorityWeight(self, priority):

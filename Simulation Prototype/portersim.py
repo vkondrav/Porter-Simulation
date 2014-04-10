@@ -89,7 +89,7 @@ def main(config):
     
     simState.env = simpy.Environment()
      
-    simState.dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["pmv"], config["ajb"], config["av"])
+    simState.dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["ajb"])
     simState.dispatcher.configData()
 
     #porterManager = PorterManager(config["startDay"])
