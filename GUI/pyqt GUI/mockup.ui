@@ -50,7 +50,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -148,7 +148,7 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
          <bool>true</bool>
         </property>
         <property name="toolTip">
-         <string>maximum time a porter waits for patient before abandoning jb</string>
+         <string>maximum time a porter waits for patient before abandoning job (0 - 60)</string>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
@@ -262,7 +262,7 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit
      </property>
      <widget class="QLineEdit" name="fileLocation">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -467,7 +467,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
        <rect>
         <x>80</x>
         <y>30</y>
-        <width>461</width>
+        <width>351</width>
         <height>27</height>
        </rect>
       </property>
@@ -496,7 +496,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>180</x>
         <y>10</y>
         <width>111</width>
         <height>16</height>
@@ -721,434 +721,6 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
        </widget>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_7">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>270</y>
-        <width>691</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Proximity Match Value</string>
-      </property>
-      <widget class="QSplitter" name="splitter_45">
-       <property name="geometry">
-        <rect>
-         <x>555</x>
-         <y>30</y>
-         <width>16</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-      <widget class="QSplitter" name="splitter_46">
-       <property name="geometry">
-        <rect>
-         <x>561</x>
-         <y>30</y>
-         <width>16</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-      <widget class="QSplitter" name="splitter_36">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>651</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QSplitter" name="splitter_37">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_41">
-         <property name="text">
-          <string>Section</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_42">
-         <property name="text">
-          <string>Weight</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_38">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_43">
-         <property name="text">
-          <string>Location</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv1">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>11.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_39">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_44">
-         <property name="text">
-          <string>Zone</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv2">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>0.700000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_40">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_45">
-         <property name="text">
-          <string>Unit</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv3">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>7.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_41">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_46">
-         <property name="text">
-          <string>Section</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv4">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>2.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_42">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_47">
-         <property name="text">
-          <string>Floor</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv5">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>5.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_43">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_48">
-         <property name="text">
-          <string>Building</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv6">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>3.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_44">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_49">
-         <property name="text">
-          <string>Campus</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="pmv7">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>1.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_8">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>380</y>
-        <width>691</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Autolocation Values</string>
-      </property>
-      <widget class="QSplitter" name="splitter_56">
-       <property name="geometry">
-        <rect>
-         <x>555</x>
-         <y>30</y>
-         <width>16</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-      <widget class="QSplitter" name="splitter_57">
-       <property name="geometry">
-        <rect>
-         <x>561</x>
-         <y>30</y>
-         <width>16</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-      <widget class="QSplitter" name="splitter_47">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>651</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QSplitter" name="splitter_48">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_50">
-         <property name="text">
-          <string>Section</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_51">
-         <property name="text">
-          <string>Minutes</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_49">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_52">
-         <property name="text">
-          <string>Location</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av1">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>4.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_50">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_53">
-         <property name="text">
-          <string>Zone</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av2">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>8.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_51">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_54">
-         <property name="text">
-          <string>Unit</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av3">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>7.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_52">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_55">
-         <property name="text">
-          <string>Section</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av4">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>14.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_53">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_56">
-         <property name="text">
-          <string>Floor</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av5">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>10.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_54">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_57">
-         <property name="text">
-          <string>Building</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av6">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>12.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QSplitter" name="splitter_55">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <widget class="QLabel" name="label_58">
-         <property name="text">
-          <string>Campus</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="av7">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="value">
-          <double>10.000000000000000</double>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
@@ -1359,6 +931,47 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
       </property>
       <property name="text">
        <string>Reset All</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>10</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Random Seed</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="randFactor">
+      <property name="geometry">
+       <rect>
+        <x>454</x>
+        <y>30</y>
+        <width>111</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Choose the a specific seed to use. 0 for True Random</string>
+      </property>
+      <property name="decimals">
+       <number>6</number>
+      </property>
+      <property name="minimum">
+       <double>0.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>999.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.000000000000000</double>
       </property>
      </widget>
     </widget>

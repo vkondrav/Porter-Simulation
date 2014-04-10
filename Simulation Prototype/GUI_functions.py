@@ -22,15 +22,13 @@ class functions():
     Dialog = None
     appFactorInitial = None
 
+    #automatic job priority
     ajbInitial = list()
+    #weighted job list
     wjlInitial = list()
-    pmvInitial = list()
-    avInitial = list()
 
     ajb = list()
     wjl = list()
-    pmv = list()
-    av = list()
 
     schedule = None
 
@@ -45,22 +43,6 @@ class functions():
         self.ajb.append(self.ui.ajb7)
         self.ajb.append(self.ui.ajb8)
         self.ajb.append(self.ui.ajb9)
-
-        self.pmv.append(self.ui.pmv1)
-        self.pmv.append(self.ui.pmv2)
-        self.pmv.append(self.ui.pmv3)
-        self.pmv.append(self.ui.pmv4)
-        self.pmv.append(self.ui.pmv5)
-        self.pmv.append(self.ui.pmv6)
-        self.pmv.append(self.ui.pmv7)
-
-        self.av.append(self.ui.av1)
-        self.av.append(self.ui.av2)
-        self.av.append(self.ui.av3)
-        self.av.append(self.ui.av4)
-        self.av.append(self.ui.av5)
-        self.av.append(self.ui.av6)
-        self.av.append(self.ui.av7)
 
         self.wjl.append(self.ui.wjl1)
         self.wjl.append(self.ui.wjl2)
@@ -82,7 +64,6 @@ class functions():
         self.ui.fileBrowseButton_3.clicked.connect(self.fileBrowseButton3Clicked)
         self.ui.resetAllDispatch.clicked.connect(self.resetAllDispatchClicked)
         self.ui.appFactor.valueChanged[int].connect(self.appFactorChange)
-        #self.ui.jobDistribution.currentIndexChanged[int].connect(self.jobDistChange)
         ########################################################################
 
     def connectOutput(self):
@@ -90,12 +71,6 @@ class functions():
 
     def normalOutputWritten(self, text):
         """Append text to the QTextEdit."""
-        # Maybe QTextEdit.append() works as well, but this is how I do it:
-        #cursor = self.ui.output.textCursor()
-        #cursor.movePosition(QtGui.QTextCursor.End)
-        #cursor.insertText(text)
-        #self.ui.output.setTextCursor(cursor)
-        #self.ui.output.ensureCursorVisible()
         self.ui.output.append(text)
 
     def buttonClicked(self):
@@ -103,50 +78,46 @@ class functions():
 
             errorStr = ""
 
-            #if self.ui.startDate.date() > self.ui.endDate.date():
-            #   errorStr = errorStr + "Start Date cannot be more than the End Date.\n"
-
-            if not os.path.isfile(self.ui.fileLocation.text()):
+            if self.ui.fileLocation.text() == "":
+                errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File path is empty\n"
+            elif not os.path.isfile(self.ui.fileLocation.text()):
                 errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File does not exist\n"
+            else:
+                self.ui.output.append("Statistical Data File Exists")
+                QtCore.QCoreApplication.processEvents()
 
-            if not os.path.isfile(self.ui.fileLocation_2.text()):
-                errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File does not exist.\n"
+
+
+            if self.ui.fileLocation_2.text() == "":
+                errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File path is empty\n"
+            elif not os.path.isfile(self.ui.fileLocation_2.text()):
+                errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File does not exist\n"
 
             s = self.ui.fileLocation_3.text()
-            if not s[-5:] == ".xlsm":
+            if s == "":
+                errorStr = errorStr + "*****OUTPUT FILE ERROR*****\n" + "Message: Output File path is empty\n"
+            elif not s[-5:] == ".xlsm":
                 errorStr = errorStr + "*****OUTPUT FILE ERROR*****\n" + "Message: Output File must end with (.xlsm)\n"
-
-            errorStr = errorStr + self.scheduleChecker()
+            else:
+                self.ui.output.append("Output File Exists")
+                QtCore.QCoreApplication.processEvents()
 
             if errorStr == "":
+                errorStr = errorStr + self.scheduleChecker()
+
+            if errorStr == "":
+                self.ui.output.append("Schedule Data File Correct")
+                QtCore.QCoreApplication.processEvents()
                 self.assignAndExecute()
             else:
-                #QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
-                print errorStr
+                QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
 
     def assignAndExecute(self):
-        self.ui.output.setText("")
-        print "*****STARTING SIMULATION*****"
-        #float
-        #numberOfPorters = self.ui.numberOfPorters.value()
+        self.ui.output.append("*****STARTING SIMULATION*****")
+        QtCore.QCoreApplication.processEvents()
+
         #float
         simDuration = self.ui.simDuration.value()
-        #date
-        #startDate = self.ui.startDate.date()
-        #startDay = startDate.dayOfWeek()
-        #startDate = startDate.toPyDate()
-        #startDate = str(startDate) + " 00:00:00"
-        #date
-        #endDate = self.ui.endDate.date()
-        #endDay = endDate.dayOfWeek()
-        #endDate = endDate.toPyDate()
-        #endDate = str(endDate) + " 00:00:00"
-        #int
-        #jobDistribution = self.ui.jobDistribution.currentIndex()
-        #float
-        #correctEquipment = self.ui.correctEquipment.value()
-        #float
-        #patientReadiness = self.ui.patientReadiness.value()
         #float
         porterWait = self.ui.porterWait.value()
         #int
@@ -161,71 +132,44 @@ class functions():
         fileLocation_3 = self.ui.fileLocation_3.text()
         #float
         appFactorValue = float(self.ui.appFactorValue.text())
+        #float
+        randomSeed = self.ui.randFactor.value()
+
         #list of float
         ajb = list()
-
         i = 0
         while i < len(self.ajb):
             ajb.append(self.ajb[i].value())
             i += 1
+
         #list of float
         i = 0
         wjl = list()
         while i < len(self.wjl):
             wjl.append(self.wjl[i].value())
             i += 1
-        #list of float
-        i = 0
-        pmv = list()
-        while i < len(self.pmv):
-            pmv.append(self.pmv[i].value())
-            i += 1
-        #list of float
-        i = 0
-        av = list()
-        while i < len(self.av):
-            av.append(self.av[i].value())
-            i += 1
 
         #Dictionary
         inputDict = dict()
-        #inputDict["numberOfPorters"] = numberOfPorters
-        inputDict["simulationDuration"] = simDuration
-        #inputDict["startDate"] = startDate
-        #inputDict["endDate"] = endDate
-        #inputDict["startDay"] = startDay
-        #inputDict["endDay"] = endDay
-        #inputDict["jobDistribution"] = jobDistribution
-        #inputDict["correctEquipment"] = correctEquipment
-        #inputDict["patientReadiness"] = patientReadiness
         inputDict["porterWait"] = porterWait
         inputDict["jobFlow"] = jobFlow
-        #inputDict["jobCancel"] = jobCancel
         inputDict["fileLocation"] = fileLocation
         inputDict["appFactorValue"] = appFactorValue
         inputDict["ajb"] = ajb
         inputDict["wjl"] = wjl
-        inputDict["pmv"] = pmv
-        inputDict["av"] = av
         inputDict["schedule"] = self.scheduleParser()
         inputDict["outputLocation"] = fileLocation_3
-
-        #for i in inputDict:
-        #    print(i + " : " + str(inputDict[i]))
+        inputDict["randomSeed"] = randomSeed
 
         start_time = time()
 
         portermain(inputDict)
 
-        print "Process Complete in " + str(time() - start_time) + "seconds"
+        #print "Process Complete in " + str(time() - start_time) + " seconds"
+
+        QtGui.QMessageBox.information(self.Dialog,  'Success',  "Simulation Complete",  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
 
     def resetAllButtonClicked(self):
-        #self.ui.numberOfPorters.setProperty("value", 10)
-        #self.ui.startDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 22), QtCore.QTime(0, 0, 0)))
-        #self.ui.endDate.setDateTime(QtCore.QDateTime(QtCore.QDate(2013, 7, 23), QtCore.QTime(0, 0, 0)))
-        #self.ui.jobDistribution.setCurrentIndex(0)
-        #self.ui.correctEquipment.setProperty("value", 80.0)
-        #self.ui.patientReadiness.setProperty("value", 80.0)
         self.ui.simDuration.setProperty("value", 1.0)
         self.ui.porterWait.setProperty("value", 5.0)
         self.ui.jobFlow.setCurrentIndex(1)
@@ -267,17 +211,13 @@ class functions():
         for i in self.wjl:
             self.wjlInitial.append(i.value())
 
-        for i in self.pmv:
-            self.pmvInitial.append(i.value())
-
-        for i in self.av:
-            self.avInitial.append(i.value())
-
         self.appFactorInitial = float(self.ui.appFactor.value())/100
+        self.randFactorInitial = float(self.ui.randFactor.value())
 
     def resetAllDispatchClicked(self):
         self.ui.appFactorValue.setText(str(self.appFactorInitial))
         self.ui.appFactor.setProperty("value", self.appFactorInitial*100)
+        self.ui.randFactor.setProperty("value", self.randFactorInitial)
 
         i = 0
         while i < len(self.ajb):
@@ -288,20 +228,6 @@ class functions():
         while i < len(self.wjl):
             self.wjl[i].setProperty("value", self.wjlInitial[i])
             i += 1
-
-        i = 0
-        while i < len(self.pmv):
-            self.pmv[i].setProperty("value", self.pmvInitial[i])
-            i += 1
-
-        i = 0
-        while i < len(self.av):
-            self.av[i].setProperty("value", self.avInitial[i])
-            i += 1
-
-    def initFileLocations(self):
-        self.ui.fileLocation.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/data.csv")
-        self.ui.fileLocation_2.setText("C:/Users/Vitaliy/Documents/GitHub/Porter-Simulation/Simulation Prototype/Schedule.csv")
 
     def scheduleChecker(self):
         with open(self.ui.fileLocation_2.text(), 'r') as f:
@@ -464,13 +390,4 @@ class functions():
                 for day in ps[4]:
                     reformattedSchedule[str(pid)].append((ps[0], ps[1], ps[2], day))
 
-        pprint.pprint(reformattedSchedule, None, 1, 80, 3)
-
         return reformattedSchedule
-
-class EmittingStream(QtCore.QObject):
-
-    textWritten = QtCore.pyqtSignal(str)
-
-    def write(self, text):
-        self.textWritten.emit(str(text))
