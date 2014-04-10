@@ -50,7 +50,7 @@
     <string notr="true">background-color: rgb(216, 216, 216);</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -80,32 +80,19 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
      <property name="title">
       <string>Basic Settings</string>
      </property>
-     <widget class="QSplitter" name="splitter">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>154</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
      <widget class="QSplitter" name="splitter_5">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>90</y>
-        <width>261</width>
-        <height>91</height>
+        <width>281</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="QSplitter" name="splitter_2">
+      <widget class="QSplitter" name="splitter_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -172,7 +159,7 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
         </property>
        </widget>
       </widget>
-      <widget class="QSplitter" name="splitter_4">
+      <widget class="QSplitter" name="splitter_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -207,6 +194,65 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
         <item>
          <property name="text">
           <string>High</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Start Day</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="dayOffset">
+        <property name="toolTip">
+         <string>choose the rate of job generation</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="currentText">
+         <string>Monday</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Monday</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tuesday</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Wednesday</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Thursday</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Friday</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Saturday</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sunday</string>
          </property>
         </item>
        </widget>
@@ -959,16 +1005,16 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
        <string>Choose the a specific seed to use. 0 for True Random</string>
       </property>
       <property name="decimals">
-       <number>6</number>
+       <number>0</number>
       </property>
       <property name="minimum">
        <double>0.000000000000000</double>
       </property>
       <property name="maximum">
-       <double>999.000000000000000</double>
+       <double>1000000000.000000000000000</double>
       </property>
       <property name="singleStep">
-       <double>0.100000000000000</double>
+       <double>1.000000000000000</double>
       </property>
       <property name="value">
        <double>0.000000000000000</double>

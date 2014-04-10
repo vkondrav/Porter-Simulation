@@ -132,8 +132,11 @@ class functions():
         fileLocation_3 = self.ui.fileLocation_3.text()
         #float
         appFactorValue = float(self.ui.appFactorValue.text())
-        #float
+        #int
         randomSeed = self.ui.randFactor.value()
+        #int
+        dayOffset = self.ui.dayOffset.currentIndex()
+
 
         #list of float
         ajb = list()
@@ -161,6 +164,7 @@ class functions():
         inputDict["schedule"] = self.scheduleParser()
         inputDict["outputLocation"] = fileLocation_3
         inputDict["randomSeed"] = randomSeed
+        inputDict["dayOffset"] = dayOffset
 
         start_time = time()
 
@@ -174,6 +178,7 @@ class functions():
         self.ui.simDuration.setProperty("value", 1.0)
         self.ui.porterWait.setProperty("value", 5.0)
         self.ui.jobFlow.setCurrentIndex(1)
+        self.ui.dayOffset.setCurrentIndex(0)
         self.ui.fileLocation.setText("")
         self.ui.fileLocation_2.setText("")
         self.ui.fileLocation_3.setText("")
@@ -242,21 +247,40 @@ class functions():
             for row in reader:
 
                 cell = "Row: " + str(i) + " Column: 1"
-                strError = strError + self.verifyShiftID(row[0], cell)
+
+                try:
+                    strError = strError + self.verifyShiftID(row[0], cell)
+                except:
+                    strError = strError + "Incorrect Syntax in Schedule File. Check " + cell + "\n"
 
                 cell = "Row: " + str(i) + " Column: 2"
-                strError = strError + self.verifyStartTime(row[1], cell)
+                try:
+                    strError = strError + self.verifyStartTime(row[1], cell)
+                except:
+                    strError = strError + "Incorrect Syntax in Schedule File. Check " + cell + "\n"
 
                 cell = "Row: " + str(i) + " Column: 3"
-                strError = strError + self.verifyEndTime(row[2], cell)
+                try:
+                    strError = strError + self.verifyEndTime(row[2], cell)
+                except:
+                    strError = strError + "Incorrect Syntax in Schedule File. Check " + cell + "\n"
 
                 cell = "Row: " + str(i) + " Column: 4"
-                strError = strError + self.verifyPorterID(row[3], cell)
+                try:
+                    strError = strError + self.verifyPorterID(row[3], cell)
+                except:
+                    strError = strError + "Incorrect Syntax in Schedule File. Check " + cell + "\n"
 
                 cell = "Row: " + str(i) + " Column: 5"
-                strError = strError + self.verifyDays(row[4], cell)
+                try:
+                    strError = strError + self.verifyDays(row[4], cell)
+                except:
+                    strError = strError + "Incorrect Syntax in Schedule File. Check " + cell + "\n"
 
                 i = i + 1
+
+                if strError != "":
+                    break
 
             f.close()
 

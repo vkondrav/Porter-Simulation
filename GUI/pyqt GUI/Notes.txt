@@ -4,6 +4,8 @@ to compile, pyqt must be installed. In command prompt type:
 
 where input.ui is the UI created in QT Designer and output.py is the python destination
 
-use a merging tool to merge the generated file and the actual GUI file
+for example "pyuic4 -x mockup.ui -o mockup1.py"
 
-note: this will overwrite everything in output.py
+use a merging tool to merge the generated file and the actual GUI file from Simulation Prototype
+
+note: this will overwrite everything in output.py, do not make any modifications in that file
