@@ -394,10 +394,10 @@ class functions():
 
     def assignNewValues(self):
 
-        #Window Title
+        #window Title
         self.Dialog.setWindowTitle("Porter Simulation")
 
-        #Window properties
+        #window properties
         self.Dialog.setFixedSize(766, 625)
         self.Dialog.setWindowFlags(self.Dialog.windowFlags() | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowMinimizeButtonHint)
 

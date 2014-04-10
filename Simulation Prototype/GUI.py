@@ -477,7 +477,7 @@ class Ui_Dialog(object):
 ""))
 
         self.hhs.setText(_fromUtf8(""))
-
+        self.hhs.setPixmap(QtGui.QPixmap(_fromUtf8("hhs.png")))
         self.hhs.setScaledContents(True)
         self.hhs.setObjectName(_fromUtf8("hhs"))
 
