@@ -151,6 +151,7 @@ class functions():
 
         #Dictionary
         inputDict = dict()
+        inputDict["simulationDuration"] = simDuration
         inputDict["porterWait"] = porterWait
         inputDict["jobFlow"] = jobFlow
         inputDict["fileLocation"] = fileLocation
