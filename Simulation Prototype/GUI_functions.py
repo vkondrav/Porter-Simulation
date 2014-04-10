@@ -391,3 +391,20 @@ class functions():
                     reformattedSchedule[str(pid)].append((ps[0], ps[1], ps[2], day))
 
         return reformattedSchedule
+
+    def assignNewValues(self):
+
+        #Window Title
+        self.Dialog.setWindowTitle("Porter Simulation")
+
+        #Window properties
+        self.Dialog.setFixedSize(766, 625)
+        self.Dialog.setWindowFlags(self.Dialog.windowFlags() | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowMinimizeButtonHint)
+
+        #output box config
+        self.ui.output.setReadOnly(True)
+        self.ui.output.setGeometry(QtCore.QRect(10, 340, 731, 181))
+
+        #load logo
+        pixmap = QtGui.QPixmap(os.getcwd() + "/hhs.png")
+        self.ui.hhs.setPixmap(pixmap)

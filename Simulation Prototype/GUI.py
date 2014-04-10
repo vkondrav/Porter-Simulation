@@ -34,11 +34,6 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(772, 638)
-        self.fun.ui = self
-        self.fun.Dialog = Dialog
-
-        Dialog.setFixedSize(766, 625)
-        Dialog.setWindowFlags(Dialog.windowFlags() | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowMinimizeButtonHint)
 
         self.label = QtGui.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(10, 0, 358, 57))
@@ -173,8 +168,6 @@ class Ui_Dialog(object):
         self.fileBrowseButton_3.setStyleSheet(_fromUtf8(""))
         self.fileBrowseButton_3.setObjectName(_fromUtf8("fileBrowseButton_3"))
         self.output = QtGui.QTextEdit(self.tab)
-        self.output.setReadOnly(True)
-        self.output.setGeometry(QtCore.QRect(10, 340, 731, 181))
         self.output.setStyleSheet(_fromUtf8("QTextEdit\n"
 "{\n"
 "    background-color: rgb(255, 255, 255);\n"
@@ -482,17 +475,16 @@ class Ui_Dialog(object):
 "border-width: 2px;\n"
 "border-color: rgb(141, 141, 141);\n"
 ""))
-        #preload the pix map
-        pixmap = QtGui.QPixmap(os.getcwd() + "/hhs.png")
 
         self.hhs.setText(_fromUtf8(""))
-        self.hhs.setPixmap(pixmap)
+
         self.hhs.setScaledContents(True)
         self.hhs.setObjectName(_fromUtf8("hhs"))
 
         self.retranslateUi(Dialog)
         self.notUsed.setCurrentIndex(0)
         self.jobFlow.setCurrentIndex(1)
+
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -561,9 +553,13 @@ class Ui_Dialog(object):
         self.assignGUIfunctions(Dialog)
 
     def assignGUIfunctions(self, Dialog):
+
+        self.fun.ui = self
+        self.fun.Dialog = Dialog
         self.fun.appendDispatchLists()
         self.fun.assignEvents()
         self.fun.recordInitialDispatch()
+        self.fun.assignNewValues()
         #self.fun.connectOutput()
 
 if __name__ == "__main__":
