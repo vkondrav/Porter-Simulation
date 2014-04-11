@@ -32,6 +32,8 @@ class functions():
 
     schedule = None
 
+    fileName = None
+
     def appendDispatchLists(self):
 
         self.ajb.append(self.ui.ajb1)
@@ -95,9 +97,7 @@ class functions():
 
             s = self.ui.fileLocation_3.text()
             if s == "":
-                errorStr = errorStr + "*****OUTPUT FILE ERROR*****\n" + "Message: Output File path is empty\n"
-            elif not s[-5:] == ".xlsm":
-                errorStr = errorStr + "*****OUTPUT FILE ERROR*****\n" + "Message: Output File must end with (.xlsm)\n"
+                errorStr = errorStr + "*****OUTPUT FOLDER ERROR*****\n" + "Message: Output Folder path is empty\n"
             else:
                 self.ui.output.append("Output File Exists")
                 QtCore.QCoreApplication.processEvents()
@@ -129,11 +129,25 @@ class functions():
         #string
         fileLocation_2 = self.ui.fileLocation_2.text()
         #string
-        fileLocation_3 = self.ui.fileLocation_3.text()
+
+        self.fileName = str(dt.now())
+
+        self.fileName = self.fileName.replace(':', "-")
+        self.fileName = self.fileName.replace('.', "-")
+        self.fileName = self.fileName.replace(' ', "_")
+
+        self.fileName = self.fileName + ".xlsm"
+
+        fileLocation_3 = os.path.join(str(self.ui.fileLocation_3.text()), self.fileName)
         #float
         appFactorValue = float(self.ui.appFactorValue.text())
+
         #int
-        randomSeed = self.ui.randFactor.value()
+        if self.ui.randSeedCheck.isChecked():
+            randomSeed = self.ui.randFactor.value()
+        else:
+            randomSeed = None
+
         #int
         dayOffset = self.ui.dayOffset.currentIndex()
 
@@ -194,16 +208,10 @@ class functions():
         self.ui.fileLocation_2.setText(fname)
 
     def fileBrowseButton3Clicked(self):
-        fileName = str(dt.now())
 
-        fileName = fileName.replace(':', "-")
-        fileName = fileName.replace('.', "-")
-        fileName = fileName.replace(' ', "_")
-
-        fileName = fileName + ".xlsm"
-
-        fname = QtGui.QFileDialog.getSaveFileName(self.Dialog, 'Save File', fileName, "Excel Macro Enabled Files (*.xlsm)")
-        self.ui.fileLocation_3.setText(fname)
+        #fname = QtGui.QFileDialog.getSaveFileName(self.Dialog, 'Save File', fileName, "Excel Macro Enabled Files (*.xlsm)")
+        dirName = QtGui.QFileDialog.getExistingDirectory(self.Dialog, 'Directory to Save File')
+        self.ui.fileLocation_3.setText(dirName)
 
 
     def appFactorChange(self):
@@ -224,6 +232,8 @@ class functions():
         self.ui.appFactorValue.setText(str(self.appFactorInitial))
         self.ui.appFactor.setProperty("value", self.appFactorInitial*100)
         self.ui.randFactor.setProperty("value", self.randFactorInitial)
+        self.ui.randSeedCheck.setChecked(False)
+        self.ui.randFactor.setEnabled(False)
 
         i = 0
         while i < len(self.ajb):
@@ -376,7 +386,7 @@ class functions():
 
             if c == "":
                 strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: empty Day ID at position " + str(i) + "\n"
-            if not bool(match("^[0-4]$", c)):
+            if not bool(match("^[0-6]$", c)):
                 strError += "*****DAY ID ERROR*****\n" + "Please check cell " + cell + " in schedule.\n" + "Message: invalid Day ID at position " + str(i) + "\n"
             i = i + 1
 

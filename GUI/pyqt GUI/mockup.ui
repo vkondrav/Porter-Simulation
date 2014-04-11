@@ -80,94 +80,130 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
      <property name="title">
       <string>Basic Settings</string>
      </property>
-     <widget class="QSplitter" name="splitter_5">
+     <widget class="QSplitter" name="splitter_6">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>50</x>
         <y>90</y>
-        <width>281</width>
-        <height>121</height>
+        <width>241</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QSplitter" name="splitter_4">
+      <widget class="QSplitter" name="splitter_5">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <widget class="QLabel" name="label_6">
         <property name="text">
          <string>Simulation Duration</string>
         </property>
        </widget>
-       <widget class="QDoubleSpinBox" name="simDuration">
-        <property name="toolTip">
-         <string>Choose the number of days to simulate</string>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="minimum">
-         <double>1.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>5.000000000000000</double>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>days</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QSplitter" name="splitter_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
        <widget class="QLabel" name="label_9">
         <property name="text">
          <string>Porter Wait Times</string>
         </property>
        </widget>
-       <widget class="QDoubleSpinBox" name="porterWait">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="toolTip">
-         <string>maximum time a porter waits for patient before abandoning job (0 - 60)</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="minimum">
-         <double>0.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>60.000000000000000</double>
-        </property>
-        <property name="value">
-         <double>5.000000000000000</double>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>min</string>
-        </property>
-       </widget>
       </widget>
-      <widget class="QSplitter" name="splitter_2">
+      <widget class="QSplitter" name="splitter_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QSplitter" name="splitter_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QDoubleSpinBox" name="simDuration">
+         <property name="toolTip">
+          <string>Choose the number of days to simulate</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="decimals">
+          <number>2</number>
+         </property>
+         <property name="minimum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>7.000000000000000</double>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="porterWait">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>maximum time a porter waits for patient before abandoning job (0 - 60)</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>60.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>5.000000000000000</double>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QSplitter" name="splitter_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>days</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>min</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QSplitter" name="splitter_8">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>150</y>
+        <width>241</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_7">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Job Flow</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Start Day</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
        <widget class="QComboBox" name="jobFlow">
         <property name="toolTip">
          <string>choose the rate of job generation</string>
@@ -197,19 +233,9 @@ QSpinBox,QDateEdit,QComboBox,QLineEdit,QDoubleSpinBox
          </property>
         </item>
        </widget>
-      </widget>
-      <widget class="QSplitter" name="splitter">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Start Day</string>
-        </property>
-       </widget>
        <widget class="QComboBox" name="dayOffset">
         <property name="toolTip">
-         <string>choose the rate of job generation</string>
+         <string>starting day of the simulation</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -508,71 +534,11 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
      <property name="title">
       <string>Dispatcher</string>
      </property>
-     <widget class="QSlider" name="appFactor">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>30</y>
-        <width>351</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>100</number>
-      </property>
-      <property name="maximum">
-       <number>300</number>
-      </property>
-      <property name="singleStep">
-       <number>3</number>
-      </property>
-      <property name="value">
-       <number>120</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="tickPosition">
-       <enum>QSlider::TicksAbove</enum>
-      </property>
-      <property name="tickInterval">
-       <number>3</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_13">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>10</y>
-        <width>111</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Appointment Factor</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="appFactorValue">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>41</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>1.2</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>70</y>
+        <y>140</y>
         <width>691</width>
         <height>91</height>
        </rect>
@@ -771,7 +737,7 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>170</y>
+        <y>250</y>
         <width>691</width>
         <height>91</height>
        </rect>
@@ -969,56 +935,135 @@ QSpinBox,QDateEdit,QComboBox,QDoubleSpinBox
      <widget class="QPushButton" name="resetAllDispatch">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>20</y>
-        <width>111</width>
-        <height>28</height>
+        <x>610</x>
+        <y>40</y>
+        <width>81</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Reset All</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_14">
+     <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>10</y>
-        <width>81</width>
-        <height>16</height>
+        <x>470</x>
+        <y>40</y>
+        <width>131</width>
+        <height>81</height>
        </rect>
       </property>
-      <property name="text">
+      <property name="title">
        <string>Random Seed</string>
       </property>
+      <widget class="QCheckBox" name="randSeedCheck">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>16</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>CheckBox</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="randFactor">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>91</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Choose the a specific seed to use. 0 for True Random</string>
+       </property>
+       <property name="decimals">
+        <number>0</number>
+       </property>
+       <property name="minimum">
+        <double>0.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>999999999.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.000000000000000</double>
+       </property>
+      </widget>
      </widget>
-     <widget class="QDoubleSpinBox" name="randFactor">
+     <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
        <rect>
-        <x>454</x>
-        <y>30</y>
-        <width>111</width>
-        <height>26</height>
+        <x>10</x>
+        <y>40</y>
+        <width>451</width>
+        <height>80</height>
        </rect>
       </property>
-      <property name="toolTip">
-       <string>Choose the a specific seed to use. 0 for True Random</string>
+      <property name="title">
+       <string>Appointment Factor</string>
       </property>
-      <property name="decimals">
-       <number>0</number>
-      </property>
-      <property name="minimum">
-       <double>0.000000000000000</double>
-      </property>
-      <property name="maximum">
-       <double>1000000000.000000000000000</double>
-      </property>
-      <property name="singleStep">
-       <double>1.000000000000000</double>
-      </property>
-      <property name="value">
-       <double>0.000000000000000</double>
-      </property>
+      <widget class="QSlider" name="appFactor">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>40</y>
+         <width>351</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>100</number>
+       </property>
+       <property name="maximum">
+        <number>300</number>
+       </property>
+       <property name="singleStep">
+        <number>3</number>
+       </property>
+       <property name="value">
+        <number>120</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksAbove</enum>
+       </property>
+       <property name="tickInterval">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="appFactorValue">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>1.2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -1054,5 +1099,22 @@ border-color: rgb(141, 141, 141);
   <zorder>hhs</zorder>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>randSeedCheck</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>randFactor</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
