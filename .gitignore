@@ -246,12 +246,12 @@ pip-log.txt
 *.synctex.gz
 
 #####Directories############
-/Simulation Prototype/.idea
-/Simulation Prototype/build
-/Simulation Prototype/dist
+src/Simulation/.idea
+src/Simulation/build
+src/Simulation/dist
 
 ####Files##################
-/Simulation Prototype/test.py
-/Simulation Prototype/output.xls
-/Simulation Prototype/output.pickle
-/Simulation Prototype/data.csv
+src/Simulation/test.py
+src/Simulation/output.xls
+src/Simulation/output.pickle
+src/Simulation/data.csv
