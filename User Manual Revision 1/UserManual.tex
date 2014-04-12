@@ -234,12 +234,51 @@ Once the simulation has finished modeling and computing the data, the results of
 	
 	\begin{enumerate}[(i)]
 		\item \textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job has been created to when a job has been complete. Chart contains High, Low and Average values.
+		\begin{figure}[!htbp]
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{transactionTime.png}
+			\caption{Transaction Time}
+		\end{center}
+		\end{figure}
 		\item \textbf{Response Time:} Represents the response time for a job created in a specific time interval. Response time is defined as the time from when a job has been created to when a job has been taken on by a porter. Chart contains High, Low and Average values.
+		\begin{figure}[!htbp]		
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{responseTime.png}
+			\caption{Response Time}
+		\end{center}
+		\end{figure}
 		\item \textbf{In Progress Time:} Represents the in progress time for a job created in a specific time interval. In progress time is defined as the time from when a job has been taken on by a porter to when a job has been complete. Chart contains High, Low and Average values.
+		\begin{figure}[!htbp]		
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{inProgress.png}
+			\caption{In Progress Time}
+		\end{center}
+		\end{figure}
 		\item \textbf{Total Number of Jobs Complete:} Represents the number of jobs completed in a specific time interval.
+		\begin{figure}[!htbp]		
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{numberOfJobs.png}
+			\caption{Total Number of Jobs Complete}
+		\end{center}
+		\end{figure}
 		\item \textbf{Average Transaction Time vs. Jobs Complete vs. Pending Jobs:} Pending Jobs represent any jobs that are still active at the end of each time interval. Number of Complete Jobs and Average Transaction Times are overlaid here.
+		\begin{figure}[!htbp]		
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{comboChart.png}
+			\caption{Combination Chart}
+		\end{center}
+		\end{figure}
 		\item \textbf{Cumulative Cancelled Jobs:} Represents the total number of cancelled jobs for at the end of each time interval
+		\begin{figure}[!htbp]		
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{cancelledJobs.png}
+			\caption{Cumulative Cancelled Jobs}
+		\end{center}
+		\end{figure}
 	\end{enumerate}
+	
+\section{Raw Data}
+Raw data can be accessed from the generated dashboard files. Simply right click on any of the bottom tabs and pick the unhide option. Each dashboard has a corresponding data sheet. All the raw events data is in Sheet1. 
 
 \section{Troubleshooting}
 The Porter Simulation has been designed to operate effectively and error free, however, this troubleshooting section will help address any minor issues that may arise.
