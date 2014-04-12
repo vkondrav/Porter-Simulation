@@ -50,7 +50,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead[L]{}
-\fancyhead[c]{Requirements Revision 0}
+\fancyhead[c]{Requirements Revision 1}
 \fancyhead[R]{\today}											
 \fancyfoot[L]{}											 
 \fancyfoot[C]{}											
@@ -154,7 +154,7 @@ Dr. Douglas Down % Supervisor's Name
   	4 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & October 30 & Info Missing \\ \hline
   	5 & \shortstack{\\Nathan Johrendt} & January 13 & Info Update \\ \hline
   	6 & \shortstack{\\Vitaliy Kondratiev} & February 2 & Update and Corrections \\ \hline
-  	7 & \shortstack{\\Nathan Johrendt} & February 3 & Update and Corrections \\
+  	7 & \shortstack{\\Vitaliy Kondratiev} & April 11 & Update and Corrections \\
     \hline
     \end{tabular}
 \end{center}
@@ -171,32 +171,12 @@ There are currently no figures within the requirements document, this section wi
 \subsection{Template}
 This requirements document is based on the Volere template, formatted using LaTex.
 \subsection{Background}
-Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations. Porter services, in this context, are defined as the movement of equipment such as beds, wheelchairs, other medical instruments and patient transfers from one location to another. Porters are a key piece of overall patient experience and satisfaction; the flow of day to day operations in a hospital depends on their efficiency. The problem HHS is facing is, synchronization of porter services with the existing constraints (time/money/porter availability/policy compliance).  Porters should be able to achieve greater efficiency by minimizing client (patient/doctor/nurse/technician/etc.) wait times and reducing the total time wasted in everyday operations. Hamilton Health Sciences are lacking the tools to solve this problem.
+Hamilton Health Sciences are experiencing inefficiencies when synchronizing their porter services throughout each of their locations. Porter services, in this context, are defined as the movement of equipment such as beds, wheelchairs, other medical instruments and patient transfers from one location to another. Porters are a key piece of overall patient experience and satisfaction; the flow of day to day operations in a hospital depends on their efficiency. The problem HHS is facing is synchronization of porter services with the existing constraints (time/money/porter availability/policy compliance).  Porters should be able to achieve greater efficiency by minimizing client (patient/doctor/nurse/technician/etc.) wait times and reducing the total time wasted in everyday operations. Hamilton Health Sciences are looking to acquire analytical tools to solve this problem
 \subsection{Goals}
 Our goal is to provide HHS with the tools to simulate their porter services so that they can test their own solutions, methods and make calculated decisions based on the results.
 
-\section{The Stakeholders}
-Hamilton Health Sciences (HHS) operational management team is the main stakeholder for this project. Names and position are:\\ \\
-Corey Stark (CSS - Sodexo Systems and Performance Manager)\\
-Kym Kempf (Business and Program Manager - Corporate Services)\\
-David DiSimoni (Site Manager - Customer Support Services)\\
-Anita Lamond (Director - Corporate Services)\\
-Steve Metham (Manager - Quality)\\
-Mohammad Majedi (Quality Specialist)\\
-Talha Hussain (Quality Specialist)
-
-\subsection{The Client}
-Hamilton Health Sciences (HHS) operational management team is the client for this project. Names and positions are:\\ \\
-Corey Stark (CSS - Sodexo Systems and Performance Manager)\\
-Kym Kempf (Business and Program Manager - Corporate Services)\\
-David DiSimoni (Site Manager - Customer Support Services)\\
-Anita Lamond (Director - Corporate Services)\\
-Steve Metham (Manager - Quality)\\
-Mohammad Majedi (Quality Specialist)\\
-Talha Hussain (Quality Specialist)
-
-\subsection{The Customer}
-Hamilton Health Sciences (HHS) operational management team is also the customer for this project. Names and positions are:\\ \\
+\section{The Stakeholders-Clients-Customers}
+Hamilton Health Sciences (HHS) operational management team is the main stakeholder/client/customer for this project. Names and position are:\\ \\
 Corey Stark (CSS - Sodexo Systems and Performance Manager)\\
 Kym Kempf (Business and Program Manager - Corporate Services)\\
 David DiSimoni (Site Manager - Customer Support Services)\\
@@ -209,13 +189,14 @@ Talha Hussain (Quality Specialist)
 Patients and Hospital Staff are the secondary stakeholders for this project. Any benefits that arise from the successful completion of this project will affect these stakeholders.
 \subsection{Hands on Users}
 Operational Management Staff will be the primary hands on users of the finished product. Names and positions are:
+Talha Hussain (Quality Specialist)\\
+Corey Stark (CSS - Sodexo Systems and Performance Manager)
 
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
-Given that this is a simulation of real-world events at an HHS hospital, the results produced must be accurate and consistent. The exact factor of accuracy required is still in discussion with the stakeholders, but they have provided us with recorded data to aid in constructing a model that is as accurate as possible.
+Given that this is a simulation of real-world events at an HHS hospital, the results produced must be accurate and consistent.
 \subsection{Schedule Constraints}
-Simulation Software must be complete and requirements met by the end of March 2014. (Current Academic Year)  
-
+Simulation Software must be completed and requirements met by the end of April 2014. (Current Academic Year)  
 
 \section{Naming Conventions and Technology}
 \subsection{Definitions of All Terms, Including Acronyms, Used by Stakeholders involved in the Project}
@@ -228,7 +209,6 @@ Simulation Software must be complete and requirements met by the end of March 20
 		\item \textbf{On-System Porter:} Porters that respond to ad-hoc and pre-booked requests	
 	\end{enumerate}
 	\item \textbf{Dispatching System:} An automated software system responsible for receiving and assigning requests to Porters
-	\item \textbf{Zoom Stretcher:} A powered stretcher used for patient transportation
 	\item \textbf{Standard Equipment:} Non-powered stretchers, beds, wheelchairs
 	\item \textbf{Priority of Requests:} Requests placed by Hospital Staff can be prioritized on a scale from 0 - 9 with 0 being the most urgent. Porters can place an Assist Call that has a higher priority than 0.
 	\item \textbf{Event State:} A state of the porter service event as dictated by the Dispatching System
@@ -246,6 +226,7 @@ Simulation Software must be complete and requirements met by the end of March 20
 	 do not receive any calls from the dispatch system
 	\item \textbf{CSV file:} Comma Separated Values file, stores tabular data in plain text form. 
 	\item \textbf{GUI:} Graphical User Interface - interaction with electronic devices through graphical icons and visual indicators
+	\item \textbf{Dashboard:} Visualization of the data formatted to server a purpose in critical decision making
 \end{enumerate}
 
 \section{Relevant Facts and Assumptions}
@@ -255,13 +236,12 @@ Simulation Software must be complete and requirements met by the end of March 20
 	\item HHS currently uses a Dispatching System to route its porters to desired locations
 	\item On certain route segments, two porters are required to transport the patient 
 	\item HHS will provide personnel and hours for testing of the application
+	\item HHS will be available to answer any queries as well as give feedback on the ongoing project milestones
 \end{enumerate}
 \subsection{Business Rules}
-\begin{enumerate}[(a)]
-	\item Under their collective agreement a porter cannot be scheduled for less than an X amount of hours per week and X amount of hours per shift 
+\begin{enumerate}[(a)] 
 	\item Each request has six event states (Pending, Dispatch, In-Progress, Complete, Dispatch Delay, In-Progress Delay)
 	\item Requests are prioritized on a 0 - 9 scale
-	\item There are three types of transportation equipment (Non-Powered Stretcher, Zoom Stretcher, Wheelchair, Bed)
 	\item There are two types of porters (On-System, Off-System)
 	\item Every completed event has an associated transaction time, unless cancelled
 	\item Dispatch System determines the assignment of requests by using these parameters (Priority, Proximity, Pre-Scheduled Appointment Use, Age of Request) 
@@ -272,10 +252,9 @@ Simulation Software must be complete and requirements met by the end of March 20
 \subsection{Assumptions}
 \begin{enumerate}[(a)]
 	\item Every porter is equally capable of performing every task as every other porter
-	\item All transporting equipment is in equal physical condition as other equipment of the same type
-	\item Wheel Chair transport of patients is four to five minutes less in transaction time
 	\item Some of the porters use proactive paging  
 	\item The majority of service requests are made through hospital computers
+	\item Data is 100 percent accurate but may not represent the each situation exactly 
 \end{enumerate}
 
 \section{Scope of the Work}
@@ -296,7 +275,7 @@ The simulation tool will be used by members of the operational management staff 
 \subsection{Product Use Cases}
 \begin{enumerate}[(a)]
 	\item Operational Manager has a new initiative they want to implement into everyday operation. He/She uses the simulation by changing the adjustable variables with his/her own values and executing it. He/She analyses the output of the simulation and determines if the new initiative should be implemented.
-	\item Operational Manager has to determine how to modify the schedule for the porter service staff. He/She uses the simulation by changing the adjustable variables with his/her own values and executing it. He/She uses the output to design/refine the new schedule.
+	\item Operational Manager has to determine how to modify the schedule for the porter service staff. He/She uses the simulation by changing the adjustable variables with his/her own values, importing a test version of the schedule and executing it. He/She uses the output to design/refine the new schedule.
 	\item Operational Manager wants to increase operational compliance of some particular policy. He/She uses the simulation by changing the adjustable variables related to a certain level of compliance with his/her own values and executing it. Once positive results have been verified he/she shows the results to all the parties involved in the compliance policy to effectively increase compliance.
 	\item Operational Manager wants to experiment with theoretical scenarios. He/She uses the simulation by changing the adjustable variables with his/her own values and executing it. He/She analyses the output data and either creates a new initiative based on result or archives the data.
 	     
@@ -312,32 +291,35 @@ The simulation tool will be used by members of the operational management staff 
 	\\ \textbf{Rationale:} Operational Management staff must be able to modify the simulation
 	\\ \textbf{Fit Criterion:} Simulation must include the following variables   
 	\begin{enumerate}[(i)]
-		\item Number of Porters
-		\item Start Date of Data Input
-		\item End Date of Data Input
-		\item Event Distribution Type
-		\item Event Intensity
-		\item Compliance (Equipment Usage)
-		\item Compliance (Patient Readiness)
-		\item Compliance (Porter Wait Times)
+		\item Simulation Duration
+		\item Porter Wait Times
+		\item Job Flow
+		\item Start Day
+		\item Appointment Factor
+		\item Automatic Job Priority Values
+		\item Weighted Job List
+		\item Random Seed
 	\end{enumerate}
 	\item \textbf{Description:} Simulation Tool must be able to run a pre-designed model incorporating the given input variables and exit
 	\\ \textbf{Rationale:} Operational Staff must be able to run the simulation
-	\\ \textbf{Fit Criterion:} Simulation must be accurate within X range of accuracy
+	\\ \textbf{Fit Criterion:} Simulation must be represent reflect the data source 100\%
 	\item \textbf{Description} The output of the simulation must be relevant data
 	\\ \textbf{Rationale:} Data must be relevant for the Operational Management's business process
 	\\ \textbf{Fit Criterion:} The output must be 100\% relevant in the scope of the problem
-	\item \textbf{Description} The output of the simulation must be a file
-	\\ \textbf{Rationale:} A file can be analysed for data manually or used as input for other software
-	\\ \textbf{Fit Criterion:} The output file must be have 0\% errors according to the file type standards 
+	\item \textbf{Description} The output of the simulation must be a dashboard
+	\\ \textbf{Rationale:} The data needs to b aggregated and presented to the user
+	\\ \textbf{Fit Criterion:} The output dashboard must be have 0\% errors
+	\item \textbf{Description} The simulation must have a GUI
+	\\ \textbf{Rationale:} The user must be able to use the simulation tool intuitively  
+	\\ \textbf{Fit Criterion:} The user will know how to use the tool with minimal training
 \end{enumerate}
 
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
-Appearance Requirements are still in the discussion stage with the stakeholders. Stakeholders prefer a specific color scheme that complies with the rest of their software. They have expressed a desire to see some graphical interpretation of simulated results, but details are still being discussed.
+No specific appearance requirements
 \subsection{Style Requirements}
 \begin{enumerate}
-	\item Software must contain elements of basic human/computer interface design as expected by a casual user of personal computers and popular software/operating systems. The exact details will be worked out after further discussion with the end users.
+	\item Software must contain elements of basic human/computer interface design as expected by a casual user of personal computers and popular software/operating systems.
 \end{enumerate}
 
 \section{Usability and Humanity Requirements}
@@ -345,16 +327,12 @@ Appearance Requirements are still in the discussion stage with the stakeholders.
 \begin{enumerate}
 	\item \textbf{Content:} Software must have a GUI
 	\\	  \textbf{Motivation:} Users of this software are not assumed to be advanced computer users. Users are not expected to know how to use command line or similar interfaces. 
-	\\	  \textbf{Fit Criterion:} All basic functions of the software are accessible through a GUI
+	\\	  \textbf{Fit Criterion:} All simulation variables of the software are accessible through a GUI
 	\\	  \textbf{Considerations:} This Ease of Use requirement considers all of the Product Use Cases
 	\item \textbf{Content:} The GUI must have checks in place to prevent the user from using invalid inputs 
 	\\	  \textbf{Motivation:} All inputs must comply with the arguments of the execution program
 	\\	  \textbf{Fit Criterion:} GUI restricts the user to a predetermined set of inputs
 	\\	  \textbf{Considerations:} This Ease of Use requirement considers all of the Product Use Cases
-	%\item \textbf{Content:} Software must be able to undo actions
-	%\\	  \textbf{Motivation:} As per the familiarity requirements the software must mimic some of the main functions of popular software
-	%\\	  \textbf{Fit Criterion:} All basic actions completed in the GUI will be able to be undone up to a certain point (to be decided)
-	%\\	  \textbf{Considerations:} This Ease of Use requirement considers all of the Product Use Cases
 	\item \textbf{Content:} Software must be easy to navigate
 	\\	  \textbf{Motivation:} Users should be able to easily move between different screens
 	\\	  \textbf{Fit Criterion:} Each screen is linked to each other with an easily accessible interface feature
@@ -365,7 +343,7 @@ Appearance Requirements are still in the discussion stage with the stakeholders.
 	\\	  \textbf{Consideration:} This Ease of Use requirement considers all of the Product Use Cases
 \end{enumerate}
 \subsection{Personalization and Internationalization Requirements}
-Personalization of the final product will be discussed with stakeholders and end users once further development has occurred. Internationalization requirements are not applicable.
+No Personalization and Internationalization Requirements from stakeholders
 \subsection{Learning Requirements}
 \begin{enumerate}
 	\item \textbf{Content:} Software must be easy to learn with some hands-on training and documentation by a casual user of personal computers
@@ -380,20 +358,20 @@ Personalization of the final product will be discussed with stakeholders and end
 	\\	  \textbf{Consideration:} This Understandability requirement considers all of the Product Use Cases	
 \end{enumerate}
 \subsection{Accessibility Requirements}
-Currently there have been no Accessibility Requirements from the stakeholders.
+No Accessibility Requirements from the stakeholders.
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
 \begin{enumerate}
 	\item \textbf{Content:} Software must be able to complete the simulation as set up by the user within a reasonable time
 	\\	  \textbf{Motivation:} As per request by the stakeholders
-	\\	  \textbf{Fit Criterion:} A single simulation should not take more than a working day (12h) to complete
+	\\	  \textbf{Fit Criterion:} A single simulation should not take more than a working day (5 minutes) to complete
 	\\	  \textbf{Considerations:} This speed requirement considers all of the Product Use Cases
 \end{enumerate}
 \subsection{Safety-Critical Requirements}
 Currently there have been no Safety-Critical Requirements proposed by the stakeholders.
 \subsection{Precision or Accuracy Requirements}
-Precision and Accuracy requirements are subject to change during the course of the project. Simulation must be accurate within a certain range. To be decided at a later date. 
+Simulation must be 100\% precise to the data given, even if the supplied data is not 100\% precise 
 \subsection{Reliability and Availability Requirements}
 	\begin{enumerate}
 		\item \textbf{Content:} Software must output relevant data to the user without error
@@ -411,13 +389,26 @@ Precision and Accuracy requirements are subject to change during the course of t
 		\\	  \textbf{Motivation:} Users should expect most simulations to complete without error
 		\\	  \textbf{Fit Criterion:} The simulation should not fail 99\% of the time
 		\\	  \textbf{Considerations:} This robustness requirement considers all of the Product Use Cases
+		\item \textbf{Content:} In the event of failure the user will must be promoted of the failure event and reason
+		\\	  \textbf{Motivation:} Users should expect feedback on failure
+		\\	  \textbf{Fit Criterion:} Simulation gives feedback on failure 100\% of the time unless a failure event has crashed the software as a whole
+		\\	  \textbf{Considerations:} This robustness requirement considers all of the Product Use Cases
 	\end{enumerate}
 \subsection{Capacity Requirements}
-Capacity Requirements are still in the discussion stage with the stakeholders.
+\begin{enumerate}
+		\item \textbf{Content:} Software must simulate unlimited amount of porters
+		\\	  \textbf{Motivation:} Users should expect to simulate as many porters as possible without an upper bound
+		\\	  \textbf{Fit Criterion:} Users are not met with any bounds when specifying porter numbers
+		\\	  \textbf{Considerations:} This reliability requirement considers all of the Product Use Cases 
+		\item \textbf{Content:} Software must be able to read unlimited input data
+		\\	  \textbf{Motivation:} Users should not be bounded by how much input data can be fed into the simulation
+		\\	  \textbf{Fit Criterion:} Users are not met with any bounds when specifying input data
+		\\	  \textbf{Considerations:} This reliability requirement considers all of the Product Use Cases 
+	\end{enumerate}
 \subsection{Scalability or Extensibility Requirements}
-Scalability and Extensibility Requirements are still in the discussion stage with the stakeholders.
+None
 \subsection{Longevity Requirements}
-Longevity Requirements are still in the discussion stage with the stakeholders.
+None
 
 \section{Operational and Environmental Requirements}
 \subsection{Expected Physical Environment}
@@ -427,16 +418,16 @@ Not Applicable.
 \subsection{Productization Requirements}
 Not Applicable.
 \subsection{Release Requirements}
-Final version of simulation software should be made available by April 1\ts{st} 2014.
+Final version of simulation software should be made available by April 29\ts{st} 2014.
 
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
 	\begin{enumerate}
-		\item The Project Team will provide maintenance to the software up to the projected project finish date (April 1\ts{st} 2014)
+		\item The Project Team will provide maintenance to the software up to the projected project finish date (April 29\ts{st} 2014)
 	\end{enumerate}
 \subsection{Supportability Requirements}
 	\begin{enumerate}
-		\item The Project Team will provide support for the software up to the projected project finish date (April 1\ts{st} 2014)
+		\item The Project Team will provide support for the software up to the projected project finish date (April 29\ts{st} 2014)
 	\end{enumerate}
 \subsection{Adaptability Requirements}
 The simulation is being modelled after existing data provided by stakeholders, with the possibility of modifying the software later to accommodate updated base values. 
@@ -486,27 +477,13 @@ The simulation software should only be executed on systems that meet the previou
 Should major changes in HHS operational protocol occur in the future, aspects of the simulation will likely require modification to continue producing accurate results.
 
 \section{Tasks}
-\subsection{Academic Milestones}
-\begin{enumerate}[(a)]	
-	\item \textbf{Record of Proposed Project} - due September 20\ts{th}, 2013
-	\item \textbf{Problem Statement} - due September 24\ts{th}, 2013
-	\item \textbf{Requirements Document Revision 0} - due October 10\ts{th}, 2013
-	\item \textbf{Test Plan Revision 0} - due October 24\ts{th}, 2013
-	\item \textbf{Proof of Concept Presentation} - to be complete between November 11\ts{th}, 2013 and November 22\ts{nd}, 2013
-	\item \textbf{Design Documentation Revision 0} - due  January 14\ts{th}, 2014
-	\item \textbf{Revision 0 Demonstration} - to be completed between January 27\ts{th}, 2014 and February 7\ts{th}, 2014
-	\item \textbf{User Guide Revision 0} - due February 18\ts{th}, 2014
-	\item \textbf{Test Report Revision 0} - due March 4\ts{th}, 2014
-	\item \textbf{Final Demonstration Revision 1} - due March 29\ts{th}, 2014
-	\item \textbf{Final Documentation Revision 1} - due April 1\ts{st}, 2014
-\end{enumerate}
 \subsection{Stakeholder Milestones}
 \begin{enumerate}[(a)]	
-	\item \textbf{Deliver first demo to HHS representatives} - due February 4\ts{th}, 2014
-	\item \textbf{Deliver second demo of the product to HHS staff} - due March 21\ts{st}, 2014
-	\item \textbf{Lead usability tests with users of the product} - due March 28\ts{th}, 2014
-	\item \textbf{Provide final project report + design documentation + user manual + Final Demonstration} - due April 18\ts{st}, 2014
-	\item \textbf{Install final version of software on department computers} - due April 18\ts{st}, 2014
+	\item \textbf{Deliver first demo to HHS representatives} - due by February 4\ts{th}, 2014
+	\item \textbf{Deliver second demo of the product to HHS staff} - due by March 21\ts{st}, 2014
+	\item \textbf{Lead usability tests with users of the product} - due by March 28\ts{th}, 2014
+	\item \textbf{Provide final project report + design documentation + user manual + Final Demonstration} - due by April 18\ts{st}, 2014
+	\item \textbf{Install final version of software on department computers} - due by April 18\ts{st}, 2014
 \end{enumerate}
 \section{Risks}
 \begin{enumerate}[(a)]
@@ -519,25 +496,12 @@ There are currently no financial costs associated with this project.
 
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
-The users of this software will be provided with detailed documentation outlining the framework, functionality, and usability. Details of this document are to be decided on at a later date.
+The users of this software will be provided with detailed documentation outlining the framework, functionality, and usability
 \subsection{Training Requirements}
-The users will be provided with hands-on training and training material by the project team. The details of this material are to be decided at a later date. 
+The users will be provided with hands-on training and training material by the project team.
 
 \section{Open Issues}
-\begin{enumerate}
-	\item Continue to narrow down complete variable list.
-	\item Clearly define which tasks on/off system porters complete.
-	\item Establish specific precision and accuracy requirements.
-	\item Establish User Documentation Requirements.
-	\item Establish Training Material Requirements.
-	\item Establish Potential User Problems.
-	\item Establish Stakeholder milestones as well as project plan.
-	\item Establish Scalability and Extensibility requirements.
-	\item Establish Longevity Requirements.
-	\item Establish Capacity Requirements.
-	\item Establish Personalization and Internalization requirements.
-	\item Establish Appearance Requirements.
-\end{enumerate}
+None
 
 \section{Waiting Room}
 Currently empty.

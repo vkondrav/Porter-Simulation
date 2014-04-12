@@ -98,8 +98,10 @@ class functions():
             s = self.ui.fileLocation_3.text()
             if s == "":
                 errorStr = errorStr + "*****OUTPUT FOLDER ERROR*****\n" + "Message: Output Folder path is empty\n"
+            elif not os.path.isdir(self.ui.fileLocation_3.text()):
+                errorStr = errorStr + "*****OUTPUT FOLDER ERROR*****\n" + "Message: Output Folder path does not exist\n"
             else:
-                self.ui.output.append("Output File Exists")
+                self.ui.output.append("Output Folder Exists")
                 QtCore.QCoreApplication.processEvents()
 
             if errorStr == "":
