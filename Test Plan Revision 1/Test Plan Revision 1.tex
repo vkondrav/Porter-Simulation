@@ -50,7 +50,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead[L]{}
-\fancyhead[c]{Requirements Revision 0}
+\fancyhead[c]{Test Plan Revision 1}
 \fancyhead[R]{\today}											
 \fancyfoot[L]{}											 
 \fancyfoot[C]{}											
@@ -159,6 +159,7 @@ Dr. Douglas Down % Supervisor's Name
   	4 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & October 30 & Final Update for Revision 0 Test Plan\\ \hline
   	5 & \shortstack{\\Nathan Johrendt} & February 3 & Test Plan Update \\ \hline
   	6 & \shortstack{\\Nathan Johrendt} & March 17 & Test Plan Update \\
+  	7 & \shortstack{\\Vitaliy Kondratiev} & April 12 & Test Plan Update \\
     \hline
     \end{tabular}
 \end{center}
@@ -202,9 +203,44 @@ The template for this test plan document was derived from examining the testing 
 	\item \textbf{Technique:}
 		\begin{enumerate}[(i)]
 			\item \textbf{Initial State:} Uninitialized Simulation   
-			\item \textbf{Input:} Simulation input variables from interface, as well as a file location for both data.csv and schedule.csv for importing job data and porter shift information respectively.
-			\item \textbf{Description:} Once input values are loaded by the simulation, it has become initialized with modified values. Before beginning simulation, the simulation will re-print the information it just imported to confirm that it has found the right information.
-			\item \textbf{Expected Output:} Simulation outputs variable data identical to that defined by the interface.
+			\item \textbf{Input:} Statistical Data File of correct format
+			\item \textbf{Description:} If the specified file exists the contents are loaded into the simulation at run time
+			\item \textbf{Expected Output on Success:} Statistical Data File Found. Statistical Data File Contents confirmed. Simulation proceeds.
+			\item \textbf{Expected Output on Failure:} Statistical Data File Not Found or Statistical Data File contents are not confirmed. Simulation does not proceed.
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Input/Initialization Correctness 2}
+\begin{enumerate}[]
+	\item \textbf{Test Factor:} Correctness  
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[(i)]
+			\item \textbf{Initial State:} Uninitialized Simulation   
+			\item \textbf{Input:} Schedule Data File of correct format
+			\item \textbf{Description:} If the specified file exists the contents are checked before being loaded into the simulation
+			\item \textbf{Expected Output on Success:} Schedule Data File Found. Schedule Data File Contents confirmed. Simulation proceeds.
+			\item \textbf{Expected Output on Failure:} Schedule Data File Not Found or Schedule Data File contents are not confirmed. Simulation does not proceed.
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Input/Initialization Correctness 4}
+\begin{enumerate}[]
+	\item \textbf{Test Factor:} Correctness  
+	\item \textbf{Life Cycle Phase:} Throughout Development
+	\item \textbf{Type:} Functional
+	\item \textbf{Dynamic/Static:} Dynamic
+	\item \textbf{Manual/Automated:} Manual
+	\item \textbf{Technique:}
+		\begin{enumerate}[(i)]
+			\item \textbf{Initial State:} Uninitialized Simulation   
+			\item \textbf{Input:} Output location directory path
+			\item \textbf{Description:} If the specified directory exists, it will be used to store the output data
+			\item \textbf{Expected Output on Success:} Output Location Found. Simulation proceeds.
+			\item \textbf{Expected Output on Failure:} Output Location not Found. Simulation does not proceed.
 		\end{enumerate}
 \end{enumerate}
 
