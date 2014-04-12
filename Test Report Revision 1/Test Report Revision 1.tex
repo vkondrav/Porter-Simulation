@@ -154,8 +154,9 @@ Dr. Douglas Down % Supervisor's Name
     \hline
     Revision \# & Author & Date & Comment \\ \hline
   	1 & \shortstack{\\Nathan Johrendt} & March 17 & Test Report Template Complete \\ \hline
-  	2 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & March 17 & Test Plan Updates \\ \hline
-  	3 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & March 18 & Test Plan Updates \\ \hline
+  	2 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & March 17 & Test Report Updates \\ \hline
+  	3 & \shortstack{\\Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie} & March 18 & Test Report Updates \\ \hline
+  	4 & \shortstack{\\Vitaliy Kondratiev} & April 12 & Test Report Updates \\ \hline
     \end{tabular}
 \end{center}
 
@@ -165,21 +166,24 @@ This testing report is the realization of the test plan written for the Porter S
 \section{System Test Reports}
 %Specific system tests summarized in terms of initial state, input and expected output. Traceability to requirements and modules
 \subsection{Input/Initialization Correctness 1}
-Once input values are loaded by the simulation, it has become initialized with modified values. Before beginning simulation, the simulation will re-print the information it just imported to confirm that it has found the right information. A simple check to ensure data is being handled correctly during import. While there are not many variables to be tested now, several will be added before the final implementation is complete. This test deals primarily with the Input Module which traces to requirements section 8.1.
+The user clicks the Statistical Data File browse button, chooses a file and runs the Simulation. 
 \begin{enumerate}[(i)]
 	\item \textbf{Initial State:} Uninitialized Simulation   
-	\item \textbf{Input:} Simulation input variables from interface, as well as a file location for both data.csv and schedule.csv for importing job data and porter shift information respectively. See Figure 3.1: User Interface below.
-	\begin{figure}[!htbp]
-		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{Interface.png}
-			\caption{User Interface}
-		\end{center}
-	\end{figure}
-	\item \textbf{Expected Output:} Simulation outputs variable data identical to that defined by the interface. 
-	\item \textbf{Actual Output:} duration = 86400.0 \\
-	 statsource = "C:$\backslash$ Users$\backslash$ Nathan$\backslash$ Documents$\backslash$ GitHub$\backslash$ Porter-Simulation$\backslash$ Simulation Prototype" \\
-	 shiftsource = "C:$\backslash$ Users$\backslash$ Nathan$\backslash$ Documents$\backslash$ GitHub$\backslash$ Porter-Simulation$\backslash$ Simulation Prototype" \\
-	 outputloc = "C:$\backslash$ Users$\backslash$ Nathan$\backslash$ Documents$\backslash$ GitHub$\backslash$ Porter-Simulation$\backslash$ Simulation Prototype" \\
+	\item \textbf{Input:} File path to statistical data file.
+	\item \textbf{Expected Results:} After picking a file the user is able to run the simulation 
+	\item \textbf{Actual Results on Success:} User is prompted with a file browser. File path is shown after selection. Simulation Starts if the file exists
+	\item \textbf{Actual Results on Failure:} User is prompted with a file browser. File path is shown after selection. Simulation does not start. User is prompted with the message "Statistical Data File does not exist" if the file does not exist.
+	
+\subsection{Input/Initialization Correctness 2}
+The user clicks the Schedule Data File browse button, chooses a file and runs the Simulation.
+\begin{enumerate}[(i)]
+	\item \textbf{Initial State:} Uninitialized Simulation   
+	\item \textbf{Input:} File path to schedule data file.
+	\item \textbf{Expected Results:} After picking the file the user is able to run the simulation
+	\item \textbf{Actual Results on Success:} User is prompted with a file browser. File path is shown after selection. Simulation starts if the file exists and is valid
+	\item \textbf{Actual Results on Failure I:} User is prompted with a file browser. File path is shown after selection. Simulation does not start if the file does not exist.
+	\item \textbf{Actual Results on Failure II:} User is prompted with a file browser. File path is shown after selection. Simulation does not start if the file is not valid. User is prompted with error type and location within file.
+
 \end{enumerate}
 
 \subsection{Event List Correctness 1}
