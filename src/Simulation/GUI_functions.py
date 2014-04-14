@@ -74,6 +74,7 @@ class functions():
     def normalOutputWritten(self, text):
         """Append text to the QTextEdit."""
         self.ui.output.append(text)
+        QtCore.QCoreApplication.processEvents()
 
     def buttonClicked(self):
             self.ui.output.setText("")
@@ -85,8 +86,7 @@ class functions():
             elif not os.path.isfile(self.ui.fileLocation.text()):
                 errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File does not exist\n"
             else:
-                self.ui.output.append("Statistical Data File Exists")
-                QtCore.QCoreApplication.processEvents()
+                print "Statistical Data File Exists"
 
 
 
@@ -101,22 +101,19 @@ class functions():
             elif not os.path.isdir(self.ui.fileLocation_3.text()):
                 errorStr = errorStr + "*****OUTPUT FOLDER ERROR*****\n" + "Message: Output Folder path does not exist\n"
             else:
-                self.ui.output.append("Output Folder Exists")
-                QtCore.QCoreApplication.processEvents()
+                print "Output Folder Exists"
 
             if errorStr == "":
                 errorStr = errorStr + self.scheduleChecker()
 
             if errorStr == "":
-                self.ui.output.append("Schedule Data File Correct")
-                QtCore.QCoreApplication.processEvents()
+                print "Schedule Data File Correct"
                 self.assignAndExecute()
             else:
                 QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
 
     def assignAndExecute(self):
-        self.ui.output.append("*****STARTING SIMULATION*****")
-        QtCore.QCoreApplication.processEvents()
+        print "*****STARTING SIMULATION*****"
 
         #float
         simDuration = self.ui.simDuration.value()
@@ -184,7 +181,7 @@ class functions():
 
         start_time = time()
 
-        portermain(inputDict, self.ui)
+        portermain(inputDict)
 
         #print "Process Complete in " + str(time() - start_time) + " seconds"
 

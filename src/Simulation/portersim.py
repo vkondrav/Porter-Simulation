@@ -78,7 +78,7 @@ def reportStatistics(jobList):
 
 
 def main(config):
-    print config
+    #print config
     if not config["randomSeed"] is None:
         seed(config["randomSeed"])
     
@@ -102,7 +102,7 @@ def main(config):
     simState.env.process(simState.jobList.jobReleaser(simState))
 
     sim_time = config["simulationDuration"] * 24 * 60 * 60
-    print sim_time
+    #print sim_time
     simState.env.run(until=sim_time)
 
     print "*****SIMULATION COMPLETE*****"

@@ -601,7 +601,7 @@ class Ui_Dialog(object):
         self.fun.assignEvents()
         self.fun.recordInitialDispatch()
         self.fun.assignNewValues()
-        #self.fun.connectOutput()
+        self.fun.connectOutput()
 
 if __name__ == "__main__":
     import sys
