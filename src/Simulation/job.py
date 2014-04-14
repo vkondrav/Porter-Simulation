@@ -70,7 +70,7 @@ class JobList(object):
             # simState.dispatcher.addJob(job, simState)
             
             yield simState.env.timeout(60)
-            while simState.env.now >= self.jobList[-1].creationTime:
+            while len(self.jobList) > 0 and simState.env.now >= self.jobList[-1].creationTime:
                 job = self.jobList.pop()
                 self.releasedJobList.append(job)
                 simState.dispatcher.addJob(job, simState)

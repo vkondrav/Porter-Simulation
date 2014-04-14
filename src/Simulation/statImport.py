@@ -106,9 +106,9 @@ required_attributes = [
 
 class StatImport(object):
     
-    def __init__(self, rate):
+    def __init__(self, rate, dayOffset):
         self.dispatchTable = {}
-        self.statData = StatData(rate)
+        self.statData = StatData(rate, dayOffset)
        
     def runImport(self, fileName):
         with open(fileName, 'rb') as csvFile:
@@ -133,6 +133,11 @@ class StatImport(object):
                         if delayReason == "Patient Not Ready":
                             if delayMin:
                                 dispatchTimeDelta -= int(delayMin) * 60
+                                if dispatchTimeDelta < 0:
+                                    # Delays are assumed during the dispatch state of a porter
+                                    # If the delay is negative, then the assumption is incorrect
+                                    # So we ignore that job
+                                    continue
                             else:
                                 # delay reason but no delay min
                                 # discard dispatch time
@@ -162,11 +167,12 @@ class StatData(object):
     secondsInHour = 3600
     secondsInMin = 60
 
-    def __init__(self, rate):
+    def __init__(self, rate, dayOffset):
         self.numSegments = 6
         self.segmentSize = 4
         self.statData = []
         self.rate = rate
+        self.dayOffset = dayOffset
         
         for i in range(7):
             self.statData.append([])
@@ -175,7 +181,7 @@ class StatData(object):
         
     def addToSegment(self, data):
         timeStruct = time.strptime(data["PendingDT"] , "%Y-%m-%d %H:%M:%S")
-        day = timeStruct.tm_wday
+        day = (timeStruct.tm_wday + (7 - self.dayOffset)) % 7
         segment = timeStruct.tm_hour / self.segmentSize;
         key = string.split(data["PendingDT"])[0]
         
@@ -204,8 +210,8 @@ class StatData(object):
                     delayTime = int(delayTime) * 60
                     
                     pendingTimeAbs = self.strToS(data["PendingDT"])
-                    inProgressTimeDelta = self.strToS(data["InProgressDT"]) - self.strToS(data["DispatchedDT"])
-                    completeTimeDelta = self.strToS(data["CompleteDT"]) - self.strToS(data["InProgressDT"])
+                    inProgressTimeDelta = strToT(data["InProgressDT"]) - strToT(data["DispatchedDT"])
+                    completeTimeDelta = strToT(data["CompleteDT"]) - strToT(data["InProgressDT"])
                         
                     origin = data["Origin"]
                     destination = data["Destination"]
@@ -229,7 +235,7 @@ class StatData(object):
 
     def strToS(self, timeString):
         timeStruct = time.strptime(timeString , "%Y-%m-%d %H:%M:%S")
-        day = timeStruct.tm_wday
+        day = (timeStruct.tm_wday + (7 - self.dayOffset)) % 7
         hour = timeStruct.tm_hour
         min = timeStruct.tm_min
         sec = timeStruct.tm_sec

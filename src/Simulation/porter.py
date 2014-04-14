@@ -25,7 +25,7 @@ class Porter(object):
         self.state = Porter.dispatched
         dispatchTimes = simState.dispatchTable[self.job.origin]
         done_in = dispatchTimes[randint(0, len(dispatchTimes) - 1)]
-
+        
         if self.job.delayReason == "Patient Not Ready":
             maxDelay = simState.maxDelayReason.get(self.job.delayReason)
             if self.job.delayTime <= maxDelay:

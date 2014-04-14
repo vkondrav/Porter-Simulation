@@ -78,13 +78,15 @@ def reportStatistics(jobList):
 
 
 def main(config):
-    seed(0)
+    print config
+    if not config["randomSeed"] is None:
+        seed(config["randomSeed"])
     
     simState = State()
     
     simState.maxDelayReason = {"Patient Not Ready": config['porterWait'] * 60}
     
-    importer = StatImport(config["jobFlow"]) # This should be fetched from the config
+    importer = StatImport(config["jobFlow"], config["dayOffset"]) # This should be fetched from the config
     simState.dispatchTable, simState.jobList = importer.runImport(config["fileLocation"])
     
     simState.env = simpy.Environment()
