@@ -21,13 +21,13 @@ if sys.platform == "win32":
 
 
 setup(  name = "Porter Simulation",
-        version = "0.94",
+        version = "1.0",
         author = "Team 9",
         description = "Porter Simulation for Hamilton Health Sciences",
         options = {"build_exe": {"includes": includes,
                                  "excludes": excludes,
                                  "packages": packages,
-                                 'include_files':includefiles,
+                                 'include_files': includefiles,
                                  "path": path
                                 }
         },
@@ -36,7 +36,9 @@ setup(  name = "Porter Simulation",
                 "GUI.py",
                 shortcutName="Porter Simulation",
                 shortcutDir="DesktopFolder",
-                icon="icon.ico"
+                icon="icon.ico",
+                targetName="PorterSimulation2014.exe",
+                base = base
             )
             ]
         )
