@@ -184,7 +184,7 @@ class functions():
 
         start_time = time()
 
-        portermain(inputDict)
+        portermain(inputDict, self.ui)
 
         #print "Process Complete in " + str(time() - start_time) + " seconds"
 
