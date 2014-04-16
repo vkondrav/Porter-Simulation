@@ -336,13 +336,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 			\item Input the complete state
 			\item Sets the porter's state to complete, records the completion time and sets the porter back to the pending state
 		\end{itemize}
-	getAutoLocation():
-		\begin{itemize}
-			\item Returns the estimated location of a pending porter
-			\item Estimates the current location of a porter based on how many minutes they have been in 
-			\item Output the estimated location of a pending porter
-			\item Estimates the current location of a porter based on how many minutes they have been in the pending state.
-		\end{itemize}
 	\item \textbf{Process Steps:} The module listens for state changes provided by the dispatcher and updates its' internal components as necessary.
 	\item \textbf{Data:} Stores internal data relating to its' current state.
 	\item \textbf{Error Handling:} None
@@ -355,16 +348,11 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} To organize pending jobs based on a weighted-value and assign them to porters 
-	\item \textbf{Function:} This module orders pending jobs based off of a Dispatch Value which is computed using several parameters (Proximity Match Value, Weighted Job Priority and Appointment Factor).  The pending job with the greatest Dispatch Value will be assigned to the closest available porter.  Once the job is assigned to the porter the job will be considered as a dispatched job.
+	\item \textbf{Function:} This module orders pending jobs based off of a Dispatch Value which is computed using several parameters (Weighted Job Priority and Appointment Factor).  The pending job with the greatest Dispatch Value will be assigned to the closest available porter.  Once the job is assigned to the porter the job will be considered a dispatched job.
 	\item \textbf{Interface:} \newline
 	 assignJob(Task):
 	 	\begin{itemize}
 	 		\item Assigns the job with the greatest Dispatch Value to the closest available porter.
-	 	\end{itemize}
-	 getProxmityMatchValue(TaskOrigin):
-	 	\begin{itemize}
-	 		\item Input the origin of a pending job
-	 		\item Output a value based on how close an available porter is to a job's origin
 	 	\end{itemize}
 	 getWeightedJobPriority(TaskOrigin, TaskDestination):
 	 	\begin{itemize}
@@ -379,7 +367,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	 getDispatchValue(Task):
 	 	\begin{itemize}
 	 		\item Input a pending job
-	 		\item Compute the DispatchValue for a job: (ProxmityMatchValue + WeightedJobPriority * AppointmentFactor) 
+	 		\item Compute the DispatchValue for a job: (WeightedJobPriority * AppointmentFactor) 
 	 	\end{itemize}
 	\item \textbf{Process Steps:}
 	All pending jobs are assessed and given a dispatch value (DV) based on the weighting and values of specified dispatch parameters.
@@ -396,6 +384,29 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Critical Revision 0 Component:} True
 	\item \textbf{To Be Completed By:} 28/01/2014
 	\item \textbf{To Be Tested By:} 30/01/2014
+\end{enumerate}
+\subsection{Core - Porter Manager}
+\begin{enumerate}[]
+	\item \textbf{Function:} This module populates a series of tasks following either a distribution or statistical data.
+	\item \textbf{Interface:} \newline
+		importPorterSched(self, porterSchedule)
+		\begin{itemize}
+			\item Input the porter schedule and initialize all of the porters.
+		\end{itemize}
+		getPendingPorters(self, creationTime):
+		\begin{itemize}
+			\item Input the creationTime of a job.  Create a list of porters that  are available depending on the creationTime.  
+		\end{itemize}
+		
+	\item \textbf{Process Steps:} The porterManager handles the creation of porters and the availability of porters at a certain time.  Based on the current time in the simulation the proterManager will provide the simulation with the porters who can accept jobs.
+	
+	\item \textbf{Data:} Porter Schedule
+	\item \textbf{Error Handling:} None
+	\item \textbf{Requirement Reference:} ??
+	\item \textbf{Critical Revision 0 Component:} True
+	\item \textbf{To Be Completed By:} 28/01/2014
+	\item \textbf{To Be Tested By:} 30/01/2014
+	
 \end{enumerate}
 \subsection{Import - Simulation Setting}
 \begin{enumerate}[]
@@ -575,12 +586,13 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 \subsection{GUI - Advanced Settings - Dispatcher/Random Seed}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
-	\item \textbf{Purpose:} Allows the user to tool around with dispatcher values
+	\item \textbf{Purpose:} Allows the user to configure the Dispatcher's values
 	\item \textbf{Function:} 
 	\begin{enumerate}[(i)]
-		\item \textbf{Appointment Factor:} 
-		\item \textbf{Automatic Job Priority Values:} 
-		\item \textbf{Weighted Job List:} 
+		\item \textbf{Appointment Factor:} Gives jobs that are scheduled a high priority than those who are generated on-demand by hospital staff.
+		\item \textbf{Automatic Job Priority Values:}  To ensure jobs with a low priority are completed it is important that after a specified amount of time a job's priority is increased.  
+		\item \textbf{Weighted Job List:} A list with each job's priority.
+		\item \textbf{Dispatch Value:} The value assigned to each job in the dispatcher (Job Priority * Appointment Factor)
 		\item \textbf{Random Seed:} allows the user to enter a specific random seed instead of true random
 	\end{enumerate}
 	\item \textbf{Process Steps:} Not Available
