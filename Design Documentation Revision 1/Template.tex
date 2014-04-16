@@ -206,28 +206,18 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 \subsection{Core - Simulation Core}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} This module calls the required functions to fetch the import data, initializes the simulation and initializes processes.
-	\item \textbf{Function:} This module calls the required import modules (Simulation Settings, Hospital Layout Graph, Statistical Data Import), passes their data so that the Simulation State, Event List Builder and Dispatcher can be initialized.
+	\item \textbf{Purpose:} This module calls the required functions to create the Job List, initialize the simulation state and initialize the simulation processes.
+	\item \textbf{Function:} This module takes in configuration data from the GUI module and uses it to initiate the required modules Statistics Import and Porter Manager, passes their data so that the Simulation State, Job List Builder and Dispatcher can be initialized.
 	\item \textbf{Interface:}\\ 
-	The interface for the Simulation core is the command line used to called it, defined as follows:
+	The interface to this module is a dictionary containing the information for the configuration of the simulation.
 	
-	SimCore settings\_filename graph\_filename data\_filename
-	
-	settings\_filename: the name of the file containing the simulation settings
-	
-	graph\_filename: the name of the file containing the hospital layout graph
-	
-	data\_filename: the name of the file containing the statistical data
-	
-	\item \textbf{Process Steps:} This module first uses the Simulation Settings, Hospital Layout Graph and Statistical data to read in the external data.  This data is used to configure other core modules in the simulation.
+	\item \textbf{Process Steps:} This module first
+	This module first uses the Simulation Settings, Hospital Layout Graph and Statistical data to read in the external data.  This data is used to configure other core modules in the simulation.
 	
 	Once the external data is imported and the core modules are configured, the Simulation Core will begin the simulation and manage the core modules.
 	\item \textbf{Data:} None
 	\item \textbf{Error Handling:} Catch all on the simulation loop to report pertinent errors and to prevent unexpected termination. 
 	\item \textbf{Requirement Reference:} 11.5.1
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 \subsection{Core - Simulation State}
 \begin{enumerate}[]
