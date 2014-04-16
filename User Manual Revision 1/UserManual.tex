@@ -50,7 +50,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead[L]{}
-\fancyhead[c]{Requirements Revision 0}
+\fancyhead[c]{User Manual Revision 1}
 \fancyhead[R]{\today}											
 \fancyfoot[L]{}											 
 \fancyfoot[C]{}											
@@ -144,36 +144,50 @@ Dr. Douglas Down % Supervisor's Name
 
 \newpage
 \section{Introduction}
-Welcome to the User Manual for the Hamilton Health Science's Porter Simulation, designed for use at the Juravinski Hospital in Hamilton Ontario. This manual will guide a Hamilton Health Science professional through the functions and features available when using the simulation software. In addition, this manual will provide you steps for software setup, an overview of the configuration settings (user interface) and provide troubleshooting options should any issues arise.
+Welcome to the User Manual for the Hamilton Health Science's Porter Simulation, designed for use at the Juravinski Hospital in Hamilton, Ontario. This manual will examine the topics of installation, input configuration, running the simulation, output data and configuring the development environment.  This manual will also explain to the reader the meaning of each option in the User Interface and give background to the Porter Simulation as a whole.
 
+\section{Background}
+This section provides the reader with a high-level overview of key components within the simulation.  The simulation begins by importing all of the settings configured through the software's user interface.  A data file containing all information about jobs will be sampled by the software and a list of jobs will be generated.  The sampling of this data file can be configured through the Basic Settings (Section 5.1).  Jobs will then be passed into the Dispatcher and assigned to porters.  The Dispatcher can be configured through the Advanced Settings (Section 5.3).  Once the simulation is finished an excel file is generated allowing the user to view raw simulation data and graphs (Section 6).
+	
 \section{Installation}
-Setup of the Porter Simulation is quick and easy, by following these steps the software will be accessible for use.  This software is designed to be installed on Windows XP/Vista/7/8.
+Setup of the Porter Simulation will be done by running an installer.
 \begin{enumerate}
-	\item Locate the Porter Simulation folder on your computer. This folder will be located on a USB removable device, CD or through an email download.
-	\item Inside the folder, double click to run the Porter Simulation-0.1-win32.msi
+	\item Locate the Porter Simulation-1.0-win32.exe file.
+	\item Double click to run the Porter Simulation-1.0-win32.msi
 	\item Pick a directory to install the application. Default directory will be automatically filled in
 	\item Wait for the installer to finish then click "Finish"
-	\item The Porter Simulation shortcut will now appear on your desktop where it can be accessed
+	\item The Porter Simulation shortcut will now appear on your desktop
 \end{enumerate}
 
 \begin{figure}[!htbp]
 	\begin{center}
-		\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{Installer.png}
+		\includegraphics[width=1\columnwidth, height=0.3\textheight, keepaspectratio]{Installer.png}
 		\caption{Pick a directory}
 	\end{center}
-\end{figure}
+\end{figure} 
+
+	\subsection{Generate Installation File}
+	Before building Porter Simulation-1.0-win32.exe the reader must have a working development environment (Section 8: Configure Development Environment)
+	\begin{enumerate}[(i)]
+		\item From command prompt enter: \textbf{python setup.py bdst\_msi}
+		\item Two folders named "build" and "dist" will be generated
+		\item The build folder contains an executable to run the simulation
+		\item The dist folder contains the installer (i.e. Simulation-1.0-win32.exe) 	
+	\end{enumerate}
+
+\section{Launch Simulation Tool}
+The Porter Simulation tool can be launched by double-clicking on the PorterSimulation2014.exe
 
 \section{Input Configuration}
 The first step in using the software is to configure the simulation with a series of different inputs. These different input variables represent changes to the hospital environment, which will affect the simulated results.
 
 	\begin{figure}[!htbp]
 	\begin{center}
-		\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{BasicSettings.png}
+		\includegraphics[width=1\columnwidth, height=0.45\textheight, keepaspectratio]{BasicSettings.png}
 		\caption{Basic Settings}
 	\end{center}
 	\end{figure} 
-	\subsection{Basic Settings - General}
-	These general settings define base values for the simulation.
+	\subsection{Basic Settings}
 	\begin{enumerate}[(i)]
 		\item \textbf{Simulation Duration:} Number of days the software will simulate events. Minimum: 1 Maximum: 7
 		\item \textbf{Porter Wait Times:} Maximum number of minutes a porter waits for a delay (patient, equipment, nurse) before cancelling the job
@@ -184,17 +198,17 @@ The first step in using the software is to configure the simulation with a serie
 	\subsection{Basic Settings - Data Source}
 	The Data Source setting allows selection of different source input files, pre-configured to aid HHS users in testing a variety of hospital conditions and elements. 
 	\begin{enumerate}[(i)]
-		\item \textbf{Statistical Data Source:} Determines which source file will be used to provide the simulation with statistical distribution information
-		\item \textbf{Schedule Data Source:} Determines which source file will be used to provide scheduling information to be used during simulation
+		\item \textbf{Statistical Data Source:} A path to the source file that will be used to provide the simulation with statistical distribution information
+		\item \textbf{Schedule Data Source:} A path to the source file that will be used to provide scheduling information to be used during simulation
 		\item \textbf{Output Location:} Determines the Location to store output data
 	\end{enumerate}
 	
-	\subsection{Advanced Settings - Dispatcher}
-	The dispatcher will be ordering the pending jobs and giving them to available porters.  These settings reflect the current dispatcher system at Jurvinski Hospital.
+	\subsection{Advanced Settings}
+	The dispatcher will be ordering the pending jobs and giving them to available porters.  The dispatcher algorithm was designed using documentation provided by HHS.  The values for Appointment Factor, Automatic Job Priority Values and Weighted Job List are set to the default values provided in the documentation.
 	
 	\begin{figure}[!htbp]
 	\begin{center}
-		\includegraphics[width=1\columnwidth, height=0.48\textheight, keepaspectratio]{AdvancedSettings.png}
+		\includegraphics[width=1\columnwidth, height=0.45\textheight, keepaspectratio]{AdvancedSettings.png}
 		\caption{Advanced Settings}
 	\end{center}
 	\end{figure} 
@@ -222,66 +236,80 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Porters Ids:} Allows for the assignment of one or more porter(s) to a shift.  A porter is assigned to a shift by adding an identifier.  Multiple porters can be assigned to the same shift by adding multiple identifiers each separated by a comma.  In the Figure 3.3 \textit{Shift ID 0} has three  porters assigned to it \textit{0,1,4}.
 		\item \textbf{Day:} The day of the week on which the shift occurs.  It must be a number from 1-7, 1 being day 1 as specified by Start Day and 7 being day 7.
 	\end{enumerate}
+
+\newpage
 \section{Dashboard}
-Once the simulation has finished modeling and computing the data, the results of all of the completed jobs are exported to an excel file. The file is located at the directory specified in \textbf{Output Location}. Upon opening the file please enable macros as specified by your version of Microsoft Excel. Once macros have been enabled click the "Recalculate" button from any of the Day views to calculate the statistics and update all the graphs. Each tab represents data for one day of simulation broken up into 18 time intervals.
+Once the simulation has finished modelling and computing the data, the results of all of the completed jobs are exported to an excel file. The file is located at the directory specified at the configurable \textbf{Output Location}. Upon opening the file please enable macros as specified by your version of Microsoft Excel. Once macros have been enabled click the "Recalculate" button on any of the Sheets named "Dashboard D(1-7)" to calculate the statistics and update all the graphs. Each tab represents data for one day of simulation broken up into 18 time intervals.
 
 	\begin{figure}[!htbp]
 	\begin{center}
-		\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{Dashboard.png}
+		\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{Dashboard.png}
 		\caption{Dashboard}
 	\end{center}
 	\end{figure}
 	
-	\begin{enumerate}[(i)]
-		\item \textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job has been created to when a job has been complete. Chart contains High, Low and Average values.
 		\begin{figure}[!htbp]
 		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{transactionTime.png}
-			\caption{Transaction Time}
+			\includegraphics[width=1\columnwidth, height=0.3\textheight, keepaspectratio]{transactionTime.png}
+			\caption{\textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job has been created to when a job has been complete. Chart contains High, Low and Average values.}
+		\vspace{-5em}
 		\end{center}
 		\end{figure}
-		\item \textbf{Response Time:} Represents the response time for a job created in a specific time interval. Response time is defined as the time from when a job has been created to when a job has been taken on by a porter. Chart contains High, Low and Average values.
+		
 		\begin{figure}[!htbp]		
 		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{responseTime.png}
-			\caption{Response Time}
+			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{responseTime.png}
+			\caption{\textbf{Response Time:} Represents the response time for a job created in a specific time interval. Response time is defined as the time from when a job has been created to when a job has been taken on by a porter. Chart contains High, Low and Average values.}
 		\end{center}
 		\end{figure}
-		\item \textbf{In Progress Time:} Represents the in progress time for a job created in a specific time interval. In progress time is defined as the time from when a job has been taken on by a porter to when a job has been complete. Chart contains High, Low and Average values.
 		\begin{figure}[!htbp]		
 		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{inProgress.png}
-			\caption{In Progress Time}
+			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{inProgress.png}
+			\caption{\textbf{In Progress Time:} Represents the in progress time for a job created in a specific time interval. In progress time is defined as the time from when a job has been taken on by a porter to when a job has been complete. Chart contains High, Low and Average values.}
 		\end{center}
 		\end{figure}
-		\item \textbf{Total Number of Jobs Complete:} Represents the number of jobs completed in a specific time interval.
 		\begin{figure}[!htbp]		
 		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{numberOfJobs.png}
-			\caption{Total Number of Jobs Complete}
+			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{numberOfJobs.png}
+			\caption{\textbf{Total Number of Jobs Complete:} Represents the number of jobs completed in a specific time interval.}
 		\end{center}
 		\end{figure}
-		\item \textbf{Average Transaction Time vs. Jobs Complete vs. Pending Jobs:} Pending Jobs represent any jobs that are still active at the end of each time interval. Number of Complete Jobs and Average Transaction Times are overlaid here.
 		\begin{figure}[!htbp]		
 		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{comboChart.png}
-			\caption{Combination Chart}
+			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{comboChart.png}
+			\caption{\textbf{Average Transaction Time vs. Jobs Complete vs. Pending Jobs:} Pending Jobs represent any jobs that are still active at the end of each time interval. Number of Complete Jobs and Average Transaction Times are overlaid here.}
 		\end{center}
 		\end{figure}
-		\item \textbf{Cumulative Cancelled Jobs:} Represents the total number of cancelled jobs for at the end of each time interval
 		\begin{figure}[!htbp]		
 		\begin{center}
-			\includegraphics[width=1\columnwidth, height=0.5\textheight, keepaspectratio]{cancelledJobs.png}
-			\caption{Cumulative Cancelled Jobs}
+			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{cancelledJobs.png}
+			\caption{\textbf{Cumulative Cancelled Jobs:} Represents the total number of cancelled jobs for at the end of each time interval}
 		\end{center}
 		\end{figure}
-	\end{enumerate}
 	
 \section{Raw Data}
 Raw data can be accessed from the generated dashboard files. Simply right click on any of the bottom tabs and pick the unhide option. Each dashboard has a corresponding data sheet. All the raw events data is in Sheet1. 
 
+
+\section{Configure Development Environment}
+These instructions are for setting up a development environment for running and editing the source code.  The following instructions were made for Microsoft Windows 7 operating system.
+
+\subsection{Install Python Modules}
+\begin{enumerate}[(i)]
+	\item Visit https://www.python.org/download/releases/2.7.6 and download run the "Windows x86 MSI Installer (2.7.6)".
+	\item After Python is installed add the python path (i.e. C:\textbackslash{Python27}) to the Windows System Variables.
+	\item Download the pip installation file from http://www.pip-installer.org/en/latest/installing.html and install it using the cmd: \textbf{python get-pip.py}
+	\item After pip has been downloaded and installed add the path (i.e. C:\textbackslash{Python27}\textbackslash{Scripts}) to the Windows System Variables
+	\item Download the binary installer for PyQT 4 and run the executable: http://www.riverbankcomputing.com/software/pyqt/download
+	\item With command prompt run: \textbf{pip install python-dateutil}
+	\item With command prompt run: \textbf{pip install simpy}
+	\item With command prompt run: \textbf{pip install xlst}
+	\item Download the installer for pywin32 and run the executable: http://sourceforge.net/projects/pywin32/files/pywin32/Build\%20218/
+	\item Download the installer for cx\_freeze and run the msi: http://cx-freeze.sourceforge.net/
+\end{enumerate}
+
 \section{Troubleshooting}
-The Porter Simulation has been designed to operate effectively and error free, however, this troubleshooting section will help address any minor issues that may arise.
+The troubleshooting section should be used to help address minor issues that may arise.
 
 \begin{enumerate}[(i)]
 	\item \textbf{Missing Files and Locations:} Failing to specify the correct locations of required files will result in program halts
@@ -290,12 +318,19 @@ The Porter Simulation has been designed to operate effectively and error free, h
 \end{enumerate}
 
 \section{Figures and Tables Appendix}
-\begin{enumerate}[(a)]
-	\item Figure 2.1: Installer.png
-	\item Figure 3.1: BasicSettings.png
-	\item Figure 3.2: AdvancedSettings.png
-	\item Figure 3.3: Schedule.png
-\end{enumerate}
+\begin{itemize}
+	\item Figure 3.1: Installer (Page 3)
+	\item Figure 5.1: BasicSettings (Page 4)
+	\item Figure 5.3: AdvancedSettings.png (Page 5)
+	\item Figure 5.4: Schedule.png (Page 6)
+	\item Figure 6.1: Dashboard Overview (Page 7)
+	\item Figure 6.2: Transaction Time (Page 7)
+	\item Figure 6.3: Response Time (Page 8)
+	\item Figure 6.4: In Progress Time (Page 8)
+	\item Figure 6.5: Total Number of Jobs Complete (Page 9)
+	\item Figure 6.6: Comparison Graph (Page 9)
+	\item Figure 6.7: Cumulative Cancelled Jobs (Page 10)
+\end{itemize}
 
 \section{Legal and Copyright Information}
 Ownership of software and accompanying documentation developed at McMaster University by the Porter Simulation project team is covered by the Joint Intellectual Property Policy as well as the Ownership of Student Work Policy. This software and accompanying documentation is licensed freely for access by Hamilton Health Sciences staff, project supervisor Dr. Douglas Down, and the Comp Sci 4ZP6 course instructors.
