@@ -9,6 +9,7 @@ from re import match
 from portersim import main as portermain
 import pprint
 
+#Description: redirects any output to console to the GUI console
 class EmittingStream(QtCore.QObject):
 
     textWritten = QtCore.pyqtSignal(str)
@@ -16,24 +17,30 @@ class EmittingStream(QtCore.QObject):
     def write(self, text):
         self.textWritten.emit(str(text))
 
+#Description: this class is responsible for handling a lot of the GUI functionality
+#and passing the configuration variable to the main simulation
 class functions():
 
     ui = None
     Dialog = None
     appFactorInitial = None
 
-    #automatic job priority
+    #automatic job priority initial values
     ajbInitial = list()
-    #weighted job list
+    #weighted job list initial values
     wjlInitial = list()
 
+    #automatic job priority values
     ajb = list()
+    #weighted job list values
     wjl = list()
 
     schedule = None
 
+    #place holder variable used when doing file name checks
     fileName = None
 
+    #this function stores the automatic job priority and weighted job list GUI variables to their respective arrays
     def appendDispatchLists(self):
 
         self.ajb.append(self.ui.ajb1)
@@ -56,6 +63,7 @@ class functions():
         self.wjl.append(self.ui.wjl8)
         self.wjl.append(self.ui.wjl9)
 
+    #this function attaches events to GUI elements
     def assignEvents(self):
 
         ####EVENTS#############################################################
@@ -68,33 +76,44 @@ class functions():
         self.ui.appFactor.valueChanged[int].connect(self.appFactorChange)
         ########################################################################
 
+    #connect the console output to the GUI console
     def connectOutput(self):
         sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
 
+    #this function appends the text and refreshes the GUI
     def normalOutputWritten(self, text):
-        """Append text to the QTextEdit."""
         self.ui.output.append(text)
         QtCore.QCoreApplication.processEvents()
 
+    #main submit button event
     def buttonClicked(self):
             self.ui.output.setText("")
 
             errorStr = ""
 
-            if self.ui.fileLocation.text() == "":
+            statFile = self.ui.fileLocation.text()
+
+            #Checking of the Stats File
+            if statFile == "":
                 errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File path is empty\n"
-            elif not os.path.isfile(self.ui.fileLocation.text()):
+            elif not os.path.isfile(statFile):
                 errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File does not exist\n"
+            elif not statFile[-4:] == ".csv":
+                errorStr = errorStr + "*****STATISTICAL DATA FILE ERROR*****\n" + "Message: Statistical Data File is not a .csv file\n"
             else:
                 print "Statistical Data File Exists"
 
+            schedFile = self.ui.fileLocation_2.text()
 
-
-            if self.ui.fileLocation_2.text() == "":
+            #Checking of the Schedule Files
+            if schedFile == "":
                 errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File path is empty\n"
-            elif not os.path.isfile(self.ui.fileLocation_2.text()):
+            elif not os.path.isfile(schedFile):
                 errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File does not exist\n"
+            elif not schedFile[-4:] == ".csv":
+                errorStr = errorStr + "*****SCHEDULE DATA FILE ERROR*****\n" + "Message: Schedule Data File is not a .csv file\n"
 
+            #Checking of the output directory
             s = self.ui.fileLocation_3.text()
             if s == "":
                 errorStr = errorStr + "*****OUTPUT FOLDER ERROR*****\n" + "Message: Output Folder path is empty\n"
@@ -103,17 +122,19 @@ class functions():
             else:
                 print "Output Folder Exists"
 
+            #Parsing of the schedule to insure integrity
             if errorStr == "":
                 errorStr = errorStr + self.scheduleChecker()
 
+            #If no errors proceed to simulation initilization, otherwise the use is presented with a Message Box lisiting the errors
             if errorStr == "":
                 print "Schedule Data File Correct"
                 self.assignAndExecute()
             else:
                 QtGui.QMessageBox.information(self.Dialog,  'Error',  errorStr,  QtGui.QMessageBox.Ok, QtGui.QMessageBox.Ok)
 
+    #Description: collect all the variables and compile them into a configuration dictionary to be passed to the main function
     def assignAndExecute(self):
-        print "*****STARTING SIMULATION*****"
 
         #float
         simDuration = self.ui.simDuration.value()
@@ -129,6 +150,7 @@ class functions():
         fileLocation_2 = self.ui.fileLocation_2.text()
         #string
 
+        #auto pick a file name for the output document
         self.fileName = str(dt.now())
 
         self.fileName = self.fileName.replace(':', "-")
@@ -137,10 +159,12 @@ class functions():
 
         self.fileName = self.fileName + ".xlsm"
 
+        #join the generated file name with the specified output path
         fileLocation_3 = os.path.join(str(self.ui.fileLocation_3.text()), self.fileName)
         #float
         appFactorValue = float(self.ui.appFactorValue.text())
 
+        #checking if the user has decided to use the random seed option
         #int
         if self.ui.randSeedCheck.isChecked():
             randomSeed = self.ui.randFactor.value()
@@ -149,7 +173,6 @@ class functions():
 
         #int
         dayOffset = self.ui.dayOffset.currentIndex()
-
 
         #list of float
         ajb = list()
@@ -179,7 +202,8 @@ class functions():
         inputDict["randomSeed"] = randomSeed
         inputDict["dayOffset"] = dayOffset
 
-        start_time = time()
+        #start_time = time()
+        print "*****STARTING SIMULATION*****"
 
         portermain(inputDict)
 
@@ -196,26 +220,30 @@ class functions():
         self.ui.fileLocation_2.setText("")
         self.ui.fileLocation_3.setText("")
 
+    #Statistical Data File Selection dialog
     def fileBrowseButtonClicked(self):
-        fname = QtGui.QFileDialog.getOpenFileName(self.Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
+        fname = QtGui.QFileDialog.getOpenFileName(self.Dialog, 'Choose Statistical Data File', os.path.expanduser("~"), "CSV Files (*.csv)")
 
         self.ui.fileLocation.setText(fname)
 
+    #Schedule data File Selection Dialog
     def fileBrowseButton2Clicked(self):
-        fname = QtGui.QFileDialog.getOpenFileName(self.Dialog, 'Open file', os.getcwd(), "CSV Files (*.csv)")
+        fname = QtGui.QFileDialog.getOpenFileName(self.Dialog, 'Choose Schedule Data File', os.path.expanduser("~"), "CSV Files (*.csv)")
 
         self.ui.fileLocation_2.setText(fname)
 
+    #Output Directory Selection Dialog
     def fileBrowseButton3Clicked(self):
 
         #fname = QtGui.QFileDialog.getSaveFileName(self.Dialog, 'Save File', fileName, "Excel Macro Enabled Files (*.xlsm)")
-        dirName = QtGui.QFileDialog.getExistingDirectory(self.Dialog, 'Directory to Save File')
+        dirName = QtGui.QFileDialog.getExistingDirectory(self.Dialog, 'Directory to Save File', os.path.expanduser("~"))
         self.ui.fileLocation_3.setText(dirName)
 
-
+    #Controls the appoinment factor float value as pyQt only allows for integer values
     def appFactorChange(self):
         self.ui.appFactorValue.setText(str(float(self.ui.appFactor.value())/100))
 
+    #Storing of the initial Dispatch value to be used in the reset function
     def recordInitialDispatch(self):
 
         for i in self.ajb:
@@ -227,6 +255,7 @@ class functions():
         self.appFactorInitial = float(self.ui.appFactor.value())/100
         self.randFactorInitial = float(self.ui.randFactor.value())
 
+    #Reseting of all the advanced options values
     def resetAllDispatchClicked(self):
         self.ui.appFactorValue.setText(str(self.appFactorInitial))
         self.ui.appFactor.setProperty("value", self.appFactorInitial*100)
@@ -244,6 +273,8 @@ class functions():
             self.wjl[i].setProperty("value", self.wjlInitial[i])
             i += 1
 
+    #Description: this function parses through the schedule and checks for any errors in
+    #the file. Outputs a string of errors for any errors found
     def scheduleChecker(self):
         with open(self.ui.fileLocation_2.text(), 'r') as f:
             reader = csvreader(f)
@@ -299,6 +330,7 @@ class functions():
             strError = "*****SCHEDULE DATA FILE ERROR*****\n" + strError
             return strError
 
+    #Shift verification matches a regular expression to the contents
     def verifyShiftID(self, string, cell):
 
         strError = ""
@@ -353,7 +385,7 @@ class functions():
 
         return strError
 
-
+    #matching of a regular expression to the contents of porter ids
     def verifyPorterID(self, string, cell):
 
         strError = ""
@@ -373,6 +405,7 @@ class functions():
 
         return strError
 
+    #matching of a regular expression to the days contents
     def verifyDays(self, string, cell):
 
         strError = ""
@@ -391,7 +424,7 @@ class functions():
 
         return strError
 
-
+    #Description: Actual realignment of the schedule to represent each porter individually
     def scheduleParser(self):
 
         with open(self.ui.fileLocation_2.text(), 'r') as f:
@@ -426,6 +459,7 @@ class functions():
 
         return reformattedSchedule
 
+    #Some values being assigned to the GUI that are out of the scope of pyQt and QT Designer
     def assignNewValues(self):
 
         #window Title

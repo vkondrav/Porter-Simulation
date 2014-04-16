@@ -1,12 +1,8 @@
-import cPickle
-import pprint
 import xlwt
-import tempfile
 import os
 import win32com.client
 
 from datetime import datetime, timedelta
-from time import sleep
 import pythoncom
 
 #jobList attributes#
@@ -26,6 +22,7 @@ import pythoncom
 #jobId
 #jobCompletionPorterID
 
+#This class takes the output from the simulation, writes it to an excel document and activates dashboard macros
 class converter(object):
 
     timeRef = datetime(2014,1,1,0)
@@ -33,11 +30,6 @@ class converter(object):
     def __init__(self,jobList, outputLocation):
         self.jobList = jobList
         self.outputLocation = outputLocation
-
-    def getList(self):
-
-        with open(r"output.pickle", "rb") as input_file:
-            self.jobList = cPickle.load(input_file)
 
     def write(self):
 
@@ -83,8 +75,6 @@ class converter(object):
             else:
                 jcT = self.timeRef + timedelta(seconds=j.jobCompletionTime)
 
-            #if not crT == -1 and not cpT == -1 and not jsT == -1 and not jcT == -1 and not j.jobCompletionPorterID == None:
-
             sheet1.write(i, 0, crT)
             sheet1.write(i, 1, j.inProgressTime)
             sheet1.write(i, 2, cpT)
@@ -101,11 +91,8 @@ class converter(object):
             sheet1.write(i, 13, j.jobCompletionPorterID)
             i += 1
 
-
         print "*****SAVING OUTPUT*****"
         book.save('output.xls')
-
-        #book.save(tempfile.TemporaryFile())
 
         print "*****BUILDING DASHBOARD*****"
         ol = str(self.outputLocation)
@@ -127,15 +114,8 @@ class converter(object):
             print "*****DASHBOARD COMPLETE*****"
 
         print "*****DASHBOARD COMPLETE*****"
-        #xl.SaveAs("c:\myBook.xls")
         xl.Quit()
-        #os.startfile(path)
 
 def main(jobList, outputLocation):
     c = converter(jobList, outputLocation)
-    #c.jobList = jobList
-    #c.getList()
     c.write()
-
-#if __name__=='__main__':
-#	main()
