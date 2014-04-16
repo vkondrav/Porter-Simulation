@@ -462,22 +462,19 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{To Be Completed By:} 28/01/2014
 	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
+
 \subsection{Export - Statistical Data Export}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} Format and output the raw data from the simulation.
 	\item \textbf{Function:} This module will gather all of the raw data from the simulation and format it  so that it can be exported into a readable excel file.
 	\item \textbf{Interface:}
-	addExportData(data)
-	\begin{itemize}
-		\item Input raw data
-	\end{itemize}
-	publishExportData()
+	publishData(simulationData)
 	\begin{itemize}
 		\item This function will format the simulation's raw data, create an excel file and populate the file with the formatted data
 	\end{itemize}
 	\item \textbf{Process Steps:} All data that is to be exported must be added to this module.  Once the simulation's raw data is gathered the module will publish the data.  The publishing will generate an excel file and outline the results from the simulation.
-	\item \textbf{Data:} None
+	\item \textbf{Data:} simulationData
 	\item \textbf{Error Handling:}  Produce warning message if data is missing during the publishing.
 	\item \textbf{Requirement Reference:} 8.1.5
 	\item \textbf{Critical Revision 0 Component:} True
@@ -485,8 +482,23 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 
-\subsection{User Interface}
-\subsubsection{GUI - Basic Settings - General}
+\subsection{Export - Statistical Dashboard Export}
+\begin{enumerate}[]
+	\item \textbf{Type:} Module
+	\item \textbf{Purpose:} Outputs an excel dashboard file containing all the statistical analysis
+	\item \textbf{Function:} This module will take the excel output and use it construct excel charts and graphs  
+	\item \textbf{Interface:}
+	runMacros(outputFile)
+	\item \textbf{Process Steps:} Record the output data into itself allowing for inside functions to manage the calculations. Create a copy of itself at the user specified location
+	\item \textbf{Data:} outputData
+	\item \textbf{Error Handling:} Produce warning message if errors occurs during process
+	\item \textbf{Requirement Reference:} 8.1.5
+	\item \textbf{Critical Revision 0 Component:} True
+	\item \textbf{To Be Completed By:} 28/01/2014
+	\item \textbf{To Be Tested By:} 30/01/2014
+\end{enumerate}
+
+\subsection{UI - Basic Settings - General}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
 	\item \textbf{Purpose:} Allows the user to change the basic-general settings of the simulation
@@ -510,7 +522,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsubsection{GUI - Basic Settings - File Locations}
+\subsection{UI - Basic Settings - File Locations}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
 	\item \textbf{Purpose:} Allows the user to choose the directory paths for required import/export files
@@ -532,7 +544,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsubsection{GUI - Basic Settings - Buttons/Output Console}
+\subsection{UI - Basic Settings - Buttons/Output Console}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
 	\item \textbf{Purpose:} Allows the user to activate simulation, reset all data and open file dialogs
@@ -553,7 +565,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsubsection{GUI - Advanced Settings - Dispatcher/Random Seed}
+\subsection{UI - Advanced Settings - Dispatcher/Random Seed}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
 	\item \textbf{Purpose:} To provide the user with the ability to modify dispatcher values
@@ -578,7 +590,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsubsection{Schedule Verifier}
+\subsection{UI - Schedule Verifier}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} Confirms the integrity of the schedule
@@ -606,7 +618,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} ??
 \end{enumerate}
 
-\subsubsection{Schedule Parser}
+\subsection{UI - Schedule Parser}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} Converts the schedule to an easier to read format by Porter Manager Module
