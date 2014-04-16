@@ -207,11 +207,11 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} This module calls the required functions to create the Job List, initialize the simulation state and initialize the simulation processes.
-	\item \textbf{Function:} This module takes in configuration data from the GUI module and uses it to initiate the required modules Statistics Import and Porter Manager, passes their data so that the Simulation State, Job List Builder and Dispatcher can be initialized.
+	\item \textbf{Function:} This module takes in configuration data from the GUI module and uses it to initiate the required modules Job List Builder, Porter Manager and Dispatcher, and passes their resulting data into the Simulation State.
 	\item \textbf{Interface:}\\ 
 	The interface to this module is a dictionary containing the information for the configuration of the simulation.
 	
-	\item \textbf{Process Steps:} This module first
+	\item \textbf{Process Steps:} This module is passed the configuration data from GUI module. With the configuration data it constructs the Job List, Porter Manager, Dispatcher which will be stored in the Simulation State. Once that has been done, the module will run the simulation for the configured amount of time. At this point, the simulation has completed and the module finishes by calling
 	This module first uses the Simulation Settings, Hospital Layout Graph and Statistical data to read in the external data.  This data is used to configure other core modules in the simulation.
 	
 	Once the external data is imported and the core modules are configured, the Simulation Core will begin the simulation and manage the core modules.
@@ -223,24 +223,28 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} This module's purpose is to be an interface between the simulation and its simulation state data structure.
-	\item \textbf{Function:} This module will contain functions that will be used by the simulation to perform queries on the simulation state data structure.
+	\item \textbf{Function:} This module will contain several objects that will be used by the many modules that are in the simulation.
 	\item \textbf{Interface:}\newline
-	initSimulateState():
+	env:
 		\begin{itemize}
-			\item Instantiating the simulation state with null values
+			\item A reference to the simpy env object.
 		\end{itemize}
-	getSimulationTime():
+	porterManager:
 		\begin{itemize}
-			\item Returns the current simulation time
+			\item A reference to the porterManger object.
 		\end{itemize}
-	getPorterList():
+	dispatcher:
 		\begin{itemize}
-			\item Returns a list of the porter objects
+			\item A reference to the dispatcher object.
 		\end{itemize}
-	getTaskList():
+	jobList:
 		\begin{itemize}
-			\item Returns the task list
-		\end{itemize}			
+			\item A reference to the jobList object.
+		\end{itemize}
+	maxDelayReason:
+		\begin{itemize}
+			\item A dictionary used to look up the max delay for each delay reason.
+		\end{itemize}	
 	\item \textbf{Process Steps:} This module handles the simulation state data structure and allows the rest of the modules to interact with it.  If modules need information about the simulation as a whole, they will communicate with the Simulation State module in order to satisfy their needs. 
 	\item \textbf{Data:} Simulation state data structure
 	\item \textbf{Error Handling:} Catch any null values in the simulation state data structure
@@ -250,54 +254,33 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} Provide information about a job to the porter.
-	\item \textbf{Function:} The task is declared with an origin, destination, required equipment and a priority.  This information is necessary to allowing a porter to complete a job.
+	\item \textbf{Function:} The task is declared with an origin, destination, priority, appointment, delay information and state change time values.  This information is necessary to allowing a porter to complete a job.
 	\item \textbf{Interface:} \newline
-		getOriginLocation():
+		autoUpdateProcess(simState, au):
 			\begin{itemize}
-				\item Returns the origin of a job
+				\item A process that increases the job's priority as it waits to be assigned to a porter based off of the au input.
 			\end{itemize}
-		getDestinationLocation():
-			\begin{itemize}
-				\item Returns the destination of a job
-			\end{itemize}
-		getEquipment():
-			\begin{itemize}
-				\item Returns the equipment required for a job
-			\end{itemize}
-		getPriority():
-			\begin{itemize}
-				\item Returns the priority of a job
-			\end{itemize}
-		getTime():
-			\begin{itemize}
-				\item Returns the time that the task will be requested
-			\end{itemize}			
-		updatePriority():
-			\begin{itemize}
-				\item A process that will set the job to a higher priority after a specified amount of time has passed.
-			\end{itemize}
-	\item \textbf{Process Steps:}  Tasks will be initialized once the Simulation Core shares the import modules with the Event List Builder.  An initialized task will be able to provide the Dispatcher all the required information to organize a list of tasks.  Also, once a task is given to a porter, the porter will then be able to start and complete a transport job.
+	\item \textbf{Process Steps:}  Jobs will be initialized within the Job List Builder.   An initialized job will be able to provide the Dispatcher all the required information to assign jobs.  Once a job is given to a porter, the porter will then be able to start and complete a transport job.
 	\item \textbf{Data:} Transport Job Information
 	\item \textbf{Error Handling:} Catch any null values returned by the task's properties
 	\item \textbf{Requirement Reference:} None
 \end{enumerate}
-\subsection{Core - Task List Builder}
+\subsection{Core - Job List Builder}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Produces the list of tasks for the Simulation Core and Dispatcher modules to process
-	\item \textbf{Function:} This module populates a series of tasks following either a distribution or statistical data.
+	\item \textbf{Purpose:} Produces the list of jobs for the Simulation Core and Dispatcher modules to process
+	\item \textbf{Function:} This module parses the file that contains historical job data and creates list of jobs that are ordered based of their creation time.
 	\item \textbf{Interface:} \newline
-		addTask(origin, destination, equipment, priority, time):
+		runImport(fileName):
 		\begin{itemize}
-			\item Input the origin, destination, equipment and priority of a job.  Also include the time the task will be added to the Dispatcher
+			\item Imports the data from historical job data file and constructs and returns the jobList along with the dispatchTable.
 		\end{itemize}
-		setTaskBuilderStats(data)
+		addDispatchTime(origin, dispatchTime)
 		\begin{itemize}
-			\item Input the statistical or distribution data as it is required for creating meaningful data
+			\item Adds a dispatch time to the dispatchTable
 		\end{itemize}
-		
-	\item \textbf{Process Steps:} The Task List Builder will first receive the data from the Simulation Core.  This data will allow the Task List Builder to create jobs based on user specified parameters.  Secondly, the Task List Builder will generate tasks and append them to the BinTree data structure, to allow for ordering, inserting and retrieval of tasks.  Once a task reaches its "time" it will be added to the Dispatcher where it can be given to an available porter.
-	\item \textbf{Data:} Task List BinTree
+	\item \textbf{Process Steps:} The Job List Builder will first receive the historical data file's file name from the Simulation Core.  This file name will allow the Job List Builder to create jobs based off of historical data.  Secondly, the Job List Builder will generate jobs and insert them into the jobList data structure.  The jobList is responsible for the storage, ordering and releasing of jobs into the dispatcher.
+	\item \textbf{Data:} jobList
 	\item \textbf{Error Handling:} Catch any null tasks
 	\item \textbf{Requirement Reference:} 8.1.4
 \end{enumerate}
@@ -307,27 +290,12 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Purpose:}  To complete jobs provided by the dispatcher
 	\item \textbf{Function:} Completes the transport jobs assigned by the dispatcher.  Unless a job is cancelled the porter will traverse through four states ('pending', 'dispatched', 'inprogress', 'complete')
 	\item \textbf{Interface:} \newline
-	setStatePending(state):
+	work(simState):
 		\begin{itemize}
-			\item Input the pending state
-			\item Sets the porter's state to pending and waits to be assigned a job
+			\item Input the Simulation State
+			\item Finite state machine that causes the Porter to ultimately be locked to the job for the duration of its execution. Will also cancel a job and reschedule it if the porter is waiting too long on the patient. The function will also update state values of the job for storage of the generated statistics.
 		\end{itemize}
-	setStateDispatched(state):
-		\begin{itemize}
-			\item Input the dispatched state
-			\item Sets the porter's state to dispatched and calculates the time between the porter's location and the job's origin	
-		\end{itemize}
-	setStateInprogress(state):
-		\begin{itemize}
-			\item Input the inprogress state
-			\item Sets the porter's state to inprogress and calculates the time between the job's origin and destination
-		\end{itemize}
-	setStateComplete(state):
-		\begin{itemize}
-			\item Input the complete state
-			\item Sets the porter's state to complete, records the completion time and sets the porter back to the pending state
-		\end{itemize}
-	\item \textbf{Process Steps:} The module listens for state changes provided by the dispatcher and updates its' internal components as necessary.
+	\item \textbf{Process Steps:} The module is responsible for representing Porters in the simulation and their ability to perform jobs and perform those jobs according to . This is where the majority of statistically valuable information is generated.
 	\item \textbf{Data:} Stores internal data relating to its' current state.
 	\item \textbf{Error Handling:} None
 	\item \textbf{Requirement Reference:} None
@@ -369,9 +337,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 		\end{itemize}
 	\item \textbf{Error Handling:} None
 	\item \textbf{Requirement Reference:} None
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 \subsection{Core - Porter Manager}
 \begin{enumerate}[]
@@ -395,72 +360,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{To Be Completed By:} 28/01/2014
 	\item \textbf{To Be Tested By:} 30/01/2014
 	
-\end{enumerate}
-\subsection{Import - Simulation Setting}
-\begin{enumerate}[]
-	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Receives the settings data from the GUI and translates them for use by the simulation core
-	\item \textbf{Function:} Receives data in the form of a csv and converts it to a readable format
-	\item \textbf{Interface:} \newline
-	receiveSettings(Settings):
-	 	\begin{itemize}
-	 		\item Load and store setting into module
-	 	\end{itemize}
-	 translateSettings():
-	 	\begin{itemize}
-	 		\item Outputs translated setting from the current loaded setting in the module
-	 	\end{itemize}
-	\item \textbf{Process Steps:} the module is called by the GUI from which it receives the settings as a csv file and stores them. Simulation Core calls the module to receive the current setting in the translated format. 
-	\item \textbf{Data:} Settings
-	\item \textbf{Error Handling:} return NULL on incorrect settings received
-	\item \textbf{Requirement Reference:} 8.1.1, 8.1.2
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
-\end{enumerate}
-\subsection{Import - Hospital Layout Graph}
-\begin{enumerate}[] 
-	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Receives layout data for the hospital from a .csv file and translates it for use by the simulation core.
-	\item \textbf{Function:} Interprets the data from the .csv file into a graph representing a HHS hospital transportation layout for porter movement.
-	\item \textbf{Interface:} \newline
-	receiveLayout(Layout):
-	 	\begin{itemize}
-	 		\item Load and store layout into module
-	 	\end{itemize}
-	 translateLayout():
-	 	\begin{itemize}
-	 		\item Outputs translated layout from the currently loaded .csv file to the module
-	 	\end{itemize}
-	\item \textbf{Process Steps:} Simulation core calls the module to receive the translated layout.
-	\item \textbf{Data:} Layout Graph
-	\item \textbf{Error Handling:} Returns NULL on incorrect settings.
-	\item \textbf{Requirement Reference:} 8.1.1, 8.1.2
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
-\end{enumerate}
-\subsection{Import - Statistical Data Import}
-\begin{enumerate}[]
-	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Receives statistical data for the hospital from a .csv file and translates it for use by the simulation core.
-	\item \textbf{Function:} Interprets the data from the .csv file into statistical data and places them into variables for use by the Simulation Core.  
-	\item \textbf{Interface:} \newline
-	receiveStatistics(Statistics):
-	 	\begin{itemize}
-	 		\item Load and store statistics into module
-	 	\end{itemize}
-	 translateStatistics():
-	 	\begin{itemize}
-	 		\item Outputs translated statistics from the currently loaded .csv file to the module
-	 	\end{itemize}
-	\item \textbf{Process Steps:} Simulation core calls the module to receive the translated statistical data variables.
-	\item \textbf{Data:} Statistic data variables
-	\item \textbf{Error Handling:} Returns NULL on incorrect settings.
-	\item \textbf{Requirement Reference:} 8.1.1, 8.1.2
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 
 \subsection{Export - Statistical Data Export}
