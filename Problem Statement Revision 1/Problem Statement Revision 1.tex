@@ -1,0 +1,161 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Example: Project Report
+%
+% Source: http://www.howtotex.com
+%
+% Feel free to distribute this example, but please keep the referral
+% to howtotex.com
+% Date: March 2011 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit the title below to update the display in My Documents
+%\title{Project Report}
+%
+%%% Preamble
+\documentclass[paper=letter, fontsize=10pt]{scrartcl}
+\usepackage[body={7in,7.5in},top=1in, bottom=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+
+\usepackage[english]{babel}															% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}	
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{lastpage}
+
+
+%%% Custom sectioning
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\scshape}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[c]{Requirements Revision 0}
+\fancyhead[R]{\today}											
+\fancyfoot[L]{}											 
+\fancyfoot[C]{}											
+\fancyfoot[R]{\thepage\ of \pageref{LastPage}}		% Pagenumbering
+\renewcommand{\headrulewidth}{0.4pt}				% Remove header underlines
+\renewcommand{\footrulewidth}{0.4pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+\newcommand{\ts}{\textsuperscript}
+
+%%% Begin document
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+\newcommand{\authors}{\shortstack{Vitaliy Kondratiev,\\Nathan Johrendt,\\Tyler Lyn,\\Mark Gammie}}
+
+\begin{center}
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE McMaster University}\\[1.5cm] % Name of your university/college
+\textsc{\Large CAS 4ZP6}\\[0.5cm]
+\textsc{\Large Team 9} \\[0.5cm]
+\textsc{\Large Capstone Project 2013/2014}\\[0.5cm] % Major heading such as course name
+\textsc{\large Porter Simulation}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Problem Statement Revision 1}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+Vitaliy Kondratiev - 0945220\\
+Nathan Johrendt - 0950519\\
+Tyler Lyn - 0948978\\
+Mark Gammie - 0964156
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Douglas Down % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+%Template taken from: http://www.softwaretestinghelp.com/test-plan-sample-softwaretesting-and-quality-assurance-templates/
+
+\vfill % Fill the rest of the page with whitespace
+\end{center}
+\end{titlepage}
+
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+
+\newpage
+
+\section{The Problem}
+Hamilton Health Sciences have become aware of several inefficiencies in their porter services at their Juravinski Hospital location. Porter services, in this context, are defined as the movement of hospital equipment and patient transfers from one area to another. Porters are a key  piece of overall patient experience and satisfaction; the flow of day to day operations in a hospital depends on their efficiency. Some of the particular issues they identified relate to porters complying with operational policies, as well as finding ways to better handle spikes in work volume on busy days. Hamilton Health Sciences have gathered substantial operational data on porter activity, but are lacking the tools to interpret it. Our goal is to provide HHS with the tools to simulate their porter services so that they can test their own solutions, methods and make calculated decisions based on the results.
+
+\section{Problem Significance}
+Hamilton Health Sciences are facing budget cuts and are trying to improve efficiency throughout all of their operations. There are currently a lot of new ideas and theories that have been suggested to management level that deal with overall process improvement and expense saving. Unfortunately many of these propositions cannot simply be implemented without concrete empirical evidence because of high risk value. These hospitals provide life saving treatment, and interruption of critical services cannot be tolerated. The current problem of porter inefficiency affects the workflow of every staff member using this service as well as the overall patient experience. Simply put, if the porter service becomes a bottleneck then the hospital service slows down as a whole.
+
+\section{Context}
+The hospital operations team are looking for a low risk and low cost solution to generate the necessary empirical evidence so they can justify deploying and practicing modifications to porter services provided. The solution is the porter services simulation which will be designed and developed by our Capstone Team. The simulation will focus on modeling just one of the HHS hospitals in the Hamilton area, with the possibility to expand to other locations in the future. Users of this simulation will be the operational management staff. They will use the results generated by the simulation to trial different scenarios and how each one will affect the flow of operations. Based on the output data, the decision support staff will decide if these new ideas and plans should be implemented into the actual porter services.  This project is a brand new initiative that will be developed from scratch, with the goal to expand the scope if the initial solution is determined to be a success. The biggest external resource to be used during the course of this project will be the large sets of data that HHS has available. HHS representatives have agreed to supply six months of porter activity logging, representing patient transfer jobs completed in the hospital during that time period. 
+
+%%% End document
+\end{document}
