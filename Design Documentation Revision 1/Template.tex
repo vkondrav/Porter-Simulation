@@ -517,62 +517,137 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{To Be Completed By:} 28/01/2014
 	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
-\subsection{GUI - Basic Settings}
+
+
+\subsection{GUI - Basic Settings - General}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
-	\item \textbf{Purpose:} Allows the user to change the basic setting of the simulation and run the simulation
+	\item \textbf{Purpose:} Allows the user to change the basic-general settings of the simulation
 	\item \textbf{Function:} 
-	\begin{enumerate}[]
-		\item \textbf{Number of Porters:} specify the number of porters for the simulation to run
-		\item \textbf{Start Date:} specify the day the simulation will run from
-		\item \textbf{Start Time:} specific time the simulation runs from
-		\item \textbf{End Date:} specific time day the simulation will end
-		\item \textbf{End Time:} specific time the simulation ends
-		\item \textbf{Job Distribution:} users can choose from predefined distributions or base it on existing statistical data
-		\item \textbf{Job Intensity:} specify the frequency of job distribution
-		\item \textbf{Correct Equipment Usage:} specify the percentage of correct equipment events
-		\item \textbf{Patient Readiness:} specify the percentage of ready patients on porter arrival
-		\item \textbf{Porter Wait Time:} specify the time a porter waits for patient to be ready before abandoning job		
+	\begin{enumerate}[(i)]
+		\item \textbf{Simulation Duration:} Number of days the software will simulate events.
+		\item \textbf{Porter Wait Times:} Maximum number of minutes a porter waits for a delay (patient, equipment, nurse) before cancelling the job
+		\item \textbf{Job Flow:} The rate of event generation during the course of the simulation.
+		\item \textbf{Start Day:} Define the first day the simulation generates events from.
 	\end{enumerate}
-	\item \textbf{Interface:}
-		\begin{enumerate}[]
-			\item \textbf{Advanced Setting:} proceed to Advanced Setting GUI
-			\item \textbf{Simulate:} push settings to Simulation Core
-			\item \textbf{Default Settings:} reset to default values
-		\end{enumerate}
 	\item \textbf{Process Steps:} Not Available
 	\item \textbf{Data:} Not Available
-	\item \textbf{Error Handling:} If any of the below values violates its restriction, excel will not allow the information to be sent to the simulation core.
+	\item \textbf{Error Handling:} The interface prevents the user from violating constraints
 	\begin{enumerate}[]
-		\item \textbf{Number of Porters:} restricts the number of porters to a positive integer 
-		\item \textbf{Start Date:} restricts the start date to day/month/year format
-		\item \textbf{Start Time:} restricts the start time to 12 or 24 hour time
-		\item \textbf{End Date:} restricts the end date to day/month/year format and checks that the date is on the same date or a later date than the start date
-		\item \textbf{End Time:} restricts the end time to 12 or 24 hour time and checks that the end time is further in the future than the start time
-		\item \textbf{Job Distribution:} user is restricted to a set series of options
-		\item \textbf{Job Intensity:} user is restricted to a set series of options
-		\item \textbf{Correct Equipment Usage:} restricts the value between 0 and 100 percent 
-		\item \textbf{Patient Readiness:} restricts the value between 0 and 100 percent
-		\item \textbf{Porter Wait Time:} restricts the value to a minimum of 0		
+		\item \textbf{Simulation Duration:} Value 0 to 7 
+		\item \textbf{Porter Wait Times:} Value 0 to 60
+		\item \textbf{Job Flow:} Drop down defined by interface {Low, Normal, High}
+		\item \textbf{Start Day:} Drop down defined by interface {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}   
 	\end{enumerate}
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
-	\item \textbf{Critical Revision 0 Component:} True
 \end{enumerate}
 
-\newpage
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\columnwidth]{../GUI/GUI_Mockups/BasicGUI.png}
-		\caption{Basic GUI}
-	\end{center}
-\end{figure}
-\newpage
+\subsection{GUI - Basic Settings - File Locations}
+\begin{enumerate}[]
+	\item \textbf{Type:} User Interface
+	\item \textbf{Purpose:} Allows the user to choose the directory paths for required import/export files
+	\item \textbf{Function:} 
+	\begin{enumerate}[(i)]
+		\item \textbf{Statistical Data Source:} Determines which source file will be used to provide the simulation with statistical distribution information
+		\item \textbf{Schedule Data Source:} Determines which source file will be used to provide scheduling information to be used during simulation
+		\item \textbf{Output Location:} Determines the Location to store output data
+	\end{enumerate}
+	\item \textbf{Process Steps:} Not Available
+	\item \textbf{Data:} Not Available
+	\item \textbf{Error Handling:} The interface prompts the user with an error message upon entry of erroneous data
+	\begin{enumerate}[]
+		\item \textbf{Statistical Data Source:} File exists. File extension is ".csv"
+		\item \textbf{Schedule Data Source:} File Exists. File extension is ".csv"
+		\item \textbf{Output Location:} Directory exists
+	\end{enumerate}
+	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+\end{enumerate}
+
+\subsection{GUI - Basic Settings - Buttons/Output Console}
+\begin{enumerate}[]
+	\item \textbf{Type:} User Interface
+	\item \textbf{Purpose:} Allows the user to activate simulation or reset all data
+	\item \textbf{Function:} 
+	\begin{enumerate}[(i)]
+		\item \textbf{Simulate Button:} Runs all the integrity checks and initializes the simulation run
+		\item \textbf{Reset All Button:} Resets all data to initial values
+		\item \textbf{Output Console:} Prints any logging statements
+	\end{enumerate}
+	\item \textbf{Process Steps:} Not Available
+	\item \textbf{Data:} Not Available
+	\item \textbf{Error Handling:} Interface prevents user from entering erroneous data 
+	\begin{enumerate}[]
+		\item \textbf{Output Console:} Console is read only
+	\end{enumerate}
+	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+\end{enumerate}
+
+\subsection{GUI - Advanced Settings - Dispatcher/Random Seed}
+\begin{enumerate}[]
+	\item \textbf{Type:} User Interface
+	\item \textbf{Purpose:} Allows the user to tool around with dispatcher values
+	\item \textbf{Function:} 
+	\begin{enumerate}[(i)]
+		\item \textbf{Appointment Factor:} 
+		\item \textbf{Automatic Job Priority Values:} 
+		\item \textbf{Weighted Job List:} 
+		\item \textbf{Random Seed:} allows the user to enter a specific random seed instead of true random
+	\end{enumerate}
+	\item \textbf{Process Steps:} Not Available
+	\item \textbf{Data:} Not Available
+	\item \textbf{Error Handling:} Interface prevents user from entering erroneous data 
+	\begin{enumerate}[]
+		\item \textbf{Appointment Factor:} Value 0.0 to 3.0
+		\item \textbf{Automatic Job Priority Values:} Values 0.0 to 99.99
+		\item \textbf{Weighted Job List:} Values 0.0 to 99.99
+		\item \textbf{Random Seed:} Value 0 to 999999999
+	\end{enumerate}
+	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+\end{enumerate}
+
+\subsection{Schedule Verifier}
+\begin{enumerate}[]
+	\item \textbf{Type:} Module
+	\item \textbf{Purpose:} Confirms the integrity of the schedule
+	\item \textbf{Function:} 
+	\begin{enumerate}[(i)]
+		\item \textbf{scheduleChecker(file):} checks integrity of the schedule as a whole
+		\item \textbf{verifyShiftID(element):} checks integrity of each shift id  
+		\item \textbf{verifyStartTime(element):} checks integrity of each start time 
+		\item \textbf{verifyEndTime(element):} checks integrity of each end time 
+		\item \textbf{verifyPorterID(element):} checks integrity of each porter id 
+		\item \textbf{verifyDays(element):} checks integrity of each day entry
+	\end{enumerate}
+	\item \textbf{Process Steps:} scheduleChecker opens the schedule file and verifies each element of the file with a subroutine
+	\item \textbf{Data:} schedule data file
+	\item \textbf{Error Handling:} Module gathers and returns all the errors
+	\begin{enumerate}[]
+		\item \textbf{scheduleChecker(file):} returns the returns from all the subroutines (returns the cell and place of error)
+		\item \textbf{verifyShiftID(element):} string of character [A-Za-z0-9] 
+		\item \textbf{verifyStartTime(element):} is date
+		\item \textbf{verifyEndTime(element):} is date
+		\item \textbf{verifyPorterID(element):} string of character [A-Za-z0-9] 
+		\item \textbf{verifyDays(element):} value 0 - 6
+	\end{enumerate}
+	\item \textbf{Requirement Reference:} ??
+\end{enumerate}
+
+\subsection{Schedule Parser}
+\begin{enumerate}[]
+	\item \textbf{Type:} Module
+	\item \textbf{Purpose:} Converts the schedule to a more convenient format
+	\item \textbf{Function:} 
+	\begin{enumerate}[(i)]
+		\item \textbf{scheduleParser(file):} checks integrity of the schedule as a whole
+	\end{enumerate}
+	\item \textbf{Process Steps:} scheduleParser opens the schedule file and converts it to a python dictionary format
+	\item \textbf{Data:} schedule data file
+	\item \textbf{Error Handling:} No error if Schedule Verifier has been executed
+	\item \textbf{Requirement Reference:} ??
+\end{enumerate}
 
 \section{Anticipated Changes}
-\begin{enumerate}[1]
-	\item Specific interface design will be guided by initial testing with HHS stakeholders, changes to the GUI are expected.
-	 \item The functionality of the Logging module may change if HHS stakeholders require additional information about the modules.
-\end{enumerate}
+None
 
 \section{Appendicies}
 \subsection{Figure Appendix}
