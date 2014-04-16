@@ -245,11 +245,8 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Data:} Simulation state data structure
 	\item \textbf{Error Handling:} Catch any null values in the simulation state data structure
 	\item \textbf{Requirement Reference:} None
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
-\subsection{Core - Task}
+\subsection{Core - Job}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} Provide information about a job to the porter.
@@ -283,9 +280,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Data:} Transport Job Information
 	\item \textbf{Error Handling:} Catch any null values returned by the task's properties
 	\item \textbf{Requirement Reference:} None
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 \subsection{Core - Task List Builder}
 \begin{enumerate}[]
@@ -306,9 +300,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Data:} Task List BinTree
 	\item \textbf{Error Handling:} Catch any null tasks
 	\item \textbf{Requirement Reference:} 8.1.4
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 \subsection{Core - Porter}
 \begin{enumerate}[]
@@ -340,9 +331,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Data:} Stores internal data relating to its' current state.
 	\item \textbf{Error Handling:} None
 	\item \textbf{Requirement Reference:} None
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 \subsection{Core - Dispatcher}
 \begin{enumerate}[]
@@ -492,28 +480,6 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Data:} None
 	\item \textbf{Error Handling:}  Produce warning message if data is missing during the publishing.
 	\item \textbf{Requirement Reference:} 8.1.5
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
-\end{enumerate}
-\subsection{Logging}
-\begin{enumerate}[]
-	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Provide logging capabilities across all Python modules
-	\item \textbf{Function:} This module will contain python's native logging library as well provide any additional logging functionality specific to the simulation.
-	\item \textbf{Interface:}
-	initializeLogging()
-		\begin{itemize}
-			\item Initialize python's native logging across the modules
-		\end{itemize}
-	printLogging(module)
-		\begin{itemize}
-			\item Print a module's simulation log
-		\end{itemize}
-	\item \textbf{Process Steps:} A logger will be created for each module providing necessary error tracking.  Not only this but the Logging module will allow for debugging during the course of development.
-	\item \textbf{Data:} Module Logs
-	\item \textbf{Error Handling:} Catch any null module logs.
-	\item \textbf{Requirement Reference:} 13.1
 	\item \textbf{Critical Revision 0 Component:} True
 	\item \textbf{To Be Completed By:} 28/01/2014
 	\item \textbf{To Be Tested By:} 30/01/2014
