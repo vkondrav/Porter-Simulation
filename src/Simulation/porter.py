@@ -23,20 +23,27 @@ class Porter(object):
         # dispatch
         print "%s is dispatched %s" % (self, self.job)
         self.state = Porter.dispatched
+        # Get the dispatch time from the look up table which is based 
+        # off the origin of the job
         dispatchTimes = simState.dispatchTable[self.job.origin]
         done_in = dispatchTimes[randint(0, len(dispatchTimes) - 1)]
         
+        # Checks for a delay in the job
         if self.job.delayReason == "Patient Not Ready":
+            # Queries the delay reason look up table for the max amount delay allowed
             maxDelay = simState.maxDelayReason.get(self.job.delayReason)
+            
+            # The delay is acceptable and the porter keeps doing the job
             if self.job.delayTime <= maxDelay:
                 done_in += self.job.delayTime
+            # The delay is unacceptable and the porter cancels the job
             else:
                 done_in += maxDelay
                 self.job.cancelled = True
-                #self.state = Porter.pending
         
         yield simState.env.timeout(done_in)
         
+        # Reschedule the job as it was cancelled because of porter wait times
         if self.job.cancelled:
             creationTime = self.job.creationTime + self.job.delayTime - maxDelay
             inProgressTime = self.job.inProgressTime

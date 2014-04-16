@@ -116,12 +116,17 @@ class StatImport(object):
 
             for row in reader:
                 data = {}
-
+                
+                # Filter the row to only contain attributes that do not have a "NULL" value and
+                # ensure that the the amount of elements in the row is consistent with the amount
+                # we expect to find
                 for attr in attributes:
                     if len(row) == len(keys) and row[keys[attr]] != "NULL":
                         data[attr] = row[keys[attr]]
                     
+                # Filter the data to make sure that job was completed and that it was a patient transport job
                 if "Last_Status" in data and data["Last_Status"] == "Complete" and data["PatientTransportFlag"] == "1":
+                    # Check to make sure that the data entry has all of the required attributes that we need
                     if all(k in data for k in required_attributes):
                         dispatchTimeAbs = strToT(data["DispatchedDT"])
                         dispatchTimeDelta = strToDeltaT(data["InProgressDT"], dispatchTimeAbs)
@@ -143,13 +148,17 @@ class StatImport(object):
                                 # discard dispatch time
                                 continue
                         
+                        # Add the dispatch time to the dispatch time lookup table
                         self.addDispatchTime(origin, dispatchTimeDelta)
+                        
+                        # Since the data has passed all the checks, add it as a job into the statData data structure
                         self.statData.addToSegment(data)
                     else:
                         print "Invalid CSV Entry:"
                         print data
                         continue
-                    
+        
+        # The statData data structure is now filled and can construct the jobList
         jobList = self.statData.constructJobList()
         
         return (self.dispatchTable, jobList)
@@ -174,6 +183,7 @@ class StatData(object):
         self.rate = rate
         self.dayOffset = dayOffset
         
+        # Construct the data structure for storing the potential jobs
         for i in range(7):
             self.statData.append([])
             for j in range(self.numSegments):
@@ -181,8 +191,13 @@ class StatData(object):
         
     def addToSegment(self, data):
         timeStruct = time.strptime(data["PendingDT"] , "%Y-%m-%d %H:%M:%S")
+        # Map the day that job occurred in reference to dayOffset
         day = (timeStruct.tm_wday + (7 - self.dayOffset)) % 7
+        # Map the segment the job occurred during
         segment = timeStruct.tm_hour / self.segmentSize;
+        # Create a key from the calendar date of the job
+        # This ensures that jobs created on the same day within the same 
+        # segment, will be stored together
         key = string.split(data["PendingDT"])[0]
         
         if self.statData[day][segment].has_key(key):
@@ -194,10 +209,7 @@ class StatData(object):
         jobList = JobList()
         for day in self.statData:
             for segment in day:
-                # keys = segment.keys()
-                # key = keys[randint(0, len(keys) - 1)]
-                
-                # activeSegment = segment[key]
+                # Choose the segment based off of the job flow rate
                 activeSegment = self.segmentSelector(segment)
                 
                 for data in activeSegment:
@@ -207,9 +219,11 @@ class StatData(object):
                     if not delayTime:
                         delayTime = 0
                         
+                    # Convert delay time to seconds from minutes
                     delayTime = int(delayTime) * 60
                     
                     pendingTimeAbs = self.strToS(data["PendingDT"])
+                    # Convert the absolute values to delta values based off of the previous state
                     inProgressTimeDelta = strToT(data["InProgressDT"]) - strToT(data["DispatchedDT"])
                     completeTimeDelta = strToT(data["CompleteDT"]) - strToT(data["InProgressDT"])
                         
@@ -223,17 +237,26 @@ class StatData(object):
         return jobList
                     
     def segmentSelector(self, segment):
+        # Sort the candidate segments by the amount of jobs they contain
         sorted_keys = sorted(segment, key=lambda k: len(segment[k]))
         
+        # Split the sorted list into ranges of thirds
+        # Lowest range being the low flow
+        # Medium range being the normal flow
+        # High range being the high flow
         size = len(sorted_keys)
         third = (size - 1) / 3
         modulus = (size - 1) % 3
         offset = self.rate * third
+        
+        # Randomly pick a segment with the chosen range
         key = sorted_keys[randint(offset, offset + third + modulus)]
         
         return segment[key]
 
     def strToS(self, timeString):
+        # Takes a time string and returns its time seconds in reference to
+        # the beginning of the simulation
         timeStruct = time.strptime(timeString , "%Y-%m-%d %H:%M:%S")
         day = (timeStruct.tm_wday + (7 - self.dayOffset)) % 7
         hour = timeStruct.tm_hour
@@ -246,10 +269,12 @@ class StatData(object):
 
 
 def strToT(timeString):
+    # Converts the time string into a absolute value of seconds
     return calendar.timegm(time.strptime(timeString , "%Y-%m-%d %H:%M:%S"))
     
     
 def strToDeltaT(timeString, refTime):
+    # Converts the time string into a delta value of seconds
     return strToT(timeString) - refTime
 
 
@@ -259,27 +284,3 @@ if __name__=='__main__':
     print a.runImport('data.csv', jobList)
     print
     print jobList.jobList
-    
-# pendingTimeAbs = strToT(data["PendingDT"])
-# pendingTime = pendingTimeAbs - startTimeAbs
-
-# if pendingTimeAbs >= startTimeAbs and pendingTimeAbs <= endTimeAbs:
-    
-    # #print pendingTime
-    # if all(k in data for k in attributes):
-        # dispatchTime = strToDeltaT(data["DispatchedDT"], pendingTimeAbs)
-        # inProgressTime = strToDeltaT(data["InProgressDT"], pendingTimeAbs)
-        # completeTime = strToDeltaT(data["CompleteDT"], pendingTimeAbs)
-        # origin = data["Origin"]
-        # destination = data["Destination"]
-        # priority = int(data["OriginalPriorityID"])
-        # appointment = 1 if data["Created_Status"] == "Appointment" else 0
-        # jobList.insert(Job(pendingTime, inProgressTime, completeTime, origin, destination, priority, appointment))
-        # self.addDispatchTime(origin, dispatchTime)
-    # else:
-        # print "Invalid CSV Entry:"
-        # print Data
-        # continue
-    
-    # #print data
-            

@@ -58,17 +58,9 @@ class JobList(object):
         return not bool(self.jobList)
         
     def jobReleaser(self, simState):
+        # Takes any jobs that exist in the jobList that have a creation time of sometime in the past
+        # and submits them to the Dispatcher to be assigned to a porter
         while self.jobList:
-            # ** This is an old method that was prone to failing the assertion check
-            # peek at the end of the job list to ensure atomicity of job lists
-            # job = self.jobList[-1]
-            # print job
-            # yield simState.env.timeout(job.creationTime - simState.env.now)
-            # releasedJob = self.jobList.pop()
-            # assert(job == releasedJob)
-            # self.releasedJobList.append(releasedJob)
-            # simState.dispatcher.addJob(job, simState)
-            
             yield simState.env.timeout(60)
             while len(self.jobList) > 0 and simState.env.now >= self.jobList[-1].creationTime:
                 job = self.jobList.pop()
