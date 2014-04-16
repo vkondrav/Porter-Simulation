@@ -107,7 +107,7 @@ def main(config):
 
     print "*****SIMULATION COMPLETE*****"
 
-    #dashOutput(simState.jobList.releasedJobList, config["outputLocation"])
+    dashOutput(simState.jobList.releasedJobList, config["outputLocation"])
 
 if __name__=='__main__':
 	main()
