@@ -23,7 +23,7 @@ class PorterManager(object):
         workingList = []
         for porterID, shifts in self.schedule.items():
             for shift in shifts:
-                ## We will need to change this logic if simulation runs longer than 7 days ##
+                ## Change this logic if simulation runs longer than 7 days ##
                 if int(creationTime) < SECONDS_IN_DAY:
                     if int(shift[3]) == self.startDay and int(shift[1]) <= creationTime and int(shift[2]) >= creationTime:
                         workingList.append(porterID)
