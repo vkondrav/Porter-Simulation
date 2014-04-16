@@ -211,13 +211,10 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Interface:}\\ 
 	The interface to this module is a dictionary containing the information for the configuration of the simulation.
 	
-	\item \textbf{Process Steps:} This module is passed the configuration data from GUI module. With the configuration data it constructs the Job List, Porter Manager, Dispatcher which will be stored in the Simulation State. Once that has been done, the module will run the simulation for the configured amount of time. At this point, the simulation has completed and the module finishes by calling
-	This module first uses the Simulation Settings, Hospital Layout Graph and Statistical data to read in the external data.  This data is used to configure other core modules in the simulation.
-	
-	Once the external data is imported and the core modules are configured, the Simulation Core will begin the simulation and manage the core modules.
+	\item \textbf{Process Steps:} This module is passed the configuration data from GUI module. With the configuration data it constructs the Job List, Porter Manager, Dispatcher which will be stored in the Simulation State. Once that has been done, the module will run the simulation for the configured amount of time. At this point, the simulation has completed and the module finishes by running the Statistical Data Export module.
 	\item \textbf{Data:} None
 	\item \textbf{Error Handling:} Catch all on the simulation loop to report pertinent errors and to prevent unexpected termination. 
-	\item \textbf{Requirement Reference:} 11.5.1
+	\item \textbf{Requirement Reference:} 11.1.3
 \end{enumerate}
 \subsection{Core - Simulation State}
 \begin{enumerate}[]
@@ -282,7 +279,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Process Steps:} The Job List Builder will first receive the historical data file's file name from the Simulation Core.  This file name will allow the Job List Builder to create jobs based off of historical data.  Secondly, the Job List Builder will generate jobs and insert them into the jobList data structure.  The jobList is responsible for the storage, ordering and releasing of jobs into the dispatcher.
 	\item \textbf{Data:} jobList
 	\item \textbf{Error Handling:} Catch any null tasks
-	\item \textbf{Requirement Reference:} 8.1.4
+	\item \textbf{Requirement Reference:} 11.1.1
 \end{enumerate}
 \subsection{Core - Porter}
 \begin{enumerate}[]
@@ -355,11 +352,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	
 	\item \textbf{Data:} Porter Schedule
 	\item \textbf{Error Handling:} None
-	\item \textbf{Requirement Reference:} ??
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
-	
+	\item \textbf{Requirement Reference:} None
 \end{enumerate}
 
 \subsection{Export - Statistical Data Export}
@@ -375,10 +368,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Process Steps:} All data that is to be exported must be added to this module.  Once the simulation's raw data is gathered the module will publish the data.  The publishing will generate an excel file and outline the results from the simulation.
 	\item \textbf{Data:} simulationData
 	\item \textbf{Error Handling:}  Produce warning message if data is missing during the publishing.
-	\item \textbf{Requirement Reference:} 8.1.5
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
+	\item \textbf{Requirement Reference:} 11.1.4
 \end{enumerate}
 
 \subsection{Export - Statistical Dashboard Export}
@@ -391,10 +381,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Process Steps:} Record the output data into itself allowing for inside functions to manage the calculations. Create a copy of itself at the user specified location
 	\item \textbf{Data:} outputData
 	\item \textbf{Error Handling:} Produce warning message if errors occurs during process
-	\item \textbf{Requirement Reference:} 8.1.5
-	\item \textbf{Critical Revision 0 Component:} True
-	\item \textbf{To Be Completed By:} 28/01/2014
-	\item \textbf{To Be Tested By:} 30/01/2014
+	\item \textbf{Requirement Reference:} 11.1.5
 \end{enumerate}
 
 \subsection{UI - Basic Settings - General}
@@ -418,7 +405,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 		\item \textbf{Job Flow:} Drop down defined by interface {Low, Normal, High}
 		\item \textbf{Start Day:} Drop down defined by interface {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}   
 	\end{enumerate}
-	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+	\item \textbf{Requirement Reference:} 11.1.1, 11.1.2, 11.1.3, 11.1.4
 \end{enumerate}
 
 \subsection{UI - Basic Settings - File Locations}
@@ -440,7 +427,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 		\item \textbf{Schedule Data Source:} File Exists. File extension is ".csv"
 		\item \textbf{Output Location:} Directory exists
 	\end{enumerate}
-	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+	\item \textbf{Requirement Reference:} 11.1.1, 11.1.2, 11.1.3, 11.1.4
 \end{enumerate}
 
 \subsection{UI - Basic Settings - Buttons/Output Console}
@@ -461,7 +448,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\begin{enumerate}[]
 		\item \textbf{Output Console:} Console is read only
 	\end{enumerate}
-	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+	\item \textbf{Requirement Reference:} 11.1.1, 11.1.2, 11.1.3, 11.1.4
 \end{enumerate}
 
 \subsection{UI - Advanced Settings - Dispatcher/Random Seed}
@@ -486,7 +473,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 		\item \textbf{Weighted Job List:} Values 0.0 to 99.99
 		\item \textbf{Random Seed:} Value 0 to 999999999
 	\end{enumerate}
-	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
+	\item \textbf{Requirement Reference:} 11.1.1, 11.1.2, 11.1.3, 11.1.4
 \end{enumerate}
 
 \subsection{UI - Schedule Verifier}
@@ -514,7 +501,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 		\item \textbf{verifyPorterID(element):} string of character [A-Za-z0-9] 
 		\item \textbf{verifyDays(element):} value 0 - 6
 	\end{enumerate}
-	\item \textbf{Requirement Reference:} ??
+	\item \textbf{Requirement Reference:} None
 \end{enumerate}
 
 \subsection{UI - Schedule Parser}
@@ -529,7 +516,7 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Process Steps:} scheduleParser opens the schedule file and converts it to a python dictionary format
 	\item \textbf{Data:} schedule data file
 	\item \textbf{Error Handling:} No error if Schedule Verifier has been executed
-	\item \textbf{Requirement Reference:} ??
+	\item \textbf{Requirement Reference:} None
 \end{enumerate}
 
 \section{Anticipated Changes}
@@ -540,12 +527,10 @@ None
 \begin{enumerate}[(a)]
 	\item Figure 4.1: Process Diagram.jpg - the process flow diagram details the process modeled by the simulation.
 	\item Figure 5.1: Dependency Diagram.png - layout of the module, algorithm and data structure dependencies.
-	\item Figure 6.1: Basic GUI.png - prototype design of the GUI associated for use with the simulation.
 \end{enumerate}
 \subsection{Algorithm Appendix}
 \begin{enumerate}[(a)]
-	\item Dispatching Algorithm - main dispatcher algorithm used to assign jobs to porters based on a number of factors. Functionality outlined by section 6.6 of this document.
-	\item Dijkstra's Algorithm - will be used to compute the shortest path between two hospital location.
+	\item Dispatching Algorithm - main dispatcher algorithm used to assign jobs to porters based on a number of factors.
 \end{enumerate}
 
 %%% End document
