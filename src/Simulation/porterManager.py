@@ -30,10 +30,13 @@ class PorterManager(object):
                 else:
                     #Get the number of days since the first day
                     numDays = int(math.floor(int(creationTime) / SECONDS_IN_DAY))
+                    if (self.startDay + numDays) > 6:
+                        currentDay = (self.startDay + numDays) - 7
+                    else:
+                        currentDay = self.startDay + numDays
                     #Get the time based on the number of days passed
                     creationTimeDay = creationTime / (numDays * SECONDS_IN_DAY)
-
-                    if int(shift[3]) == int(self.startDay) + numDays and int(shift[1]) <= int(creationTimeDay) and int(shift[2]) >= int(creationTimeDay):
+                    if int(shift[3]) == currentDay and int(shift[1]) <= int(creationTimeDay) and int(shift[2]) >= int(creationTimeDay):
                         workingList.append(porterID)
 
         pendingList = []

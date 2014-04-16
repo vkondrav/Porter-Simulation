@@ -94,8 +94,8 @@ def main(config):
     simState.dispatcher = Dispatcher(config["appFactorValue"], config["wjl"], config["ajb"])
     simState.dispatcher.configData()
 
-    #porterManager = PorterManager(config["startDay"])
-    simState.porterManager = PorterManager(0)
+    simState.porterManager = PorterManager(config["dayOffset"])
+    print "day off sett is : " + str(config["dayOffset"])
     simState.porterManager.importPorterSched(config["schedule"])
 	
     simState.env.process(simState.dispatcher.assignJobs(simState))
@@ -107,7 +107,7 @@ def main(config):
 
     print "*****SIMULATION COMPLETE*****"
 
-    dashOutput(simState.jobList.releasedJobList, config["outputLocation"])
+    #dashOutput(simState.jobList.releasedJobList, config["outputLocation"])
 
 if __name__=='__main__':
 	main()
