@@ -485,12 +485,13 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{To Be Tested By:} 30/01/2014
 \end{enumerate}
 
-
-\subsection{GUI - Basic Settings - General}
+\subsection{User Interface}
+\subsubsection{GUI - Basic Settings - General}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
 	\item \textbf{Purpose:} Allows the user to change the basic-general settings of the simulation
-	\item \textbf{Function:} 
+	\item \textbf{Function:} Interface will allow entry of basic variables while preventing erroneous entry
+	\item \textbf{Interface:} 
 	\begin{enumerate}[(i)]
 		\item \textbf{Simulation Duration:} Number of days the software will simulate events.
 		\item \textbf{Porter Wait Times:} Maximum number of minutes a porter waits for a delay (patient, equipment, nurse) before cancelling the job
@@ -509,11 +510,12 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsection{GUI - Basic Settings - File Locations}
+\subsubsection{GUI - Basic Settings - File Locations}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
 	\item \textbf{Purpose:} Allows the user to choose the directory paths for required import/export files
-	\item \textbf{Function:} 
+	\item \textbf{Function:} Interface will allow entry of directory paths by manual input or file browse dialogs
+	\item \textbf{Interface:}  
 	\begin{enumerate}[(i)]
 		\item \textbf{Statistical Data Source:} Determines which source file will be used to provide the simulation with statistical distribution information
 		\item \textbf{Schedule Data Source:} Determines which source file will be used to provide scheduling information to be used during simulation
@@ -530,15 +532,17 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsection{GUI - Basic Settings - Buttons/Output Console}
+\subsubsection{GUI - Basic Settings - Buttons/Output Console}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
-	\item \textbf{Purpose:} Allows the user to activate simulation or reset all data
-	\item \textbf{Function:} 
+	\item \textbf{Purpose:} Allows the user to activate simulation, reset all data and open file dialogs
+	\item \textbf{Function:} Interface connects GUI elements to actions
+	\item \textbf{Interface:} 
 	\begin{enumerate}[(i)]
 		\item \textbf{Simulate Button:} Runs all the integrity checks and initializes the simulation run
 		\item \textbf{Reset All Button:} Resets all data to initial values
 		\item \textbf{Output Console:} Prints any logging statements
+		\item \textbf{File/Folder Browse:} Allows to browse user directory visually (supported by operating system)
 	\end{enumerate}
 	\item \textbf{Process Steps:} Not Available
 	\item \textbf{Data:} Not Available
@@ -549,11 +553,12 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsection{GUI - Advanced Settings - Dispatcher/Random Seed}
+\subsubsection{GUI - Advanced Settings - Dispatcher/Random Seed}
 \begin{enumerate}[]
 	\item \textbf{Type:} User Interface
-	\item \textbf{Purpose:} Allows the user to configure the Dispatcher's values
-	\item \textbf{Function:} 
+	\item \textbf{Purpose:} To provide the user with the ability to modify dispatcher values
+	\item \textbf{Function:} Allows the user to modify dispatcher values
+	\item \textbf{Interface:}  
 	\begin{enumerate}[(i)]
 		\item \textbf{Appointment Factor:} Gives jobs that are scheduled a high priority than those who are generated on-demand by hospital staff.
 		\item \textbf{Automatic Job Priority Values:}  To ensure jobs with a low priority are completed it is important that after a specified amount of time a job's priority is increased.  
@@ -573,11 +578,12 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} 10.1.1, 10.1.2, 10.1.3, 10.1.4
 \end{enumerate}
 
-\subsection{Schedule Verifier}
+\subsubsection{Schedule Verifier}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
 	\item \textbf{Purpose:} Confirms the integrity of the schedule
-	\item \textbf{Function:} 
+	\item \textbf{Function:} Parses the schedule file and confirms the validity of each file
+	\item \textbf{Interface:} 
 	\begin{enumerate}[(i)]
 		\item \textbf{scheduleChecker(file):} checks integrity of the schedule as a whole
 		\item \textbf{verifyShiftID(element):} checks integrity of each shift id  
@@ -600,11 +606,12 @@ Simulation will be built on the SimPy 3.0.2 library \newline \ \underline{\url{h
 	\item \textbf{Requirement Reference:} ??
 \end{enumerate}
 
-\subsection{Schedule Parser}
+\subsubsection{Schedule Parser}
 \begin{enumerate}[]
 	\item \textbf{Type:} Module
-	\item \textbf{Purpose:} Converts the schedule to a more convenient format
-	\item \textbf{Function:} 
+	\item \textbf{Purpose:} Converts the schedule to an easier to read format by Porter Manager Module
+	\item \textbf{Function:} Processes all the elements and reconstructs them into a data structure
+	\item \textbf{Interface:} 
 	\begin{enumerate}[(i)]
 		\item \textbf{scheduleParser(file):} checks integrity of the schedule as a whole
 	\end{enumerate}
