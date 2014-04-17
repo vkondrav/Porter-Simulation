@@ -7,7 +7,8 @@ from job import Job, JobList
 from statImport import StatImport
 from porterManager import PorterManager
 from excelConverter import main as dashOutput
-from random import seed
+from random import seed, randint
+import sys
 
 SIM_TIME = 86400
 
@@ -15,7 +16,11 @@ SIM_TIME = 86400
 def main(config):
     # Set the random seed if it is set in the config
     if not config["randomSeed"] is None:
-        seed(config["randomSeed"])
+        used_seed = config["randomSeed"]
+        seed(used_seed)
+    else:
+        used_seed = randint(0, 999999999)
+        seed(used_seed)
     
     simState = State()
     
@@ -47,6 +52,8 @@ def main(config):
 
     # Create the dashboard output
     dashOutput(simState.jobList.releasedJobList, config["outputLocation"])
+    
+    print "*****SEED USED: " + str(int(used_seed)) + "*****"
 
 if __name__=='__main__':
 	main()
