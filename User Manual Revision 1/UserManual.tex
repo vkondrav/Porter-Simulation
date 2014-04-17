@@ -216,7 +216,13 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Appointment Factor:} Jobs that are scheduled in advanced need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
 		\item \textbf{Automatic Job Priority Values:} Jobs waiting for a porter need to increase their priority after waiting for a specified amount of time.  The "Minutes" will determine how long a job waits until it increases in priority.
 		\item \textbf{Weighted Job List:} Jobs of different priorities need to have different weights.  This weight helps determine how quickly the job should be assigned to a porter.
-		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime
+		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime. Every simulation exists with the seed used. Record your seed after running a random seed simulation to get the exact same results
+		\begin{figure}[!htbp]		
+		\begin{center}
+			\includegraphics[width=1\columnwidth, height=0.45\textheight, keepaspectratio]{randomSeed.png}
+			\caption{Random Seed}
+		\end{center}
+		\end{figure} 
 	\end{enumerate}
 	
 	\subsection{Porter Schedule}
@@ -306,6 +312,7 @@ These instructions are for setting up a development environment for running and 
 	\item With command prompt run: \textbf{pip install xlst}
 	\item Download the installer for pywin32 and run the executable: http://sourceforge.net/projects/pywin32/files/pywin32/Build\%20218/
 	\item Download the installer for cx\_freeze and run the msi: http://cx-freeze.sourceforge.net/
+	\item Ensure you have a copy of Microsoft Excel (version 2010 or higher) installed on the system to view the dashboard generated file 
 \end{enumerate}
 
 \section{Troubleshooting}
@@ -336,7 +343,7 @@ The troubleshooting section should be used to help address minor issues that may
 Ownership of software and accompanying documentation developed at McMaster University by the Porter Simulation project team is covered by the Joint Intellectual Property Policy as well as the Ownership of Student Work Policy. This software and accompanying documentation is licensed freely for access by Hamilton Health Sciences staff, project supervisor Dr. Douglas Down, and the Comp Sci 4ZP6 course instructors.
 
 \section{Contact Information}
-The Development team can be contacted for praise or support at PorterSimulationPros@Gmail.com.
+The Development team can be contacted for praise or support at kondrav@live.ca.
 
 
 
