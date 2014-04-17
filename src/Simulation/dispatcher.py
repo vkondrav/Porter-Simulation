@@ -37,8 +37,8 @@ class Dispatcher(object):
     def getNextJob(self):
         nextJob = None
         nextDV = 0
+        ## loop through all the pending jobs and calculate the dispatch value
         for job in self.pending_jobs:
-            #pmv = getProximityMatchValue(job.origin)
             pw = self.getJobPriorityWeight(job.priority)
             af = self.getAppointmentFactor(job.appointment)
             # calculate the dispatch value for all the jobs
@@ -73,7 +73,8 @@ class Dispatcher(object):
                 # no porters in pending state, so add the job to the job pool
                 self.pending_jobs.insert(0, job)
                 continue
-                
+
+            # assign jobs to porters    
             for porter in pendingPorters:
                 if porter.unit == job.origin:
                     porter.job = job

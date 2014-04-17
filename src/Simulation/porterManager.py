@@ -14,6 +14,7 @@ class PorterManager(object):
 
     def importPorterSched(self, porterSchedule):
         self.schedule = porterSchedule
+        #Initialize all the porters found in the porterSchedule
         for i in porterSchedule:
             newPorter = Porter(i)
             self.porterList.append(newPorter)
@@ -23,13 +24,14 @@ class PorterManager(object):
         workingList = []
         for porterID, shifts in self.schedule.items():
             for shift in shifts:
-                ## Change this logic if simulation runs longer than 7 days ##
+                #Get the porters if the simulation is only on the first day
                 if int(creationTime) < SECONDS_IN_DAY:
                     if int(shift[3]) == self.startDay and int(shift[1]) <= creationTime and int(shift[2]) >= creationTime:
                         workingList.append(porterID)
                 else:
                     #Get the number of days since the first day
                     numDays = int(math.floor(int(creationTime) / SECONDS_IN_DAY))
+                    #Get the current day of the week
                     if (self.startDay + numDays) > 6:
                         currentDay = (self.startDay + numDays) - 7
                     else:
@@ -39,6 +41,7 @@ class PorterManager(object):
                     if int(shift[3]) == currentDay and int(shift[1]) <= int(creationTimeDay) and int(shift[2]) >= int(creationTimeDay):
                         workingList.append(porterID)
 
+        # Create a list of porters that are available and do not currently have jobs
         pendingList = []
         for porter in self.porterList:
             if porter.id in workingList and porter.state == Porter.pending:
