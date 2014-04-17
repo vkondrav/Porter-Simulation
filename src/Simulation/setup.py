@@ -37,7 +37,7 @@ setup(  name = "Porter Simulation",
                 shortcutName="Porter Simulation",
                 shortcutDir="DesktopFolder",
                 icon="icon.ico",
-                targetName="PorterSimulation2014.exe",
+                targetName="Porter Simulation 2014.exe",
                 base = base
             )
             ]

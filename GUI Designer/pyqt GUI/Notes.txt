@@ -1,0 +1,14 @@
+1. Design the interface using QT Designer
+
+2. To compile, pyqt must be installed. In command prompt type: 
+
+	| pyuic4 -x input.ui -o output.py | 
+
+	where input.ui is the UI created in QT Designer and output.py is the python destination
+
+	for example "pyuic4 -x mockup.ui -o mockup1.py"
+
+3. Use a merging tool to merge the generated file and the actual GUI file from src. Keep the connections from
+	GUI_functions.
+
+note: this will overwrite everything in output.py, do not make any modifications in that file
