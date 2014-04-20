@@ -190,16 +190,16 @@ The first step in using the software is to configure the simulation with a serie
 	\subsection{Basic Settings}
 	\begin{enumerate}[(i)]
 		\item \textbf{Simulation Duration:} Number of days the software will simulate events. Minimum: 1 Maximum: 7
-		\item \textbf{Porter Wait Times:} Maximum number of minutes a porter waits for a delay (patient, equipment, nurse) before cancelling the job
-		\item \textbf{Job Flow:} The rate of event generation during the course of the simulation. Higher flow cause more jobs to appear in a time frame depending on the statistical data
-		\item \textbf{Start Day:} Define the first day the simulation generates events from. For example; specifying Tuesday means day 1 events will only come from Tuesdays of the statistical data source, day 2 events will come from Wednesday
+		\item \textbf{Porter Wait Times:} Maximum number of minutes a porter waits for a delay (patient, equipment, nurse) before cancelling a job
+		\item \textbf{Job Flow:} The rate of event generation during the course of the simulation. The levels are Low, Normal, High. On normal the rate of job creation is consistent to how it appears in the data. On Low and High level the rate is decreased and increased respectively 
+		\item \textbf{Start Day:} Define the first day the simulation generates events from. For example; specifying Tuesday means day 1 events will only come from Tuesdays of the statistical data source, day 2 events will come from Wednesday, etc.
 	\end{enumerate}
 	
 	\subsection{Basic Settings - Data Source}
 	The Data Source setting allows selection of different source input files, pre-configured to aid HHS users in testing a variety of hospital conditions and elements. 
 	\begin{enumerate}[(i)]
-		\item \textbf{Statistical Data Source:} A path to the source file that will be used to provide the simulation with statistical distribution information
-		\item \textbf{Schedule Data Source:} A path to the source file that will be used to provide scheduling information to be used during simulation
+		\item \textbf{Statistical Data Source:} A path to the source file that will be used to provide the simulation with statistical distribution information. For more information see section 5.5
+		\item \textbf{Schedule Data Source:} A path to the source file that will be used to provide scheduling information to be used during simulation. For more information see section 5.4
 		\item \textbf{Output Location:} Determines the Location to store output data
 	\end{enumerate}
 	
@@ -213,7 +213,7 @@ The first step in using the software is to configure the simulation with a serie
 	\end{center}
 	\end{figure} 
 	\begin{enumerate}[(i)]
-		\item \textbf{Appointment Factor:} Jobs that are scheduled in advanced need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
+		\item \textbf{Appointment Factor:} Jobs that are scheduled in advance need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
 		\item \textbf{Automatic Job Priority Values:} Jobs waiting for a porter need to increase their priority after waiting for a specified amount of time.  The "Minutes" will determine how long a job waits until it increases in priority.
 		\item \textbf{Weighted Job List:} Jobs of different priorities need to have different weights.  This weight helps determine how quickly the job should be assigned to a porter.
 		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime. Every simulation exists with the seed used. Record your seed after running a random seed simulation to get the exact same results
@@ -239,13 +239,62 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Shift ID:} An identifier for a shift.  The Shift ID will allow for easier traceability of shifts in the output data.
 		\item \textbf{StartTime:} A shift will begin at this time in the simulation.
 		\item \textbf{EndTime:} A shift will end at this time in the simulation.
-		\item \textbf{Porters Ids:} Allows for the assignment of one or more porter(s) to a shift.  A porter is assigned to a shift by adding an identifier.  Multiple porters can be assigned to the same shift by adding multiple identifiers each separated by a comma.  In the Figure 3.3 \textit{Shift ID 0} has three  porters assigned to it \textit{0,1,4}.
+		\item \textbf{Porters Ids:} Allows for the assignment of one or more porter(s) to a shift.  A porter is assigned to a shift by adding an identifier.  Multiple porters can be assigned to the same shift by adding multiple identifiers each separated by a comma.  In the Figure 5.4 \textit{Shift ID 0} has three  porters assigned to it \textit{0,1,2,3,4,5,6}.
 		\item \textbf{Day:} The day of the week on which the shift occurs.  It must be a number from 1-7, 1 being day 1 as specified by Start Day and 7 being day 7.
 	\end{enumerate}
 
+	\subsection{Statistical Data Source}
+	The data source is the direct output used by HHS during operations. This file must be of the same format for the simulation to function properly. Fields include (in order)
+	\begin{enumerate}
+	\item \textbf{TransportJobID}
+	\item \textbf{SequenceOrder}
+	\item \textbf{Campus}
+	\item \textbf{Last\_Status}
+	\item \textbf{StatusDate}
+	\item \textbf{Requester}
+	\item \textbf{Origin}
+	\item \textbf{Destination}
+	\item \textbf{JobPriorityID}
+	\item \textbf{OriginalPriorityID}
+	\item \textbf{Transporter}
+	\item \textbf{AppointmentDT}
+	\item \textbf{PendingDT}
+	\item \textbf{DispatchedDT}
+	\item \textbf{InProgressDT}
+	\item \textbf{CompleteDT}
+	\item \textbf{DelayMin}
+	\item \textbf{DelayReason}
+	\item \textbf{DispatchMins (PE-DI)}
+	\item \textbf{ResponseMins (PE-IP)}
+	\item \textbf{ArrivalMins (DI-IP)}
+	\item \textbf{TransactionMins (PE-CO)}
+	\item \textbf{TripMins (DI-CO)}
+	\item \textbf{PatientMins (IP-CO)}
+	\item \textbf{LostPorterMinsOnCancel (DI-CA)}
+	\item \textbf{PatientTransportFlag}
+	\item \textbf{PendWeekendFlag}
+	\item \textbf{Created\_Status}
+	\item \textbf{RequesterType}
+	\item \textbf{OriginZone}
+	\item \textbf{OriginBuilding}
+	\item \textbf{OriginUnit}
+	\item \textbf{DestinZone}
+	\item \textbf{DestinBuilding}
+	\item \textbf{DestinUnit}
+	\item \textbf{NumberOfJobsBatched}
+	\item \textbf{BatchedToJobID}
+	\item \textbf{ModeOfTravel}
+	\item \textbf{TotalTransportersRequired}
+	\item \textbf{TransportItem}	
+	\item \textbf{ReasonCodeID}
+	\item \textbf{NumberOfPages}
+	\item \textbf{UniqueTransportJobID}
+	\item \textbf{RejectCount}
+	\end{enumerate}
+	
 \newpage
 \section{Dashboard}
-Once the simulation has finished modelling and computing the data, the results of all of the completed jobs are exported to an excel file. The file is located at the directory specified at the configurable \textbf{Output Location}. Upon opening the file please enable macros as specified by your version of Microsoft Excel. Once macros have been enabled click the "Recalculate" button on any of the Sheets named "Dashboard D(1-7)" to calculate the statistics and update all the graphs. Each tab represents data for one day of simulation broken up into 18 time intervals.
+Once the simulation has finished, the results of all of the completed jobs are exported to an excel file. The file is located at the directory specified at the configurable \textbf{Output Location}. Upon opening the file please enable macros as specified by your version of Microsoft Excel. Once macros have been enabled click the "Recalculate" button on any of the Sheets named "Dashboard D(1-7)" to calculate the statistics and update all the graphs. Each tab represents data for one day of simulation broken up into 18 time intervals.
 
 	\begin{figure}[!htbp]
 	\begin{center}
@@ -257,7 +306,7 @@ Once the simulation has finished modelling and computing the data, the results o
 		\begin{figure}[!htbp]
 		\begin{center}
 			\includegraphics[width=1\columnwidth, height=0.3\textheight, keepaspectratio]{transactionTime.png}
-			\caption{\textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job has been created to when a job has been complete. Chart contains High, Low and Average values.}
+			\caption{\textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job is created to when a job has been complete. Chart contains High, Low and Average values.}
 		\vspace{-5em}
 		\end{center}
 		\end{figure}
