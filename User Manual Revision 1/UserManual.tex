@@ -244,26 +244,26 @@ The first step in using the software is to configure the simulation with a serie
 	\end{enumerate}
 
 	\subsection{Statistical Data Source}
-	The data source is the direct output used by HHS during operations. This file must be of the same format for the simulation to function properly. Fields include (in order)
+	The data source is the direct output used by HHS during operations. This file must be of the same format for the simulation to function properly. Fields include (in order; * is a required field)
 	\begin{enumerate}
 	\item \textbf{TransportJobID}
 	\item \textbf{SequenceOrder}
 	\item \textbf{Campus}
-	\item \textbf{Last\_Status}
+	\item \textbf{Last\_Status*}
 	\item \textbf{StatusDate}
 	\item \textbf{Requester}
-	\item \textbf{Origin}
-	\item \textbf{Destination}
+	\item \textbf{Origin*}
+	\item \textbf{Destination*}
 	\item \textbf{JobPriorityID}
-	\item \textbf{OriginalPriorityID}
+	\item \textbf{OriginalPriorityID*}
 	\item \textbf{Transporter}
 	\item \textbf{AppointmentDT}
-	\item \textbf{PendingDT}
-	\item \textbf{DispatchedDT}
-	\item \textbf{InProgressDT}
-	\item \textbf{CompleteDT}
-	\item \textbf{DelayMin}
-	\item \textbf{DelayReason}
+	\item \textbf{PendingDT*}
+	\item \textbf{DispatchedDT*}
+	\item \textbf{InProgressDT*}
+	\item \textbf{CompleteDT*}
+	\item \textbf{DelayMin*}
+	\item \textbf{DelayReason*}
 	\item \textbf{DispatchMins (PE-DI)}
 	\item \textbf{ResponseMins (PE-IP)}
 	\item \textbf{ArrivalMins (DI-IP)}
@@ -271,9 +271,9 @@ The first step in using the software is to configure the simulation with a serie
 	\item \textbf{TripMins (DI-CO)}
 	\item \textbf{PatientMins (IP-CO)}
 	\item \textbf{LostPorterMinsOnCancel (DI-CA)}
-	\item \textbf{PatientTransportFlag}
+	\item \textbf{PatientTransportFlag*}
 	\item \textbf{PendWeekendFlag}
-	\item \textbf{Created\_Status}
+	\item \textbf{Created\_Status*}
 	\item \textbf{RequesterType}
 	\item \textbf{OriginZone}
 	\item \textbf{OriginBuilding}
