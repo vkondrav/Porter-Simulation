@@ -153,10 +153,10 @@ This section provides the reader with a high-level overview of key components wi
 Setup of the Porter Simulation will be done by running an installer.
 \begin{enumerate}
 	\item Locate the Porter Simulation-1.0-win32.exe file.
-	\item Double click to run the Porter Simulation-1.0-win32.msi
-	\item Pick a directory to install the application. Default directory will be automatically filled in
-	\item Wait for the installer to finish then click "Finish"
-	\item The Porter Simulation shortcut will now appear on your desktop
+	\item Double click to run Porter Simulation-1.0-win32.msi.
+	\item Pick a directory to install the application. Default directory will be automatically filled in.
+	\item Wait for the installer to finish then click "Finish".
+	\item The Porter Simulation shortcut will now appear on your desktop.
 \end{enumerate}
 
 \begin{figure}[!htbp]
@@ -170,8 +170,8 @@ Setup of the Porter Simulation will be done by running an installer.
 	Before building Porter Simulation-1.0-win32.exe the reader must have a working development environment (Section 8: Configure Development Environment)
 	\begin{enumerate}[(i)]
 		\item From command prompt enter: \textbf{python setup.py bdst\_msi}
-		\item Two folders named "build" and "dist" will be generated
-		\item The build folder contains an executable to run the simulation
+		\item Two folders named "build" and "dist" will be generated.
+		\item The build folder contains an executable to run the simulation.
 		\item The dist folder contains the installer (i.e. Simulation-1.0-win32.exe) 	
 	\end{enumerate}
 
@@ -216,7 +216,7 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Appointment Factor:} Jobs that are scheduled in advance need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
 		\item \textbf{Automatic Job Priority Values:} Jobs waiting for a porter need to increase their priority after waiting for a specified amount of time.  The "Minutes" will determine how long a job waits until it increases in priority.
 		\item \textbf{Weighted Job List:} Jobs of different priorities need to have different weights.  This weight helps determine how quickly the job should be assigned to a porter.
-		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime. Record your seed after running a random seed simulation to get the exact same results
+		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime. Record your seed after running a random seed simulation to generate the same input.
 		\begin{figure}[!htbp]		
 		\begin{center}
 			\includegraphics[width=1\columnwidth, height=0.45\textheight, keepaspectratio]{randomSeed.png}
@@ -239,7 +239,7 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Shift ID:} An identifier for a shift.  The Shift ID will allow for easier traceability of shifts in the output data.
 		\item \textbf{StartTime:} A shift will begin at this time in the simulation.
 		\item \textbf{EndTime:} A shift will end at this time in the simulation.
-		\item \textbf{Porters Ids:} Allows for the assignment of one or more porter(s) to a shift.  A porter is assigned to a shift by adding an identifier.  Multiple porters can be assigned to the same shift by adding multiple identifiers each separated by a comma.  In the Figure 5.4 \textit{Shift ID 0} has three  porters assigned to it \textit{0,1,2,3,4,5,6}.
+		\item \textbf{Porters Ids:} Allows for the assignment of one or more porter(s) to a shift.  A porter is assigned to a shift by adding an identifier.  Multiple porters can be assigned to the same shift by adding multiple identifiers each separated by a comma.  In the Figure 5.4 \textit{Shift ID 0} has three  porters assigned to it: \textit{0,1,2,3,4,5,6}.
 		\item \textbf{Day:} The day of the week on which the shift occurs.  It must be a number from 1-7, 1 being day 1 as specified by Start Day and 7 being day 7.
 	\end{enumerate}
 
@@ -361,15 +361,21 @@ These instructions are for setting up a development environment for running and 
 	\item With command prompt run: \textbf{pip install xlst}
 	\item Download the installer for pywin32 and run the executable: http://sourceforge.net/projects/pywin32/files/pywin32/Build\%20218/
 	\item Download the installer for cx\_freeze and run the msi: http://cx-freeze.sourceforge.net/
-	\item Ensure you have a copy of Microsoft Excel (version 2010 or higher) installed on the system to view the dashboard generated file 
+	\item Ensure you have a copy of Microsoft Excel (version 2010 or higher) installed on the system to view the dashboard generated file.
+\end{enumerate}
+
+\section{Supported Systems}
+\begin{enumerate}[(i)]
+	\item Windows XP/Vista/7/8 to run the simulation.
+	\item Excel 2010/2013 to generate the dashboard.
 \end{enumerate}
 
 \section{Troubleshooting}
 The troubleshooting section should be used to help address minor issues that may arise.
 
 \begin{enumerate}[(i)]
-	\item \textbf{Missing Files and Locations:} Failing to specify the correct locations of required files will result in program halts
-	\item \textbf{Incorrect Schedule Data:} In the event of incorrect schedule input, the program will halt and alert you with the location of the error
+	\item \textbf{Missing Files and Locations:} Failing to specify the correct locations of required files will result in program halts.
+	\item \textbf{Incorrect Schedule Data:} In the event of incorrect schedule input, the program will halt and alert you with the location of the error.
 	\item \textbf{Simulation Stops:} In the event that the simulation is running and suddenly halts before producing output data, it will be necessary to close the simulation manually by clicking the X in the top right corner of the window. If the simulation continues to malfunction, please contact the development team.
 \end{enumerate}
 
@@ -394,7 +400,8 @@ Ownership of software and accompanying documentation developed at McMaster Unive
 \section{Contact Information}
 The Development team can be contacted for praise or support at kondrav@live.ca.
 
-
+\section{Source code and other documentation}
+The Source code for the simulation and all other documentation can be found at \textbf{https://github.com/vkondrav/Porter-Simulation}
 
 %%% End document	
 \end{document}	
