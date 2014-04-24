@@ -191,7 +191,7 @@ The first step in using the software is to configure the simulation with a serie
 	\begin{enumerate}[(i)]
 		\item \textbf{Simulation Duration:} Number of days the software will simulate events. Minimum: 1 Maximum: 7
 		\item \textbf{Porter Wait Times:} Maximum number of minutes a porter waits for a delay (patient, equipment, nurse) before cancelling a job
-		\item \textbf{Job Flow:} The rate of event generation during the course of the simulation. The levels are Low, Normal, High. On normal the rate of job creation is consistent to how it appears in the data. On Low and High level the rate is decreased and increased respectively 
+		\item \textbf{Job Flow:} The rate of event generation during the course of the simulation. The levels are Low, Normal, High. On normal the rate of job creation is consistent to how it appears in the data. On Low and High level the rate is decreased and increased respectively. The program looks at the same time frame across all the data and picks the amount of events to generate as average (Normal), highest (High), or lowest (low).
 		\item \textbf{Start Day:} Define the first day the simulation generates events from. For example; specifying Tuesday means day 1 events will only come from Tuesdays of the statistical data source, day 2 events will come from Wednesday, etc.
 	\end{enumerate}
 	
@@ -216,7 +216,7 @@ The first step in using the software is to configure the simulation with a serie
 		\item \textbf{Appointment Factor:} Jobs that are scheduled in advance need to be given priority over jobs generated on-demand.  Increasing the appointment factor will decrease the time scheduled jobs spend waiting for a porter.
 		\item \textbf{Automatic Job Priority Values:} Jobs waiting for a porter need to increase their priority after waiting for a specified amount of time.  The "Minutes" will determine how long a job waits until it increases in priority.
 		\item \textbf{Weighted Job List:} Jobs of different priorities need to have different weights.  This weight helps determine how quickly the job should be assigned to a porter.
-		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime. Every simulation exists with the seed used. Record your seed after running a random seed simulation to get the exact same results
+		\item \textbf{Random Seed:} Gives the user the ability to specify a random seed variable. Specific seeds will give unique output data linked to that seed. Setting this value to 0 will make the simulation choose a random seed during runtime. Record your seed after running a random seed simulation to get the exact same results
 		\begin{figure}[!htbp]		
 		\begin{center}
 			\includegraphics[width=1\columnwidth, height=0.45\textheight, keepaspectratio]{randomSeed.png}
@@ -306,7 +306,7 @@ Once the simulation has finished, the results of all of the completed jobs are e
 		\begin{figure}[!htbp]
 		\begin{center}
 			\includegraphics[width=1\columnwidth, height=0.3\textheight, keepaspectratio]{transactionTime.png}
-			\caption{\textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job is created to when a job has been complete. Chart contains High, Low and Average values.}
+			\caption{\textbf{Transaction Time:} Represents the transaction time for a job created in a specific time interval. Transaction time is defined as the time from when a job is created to when a job has been completed. Chart contains High, Low and Average values.}
 		\vspace{-5em}
 		\end{center}
 		\end{figure}
@@ -338,7 +338,7 @@ Once the simulation has finished, the results of all of the completed jobs are e
 		\begin{figure}[!htbp]		
 		\begin{center}
 			\includegraphics[width=1\columnwidth, height=0.4\textheight, keepaspectratio]{cancelledJobs.png}
-			\caption{\textbf{Cumulative Cancelled Jobs:} Represents the total number of cancelled jobs for at the end of each time interval}
+			\caption{\textbf{Cumulative Cancelled Jobs:} Represents the total number of cancelled jobs at the end of each time interval}
 		\end{center}
 		\end{figure}
 	
@@ -347,7 +347,7 @@ Raw data can be accessed from the generated dashboard files. Simply right click 
 
 
 \section{Configure Development Environment}
-These instructions are for setting up a development environment for running and editing the source code.  The following instructions were made for Microsoft Windows 7 operating system.
+These instructions are for setting up a development environment for running and editing the source code.  The following instructions were made for the Microsoft Windows 7 operating system.
 
 \subsection{Install Python Modules}
 \begin{enumerate}[(i)]
@@ -377,7 +377,7 @@ The troubleshooting section should be used to help address minor issues that may
 \begin{itemize}
 	\item Figure 3.1: Installer (Page 3)
 	\item Figure 5.1: BasicSettings (Page 4)
-	\item Figure 5.3: AdvancedSettings.png (Page 5)
+	\item Figure 5.3: AdvancedSettings (Page 5)
 	\item Figure 5.4: Schedule.png (Page 6)
 	\item Figure 6.1: Dashboard Overview (Page 7)
 	\item Figure 6.2: Transaction Time (Page 7)
